@@ -13,3 +13,6 @@ Start at T01 on/after Oct 26 only once competition rules permit. Read [AGENTS.md
 | Secure shipping | [05](05-shipping.md) | T12–T14 |
 
 **Task completion report:** ticket / SHA / paths / test commands and observed exit codes / tested edge cases / provider calls or mocks / blockers / next ticket. If no actual command exists yet, do not fake it; first add the script under T01.
+
+## Gated P1 ticket
+[06 — real-agent experiment](06-real-agent-experiment.md) defines optional T15. It is not a dependency of submission and cannot begin before the P0 release and isolation/credit gates are green.
