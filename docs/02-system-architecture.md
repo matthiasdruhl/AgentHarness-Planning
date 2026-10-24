@@ -92,3 +92,20 @@ flowchart TD
 **Module boundary:** CLI and scoring reside in `benchmark/real-agent/` in eventual app repository, isolated from `src/app/api` and not packaged as a web runtime. It consumes a pinned task/agent/guard manifest, outputs `experiment-result.v1` local artifacts and can export a sanitized, read-only report. This is a **different provenance type** from both Meta live analysis and scripted fixture replay. Imported traces never become runnable because they came from an observed run.
 
 **Execution gate:** require verified non-root, sealed disposable task filesystem, no host credentials, network off by default, fixed allowlisted task actions/test commands, no arbitrary model shell, time/CPU/memory/token/spend caps and kill switch. Without verified containment, do not execute T15. Pair matching task inputs, model, prompt, tools, initial workspace and independent oracle; change only guard policy, log order/seed and overhead. See [27](27-real-agent-experiment.md).
+
+
+## Optional P1 — measured real-agent behavior
+The deployed Next.js application and its limited scripted replay remain unchanged. If the P0 demo is working, a **developer-invoked, local, isolated benchmark CLI** can compare a fixed coding agent on trusted synthetic tasks with a completion guard off versus on. This experimental utility is not a hosted service or public feature. See [27 real-agent experiment](27-real-agent-experiment.md).
+
+```mermaid
+flowchart TD
+  A[Approved task set + independent oracle] --> B[Developer local runner]
+  B --> C[Baseline trial]
+  B --> D[Guarded trial]
+  C --> E[Offline paired scoring]
+  D --> E
+  E --> F[Sanitized measured report]
+  F -. Read only .-> G[Existing web UI]
+```
+
+Both arms use the same pinned agent, task, initial workspace and outcome oracle; only the policy condition changes. The CLI is outside the web deployment, runs only in preverified isolated disposable environments with constrained resources, and has no ability to execute imported trace data. Without verified isolation or remaining credits, **skip P1**. The runtime contract and scope are fully specified in [27](27-real-agent-experiment.md).
