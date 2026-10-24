@@ -37,3 +37,6 @@ On ambiguity choose a simple deterministic design, write a brief ADR before expa
 
 ## Daily protocol
 Start by reading the build plan and open risks. Finish by recording changed files, test command/results, demo status, credits consumed, and next dependency in the implementation repo journal. Freeze features November 2 and prioritize submission reliability. Recheck competition rules at kickoff.
+
+## P1 experimental runner exception (ADR-011)
+Only after a working deployed P0, verified credits/rules and safety signoff may Codex implement **T15** from `tasks/06-real-agent-experiment.md`. This is the one permitted P1 experiment, not an instruction to expand production. A developer-only, explicitly invoked CLI may run pinned, vetted synthetic tasks within verified disposable non-root isolation, with static tool/test-command allowlists, no host secrets, no network egress by default and hard process/time/token/spend limits. If isolation cannot be verified, skip. Never add browser/API execution routes or execute imported traces or model-generated commands. Measure actual task success, false completion claims **and blocked legitimate successes**. Freeze experimental work by Nov 2; P0 and submission always win.
