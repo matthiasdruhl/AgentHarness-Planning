@@ -19,3 +19,6 @@ Any Next route to execute tasks; arbitrary imported/user/model-supplied shell or
 - Feasibility pilot contains at least one independently scored pair, or ticket marked skipped with reason; do not fabricate target N.
 - Report false claims, legitimate blocked success, real solve rate, unknowns, overhead, failures and spend provenance.
 - P0 code paths remain unchanged and safe; no effect on submission deadline.
+
+## Verify-specific outcome contract
+The optional P1 experiment is now the only source for a measured *real-agent completion reliability* claim. Report unjustified completion claims, independently confirmed true task solutions, legitimate completions blocked, UNKNOWNs, cost and latency for matched unguarded/guarded arms. Do not blend these figures with P0 tri-state-verdict fixture correctness or scripted policy PASS. Remains developer-only, isolated and skippable. See [28](../docs/28-verify-product-north-star.md).

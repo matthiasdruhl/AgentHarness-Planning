@@ -14,3 +14,6 @@
 **Read:** [15 submission](../docs/15-demo-and-submission.md), [SUBMISSION_CHECKLIST](../docs/SUBMISSION_CHECKLIST.md), [16 rules](../docs/16-rules-and-compliance.md).
 **Goal:** record honest 2–3 minute evidence-led walkthrough; capture final commit, live inference proof if available, test artifacts and official form requirements.
 **Acceptance:** video, links, artifact provenance and organizer receipt inspected; submit before verified countdown. Never mark complete until organizer confirms receipt.
+
+## Verify-specific release gate
+T12 checks that model text cannot override deterministic claim verdicts, that missing tests cannot generate VERIFIED, and that status semantics are clear without color; T13 confirms the F1 verdict loads instantly in production without a model call, and no execution endpoint exists. T14's video leads with AgentHarness Verify's UNVERIFIED finding and linked evidence, then Meta's optional explanation and simulated safeguard. The original test failure remains visible. If T15 did not run, label actual-agent improvement NOT MEASURED. See [28](../docs/28-verify-product-north-star.md).
