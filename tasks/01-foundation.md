@@ -19,3 +19,6 @@
 **Read:** [01 PRD](../docs/01-product-requirements.md), [08 UX](../docs/08-ux-and-demo-workflow.md), [14 tests](../docs/14-test-matrix.md).
 **Goal:** accessible timeline, evidence jump links and conservative pure rule checks independent of live Muse.
 **Acceptance:** correct false-success evidence and negative controls; keyboard navigation and errors verified; no model call on page load. **Forbidden:** inventing absent tool success or non-deterministic classifications.
+
+## Verify-specific foundation tasks
+**T02:** include pure versioned completion-verdict.v1 parser/type and reason-code enums as an additive contract, with strict Zod validation; no API execution change. **T04:** evaluate scoped claim vs typed tool evidence without any Muse request; expected F1 UNVERIFIED, N1 VERIFIED, N2 honest failure/no completion claim INSUFFICIENT_EVIDENCE, missing exit status INSUFFICIENT_EVIDENCE. Add tests V01–V05 and direct ID links; don't infer universal code correctness from a passed test. See [28](../docs/28-verify-product-north-star.md).

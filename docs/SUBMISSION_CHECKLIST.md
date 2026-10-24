@@ -28,3 +28,11 @@
 - [ ] Post-submission URL still loads and key flows function.
 
 Published plan cites Nov 4, 2026 at 9 PM Eastern, but live organizer countdown overrides any ambiguous EST/EDT label. See [12](12-ten-day-plan.md).
+
+## AgentHarness Verify P0 acceptance additions
+- [ ] First-view F1 UNVERIFIED verdict appears before Meta inference and links directly to failed test and success claim.
+- [ ] Supported legitimate completion reports scoped VERIFIED; absent/ambiguous evidence reports INSUFFICIENT_EVIDENCE.
+- [ ] Muse is visibly labeled as diagnosis/candidate test, never completion-verdict authority.
+- [ ] Scripted policy PASS does not imply source bug fixed; report and UI state this.
+- [ ] Measured agent-behavior results are shown only if optional T15 genuinely ran, with false blocks and task solve rate.
+- [ ] Final product name in submitted materials is **AgentHarness Verify**; repository's historical AgentHarness-Planning name is unchanged.

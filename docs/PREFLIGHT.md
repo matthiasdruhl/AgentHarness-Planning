@@ -19,3 +19,6 @@ This repository already has 20 numbered planning docs and a detailed [AGENTS.md]
 
 ## Go/no-go
 GO only when rules permitting planned work are understood, required credentials/access are available or deterministic fallback is chosen explicitly, and the first task's acceptance tests are actionable. If rules or credits remain unknown, mark blocked; continue safe compliance/documentation work instead.
+
+## Verify-specific start gates
+At kickoff, pin [28 north star](28-verify-product-north-star.md) and [29 migration](29-repositioning-consistency.md) along with the planning SHA. Implement a deterministic completion verdict early; confirm F1 UNVERIFIED, supported passing completion VERIFIED (scoped), and unknown/missing tool output INSUFFICIENT_EVIDENCE. Muse is explanation-only and paid calls are explicit. Verify participant rules and credits remain pending until checked. No P1 real-agent run before P0 release gates.

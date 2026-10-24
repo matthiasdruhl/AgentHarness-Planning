@@ -16,3 +16,6 @@ Start at T01 on/after Oct 26 only once competition rules permit. Read [AGENTS.md
 
 ## Gated P1 ticket
 [06 — real-agent experiment](06-real-agent-experiment.md) defines optional T15. It is not a dependency of submission and cannot begin before the P0 release and isolation/credit gates are green.
+
+## AgentHarness Verify task ordering
+Read [north star](../docs/28-verify-product-north-star.md) and [migration register](../docs/29-repositioning-consistency.md) first. T04 is now explicitly responsible for shared deterministic completion-verdict.v1 and F1/N1/N2/unknown status tests. T10 implements evidence-first verification UI; detailed timeline, Muse explanation and scripted replay follow the immediate verdict. T15 remains optional and cannot expand deployed execution.

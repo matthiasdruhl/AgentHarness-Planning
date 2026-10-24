@@ -9,3 +9,6 @@
 **Read:** [04 API](../docs/04-api-contracts.md), [03 contracts](../docs/03-data-contracts.md), [06 replay DSL](../docs/06-replay-and-fixes.md).
 **Goal:** `POST /api/analyze` validates payload, parses model JSON strictly, resolves each cited event ID, rejects unsupported DSL tests/policies and distinguishes hypotheses from verified deterministic evidence.
 **Acceptance:** fixture yields >=1 valid finding in controlled live smoke; malformed JSON, absent evidence, orphan ID, malicious DSL, wrong version and provider outage are fail-closed. **Forbidden:** LLM responses as executable source or independently verified verdicts.
+
+## Verify-specific Meta requirement
+Muse is invoked on explicit user request **after** deterministic verdict; it suggests grounded explanations and allowlisted checks but cannot change the authoritative typed completion status. Add a test that a misleading model success claim does not overwrite an observed failed-test verdict. When Muse provides no additional value over deterministic rules, disclose that. See [28](../docs/28-verify-product-north-star.md).

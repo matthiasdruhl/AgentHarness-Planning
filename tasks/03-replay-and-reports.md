@@ -14,3 +14,6 @@
 **Read:** [03 data contracts](../docs/03-data-contracts.md), [10 security](../docs/10-security-and-privacy.md).
 **Goal:** sanitized schema-versioned JSON report linking trace hash, exact event IDs, model mode, replay engine, policy delta and limitations.
 **Acceptance:** roundtrip test and no secrets; exported output does not conflate actual live analysis with recorded fixtures.
+
+## Verify-specific guard/report requirement
+All before/after labels must identify **scripted reference policy compliance** separately from observed completion-verdict status. The false-success F1 remains UNVERIFIED with failing test evidence even if the simulated guard prevents the unsupported success statement. Include completion-verdict.v1 and reason IDs in report where an additive schema is adopted; maintain existing API compatibility. See [28](../docs/28-verify-product-north-star.md).

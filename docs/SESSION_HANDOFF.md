@@ -19,3 +19,6 @@ Copy this template to the *application* repository's daily journal at kickoff. A
 
 ## Handoff quality bar
 A new session must be able to resume using this and the current diff without replaying the entire conversation. No guessed pass/fail, credit balances, or completed features. Avoid storing API keys, raw private traces, personal organizer emails, or secret-bearing logs.
+
+## Verify status checkpoints
+At each handoff add: completion-verdict.v1 implementation status; V01–V06 exact observed test results; first-viewport F1 UNVERIFIED visibility and event links; Muse status/provenance; scripted guard caveat displayed; T15 gated P1 status (SKIPPED/NOT_STARTED/MEASURED). Do not confuse design-complete with working or measured.

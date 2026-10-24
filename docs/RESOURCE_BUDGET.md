@@ -23,3 +23,6 @@ Live inference **only on user action**, backend-only key, capped trace/event/tok
 
 ## Daily check
 Record balance/usage from dashboard, completed tasks, failed paid calls, forecast at observed per-call usage, and reserve remaining. Stop optional evaluation or polishing if reserve threatened. A provider outage or exhausted credits must not block fixture load/replay/export. Recorded outputs must carry a visible RECORDED label.
+
+## Verification-first credit saving
+The P0 completion verdict is pure TypeScript, should be available instantly and consumes **no Meta inference**. Only request Muse when user asks for explanation/candidate tests. Benchmark ablations and optional T15 are separately budget-approved and their real spend logged. Do not prioritize T15 costs over the live Muse demo or final reserve.
