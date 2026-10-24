@@ -52,3 +52,6 @@ A usable entry must answer yes to all:
 The current `AgentHarness-Planning` repository was empty at planning start; original historical AgentHarness specification was not present here. This is a self-contained hackathon-only redesign based on the user-approved direction in conversation, **not** a claim to have read unavailable earlier specification files. If the original spec surfaces, use it only to identify conflicts; do not expand scope unless it makes the 10-day demo safer or better.
 
 The eventual demo agent is a **simulated scripted reference agent**. Arbitrary trace upload provides useful diagnosis but never general replay. Future capabilities are intentionally excluded.
+
+## Conditional P1 decision
+[ADR-011](17-architecture-decisions.md) adds an optional measured agent-behavior experiment on trusted synthetic tasks. This is not a new mandatory prerequisite or a general runtime; it cannot be started until after the P0 demo, security/credits and isolation gates are satisfied. The public app continues replaying only bundled scripted scenarios. No actual measured results exist yet.
