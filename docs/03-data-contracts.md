@@ -73,3 +73,6 @@ Server loads bundled scenario by ID **from bundled module**, never from user-pro
 
 ## Compatibility rules
 Reject unknown major versions with clear error; no silent coercion. Frontend and API share one schema module. Fixture hashes determined from canonicalized JSON with stable field/key ordering. Do not rely on JSON.stringify order for cross-process hashes without canonicalizer. Contract tests cover parse/reject round-trips for every v1 type.
+
+## P1 experimental data (separate local schema family)
+If T15 is implemented, `experiment-plan.v1` and `experiment-result.v1` follow [27](27-real-agent-experiment.md), including task hashes, independent oracle, guard/agent versions, run order, observed trace digest, completion claims, status, cost and `observed_real_agent_run` provenance. They are local benchmark artifact templates, **not** public replay, verify, or imported trace execution contracts. `trace.v1` remains observational and never executable. Do not confuse `analysisProvenance.mode=live` (Meta model analysis) with an actual agent-run provenance.
