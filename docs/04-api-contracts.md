@@ -41,3 +41,6 @@ Errors: 400 `INVALID_JSON`; 413 `PAYLOAD_TOO_LARGE`; 422 `VALIDATION_ERROR` / `U
 
 ## Explicit prohibition on execution API (P1)
 T15 is strictly a developer-invoked isolated **local CLI**. No `/api/execute`, `/api/run-agent`, browser launcher, hosted worker, arbitrary command endpoint or replay-by-upload is authorized. The public `/api/replay` contract remains limited to bundled immutable scripted scenarios. Optional experiment results enter the interface as sanitized **read-only report artifacts**, not jobs or tool requests. See [27](27-real-agent-experiment.md).
+
+## P1 API non-extension
+The controlled experiment described in [27](27-real-agent-experiment.md) has **no execution endpoint**. The local CLI is invoked by the developer; sanitized measured results are optional read-only artifacts. Existing analyze/replay/verify contracts remain unchanged. Neither uploaded trace events nor model-generated programs are ever executable through the app.
