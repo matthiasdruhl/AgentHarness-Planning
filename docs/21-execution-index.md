@@ -24,3 +24,6 @@ If documents disagree, **stop and log the conflict in an ADR**, amend affected s
 
 ## Non-goals
 Do not create a database, broad agent framework, autonomous code edits, production multi-tenant system, or executable untrusted replay. Do not call a guard-policy PASS a fixed code bug.
+
+## Optional architecture extension
+[27 — real-agent experiment](27-real-agent-experiment.md) is the definitive P1-only execution boundary and paired protocol; [task 06](../tasks/06-real-agent-experiment.md) is Codex ticket T15. ADR-011 documents the exception for a developer-local runner; it does not supersede P0 contracts or authorize public app execution.
