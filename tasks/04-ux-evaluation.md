@@ -10,3 +10,5 @@
 **Read:** [09 evaluation](../docs/09-evaluation-plan.md), [07 fixtures](../docs/07-scenarios-and-fixtures.md), [RESOURCE_BUDGET](../docs/RESOURCE_BUDGET.md).
 **Goal:** rule-only and Muse comparisons across planned labeled positives and negative controls, saving sanitized results.
 **Acceptance:** report sample N, denominator, prompt/model version, evidence-valid rate, failure examples and actual spend/usage or unknown. Do not claim measured precision/recall before running labeled experiments.
+
+**P1 boundary:** The real-agent T15 runner is not browser-executable. If optional paired results exist, the UI may display sanitized read-only benchmark artifacts only; do not introduce a runner button or execution route. See [task 06](06-real-agent-experiment.md).
