@@ -30,3 +30,6 @@ If credits exhausted or key compromised: disable `LIVE_ANALYSIS_ENABLED`, rotate
 
 ## Hackathon security minimum
 Threat model reviewed, key absent from client, no arbitrary execution capability, error paths tested, spending guard configured, input capped, replay provenance validated.
+
+## P1 local-only execution boundary
+The public app remains non-executing. The optional developer-local benchmark utility accepts only vetted, pinned synthetic tasks and runs in a verified disposable environment with least privilege, no host secrets, network egress disabled by default, allowlisted tools, limits on resources/tokens/spend and a kill switch. It cannot accept arbitrary uploaded traces or commands. Without verifiable isolation, the experiment must not run. See [27](27-real-agent-experiment.md).
