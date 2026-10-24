@@ -77,3 +77,6 @@ Persist item ID, variant, model/adapter identifier, prompt hash, timestamp, raw 
 
 ## Done threshold
 A third party should be able to reconstruct the exact selected cases and deterministic scores from the submitted app repo without access to secrets. Paid model results are reproducible in protocol, but not guaranteed bit-identical due to provider nondeterminism; retain sanitized inputs/outputs and settings sufficient for audit.
+
+## Optional observed-agent evidence
+If T15 runs, version artifacts separately under `benchmark/real-agent/`: task/oracle manifest and hashes, isolation signoff, paired order/seed, model/guard config, observed run digests, raw per-task scored outcomes, exclusions, provider usage and report. Mark provenance `observed_real_agent_run` distinct from `scripted_replay` and Muse analysis. No such results exist yet; if skipped, explicitly mark NOT RUN. See [27](27-real-agent-experiment.md).
