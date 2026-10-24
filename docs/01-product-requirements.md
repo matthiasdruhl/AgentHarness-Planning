@@ -54,3 +54,6 @@ Arbitrary third-party agent replay, real code execution, remote repository acces
 - **Never present a recorded response as a live inference.**
 - Final evaluation percentages must come from labeled runs; until measured use blanks/unknown.
 - Review final event rules after publication; modify dates and submission requirements accordingly.
+
+## Optional P1 — measured actual-agent improvement
+The ten P0 stories are unchanged. Conditional T15 compares a pinned coding agent on matched vetted tasks with enforcement off versus on; see [27](27-real-agent-experiment.md). Primary outcome is false completion claims per real eligible run. Required countermetrics are valid completions blocked, solved tasks, unknown outcomes and overhead. This local evaluation cannot become a public execution endpoint and is not required for submission.
