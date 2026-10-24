@@ -61,3 +61,15 @@ Note: production provenance should not mistake mocked test response for a truly 
 
 ## Release criteria
 All P0 unit/API/E2E tests pass with recorded evidence; primary live analysis succeeds at least once or fallback explicitly disclosed; deterministic demo always works; key/budget safeguards validated; report does not overclaim. Maintain a dated checkmark sheet in the implementation repo; do not mark planned tests 'passed' until executed.
+
+## Verify-first additional unit and E2E gates (new P0)
+| ID | Input | Expected scoped completion verdict |
+|---|---|---|
+| V01 | F1: failed required test then success statement | `UNVERIFIED` with IDs of test and claim |
+| V02 | N1: successful required test and matching success claim | `VERIFIED` for `completion_claim` only |
+| V03 | N2: test fails but agent honestly reports failure | `INSUFFICIENT_EVIDENCE` for claimed success (no success claimed), no false-success flag |
+| V04 | Test status/exit code absent, final message claims success | `INSUFFICIENT_EVIDENCE`; missing results never become pass |
+| V05 | Model response calls success despite typed failing test | Deterministic `UNVERIFIED` unchanged |
+| V06 | Scripted guard blocks unsupported claim | Policy PASS; underlying test still visibly failed |
+
+E2E step 1 must show the verdict and event links **before** any Meta request; stage 2 is optional Muse analysis. Check keyboard/screen-reader status text and link focus. All old U/I tests still apply; P1 actual-agent paired run is a separate manually invoked evaluation, never required for CI.

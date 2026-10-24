@@ -31,3 +31,11 @@ A: deployed live analysis + deterministic verification; B: deployed recorded ana
 
 ## Decision log discipline
 When a risk triggers, record date, evidence, concrete change, tradeoff, and new planned gate in implementation daily log. The benchmark and final video must reflect what was *actually shipped*, not earlier planned behavior.
+
+## Additional Verify-specific risks and mitigations
+- **Trivial-rule objection:** a failed exit code already reveals F1. Mitigation: demonstrate the end-to-end evidence-to-verdict-to-constrained-test-to-guard workflow and honestly compare Muse added value in a more ambiguous example if feasible; never imply detecting a simple exit code needs an LLM.
+- **False green:** test PASS is treated as universal software correctness. Mitigation: label `scope:completion_claim`, show exact passed checks and unknowns; no claim of whole-code correctness.
+- **Overblocking:** guard prevents legitimate completion and falsely boosts apparent reliability. Mitigation: N1 controls and, if T15 runs, explicit valid-success blocked and task-solved metrics.
+- **Ambiguous trace:** missing tool output causes invented PASS/FAIL. Mitigation: `INSUFFICIENT_EVIDENCE` by default with reason code and absent-data message.
+- **Muse overrides ground truth:** model hallucination changes deterministic verdict. Mitigation: pure TS authoritative verdict and contract test V05.
+- **Scope collision:** P1 real-agent runner delays P0. Mitigation: skip T15 until P0 green, honor Nov 2 freeze and isolate runner outside deployed app.

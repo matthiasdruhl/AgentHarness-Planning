@@ -27,3 +27,6 @@ Do not create a database, broad agent framework, autonomous code edits, producti
 
 ## Optional architecture extension
 [27 — real-agent experiment](27-real-agent-experiment.md) is the definitive P1-only execution boundary and paired protocol; [task 06](../tasks/06-real-agent-experiment.md) is Codex ticket T15. ADR-011 documents the exception for a developer-local runner; it does not supersede P0 contracts or authorize public app execution.
+
+## AgentHarness Verify source of truth (2026-10-24)
+Read [28 product north star](28-verify-product-north-star.md) for the current name, core promise, scoped verdict, UI order, metric and priority definitions. [29 migration register](29-repositioning-consistency.md) maps prior Audit phrasing, precedence and compatibility. Historical Audit references in prior source names are contextual, not competing product specs. The specific v1 schema of the new tri-state verdict lives in [03](03-data-contracts.md). The optional [27 P1 agent study](27-real-agent-experiment.md) remains an isolated, gated research experiment.

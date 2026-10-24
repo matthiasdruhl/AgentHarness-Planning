@@ -3,7 +3,7 @@
 ## Judge-facing story
 **Hook:** 'Coding agents sometimes say they're done when tests show otherwise.'  
 **Problem:** Raw tool transcripts make contradictions hard to spot.  
-**Product:** AgentHarness Audit uses Meta Muse to turn the trace into an evidence-linked diagnosis and constrained regression assertion.  
+**Product:** AgentHarness Verify uses Meta Muse to turn the trace into an evidence-linked diagnosis and constrained regression assertion.  
 **Proof:** Replay the synthetic reference scenario: without the guard, the agent reports success after a failing test; with the guard, it cannot claim success.  
 **Trust:** Show the unchanged failing test and say this proves a **completion policy**, not a code repair.
 
@@ -33,7 +33,7 @@ Record the actual live Meta run and retain an offline recording. Do not cut betw
 8. Submission receipt/screenshot and timestamp saved privately.
 
 ## Suggested entry narrative (adapt to form limits)
-'AgentHarness Audit helps coding-agent builders detect and prevent false success claims. It parses execution traces, uses Meta Muse Spark to identify evidence-backed contradictions and propose regression checks, and evaluates those checks on bounded, deterministic reference scenarios. A side-by-side before/after demonstration shows how an allowlisted policy guard prevents a false completion while preserving the failed test as visible evidence. Every claim is tied to trace IDs and measured results.'
+'AgentHarness Verify helps coding-agent builders detect and prevent false success claims. It parses execution traces, uses Meta Muse Spark to identify evidence-backed contradictions and propose regression checks, and evaluates those checks on bounded, deterministic reference scenarios. A side-by-side before/after demonstration shows how an allowlisted policy guard prevents a false completion while preserving the failed test as visible evidence. Every claim is tied to trace IDs and measured results.'
 
 ## Checklist at freeze (Nov 2)
 - [ ] All demo steps work in deployed production (including provider-disabled fallback).
@@ -53,3 +53,8 @@ By Nov 4 morning: verify official form requirements, confirm deadline/timezone i
 - **Meta use:** a real Muse inference call with strict JSON and highlighted analysis value.
 - **Presentation:** one before/after story, live evidence, measurable results.
 Theme suggestion: `Push the Frontier`. Likely indie developer track for a solo builder **unless acceptance registered another track**; verify actual selection in organizer portal before entry.
+
+## Verify-first judge script (supersedes diagnosis-first opening)
+**Opening 15 seconds:** 'This coding agent says it fixed the problem, but its tests failed. AgentHarness Verify immediately marks the completion **UNVERIFIED** and shows exactly why.' Immediately display the verdict plus test/claim evidence IDs, without spending a Muse call. **Next:** request Muse explanation and a bounded candidate assertion, explaining that Muse does not decide truth. **Then:** show scripted baseline FAIL and guard policy PASS **while the underlying test remains failed**; export the scoped result. If separately measured T15 evidence is available and safe, present it as *real-agent* data with honest N and false-block rate, not as simulation.
+
+Use product name **AgentHarness Verify** throughout pitch, recording, README and form. The phrase 'reliable agents' is aspirational; the demonstrated P0 claim is **evidence-backed completion status plus scripted guard behavior**. No claims of code repair or beating AgentRx/HALO without corresponding measurements. Maintain organizer video and eligibility verification.

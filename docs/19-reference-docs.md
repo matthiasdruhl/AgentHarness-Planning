@@ -36,3 +36,6 @@ Not scraped copies of external sites. Keep concise docs with source link and las
 
 ## Accuracy rules
 New API features or prices may appear during the event. Re-verify official endpoints and SDK compatibility before implementation; update this file with a dated note and code reference. Any unofficial interpretation of contest rules is marked as interpretation, not official policy.
+
+## Verify positioning and evaluation references
+Primary design contract: [28](28-verify-product-north-star.md); consistency map: [29](29-repositioning-consistency.md). Existing external publications are **related work**, not evidence of AgentHarness scores. AgentRx, HAL and SWE-bench report different tasks/metrics; do not copy their headline accuracies into a completion-verification benchmark comparison. Meta Muse's role is candidate analysis and constrained regression suggestions. Official platform/model documentation and access should be checked again at kickoff rather than assumed stable.

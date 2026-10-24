@@ -55,3 +55,12 @@ The eventual demo agent is a **simulated scripted reference agent**. Arbitrary t
 
 ## Conditional P1 decision
 [ADR-011](17-architecture-decisions.md) adds an optional measured agent-behavior experiment on trusted synthetic tasks. This is not a new mandatory prerequisite or a general runtime; it cannot be started until after the P0 demo, security/credits and isolation gates are satisfied. The public app continues replaying only bundled scripted scenarios. No actual measured results exist yet.
+
+## Verify-first readiness additions
+- [x] Product promise fixed: 'Make AI coding agents prove their work before declaring success.'
+- [x] Tri-state completion-verdict contract designed and linked to existing trace evidence.
+- [x] UI/hero-first sequence specified: verdict before optional Muse explanation.
+- [ ] Actual implementation of V01–V06 checks, E2E and evidence-link UI — **not yet**, this is still planning.
+- [ ] Actual Meta inference and cost measured — **not yet**.
+- [ ] Actual T15 real-agent task outcomes — optional and **not yet**.
+The phrase 'deterministic guard verifies policy' must not be presented as measurable real-agent improvement. Keep locked P0 scope, official rules checkpoint, and Nov 2 freeze. See [28](28-verify-product-north-star.md).

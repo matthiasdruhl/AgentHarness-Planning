@@ -48,3 +48,6 @@ Event page displays `EST` with October 26 date, although Eastern US daylight tim
 - [ ] Third-party asset attribution and privacy reviewed.
 - [ ] Submission form deadline/countdown verified.
 - [ ] Any required organizer attestations completed.
+
+## Repositioning does not change eligibility
+The public app is now described as **AgentHarness Verify**, but technical scope and pre-event work rules are unchanged. This repo remains planning-only. The optional actual-agent benchmark requires the same official rules review; do not infer permission to run or submit prebuilt code. Presentation wording should distinguish scripted policy simulation from actual measured agent improvements. Participant terms remain authoritative, and unresolved official rules are **not** marked confirmed.
