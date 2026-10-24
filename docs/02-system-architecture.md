@@ -73,3 +73,22 @@ Client store retains current `trace`, `analysis`, selected fixture, replay resul
 
 ## Performance
 UI and deterministic checks occur without network; clamp events (<=150), payload (<=256 KiB), evidence excerpts (<=400 chars each), findings (<=8), candidate assertions (<=6). Model input summarize bounded evidence but retain matching IDs. Cap replay steps at 20 per bundled scenario. Deployment runs on Node runtime, never Edge for model endpoint without testing.
+
+## ADR-011 optional P1 architecture: real-agent experiment
+The **single deployed Next.js app, API and scripted replay trust boundaries are unchanged**. A separately invoked developer-local TypeScript experiment CLI may, only after P0 security and end-to-end gates pass, run a fixed agent on **pre-vetted synthetic microtasks** in disposable isolated workspaces. It is not a production component, SaaS agent runtime, external trace replay, remote service or public route.
+
+```mermaid
+flowchart TD
+  T[Trusted immutable synthetic tasks + oracle] --> R[Manual isolated local benchmark CLI]
+  A[Pinned agent model prompt tools] --> R
+  R --> B[Fresh unguarded agent run]
+  R --> C[Fresh guarded agent run]
+  B --> S[Observed traces + independent task oracle]
+  C --> S
+  S --> O[Offline paired scoring and sanitized report]
+  O -. Optional read-only import .-> U[Existing Next.js viewer]
+```
+
+**Module boundary:** CLI and scoring reside in `benchmark/real-agent/` in eventual app repository, isolated from `src/app/api` and not packaged as a web runtime. It consumes a pinned task/agent/guard manifest, outputs `experiment-result.v1` local artifacts and can export a sanitized, read-only report. This is a **different provenance type** from both Meta live analysis and scripted fixture replay. Imported traces never become runnable because they came from an observed run.
+
+**Execution gate:** require verified non-root, sealed disposable task filesystem, no host credentials, network off by default, fixed allowlisted task actions/test commands, no arbitrary model shell, time/CPU/memory/token/spend caps and kill switch. Without verified containment, do not execute T15. Pair matching task inputs, model, prompt, tools, initial workspace and independent oracle; change only guard policy, log order/seed and overhead. See [27](27-real-agent-experiment.md).
