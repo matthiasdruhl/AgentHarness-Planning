@@ -47,3 +47,6 @@
 - Incorrect/nonexistent evidence ID => pre-filter violation logged; cannot be verified output.
 - File claim without supporting tool access => candidate, not automatic proof of file modification.
 - Repeat experiment with same frozen inputs; log model nondeterminism rather than hiding it.
+
+## Distinct optional real-agent A/B experiment
+The R/M/C variants above test trace **diagnosis**, not actual task-level improvements. T15 ([27](27-real-agent-experiment.md)) separately compares unguarded vs guarded real agent runs on paired vetted tasks with independent oracles. Do not merge its denominators into synthetic diagnosis results or compare its completion-policy rates to other projects' bug-resolution metrics. Include legitimate successful runs blocked and actual task solve rate alongside false-completion claims.
