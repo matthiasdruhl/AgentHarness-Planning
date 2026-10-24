@@ -40,3 +40,6 @@ Meta may select only one of three DSL ops with fixed fields. Zod validates; exec
 4. In unsafe-attempt, allowed guard blocks tool attempt; **no shell function exists in the program**.
 5. Uploaded, tampered, or unknown fixture IDs cannot be replayed.
 6. Unsupported suggested policy cannot execute and returns 422.
+
+## AgentHarness Verify semantics
+The product's immediate `completion-verdict.v1` concerns observed evidence supporting the agent's **specific completion claim**; scripted replay remains a separate, constrained proof of the **guard policy**. `UNVERIFIED` is not a claim that the underlying source bug has been reproduced. Guard-policy PASS does not mean tests pass or a software defect was repaired. At least one explanation in the demo must explicitly repeat this distinction. See [28](28-verify-product-north-star.md).

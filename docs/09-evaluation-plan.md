@@ -1,6 +1,7 @@
 # 09 — Evaluation, benchmark protocol and evidence integrity
 
 ## Questions to answer
+0. Does deterministic completion verification distinguish verified, contradicted, and insufficient-evidence claims without suppressing legitimate successes?
 1. Does Meta identify gold failure classes without fabricating evidence?
 2. Does the model add useful reasoning over deterministic rules?
 3. Are proposed regression assertions valid in the **closed** DSL?
@@ -51,3 +52,6 @@ Every demo finding tied to actual event evidence, model output schema valid, ben
 
 ## Separate optional real-agent evaluation
 After P0 is complete, T15 may compare identical agent/task conditions with completion guard off/on ([27](27-real-agent-experiment.md)). Score genuine task resolution and unjustified completion separately. Also count legitimate completion claims blocked, abstentions, unknown oracle outcomes, errors, latency, tokens and cost. These numbers have different denominators from the existing synthetic diagnosis benchmark and must never be merged or called directly comparable to AgentRx/HALO results. Target 20–30 tasks only if credits/time allow; smaller pilots must report honest N and uncertainty.
+
+## Verify primary outcome hierarchy
+**P0 measures deterministic verdict correctness and scripted guard enforcement**, not population-level real-agent success improvements. Add fixture expected tri-state verdict confusion counts, especially F1 `UNVERIFIED`, N1 supported claim `VERIFIED`, N2 honest failure/no completion claim `INSUFFICIENT_EVIDENCE`, and missing exit status `INSUFFICIENT_EVIDENCE`. Report sample size and scope explicitly. Maintain existing rules/Muse/combined *diagnostic* ablation as a separate secondary endpoint. **P1 T15, if actually run:** primary false completion claims per eligible real-agent execution with measured valid-success false blocks, task resolution and overhead. No mixed denominators. See [28](28-verify-product-north-star.md).

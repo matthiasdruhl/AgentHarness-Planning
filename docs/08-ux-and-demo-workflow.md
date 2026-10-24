@@ -1,4 +1,4 @@
-# 08 — UX specification and judge-friendly interaction
+# 08 — AgentHarness Verify UX and judge journey
 
 ## Experience target
 A visitor understands failure, evidence and improvement in 90 seconds without reading docs. Mobile works sufficiently to navigate, but optimize a 1440px desktop judge view and 1080p screen recording. UI is developer-oriented, calm and precise; color alone never conveys pass/fail.
@@ -44,3 +44,10 @@ Never animate away crucial failure details. Contrast verified engine verdict and
 - Fixture live/recorded badges reflect actual method; cannot be overridden by user-provided source field.
 - One end-to-end Playwright test completes hero flow with mocked Meta response.
 - Screen recording at 1080p shows legible text and 2–3-minute full narrative.
+
+## Verification-first information architecture (supersedes trace-first emphasis)
+The first viewport must answer **'Can I trust the agent's completion claim?'** with large but restrained tri-state status: `VERIFIED`, `UNVERIFIED`, `INSUFFICIENT_EVIDENCE`. Beneath it show exact claim, concise reason, clicked-to-focus event IDs, and what was observed versus unknown. A detailed trace timeline remains accessible after the verdict, not the top-level hero.
+
+Recommended visible flow: select bundled trace -> immediate deterministic verdict (zero model credits) -> inspect evidence -> click **Explain with Meta Muse** -> see candidate reasoning/test with clear `hypothesis` label -> **Test safeguard (scripted demo)** -> baseline FAIL and guarded policy PASS, still-failed test visible -> export evidence.
+
+No generic 'agent repaired' status, universal code-correctness green light, unlabeled mock inference or run-agent button. For F1, show `UNVERIFIED` upon selection. Missing evidence must show `INSUFFICIENT_EVIDENCE` rather than red/green. In T15, real-agent outcomes may appear *read-only* and separately labeled if actually measured. Accessible reason text cannot rely on color alone; show loading/error/keyboard focus for all evidence anchors.

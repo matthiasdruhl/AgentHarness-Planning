@@ -53,3 +53,6 @@ A task is done only with: changed-file summary, typecheck/lint pass, relevant un
 
 ## Operational runbook
 Meta outage: deactivate live inference flag; deterministic demo remains accessible. Deployment failure: roll back to last successful build. Fixture corruption: restore from tested commit. Security issue: immediately disable live route and rotate key.
+
+## Verify-first implementation and deployment gate
+Implement `completion-verdict.v1` as a pure tested TS module before embellishing the trace viewer. The primary F1 screen must instantly show `UNVERIFIED` with evidence without a network request; negative controls must distinguish `VERIFIED` and `INSUFFICIENT_EVIDENCE`. Meta requests remain explicit, backend-only, and optional. `npm run check` and production smoke must exercise these status transitions and verify that no app route runs a real agent. Static read-only T15 reports, if ever produced, must not block the production release. See [28](28-verify-product-north-star.md).

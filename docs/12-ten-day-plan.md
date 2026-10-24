@@ -13,7 +13,7 @@ Finalize these docs, review organizer messages, choose indie/startup track alrea
 | Oct 28 | 3 | Meta live provider route, structured output, evidence-ID validation, fallback | primary trace analyzed with a real Muse call and real provenance |
 | Oct 29 | 4 | DSL assertion interpreter and simulated replay engine | 3 scenario baselines deterministic, safety tests pass |
 | Oct 30 | 5 | Allowlisted mitigation comparison and report schema/export | hero baseline FAIL -> guard PASS with truthful caveat |
-| Oct 31 | 6 | Complete four-stage UX, evidence jump links, user-visible errors | full mocked E2E workflow passes |
+| Oct 31 | 6 | Complete verification-first UX, evidence jump links, user-visible errors | full mocked E2E workflow passes |
 | Nov 1 | 7 | Labeled negative controls and model evaluation, provider budget check | benchmark protocol reproducible; real measurements saved |
 | Nov 2 | 8 | Deployed production smoke, security review, browser accessibility | **feature freeze**; stable public/controlled URL |
 | Nov 3 | 9 | Demo recording, screenshots, README, judge narrative, submission draft | reviewer not on team can complete hero flow |
@@ -43,3 +43,6 @@ Date; commit SHA; objectives achieved; commands/tests actually run; pass/fail; l
 
 ## Optional P1 scheduling
 T15 real-agent comparison is a conditional stretch experiment after P0 works and deployment/security/credits are secure. A small pilot may fit around Days 6–7, but never delay P0 evaluation, Day 8 deployment or Nov 2 feature freeze. If blocked or incomplete by freeze, mark NOT RUN and submit the deterministic demonstration. Details: [27](27-real-agent-experiment.md).
+
+## Verify scope sequencing (supersedes trace-first polish)
+By Day 2 deliver verdict-first F1 `UNVERIFIED` and negative-control tri-state tests in addition to ingestion. By Day 3 integrate Muse as **explanation/candidate-check aid** rather than verdict authority. By Day 5 demonstrate guard-policy results and unchanged failed underlying test. By Day 6 make the first 15 seconds of the UI and video tell the product story. T15 is optional P1 and must not displace the core freeze/deployment/submission dates. See [28](28-verify-product-north-star.md).

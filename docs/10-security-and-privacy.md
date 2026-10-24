@@ -33,3 +33,6 @@ Threat model reviewed, key absent from client, no arbitrary execution capability
 
 ## P1 local-only execution boundary
 The public app remains non-executing. The optional developer-local benchmark utility accepts only vetted, pinned synthetic tasks and runs in a verified disposable environment with least privilege, no host secrets, network egress disabled by default, allowlisted tools, limits on resources/tokens/spend and a kill switch. It cannot accept arbitrary uploaded traces or commands. Without verifiable isolation, the experiment must not run. See [27](27-real-agent-experiment.md).
+
+## Verification authority and misleading-success safeguards
+The deterministic verification verdict is computed from validated typed trace evidence and is **not overridden by Muse text**, model confidence or a positive policy-guard assertion. Use `INSUFFICIENT_EVIDENCE` when data is absent, unknown or ambiguous. Show `VERIFIED` only for explicitly scoped completion-claim evidence, never imply guaranteed correct code. Maintain clear UI accessibility and provenance; export both the verdict's evidence IDs and the scripted/real measurement distinction. The unchanged public app never executes arbitrary imported agents or model-authored commands. See [28](28-verify-product-north-star.md).

@@ -9,7 +9,7 @@ Use each ticket as a self-contained Codex prompt anchored in the documents cited
 
 **T03 — Fixtures and canonicalizer (Day 2, ~4h).** Build three synthetic traces, gold labels, stable canonical hashing, immutable replay manifest from [07](07-scenarios-and-fixtures.md). Done: unique event IDs, stable digest, hash mismatch detection.
 
-**T04 — Timeline/checks (Day 2, ~5h).** Build event index, conservative deterministic rules, timeline with evidence anchors. Done: false-success signals correct, four negative controls not falsely flagged; keyboard navigation.
+**T04 — Verification verdict, timeline/checks (Day 2, ~5h).** Build event index, conservative deterministic rules, shared `completion-verdict.v1` logic and evidence-first verdict UI, plus accessible timeline with evidence anchors. Done: F1 UNVERIFIED, N1 VERIFIED for the narrowly scoped completion claim, N2 and unknown status INSUFFICIENT_EVIDENCE; direct source links, false-success signals and keyboard navigation.
 
 ## Inference and replay
 **T05 — Meta provider adapter (Day 3, ~5h).** Build server-only client, strict structured schema, timeouts/retries/circuit breaker, privacy filtering. Mock SDK in standard tests; one manually controlled live smoke. Done: real primary fixture analysis saved with request ID and token usage if returned.
@@ -23,7 +23,7 @@ Use each ticket as a self-contained Codex prompt anchored in the documents cited
 **T09 — Report provenance (Day 5, ~3h).** Assemble sanitized export with trace hash, provider mode, evidence, policy result, limitations, version. Done: download/import sample round-trip, no inadvertent full-secret export.
 
 ## UX and launch
-**T10 — Four-stage UI (Days 5–6, ~8h).** Implement load/import, Inspect, Diagnose, Replay, Export; badge observed vs inferred vs verified; evidence deep linking. Done: playwright hero journey with mocked Meta; no orphan links.
+**T10 — Verification-first four-stage UI (Days 5–6, ~8h).** Implement load/import, immediate completion verdict + inspect evidence, Muse diagnose on demand, scripted safeguard, export; badge observed vs inferred vs verified; evidence deep linking. Done: playwright hero journey with mocked Meta; no orphan links.
 
 **T11 — Evaluation harness (Day 7, ~5h).** Run 12 labeled traces through rule baseline and live Meta, calculate denominators and invalid outputs; save sanitized artifacts. Done: reproducible script or documented manual commands, no unmeasured numbers.
 
@@ -41,3 +41,6 @@ Each ticket requires: goal, files to create/edit, schema dependencies, tests to 
 
 ## T15 — Controlled real-agent comparison (optional P1 only)
 **Prerequisites:** verified deployed P0, essential tests and security gates green; official rules, isolation and credit reserve confirmed. Implement only the developer-invoked local runner and offline paired scorer described in [27](27-real-agent-experiment.md) and [task 06](../tasks/06-real-agent-experiment.md). Estimate 6–10 hours plus evaluation run time; not on P0 critical path. No public execution feature. Report true task outcomes, false completions, valid completions blocked and overhead. Skip before Nov 2 freeze if any gate fails. For **T15 alone**, the default Codex instruction against P1 work is superseded by this explicit gate; it remains binding for T01–T14.
+
+## T04/T10 contract synchronization
+Before T04, implement and unit-test `completion-verdict.v1` from [03](03-data-contracts.md), with explicit claim scope and fail-safe unknown handling. T10 must put the verdict and its supporting event IDs at the top of the experience. Muse output must not override verdict. Keep original T01–T14 IDs and dependencies; T15 remains optional. Never use generic success coloring to imply the source bug is fixed. See [28](28-verify-product-north-star.md).
