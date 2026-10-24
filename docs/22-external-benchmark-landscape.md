@@ -1,6 +1,6 @@
 # 22 — External benchmark landscape and feasibility
 
-**Research date:** 2026-10-24. **Scope:** Meta hackathon AgentHarness Audit, not a long-term agent platform. Benchmark publications and data licensing change; recheck at use. This is a research inventory, not a claim we have downloaded or evaluated any benchmark.
+**Research date:** 2026-10-24. **Scope:** Meta hackathon AgentHarness Verify, not a long-term agent platform. Benchmark publications and data licensing change; recheck at use. This is a research inventory, not a claim we have downloaded or evaluated any benchmark.
 
 ## Evidence-appropriate shortlist
 | Source | Verified facts / primary source | Fit for this MVP | Data/access caveat | Decision |
@@ -35,3 +35,6 @@ Before ingesting any external record, log: source URL, commit/release, retrieval
 - https://www.swebench.com/SWE-bench/guides/datasets/
 - https://hal.cs.princeton.edu/reliability/methodology/
 - https://github.com/context-labs/HALO
+
+## Verify-specific benchmark eligibility
+These sources contextualize related work, not measured results for AgentHarness Verify. AgentRx localization, SWE-bench resolution and HAL metrics are not comparable to claim-evidence tri-state verdicts or scripted guard compliance. Real-agent completion improvements require optional T15 paired measurement. See [28](28-verify-product-north-star.md).

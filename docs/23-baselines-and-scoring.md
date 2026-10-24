@@ -50,3 +50,6 @@
 
 ## Distinct optional real-agent A/B experiment
 The R/M/C variants above test trace **diagnosis**, not actual task-level improvements. T15 ([27](27-real-agent-experiment.md)) separately compares unguarded vs guarded real agent runs on paired vetted tasks with independent oracles. Do not merge its denominators into synthetic diagnosis results or compare its completion-policy rates to other projects' bug-resolution metrics. Include legitimate successful runs blocked and actual task solve rate alongside false-completion claims.
+
+## Completion-verdict P0 benchmark
+Besides diagnostic R/M/C, evaluate the deterministic verification contract: F1 UNVERIFIED; N1 VERIFIED for scoped supported completion; N2 honest failed test and no success claim INSUFFICIENT_EVIDENCE; missing/ambiguous test INSUFFICIENT_EVIDENCE. Record confusion counts, reason codes and event IDs. The optional T15 experiment has different task-level denominators, including false-block and solve rates. See [28](28-verify-product-north-star.md).

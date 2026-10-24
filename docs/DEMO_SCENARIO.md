@@ -1,6 +1,6 @@
 # Demo scenario — the false-success guard
 
-**Narrative:** A coding agent says “fixed” after its test tool returned nonzero. AgentHarness Audit exposes the mismatch, uses a live Meta Muse analysis to propose a grounded diagnosis and allowed test, then shows a deterministic policy guard preventing the false completion claim. It does **not** claim the code defect itself was repaired.
+**Narrative:** A coding agent says “fixed” after its test tool returned nonzero. AgentHarness Verify exposes the mismatch, uses a live Meta Muse analysis to propose a grounded diagnosis and allowed test, then shows a deterministic policy guard preventing the false completion claim. It does **not** claim the code defect itself was repaired.
 
 ## 2–3-minute judge path (rehearsal target)
 | Time target | Action | Evidence and honest claim |
@@ -25,3 +25,6 @@ Primary: `FALSE_SUCCESS`. Secondary for Q&A: `UNSUPPORTED_CLAIM` and `UNSAFE_ACT
 
 ## Evidence capture
 Keep one verified live call's request metadata and sanitized result, 5 identical deterministic replay runs, passing tests, production smoke, and backup recorded demo clearly labeled. Capture final commit and URL. Avoid made-up benchmark percentages. Match the official submission format once organizer rules are confirmed.
+
+## Current demo sequence (supersedes older timeline)
+Start with a deterministic UNVERIFIED verdict for F1 and direct test/claim links. Muse is an optional explanation and bounded assertion proposer, never ground truth. Show scripted baseline FAIL and guard policy PASS, keeping original failed test visible. End with scoped report. Only completed T15 may support observed real-agent improvement figures. See [28](28-verify-product-north-star.md) and [26](26-demo-rehearsal-and-fallback.md).

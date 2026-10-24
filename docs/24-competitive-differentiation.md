@@ -1,7 +1,7 @@
 # 24 — Competitive positioning and judge Q&A
 
 ## Claim we can defend after implementation
-**AgentHarness Audit** is a narrow coding-agent *failure-evidence-to-policy-test* demonstration. It imports or loads traces, runs conservative checks, asks Meta Muse for evidence-linked hypotheses and supported regression assertions, and **deterministically** replays only bundled scripted scenarios to verify that a predefined completion/tool policy changes simulated behavior. This is not a general agent executor, production agent security platform, source-code repair bot, or broad harness optimizer.
+**AgentHarness Verify** is a narrow coding-agent *failure-evidence-to-policy-test* demonstration. It imports or loads traces, runs conservative checks, asks Meta Muse for evidence-linked hypotheses and supported regression assertions, and **deterministically** replays only bundled scripted scenarios to verify that a predefined completion/tool policy changes simulated behavior. This is not a general agent executor, production agent security platform, source-code repair bot, or broad harness optimizer.
 
 ## Related work and distinctions
 | Project | Verified focus | Relationship and honest distinction |
@@ -33,3 +33,6 @@
 
 ## Positioning risks
 If model contributions collapse to repeating obvious deterministic checks, emphasize structured explanation and constrained candidate assertions, not invented accuracy gains. If external comparison finds this design already common, avoid novelty-superlatives; present careful implementation and reliability. Quantify no gains until measured.
+
+## Verify elevator pitch
+Coding agents sometimes claim success when their tools report failures. AgentHarness Verify checks claims against evidence, uses Meta Muse for explanations and constrained candidate tests, then demonstrates a completion guard in scripted scenarios. This is a scoped workflow, not a new general failure-diagnosis algorithm or benchmark supremacy over AgentRx/HALO. The failed-exit-code detection is simple; demonstrate Muse added value honestly on interpretation and candidate assertions. See [28](28-verify-product-north-star.md).

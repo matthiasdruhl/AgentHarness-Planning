@@ -26,3 +26,6 @@ Provide a single `npm run check` (or documented equivalent) that runs available 
 
 ## Per-task finish report
 Task ID / commit SHA / changed paths / tests with observed outcome / skipped tests and why / live provider calls and usage / open bugs / next task. If the task is blocked by rules, credits, missing credentials or external outage, mark BLOCKED and work on a safe independent deterministic task.
+
+## Verify-first Codex start
+Read [28 north star](28-verify-product-north-star.md) and [29 migration](29-repositioning-consistency.md) before a task. T04 must implement completion-verdict.v1 with fail-safe missing evidence; T10 must put verdict and event IDs first. Muse does not certify successful completion. Record test V01–V06 results. T15 stays gated P1.

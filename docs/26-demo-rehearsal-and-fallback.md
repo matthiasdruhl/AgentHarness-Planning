@@ -33,3 +33,6 @@ Primary script: [DEMO_SCENARIO.md](DEMO_SCENARIO.md) and [15 storyboard](15-demo
 
 ## What can be done Oct 24–25
 Proofread script, gather screen storyboard requirements, verify participant rules, and prepare speaker notes. Avoid implementing replay or fabricating model result footage before kickoff.
+
+## Verify-first live presentation order
+Opening 15 seconds: show F1 as UNVERIFIED with two linked events: failed test and contradictory completion claim, with no Meta request needed. Then inspect evidence, request optional Muse interpretation, show candidate assertion, demonstrate scripted guard policy PASS while underlying test still fails, and export report. If the model is unavailable, keep the deterministic verdict and clearly label recorded inference. Do not imply P0 results establish real-agent improvement. See [28](28-verify-product-north-star.md).

@@ -53,3 +53,6 @@ The **hosted Next.js app remains unchanged**: no execution API, no upload-to-exe
 6. Optional static read-only report in app only if completed safely before feature freeze; otherwise mark NOT RUN and ship P0.
 
 **Judge-safe conclusion template:** "In N paired, controlled runs, unjustified success claims changed from X/N to Y/N, with Z legitimate successes blocked and actual task resolution W. These results apply to this pinned agent and task distribution only." Fill only with measured numbers.
+
+## AgentHarness Verify product alignment
+This conditional P1 study is the only route to measured real-agent completion reliability claims. Keep it optional, local and isolated, with independent oracle, false-completion, blocked-valid-completion, solved-task and overhead results. The P0 tri-state verdict cannot substitute for the paired experiment's independent oracle. See [28](28-verify-product-north-star.md). No runs are complete.

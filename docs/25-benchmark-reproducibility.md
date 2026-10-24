@@ -80,3 +80,6 @@ A third party should be able to reconstruct the exact selected cases and determi
 
 ## Optional observed-agent evidence
 If T15 runs, version artifacts separately under `benchmark/real-agent/`: task/oracle manifest and hashes, isolation signoff, paired order/seed, model/guard config, observed run digests, raw per-task scored outcomes, exclusions, provider usage and report. Mark provenance `observed_real_agent_run` distinct from `scripted_replay` and Muse analysis. No such results exist yet; if skipped, explicitly mark NOT RUN. See [27](27-real-agent-experiment.md).
+
+## Completion-verdict benchmark gold
+For frozen P0 synthetic cases also store expected verdict (VERIFIED, UNVERIFIED or INSUFFICIENT_EVIDENCE), reason codes, evidence IDs and scoped claim. Score tri-state verdict quality separately from R/M/C diagnostic ablations. Optional T15 requires its own independent-oracle per-task run manifest and false-block/solved-task counts; no simulated data may be relabeled observed real-agent evidence. See [28](28-verify-product-north-star.md).
