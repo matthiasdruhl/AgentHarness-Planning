@@ -76,3 +76,6 @@ Reject unknown major versions with clear error; no silent coercion. Frontend and
 
 ## P1 experimental data (separate local schema family)
 If T15 is implemented, `experiment-plan.v1` and `experiment-result.v1` follow [27](27-real-agent-experiment.md), including task hashes, independent oracle, guard/agent versions, run order, observed trace digest, completion claims, status, cost and `observed_real_agent_run` provenance. They are local benchmark artifact templates, **not** public replay, verify, or imported trace execution contracts. `trace.v1` remains observational and never executable. Do not confuse `analysisProvenance.mode=live` (Meta model analysis) with an actual agent-run provenance.
+
+## Optional P1 local artifact contracts
+`experiment-plan.v1` and `experiment-result.v1` in [27](27-real-agent-experiment.md) are local evaluation record formats, not public API request types. Preserve task hashes, independent oracle outcomes, run order, guard versions, measured tokens/cost and `observed_real_agent_run` provenance. Observed traces are always read-only, not replay permissions.
