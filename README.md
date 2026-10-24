@@ -57,3 +57,8 @@ A deployed Next.js app loads three realistic coding-agent traces; Muse Spark ana
 ## Source of truth
 
 The GitHub repository **matthiasdruhl/AgentHarness-Planning** contains specifications only. The hackathon application repository should be created separately at kickoff after rules review. Changes to scope/contracts must be made here first, linked by commit SHA, and reflected in implementation tests.
+
+
+## Optional P1: actual-agent improvement evidence
+
+The P0 product remains the constrained deterministic replay app. Once it is deployed and fully tested, an optional **developer-only isolated experiment** can run paired agent trials (guard off vs on) on a fixed trusted task set. This tests *real false completion claims*, legitimate completions incorrectly blocked, genuine task resolution and overhead. It is not a hosted agent runner or arbitrary trace replay feature, and is skipped if security/credits/time constraints are not met. See [27 experiment architecture](docs/27-real-agent-experiment.md), [ADR-011](docs/17-architecture-decisions.md), and [T15](tasks/06-real-agent-experiment.md). No results have been measured yet.
