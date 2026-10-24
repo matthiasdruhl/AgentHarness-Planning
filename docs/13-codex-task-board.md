@@ -38,3 +38,6 @@ Each ticket requires: goal, files to create/edit, schema dependencies, tests to 
 
 ## Prompt template to copy into Codex
 'Implement ticket Txx from the AgentHarness Meta planning repo at pinned planning commit SHA. Read AGENTS.md and the referenced contracts first. Do not implement any P1/P2 feature. Write tests and report commands executed with actual results. Keep provider secrets server-only and deterministic replay free of arbitrary code execution. Return changed paths, test output, known limits, and commit SHA.'
+
+## T15 — Controlled real-agent comparison (optional P1 only)
+**Prerequisites:** verified deployed P0, essential tests and security gates green; official rules, isolation and credit reserve confirmed. Implement only the developer-invoked local runner and offline paired scorer described in [27](27-real-agent-experiment.md) and [task 06](../tasks/06-real-agent-experiment.md). Estimate 6–10 hours plus evaluation run time; not on P0 critical path. No public execution feature. Report true task outcomes, false completions, valid completions blocked and overhead. Skip before Nov 2 freeze if any gate fails. For **T15 alone**, the default Codex instruction against P1 work is superseded by this explicit gate; it remains binding for T01–T14.
