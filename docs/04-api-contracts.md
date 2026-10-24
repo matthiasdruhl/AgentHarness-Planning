@@ -38,3 +38,6 @@ Errors: 400 `INVALID_JSON`; 413 `PAYLOAD_TOO_LARGE`; 422 `VALIDATION_ERROR` / `U
 - Provider timeout initial target 25s, with retries only if remaining total deadline permits; user-visible timeout should be <= route platform max. Default SDK automatic retries disabled to avoid stacking retry loops.
 - `Cache-Control: no-store` on analysis responses; no API keys client-side. Avoid CDN caching user inputs.
 - JSON validation and error format covered by integration tests; idempotent replay/verify given same versioned fixture.
+
+## Explicit prohibition on execution API (P1)
+T15 is strictly a developer-invoked isolated **local CLI**. No `/api/execute`, `/api/run-agent`, browser launcher, hosted worker, arbitrary command endpoint or replay-by-upload is authorized. The public `/api/replay` contract remains limited to bundled immutable scripted scenarios. Optional experiment results enter the interface as sanitized **read-only report artifacts**, not jobs or tool requests. See [27](27-real-agent-experiment.md).
