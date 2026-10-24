@@ -1,9 +1,9 @@
 # AGENTS.md — implementation instructions for Codex
 
 ## Mission and boundaries
-Build **only** the Meta Global AI Developer Hackathon submission described here, October 26–November 4, 2026. The current repository is **planning-only**; do not add runtime source code here. Implementation begins in a separate application repository only after organizer rules review. The user has confirmed acceptance; never spend cycles on application guidance.
+Build **AgentHarness Verify**, only the Meta Global AI Developer Hackathon submission described here, October 26–November 4, 2026. The current repository is **planning-only**; do not add runtime source code here. Implementation begins in a separate application repository only after organizer rules review. The user has confirmed acceptance; never spend cycles on application guidance.
 
-Before modifying implementation, read in order: `README.md`, `docs/01-product-requirements.md`, `docs/02-system-architecture.md`, `docs/03-data-contracts.md`, `docs/04-api-contracts.md`, `docs/06-replay-and-fixes.md`, `docs/10-security-and-privacy.md`, `docs/12-ten-day-plan.md`. All linked relative to the planning repo.
+Before modifying implementation, read `docs/28-verify-product-north-star.md` and `docs/29-repositioning-consistency.md`; then read in order: `README.md`, `docs/01-product-requirements.md`, `docs/02-system-architecture.md`, `docs/03-data-contracts.md`, `docs/04-api-contracts.md`, `docs/06-replay-and-fixes.md`, `docs/10-security-and-privacy.md`, `docs/12-ten-day-plan.md`. All linked relative to the planning repo.
 
 ## Non-negotiable conventions
 - Keep **one Next.js TypeScript deployable**; do not add Python microservices, databases, queues, authentication, Docker orchestration or framework integrations unless a written decision changes scope.
@@ -19,8 +19,8 @@ Before modifying implementation, read in order: `README.md`, `docs/01-product-re
 - Small commits, clear changes, tests with each task. Never mark a milestone done before its acceptance tests pass.
 
 ## Scope guard and escalation
-P0: load bundled trace; normalize/validate; deterministic checks; Muse structured analysis; evidence viewer; scenario replay; safe policy flip; before/after report; export; deployment; demo.
-P1 only after P0: additional gold fixture variants, polished animations, more detailed metrics.
+P0: load bundled trace; normalize/validate; provide an evidence-backed **completion verdict** (VERIFIED / UNVERIFIED / INSUFFICIENT_EVIDENCE); expose supporting events; run Muse structured diagnosis on demand; allow validated regression assertion; scripted fixture replay; allowlisted policy flip; report/export; deployment/demo. Primary judge experience is **verification-first**, not a general observability dashboard.
+P1 only after P0: controlled, isolated real-agent A/B evaluation (T15 when gated); additional examples only as needed. Advanced trace UI and animations are P2.
 Out of scope: arbitrary repo execution, arbitrary framework adapters, agent autonomous edits, connectors, live user-specific integrations, persistent backend storage, enterprise controls, autonomous internet actions.
 
 On ambiguity choose a simple deterministic design, write a brief ADR before expanding scope, and continue unless a new external credential, official rule, or user choice is truly necessary.
@@ -43,3 +43,10 @@ Only after a working deployed P0, verified credits/rules and safety signoff may 
 
 ## Conditional P1 experiment
 Only after P0 deployment, test and safety gates pass may Codex work on T15 in `tasks/06-real-agent-experiment.md`. The experimental agent runner is local-only, manually invoked, isolated and limited to preapproved synthetic tasks. Never add execution capabilities to the public app, replay uploaded traces, or follow model-authored commands. Preserve valid-success false-block rates and task-resolution metrics. Skip if isolation, credits or time are insufficient; Nov 2 feature freeze remains binding.
+
+## Verification-first invariants (2026-10-24)
+- Completion verdict must derive from **observable typed evidence**, not model confidence. Use `VERIFIED` only when the defined claim and required evidence are both satisfied; `UNVERIFIED` for contradicted or explicitly failed prerequisites; `INSUFFICIENT_EVIDENCE` for missing/ambiguous data. Never infer success from silence.
+- Treat the verification-verdict format as a **presentation/application layer** until the canonical shared Zod contract in `03` is implemented. Do not break `trace.v1`, `analysis.v1`, or existing endpoint shapes unintentionally.
+- Meta Muse supports diagnosis and candidate checks, not authority to certify completion. Validation must preserve exact event ID provenance.
+- Keep secondary categories and scripted replay, but prioritize the false-success judge path. Demonstrate guard-policy compliance without implying underlying code repair.
+- Never describe P0 scripted improvements as measured agent reliability. T15 remains optional after green P0 and isolation signoff.

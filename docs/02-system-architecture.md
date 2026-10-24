@@ -1,6 +1,8 @@
 # 02 — System architecture
 
 ## Decision
+**Verification-first product contract:** the deterministic verification engine emits a scoped completion verdict from typed evidence before Muse runs. In the browser, the first screen is a verdict card and evidence; model diagnosis and scripted guard controls are subsequent actions. [28](28-verify-product-north-star.md) defines wording and outcome boundaries.
+
 A **single Next.js App Router / React / strict TypeScript application**, deployed as one Vercel project. Node.js server route handlers proxy Meta Model API; browser owns ephemeral trace/session state; deterministic replay and assertions run as pure TypeScript. No DB, queue, container execution or external user accounts.
 
 Why: this minimizes coordination, setup, environment secrets and deployment risk in a 10-day project. Add storage only if a measured requirement makes stateless reports untenable (unlikely during the hackathon).
@@ -11,6 +13,7 @@ Why: this minimizes coordination, setup, environment secrets and deployment risk
 | `schemas` | Zod parse and type definition | JSON -> typed v1 records/errors | None |
 | `trace` | Canonicalization, evidence indexing, ordering, redaction warnings | trace -> normalized event index | None |
 | `checks` | Deterministic signal extraction | trace -> observed signal objects | None |
+| `verification` | Determine scoped completion claim status with transparent reason codes and event IDs | trace + signals -> completion verdict | None |
 | `meta` | Request creation, provider transport, structured parsing | trace summary -> candidate diagnosis/test/fix | HTTPS server only |
 | `validation` | Resolve IDs, validate assertion DSL, reject fabricated evidence | model JSON -> trusted candidates | None |
 | `scenarios` | Bundled source trace and scenario manifest | ID -> immutable fixture | None |
@@ -23,8 +26,9 @@ Why: this minimizes coordination, setup, environment secrets and deployment risk
 ```mermaid
 flowchart TD
   A[Browser: bundled fixture or imported trace] --> B[Zod parse and normalize]
-  B --> C[Timeline + deterministic checks]
-  C --> D[Meta analysis button]
+  B --> C[Deterministic checks + completion verdict]
+  C --> V[Verification-first UI and evidence links]
+  V --> D[Optional Meta analysis button]
   D --> E[Server route with size/token/rate checks]
   E --> F[Meta Muse Spark 1.3]
   F --> G[Strict JSON parsing + evidence validation]
@@ -52,6 +56,7 @@ agentharness-app/
 ```
 
 ## Runtime request paths
+- Completion verdict is a pure, local TypeScript computation on normalized evidence, **not** an LLM inference or a newly required public API. It must distinguish missing evidence from contradicted evidence and never claim source bug correctness.
 - Browser initial load reads public bundled synthetic fixtures only.
 - `POST /api/analyze`: validates trace, truncates/summarizes to explicit budget, calls Meta, validates structured response, returns it without persistence.
 - `POST /api/replay`: runs deterministic in-memory reference scenario/policy; no shell/network.
@@ -109,3 +114,9 @@ flowchart TD
 ```
 
 Both arms use the same pinned agent, task, initial workspace and outcome oracle; only the policy condition changes. The CLI is outside the web deployment, runs only in preverified isolated disposable environments with constrained resources, and has no ability to execute imported trace data. Without verified isolation or remaining credits, **skip P1**. The runtime contract and scope are fully specified in [27](27-real-agent-experiment.md).
+
+## Completion-verification semantics (P0)
+- Scoped `VERIFIED`: direct, sufficient observed evidence proves the **specific completion condition** (e.g. final test run success and no contradictory required events), never a general assurance of software correctness.
+- `UNVERIFIED`: observed condition contradicts claimed success or required test explicitly fails.
+- `INSUFFICIENT_EVIDENCE`: no usable test result, ambiguous statuses, unsupported assertions or missing required events; neither pass nor failure can be established.
+- Every verdict includes machine-readable reason codes, claim scope and IDs. Muse can enrich explanation but cannot override deterministic result. Use [03 contracts](03-data-contracts.md) for the shared Zod shape. No public agent execution or arbitrary replay is added.

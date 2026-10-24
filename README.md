@@ -1,4 +1,4 @@
-# AgentHarness Audit — Meta Hackathon Planning
+# AgentHarness Verify — Meta Hackathon Planning
 
 **Status:** Implementation-ready planning package; no application code is included.  
 **Prepared:** 2026-10-20. **Build window:** October 26–November 4, 2026.  
@@ -6,7 +6,7 @@
 
 ## One-sentence pitch
 
-**AgentHarness Audit is a developer-facing coding-agent failure lab that uses Meta Muse to explain an agent trace, synthesize evidence-linked regression checks, and demonstrate a reproducible before/after outcome in a constrained replay harness.**
+**AgentHarness Verify helps developers check whether coding agents can substantiate completion claims. It cross-checks observed execution evidence against agent assertions, uses Meta Muse for evidence-grounded diagnosis and constrained regression proposals, and demonstrates controlled policy enforcement with an honest distinction between simulated and measured improvements.**
 
 ## Important boundaries
 
@@ -18,7 +18,7 @@
 
 ## Definition of done for November 4
 
-A deployed Next.js app loads three realistic coding-agent traces; Muse Spark analyzes at least one live trace and returns structured, reference-validated findings; a candidate regression assertion can be executed against the bundled scenario; a safe fix can be toggled and compared; reports can be exported; tests and a 2–3-minute demo substantiate the claims. See [acceptance criteria](docs/01-product-requirements.md) and [submission](docs/15-demo-and-submission.md).
+A deployed Next.js app provides an immediate, evidence-linked completion verdict (VERIFIED / UNVERIFIED / INSUFFICIENT_EVIDENCE) for a primary coding-agent false-success fixture and supports three trace scenarios; Muse Spark analyzes at least one live trace and returns structured, reference-validated findings; a candidate regression assertion can be executed against the bundled scenario; a safe fix can be toggled and compared; reports can be exported; tests and a 2–3-minute demo substantiate the claims. See [acceptance criteria](docs/01-product-requirements.md) and [submission](docs/15-demo-and-submission.md).
 
 ## Documents — recommended reading order
 
@@ -45,6 +45,12 @@ A deployed Next.js app loads three realistic coding-agent traces; Muse Spark ana
 | [18 Risk register](docs/18-risks-and-contingencies.md) | Risks, triggers, fallback, owners |
 | [19 Sources](docs/19-reference-docs.md) | Official documentation and last-checked links |
 | [20 Readiness gates](docs/20-preflight-and-open-questions.md) | Day-0 gate and only remaining external decisions |
+
+## Product contract
+
+**Promise:** Make coding agents substantiate completion claims before treating success as verified. **Primary metric:** unjustified completion claims per eligible run; paired with legitimate-success blocks and actual solve rate when real-agent experiments are conducted. Deterministic trace verification is P0; simulated guard replay is a *demonstration*, not proof of real-world improvement. Meta Muse adds structured hypotheses and candidate regression checks rather than deciding ground truth. An optional real-agent A/B study remains gated P1.
+
+Start with [28 — product north star](docs/28-verify-product-north-star.md) and [29 — migration and consistency](docs/29-repositioning-consistency.md).
 
 ## Build working agreement
 

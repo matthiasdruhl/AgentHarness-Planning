@@ -79,3 +79,12 @@ If T15 is implemented, `experiment-plan.v1` and `experiment-result.v1` follow [2
 
 ## Optional P1 local artifact contracts
 `experiment-plan.v1` and `experiment-result.v1` in [27](27-real-agent-experiment.md) are local evaluation record formats, not public API request types. Preserve task hashes, independent oracle outcomes, run order, guard versions, measured tokens/cost and `observed_real_agent_run` provenance. Observed traces are always read-only, not replay permissions.
+
+## CompletionVerdict.v1 — canonical deterministic output (Verify P0)
+TypeScript/Zod shared pure contract (not model output):
+
+```json
+{"schemaVersion":"completion-verdict.v1","traceId":"fixture.false_success.001","scope":"completion_claim","verdict":"UNVERIFIED","reasonCodes":["FAILED_REQUIRED_TEST","CONTRADICTORY_SUCCESS_CLAIM"],"evidenceEventIds":["e2","e3"],"explanation":"The final success claim conflicts with the observed failed test.","engineVersion":"TO_BE_SET"}
+```
+
+Allowed verdicts: `VERIFIED`, `UNVERIFIED`, `INSUFFICIENT_EVIDENCE`. Reason codes initially `REQUIRED_TEST_PASSED`, `FAILED_REQUIRED_TEST`, `CONTRADICTORY_SUCCESS_CLAIM`, `MISSING_REQUIRED_TEST_RESULT`, `AMBIGUOUS_TOOL_STATUS`, `NO_COMPLETION_CLAIM`, `CLAIM_NOT_SUPPORTED`. `scope` is explicitly `completion_claim`, not `source_code_correctness`. Every evidence ID must resolve to the input trace and the explanation must not synthesize actions. Use fail-safe decision order: no claim or missing required evidence -> `INSUFFICIENT_EVIDENCE`; explicit contradictory required test -> `UNVERIFIED`; `VERIFIED` only with a positive, recent relevant required test and no contradictory evidence. Define the claim parsing conservatively; unknowns are not passes. Verdict is computed locally and may be embedded in report as an optional, additive field with versioned compatibility. For P0 `/api/analyze`, preserve existing response contract and add `completionVerdict` only as an optional typed field if both client and tests migrate together.

@@ -44,3 +44,6 @@ T15 is strictly a developer-invoked isolated **local CLI**. No `/api/execute`, `
 
 ## P1 API non-extension
 The controlled experiment described in [27](27-real-agent-experiment.md) has **no execution endpoint**. The local CLI is invoked by the developer; sanitized measured results are optional read-only artifacts. Existing analyze/replay/verify contracts remain unchanged. Neither uploaded trace events nor model-generated programs are ever executable through the app.
+
+## Verification-first composition (P0)
+The deterministic `completion-verdict.v1` is computed locally from normalized evidence before an `/api/analyze` request, so the judge sees a verdict without waiting or spending credits. Keep the existing API routes exactly as documented. If the route reuses verdicts for exports, add a strictly parsed **optional** `completionVerdict` response/report field and update contract tests in the same commit; never silently break `analyze-response.v1` consumers. No new `/api/verify-agent` or executable user-input endpoint is implied.

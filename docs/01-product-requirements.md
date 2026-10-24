@@ -1,21 +1,23 @@
 # 01 — Product requirements and scope (PRD)
 
-**Version:** meta-hackathon-1.0. **Status:** Design baseline, pending official rules review.
+**Version:** meta-hackathon-1.1 (Verify positioning). **Status:** Design baseline, pending official rules review.
 
 ## Product thesis
-Coding agents can produce plausible success messages that contradict their actual tools, tests or permissions. Existing raw traces are hard to audit. AgentHarness Audit demonstrates a short feedback loop: **observe -> diagnose with Muse -> create a machine-checkable regression assertion -> replay a supported scenario -> validate an allowlisted mitigation**.
+Coding agents can say a task is complete without supporting execution evidence. **AgentHarness Verify makes completion claims inspectable and testable.** Its primary loop is **observe -> verify evidence -> diagnose with Muse -> propose constrained check -> enforce in a scripted harness -> report**, with optional, separately measured actual-agent outcomes.
 
 ## Audience and scenario
 Primary user: a developer debugging a coding assistant. Secondary: a hackathon judge who needs to understand the outcome in two minutes. Input is a bundled or uploaded JSON agent-execution trace; no GitHub permissions, account creation or local repository access. Primary demo: an agent reports 'fixed' even though the test tool returned an exit code of 1.
 
 ## Product outcomes
-1. Turn a messy agent trace into a canonical event timeline with source references.
+1. Produce an immediate, explainable `VERIFIED` / `UNVERIFIED` / `INSUFFICIENT_EVIDENCE` completion verdict and show the exact supporting or contradicting source events.
 2. Identify probable failure category, confidence level, supporting evidence, and explicit unknowns using Meta Muse.
 3. Generate a candidate assertion from a closed test DSL and validate it before replay.
 4. For bundled reproducible scenarios, show deterministic failure before a policy mitigation and deterministic pass/blocked outcome afterward.
 5. Export evidence, methods, model used, and explicit 'observed' versus 'inferred' labels.
 
 ## MVP user stories and acceptance gates
+
+**P0-00 — Verify completion:** On loading F1, show `UNVERIFIED` from the observed failing `run_tests` result and contradictory success claim, with direct links to both source events; on a passing, supported completion show `VERIFIED` only for the explicitly scoped claim; on missing/ambiguous test evidence show `INSUFFICIENT_EVIDENCE` rather than fabricating a PASS. The deterministic verdict must appear before any Meta call. This new story is part of P0 and has regression tests.
 | ID | Story | Acceptance |
 |---|---|---|
 | P0-01 | Load a sample trace | Three bundled fixtures render with stable event IDs, ordered timeline, input provenance, and no model call. |
@@ -35,7 +37,7 @@ Primary user: a developer debugging a coding assistant. Secondary: a hackathon j
 - `UNSAFE_ACTION_ATTEMPT`: agent requested a prohibited capability, which the fixture tool layer rejects. Never run the action.
 
 ## Must-have user journey
-Open -> choose 'False success' sample -> inspect failing test -> Run analysis (live Meta) -> see evidence-linked finding -> Review proposed assertion -> Replay baseline (FAIL) -> apply `require_passing_tests` -> Replay after (PASS as policy compliance, not proof code bug fixed) -> export report.
+Open -> load 'False success' -> see `UNVERIFIED` with reasons and evidence -> inspect event pair -> request Muse explanation / constrained assertion -> scripted baseline FAIL -> apply `require_passing_tests` -> scripted guard policy PASS while test still fails -> export report. The user must see the verdict **without** requesting model analysis.
 
 ## Quality / nonfunctional targets
 - Interactive deterministic fixture load <2 seconds locally on normal laptop (target, not measured).
@@ -57,3 +59,10 @@ Arbitrary third-party agent replay, real code execution, remote repository acces
 
 ## Optional P1 — measured actual-agent improvement
 The ten P0 stories are unchanged. Conditional T15 compares a pinned coding agent on matched vetted tasks with enforcement off versus on; see [27](27-real-agent-experiment.md). Primary outcome is false completion claims per real eligible run. Required countermetrics are valid completions blocked, solved tasks, unknown outcomes and overhead. This local evaluation cannot become a public execution endpoint and is not required for submission.
+
+## Scope decisions for Verify repositioning
+- **North-star question:** Can this coding agent justify its completion claim from observable evidence?
+- **P0:** trustworthy claim-to-evidence verdict, reason codes, timeline evidence links, analysis on demand, constrained policy demonstration, provenance and export. Three planned fixture types remain, but F1 is the hero. The UI shows verdict first and deep traces second.
+- **P1:** T15 optional safely isolated actual-agent paired measurements only if the core demo is complete. Additional ambiguous-evidence fixture is P1 unless safely implemented with existing contract; no new broad integrations.
+- **P2/out:** advanced observability dashboards, animations and generalized framework adapters.
+- **Primary measured outcome only if T15 runs:** false completion claims per eligible real run, with legitimate-success blocking and actual task resolution always reported. P0 reports **fixture policy invariant correctness**, not measured agent improvement. See [28](28-verify-product-north-star.md).

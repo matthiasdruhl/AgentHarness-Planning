@@ -43,3 +43,6 @@ Run 12–18 labeled traces; save exported model response and evidence verdict; c
 - Error handling: https://dev.meta.ai/docs/error-handling
 - Tool calling (background, not needed for audit MVP): https://dev.meta.ai/docs/tool-calling
 Use the most recent docs at implementation; do not assume all OpenAI SDK parameters are supported. The Meta API endpoint and model names were verified October 20, 2026.
+
+## Muse's role in AgentHarness Verify
+The model is **not** the completion-verdict authority: it explains ambiguous or distributed evidence, links observed events, and proposes candidate allowlisted assertions or guard policies. Deterministic validators determine observable completion status and scripted policy outcomes. The judge's primary F1 verdict must be available **before** making a Meta request. In benchmark ablations compare against rules-only; if Muse merely restates `exitCode:1`, acknowledge limited added value. Include at least one carefully labeled ambiguous/distributed-evidence analysis case if time permits. Never state that model confidence certifies task success.
