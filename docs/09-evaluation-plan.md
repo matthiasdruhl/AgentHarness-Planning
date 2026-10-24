@@ -48,3 +48,6 @@ If model classification is weaker than deterministic rules, **say so** and prese
 
 ## Launch gate
 Every demo finding tied to actual event evidence, model output schema valid, benchmark artifacts reproducible, and primary policy outcome independently deterministic.
+
+## Separate optional real-agent evaluation
+After P0 is complete, T15 may compare identical agent/task conditions with completion guard off/on ([27](27-real-agent-experiment.md)). Score genuine task resolution and unjustified completion separately. Also count legitimate completion claims blocked, abstentions, unknown oracle outcomes, errors, latency, tokens and cost. These numbers have different denominators from the existing synthetic diagnosis benchmark and must never be merged or called directly comparable to AgentRx/HALO results. Target 20–30 tasks only if credits/time allow; smaller pilots must report honest N and uncertainty.
