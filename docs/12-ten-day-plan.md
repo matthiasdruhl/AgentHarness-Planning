@@ -40,3 +40,6 @@ Target about 55–70 focused hours across 10 days if solo, with an explicit buff
 
 ## Daily engineering log template
 Date; commit SHA; objectives achieved; commands/tests actually run; pass/fail; live Meta calls/tokens/estimated spend; known defects; changed scope; next day's first action.
+
+## Optional P1 scheduling
+T15 real-agent comparison is a conditional stretch experiment after P0 works and deployment/security/credits are secure. A small pilot may fit around Days 6–7, but never delay P0 evaluation, Day 8 deployment or Nov 2 feature freeze. If blocked or incomplete by freeze, mark NOT RUN and submit the deterministic demonstration. Details: [27](27-real-agent-experiment.md).
