@@ -1,7 +1,12 @@
-# 25 — Reproducibility manifest
+# 25 — Benchmark reproducibility
 
-Every experiment artifact must record: repo SHA and fixture hash; scenario ID/origin; independent acceptance evaluator hash; agent model/config; run seed; explicit architecture diff; initial requirements tests; same Verify policy and retry cap; available token accounting; elapsed time; sandbox isolation attestation; exact test commands; result exit codes; report timestamp and files touched.
+## Evidence artifacts
+Record benchmark origin/upstream URL + pinned revision; selected task IDs and checkpoint sequence; selection date/reason; dataset and license; baseline fixture SHA; known scenario access; opaque held-out hash/custodian; independent oracle SHA; agent model/config; allowed tools; sandbox evidence; budgets; seed; every run result; observed exit codes; scorer version; report timestamps. All results available including loss and failed attempts.
 
-Hash frozen unseen scenarios before architectural selection, restrict access until final evaluation. Save raw per-run outcomes incl failures. Do not claim reruns unless actually rerun. Human reviewer should reproduce locally with explicit safe fixtures and environment setup.
+## Two tracks
+**External SCBench JS pilot:** preserve upstream test scripts and continuous checkpoint order. Any adapter adaptation must be explicitly marked and cannot be called an official benchmark score. Code and public task tests are untrusted executable inputs, requiring sandbox. See [external run protocol](../benchmarks/PUBLIC-RUN-PROTOCOL.md).
 
-Preferred report layout: `reports/<experiment-id>/manifest.json`, `runs/A.json`, `runs/B.json`, `checks/*.json`, `certificate.json`; public sanitized excerpts omit hidden test source and keys.
+**Controlled booking-v1:** ensure A/B initial behavioral equivalence and identical Verify. B's upfront cost accounted. Keep actual held-out requirements outside public planning/agent accessible files; private evaluator runs hidden tests after completed change. See [experiment protocol](../benchmarks/booking-v1/EXPERIMENT-PROTOCOL.md).
+
+## Preferred output layout in app repo
+`reports/<study-id>/manifest.json`, `runs/A/*.json`, `runs/B/*.json`, `checks/*.json`, `certificate.json`, `LIMITATIONS.md`. Published sanitized artifacts do not expose private oracle or credentials. Reproducibility requires actual checkouts/runs, not a plausible-looking report.

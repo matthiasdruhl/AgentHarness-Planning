@@ -1,19 +1,9 @@
-# 07 — Golden experimental fixture
+# 07 — Golden fixture and public benchmark scenarios
 
-## P0 target
-A tiny, vetted Next.js booking service with user-linked bookings, minimal auth/session and a database adapter. Source must be legal to use in contest and seeded with stable fixtures. Do not use real customer data.
+**Public benchmark priority:** SlopCodeBench JavaScript subset for iterative independent pilot; see [benchmark registry](../benchmarks/README.md). Do not create a custom replacement for upstream public test tasks or claim a modified runner is leaderboard-comparable.
 
-## Architecture A
-Current direct route-to-database coupling; satisfies the **same initial visible acceptance criteria** as B.
+**Custom fixture:** [booking-v1](../benchmarks/booking-v1/README.md) is a **controlled demo/integration experiment**. Initial requirements in [baseline spec](../benchmarks/booking-v1/BASELINE-REQUIREMENTS.md); module blueprint in [architecture](../benchmarks/booking-v1/ARCHITECTURE-AND-MODULES.md), known roadmap and negative control in [future changes](../benchmarks/booking-v1/FUTURE-CHANGES.md), protected test IDs in [acceptance plan](../benchmarks/booking-v1/ACCEPTANCE-TEST-PLAN.md).
 
-## Architecture B
-Small authorization/repository boundary candidate; satisfies identical initial acceptance; extra upfront complexity reported honestly.
+**Held-out warning:** Public docs may describe the broad concept of delegated access as an illustrative challenge, which means that literal scenario is **not hidden** from an optimizer that has read this repo/conversation. To legitimately claim a held-out unseen test, create a separate detailed future requirement and independent oracle under evaluator-only custody, freeze/hash it before model proposals, and prevent model access.
 
-## Scenario set
-- Known roadmap: organization/team roles.
-- Alternative scenario: audit/export or provider change, to test over-abstraction.
-- **Frozen held-out:** separately authored and hashed prior to candidate selection, concealed from Muse and architectural proposals; e.g. delegated booking access if not used in discovery.
-- Negative controls: unchanged single-user behavior, rejected speculative future, legitimately unused module that must not be failed by a naive reachability check.
-
-## Evidence
-Document exact requirements, seed source, git commits, oracle checks, file hashes, output paths, permission/isolation logs. A/B run success is not assumed.
+**No implementation status:** all fixtures, tasks and tests are specifications pending rules signoff. No actual tests executed.
