@@ -29,3 +29,11 @@ Every non-2xx JSON response uses `ApiError` (`schemaVersion=api-error.v1`, `erro
 Valid bounded data, missing consent, unconfirmed intents, stale revision, duplicate candidate IDs, mismatched baseline/ref, invalid scoring version, path traversal/symlinks, extra nested keys, provider timeout/quota/invalid JSON, fake receipt/hash, absent recorded artifact, clean-browser accessible demo. The app's Zod request/response definitions must match bundled JSON schema fixtures, including `null` vs omitted fields.
 
 Implementation owners: `src/app/api` routes, `src/lib/contracts` Zod, `src/server/meta`, `src/server/artifacts` protected loader, `src/lib/decision`. Never run tests from a public route.
+
+## Meta Scientist additive HTTP routes (October 25 extension)
+The exact strict types and controls are in [API registry](../contracts/api-registry.json):
+- `POST /api/foresight/hypothesize`: `ScientistHypothesizeRequest` (confirmed intents, graph, bounded A/B, **non-heldout visibleScenarios**, goal, `consent:true`) → `ScientistHypothesizeResponse` with falsifiable `MetaHypothesisV1`.
+- `POST /api/foresight/challenge`: `ScientistChallengeRequest` (same approved graph and intents, candidates, **non-heldout visibleScenarios**, hypotheses, `consent:true`) → `ScientistChallengeResponse` containing **unapproved, not-heldout** `MetaChallengeV1`.
+- `POST /api/foresight/interpret-evidence`: `ScientistInterpretRequest` (opaque server-resolved `hypothesisId`, opaque `evidenceSummaryId`, `consent:true`) → `ScientistInterpretResponse`. Server must resolve the opaque ID via a fixed **allowlisted, independently verified sanitized summary** under `src/server/artifacts/`, load and validate the exact **server-stored hypothesis**, hypothesis/run/receipt linkage and freshness, and only then call Meta. No arbitrary client path, client-uploaded summary, hidden test body or direct evaluator access.
+
+As elsewhere, all provider outputs are untrusted and schema validated. Each nested record's provider must agree with the response provider. Missing or forged evidence receives safe 422, not a fictional interpretation; provider unavailable 503. The hosted API still **never** executes coding agents or arbitrary shell. [Detailed protocol](META-ARCHITECTURE-SCIENTIST.md).

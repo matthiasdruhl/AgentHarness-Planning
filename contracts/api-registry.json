@@ -40,6 +40,30 @@
       "response": "VerifyPreviewResponse",
       "consentRequired": false,
       "trust": "untrusted_optional_preview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/foresight/hypothesize",
+      "request": "ScientistHypothesizeRequest",
+      "response": "ScientistHypothesizeResponse",
+      "consentRequired": true,
+      "trust": "model_untrusted"
+    },
+    {
+      "method": "POST",
+      "path": "/api/foresight/challenge",
+      "request": "ScientistChallengeRequest",
+      "response": "ScientistChallengeResponse",
+      "consentRequired": true,
+      "trust": "model_untrusted"
+    },
+    {
+      "method": "POST",
+      "path": "/api/foresight/interpret-evidence",
+      "request": "ScientistInterpretRequest",
+      "response": "ScientistInterpretResponse",
+      "consentRequired": true,
+      "trust": "model_reads_server_allowlisted_summary"
     }
   ],
   "errors": "ApiError",

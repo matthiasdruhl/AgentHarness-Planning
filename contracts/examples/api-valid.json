@@ -445,5 +445,415 @@
       ]
     },
     "authoritative": false
+  },
+  "ScientistHypothesizeRequest": {
+    "intents": [
+      {
+        "schemaVersion": "intent.v1",
+        "id": "intent-team",
+        "title": "Team accounts",
+        "statement": "Support organizations and member roles",
+        "status": "confirmed",
+        "priority": "high",
+        "horizon": "later",
+        "source": {
+          "kind": "user_confirmed",
+          "reference": "manual-entry"
+        },
+        "dependencies": [
+          "auth"
+        ],
+        "revision": 1,
+        "updatedAt": "2026-10-30T12:00:00Z"
+      }
+    ],
+    "graph": {
+      "schemaVersion": "graph.v1",
+      "id": "graph-one",
+      "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "modules": [
+        {
+          "id": "mod-book",
+          "path": "src/lib/booking.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-routes",
+          "path": "src/lib/routes.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-auth",
+          "path": "src/lib/auth.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-res",
+          "path": "src/lib/resources.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-authz",
+          "path": "src/lib/authz.ts",
+          "kind": "source"
+        }
+      ],
+      "edges": [],
+      "unknowns": []
+    },
+    "candidates": [
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "A",
+        "label": "Good status quo",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Existing direct checks",
+        "changePlan": [],
+        "constraints": [],
+        "estimatedUpfrontCost": 0,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      },
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "B",
+        "label": "Authorization boundary",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Centralize authorization policy",
+        "changePlan": [
+          {
+            "module": "src/lib/authz",
+            "action": "introduce_boundary",
+            "rationale": "Scoped policy logic"
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "forbid_import",
+            "from": "src/app/**",
+            "to": "src/server/db/**"
+          }
+        ],
+        "estimatedUpfrontCost": 3,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      }
+    ],
+    "goal": "Support future team permissions without premature abstraction",
+    "consent": true,
+    "visibleScenarios": [
+      {
+        "schemaVersion": "scenario.v1",
+        "id": "teams",
+        "origin": "developer_confirmed",
+        "intentIds": [
+          "intent-team"
+        ],
+        "request": "Add scoped member permissions",
+        "assumptions": [
+          "one tenant at baseline"
+        ],
+        "acceptanceIds": [
+          "team_roles"
+        ],
+        "frozen": true,
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
+  },
+  "ScientistHypothesizeResponse": {
+    "schemaVersion": "scientist-hypotheses.v1",
+    "hypotheses": [
+      {
+        "schemaVersion": "meta-hypothesis.v1",
+        "id": "hyp-B-teams",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidateId": "B",
+        "intentIds": [
+          "intent-team"
+        ],
+        "visibleScenarioIds": [
+          "teams"
+        ],
+        "statement": "Scoped authorization might reduce future team-role edits",
+        "mechanism": "Separate policy entry points from booking business rules",
+        "prediction": {
+          "metric": "regressions",
+          "direction": "lower",
+          "comparison": "candidate_vs_status_quo",
+          "expectedEffect": "Fewer regressions under team-role addition",
+          "falsifiedWhen": "B fails more required tests or cannot implement the feature within equal downstream limits"
+        },
+        "assumptions": [
+          "Current booking direct checks are valid"
+        ],
+        "counterArguments": [
+          "Boundary introduces unnecessary complexity for reminders"
+        ],
+        "limitations": [
+          "Unmeasured; synthetic example"
+        ],
+        "provider": {
+          "provider": "template",
+          "model": null,
+          "mode": "template",
+          "promptVersion": null,
+          "sourceEvidenceId": null
+        }
+      }
+    ],
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
+  },
+  "ScientistChallengeRequest": {
+    "intents": [
+      {
+        "schemaVersion": "intent.v1",
+        "id": "intent-team",
+        "title": "Team accounts",
+        "statement": "Support organizations and member roles",
+        "status": "confirmed",
+        "priority": "high",
+        "horizon": "later",
+        "source": {
+          "kind": "user_confirmed",
+          "reference": "manual-entry"
+        },
+        "dependencies": [
+          "auth"
+        ],
+        "revision": 1,
+        "updatedAt": "2026-10-30T12:00:00Z"
+      }
+    ],
+    "graph": {
+      "schemaVersion": "graph.v1",
+      "id": "graph-one",
+      "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "modules": [
+        {
+          "id": "mod-book",
+          "path": "src/lib/booking.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-routes",
+          "path": "src/lib/routes.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-auth",
+          "path": "src/lib/auth.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-res",
+          "path": "src/lib/resources.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-authz",
+          "path": "src/lib/authz.ts",
+          "kind": "source"
+        }
+      ],
+      "edges": [],
+      "unknowns": []
+    },
+    "candidates": [
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "A",
+        "label": "Good status quo",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Existing direct checks",
+        "changePlan": [],
+        "constraints": [],
+        "estimatedUpfrontCost": 0,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      },
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "B",
+        "label": "Authorization boundary",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Centralize authorization policy",
+        "changePlan": [
+          {
+            "module": "src/lib/authz",
+            "action": "introduce_boundary",
+            "rationale": "Scoped policy logic"
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "forbid_import",
+            "from": "src/app/**",
+            "to": "src/server/db/**"
+          }
+        ],
+        "estimatedUpfrontCost": 3,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      }
+    ],
+    "hypotheses": [
+      {
+        "schemaVersion": "meta-hypothesis.v1",
+        "id": "hyp-B-teams",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidateId": "B",
+        "intentIds": [
+          "intent-team"
+        ],
+        "visibleScenarioIds": [
+          "teams"
+        ],
+        "statement": "Scoped authorization might reduce future team-role edits",
+        "mechanism": "Separate policy entry points from booking business rules",
+        "prediction": {
+          "metric": "regressions",
+          "direction": "lower",
+          "comparison": "candidate_vs_status_quo",
+          "expectedEffect": "Fewer regressions under team-role addition",
+          "falsifiedWhen": "B fails more required tests or cannot implement the feature within equal downstream limits"
+        },
+        "assumptions": [
+          "Current booking direct checks are valid"
+        ],
+        "counterArguments": [
+          "Boundary introduces unnecessary complexity for reminders"
+        ],
+        "limitations": [
+          "Unmeasured; synthetic example"
+        ],
+        "provider": {
+          "provider": "template",
+          "model": null,
+          "mode": "template",
+          "promptVersion": null,
+          "sourceEvidenceId": null
+        }
+      }
+    ],
+    "consent": true,
+    "visibleScenarios": [
+      {
+        "schemaVersion": "scenario.v1",
+        "id": "teams",
+        "origin": "developer_confirmed",
+        "intentIds": [
+          "intent-team"
+        ],
+        "request": "Add scoped member permissions",
+        "assumptions": [
+          "one tenant at baseline"
+        ],
+        "acceptanceIds": [
+          "team_roles"
+        ],
+        "frozen": true,
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
+  },
+  "ScientistChallengeResponse": {
+    "schemaVersion": "scientist-challenges.v1",
+    "challenges": [
+      {
+        "schemaVersion": "meta-challenge.v1",
+        "id": "challenge-reminders",
+        "hypothesisId": "hyp-B-teams",
+        "targetCandidateId": "B",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "change": {
+          "id": "proposal-reminders",
+          "request": "Add a booking reminder notification",
+          "rationale": "Tests overhead of the abstraction outside permissions",
+          "acceptanceOutline": [
+            "Reminder can be scheduled",
+            "No existing booking behavior regresses"
+          ],
+          "intentIds": [
+            "intent-team"
+          ]
+        },
+        "failureMechanism": "Added authorization layer may increase work without benefit",
+        "potentialDisconfirmation": "If B needs greater effort without a verification benefit, the proposed general claim weakens",
+        "reviewStatus": "proposed",
+        "visibility": "model_generated_not_heldout",
+        "limitations": [
+          "Proposed, not an approved test or secret holdout"
+        ],
+        "provider": {
+          "provider": "template",
+          "model": null,
+          "mode": "template",
+          "promptVersion": null,
+          "sourceEvidenceId": null
+        }
+      }
+    ],
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
+  },
+  "ScientistInterpretRequest": {
+    "evidenceSummaryId": "summary-a",
+    "consent": true,
+    "hypothesisId": "hyp-B-teams"
+  },
+  "ScientistInterpretResponse": {
+    "schemaVersion": "scientist-interpretations.v1",
+    "interpretation": {
+      "schemaVersion": "meta-evidence-interpretation.v1",
+      "id": "interpret-a",
+      "hypothesisId": "hyp-B-teams",
+      "evidenceSummaryId": "summary-a",
+      "assessment": "insufficient_evidence",
+      "explanation": "Typechecking alone does not test whether an authorization boundary helps with future changes",
+      "counterEvidence": [],
+      "uncertainties": [
+        "No paired downstream run"
+      ],
+      "nextQuestion": "Run an equally budgeted A/B team-role change with independent grading",
+      "authority": "model_interpretation_only",
+      "provider": {
+        "provider": "template",
+        "model": null,
+        "mode": "template",
+        "promptVersion": null,
+        "sourceEvidenceId": null
+      }
+    },
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
   }
 }

@@ -4,7 +4,8 @@
 Developer intents ──> Registry (local demo / typed JSON)
 Repository snapshot ──> TS dependency + Next route analyzer
           │                     │
-          └──> Meta adapter: structured candidate/scenarios (server-only)
+          └──> Meta Scientist (server only): candidates + falsifiable hypothesis
+                                  + adversarial challenge *proposals*
                                       │ schema/provenance validation
                                       v
                          Robust regret evaluator (pure)
@@ -41,3 +42,6 @@ Controlled fixture is **fixtures/booking-v1/**, certificate serializer **src/lib
 
 ## Contract Freeze v1 — exact trust/dependency chain
 [M1–M7 interface freeze](CONTRACT-FREEZE-v1.md) defines exact identity and hash relationships. Protected experiment artifacts must bind `evaluatedTreeSha256`, `fixtureSha256`, `evaluatorSha256`, `testSuiteSha256`, `requiredPolicySha256` and run/check ID references. `evaluator-receipt.v1` is a protected separate artifact; no web/API client can mint it by supplying JSON. Diagram ordering is logical only; graph can precede intent collection. Heuristic scenario scores use frozen additive modeled points and minimax regret; observable run measurements never mix with those estimates.
+
+## Meta Scientist first-class logical branch (Oct 25)
+Meta observes *confirmed* intents and a sanitized graph, proposes A/B candidates with a falsifiable hypothesis, and generates a **public, proposed** counterexample. The developer/trusted controller—not Meta—chooses reviewed frozen tasks and executes Codex only inside verified isolation. Protected grader emits trusted receipts independently. **Only after** a real receipt exists may a server sanitization layer expose scoped observations to a Meta **interpretation** call. That interpretation is advisory and never rewrites the certificate. See [Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md). This is a bounded loop, not unattended agentic self-refactoring or silent selection of tests.

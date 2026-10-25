@@ -27,3 +27,10 @@ Do not compare our small adapted pilot as an official benchmark score or directl
 
 ## Submission-first sequencing
 Prefer first real protected evaluator evidence by Oct 28 and first valid matched A/B by Oct 30, **if** isolation permits, rather than deferring all experiments until Nov 1. External SCBench is conditional and cannot delay demo. If no safe runner/valid pair, report no empirical superiority. See [critical path](HACKATHON-CRITICAL-PATH.md) and [demo](DEMO-ACCEPTANCE.md).
+
+## Meta Architecture Scientist ablation (Oct 25)
+The addition of [hypothesis generation, adversarial challenge, and evidence interpretation](META-ARCHITECTURE-SCIENTIST.md) creates a *testable* Meta-specific role, not automatic proof of benefit. Define two explicitly separate claims:
+- **Workflow:** Meta formed a falsifiable hypothesis, supplied a plausible counterexample and interpreted sanitized independent evidence. Show real eligible model records and prompt provenance; no performance claim required.
+- **Added value:** compare a Meta hypothesis/challenge-guided candidate with a strong **equally informed** non-Meta roadmap/template candidate. Both see identical permitted initial intent, visible scenarios, code context, and receive the same downstream coding agent, budget, tools, evaluation/Verify. Charge Meta preparation/inference cost and count failures. Freeze tasks/control before seeing results.
+
+Meta-generated stress proposals can be displayed, but they are **not** independent hidden holdouts; a model may neither choose favorable evaluation tasks after observing outcomes nor modify evaluator acceptance criteria. Real independent scoring requires separately precommitted evaluator-only scenarios. Negative/neutral outcomes are valid scientific evidence. Interpretation happens only on sanitized, server-authorized receipt-backed facts, is displayed separately from `VERIFIED`, and must not alter results or orchestrate new runs.

@@ -23,3 +23,6 @@ The table groups full M0–M10 workstreams and must **not** be read as a require
 
 ## Docker Sandboxes setup advancement
 User reports installing and initializing Docker Sandbox + Codex; this avoids a speculative installation task but does not discharge isolation proof. Oct 27: inspect current sandbox and attest sanitized booking target, host secret/SSH forwarding and grader separation; Oct 28: run the minimal bounded booking smoke if verified; Oct 30: only attempt external SCBench if booking A/B evidence has a credible pathway. See [operator runbook](DOCKER-SANDBOX-BOOKING-FIRST.md).
+
+## Meta Scientist reprioritization (no new milestone)
+Keep Oct 26 M0/M1 setup and live eligible model access. By Oct 29 target at least one typed falsifiable hypothesis and one adversarial *proposed* counterexample; connect to already planned M6.1/M6.3 deliverables rather than delay first experiment. Once real independent booking receipts are available, add optional Meta evidence interpretation without mutating verdict. Defer adaptive selection, multi-agent debate and SCBench until safe P0 is complete. [P0 protocol](META-ARCHITECTURE-SCIENTIST.md).

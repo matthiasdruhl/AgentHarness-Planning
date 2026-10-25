@@ -350,5 +350,120 @@
     "limitations": [
       "synthetic fixture, not actual Meta evidence"
     ]
+  },
+  "MetaHypothesisV1": {
+    "schemaVersion": "meta-hypothesis.v1",
+    "id": "hyp-B-teams",
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "candidateId": "B",
+    "intentIds": [
+      "intent-team"
+    ],
+    "visibleScenarioIds": [
+      "teams"
+    ],
+    "statement": "Scoped authorization might reduce future team-role edits",
+    "mechanism": "Separate policy entry points from booking business rules",
+    "prediction": {
+      "metric": "regressions",
+      "direction": "lower",
+      "comparison": "candidate_vs_status_quo",
+      "expectedEffect": "Fewer regressions under team-role addition",
+      "falsifiedWhen": "B fails more required tests or cannot implement the feature within equal downstream limits"
+    },
+    "assumptions": [
+      "Current booking direct checks are valid"
+    ],
+    "counterArguments": [
+      "Boundary introduces unnecessary complexity for reminders"
+    ],
+    "limitations": [
+      "Unmeasured; synthetic example"
+    ],
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
+  },
+  "MetaChallengeV1": {
+    "schemaVersion": "meta-challenge.v1",
+    "id": "challenge-reminders",
+    "hypothesisId": "hyp-B-teams",
+    "targetCandidateId": "B",
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "change": {
+      "id": "proposal-reminders",
+      "request": "Add a booking reminder notification",
+      "rationale": "Tests overhead of the abstraction outside permissions",
+      "acceptanceOutline": [
+        "Reminder can be scheduled",
+        "No existing booking behavior regresses"
+      ],
+      "intentIds": [
+        "intent-team"
+      ]
+    },
+    "failureMechanism": "Added authorization layer may increase work without benefit",
+    "potentialDisconfirmation": "If B needs greater effort without a verification benefit, the proposed general claim weakens",
+    "reviewStatus": "proposed",
+    "visibility": "model_generated_not_heldout",
+    "limitations": [
+      "Proposed, not an approved test or secret holdout"
+    ],
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
+  },
+  "ScientistEvidenceSummaryV1": {
+    "schemaVersion": "scientist-evidence-summary.v1",
+    "id": "summary-a",
+    "hypothesisId": "hyp-B-teams",
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "runIds": [
+      "run-a"
+    ],
+    "receiptIds": [
+      "receipt-a"
+    ],
+    "observedChecks": [
+      {
+        "runId": "run-a",
+        "checkId": "typecheck",
+        "status": "pass",
+        "scope": "TypeScript build only"
+      }
+    ],
+    "limitations": [
+      "Shape-only fake fixture, not genuine measured evidence"
+    ],
+    "source": "trusted_sanitized_recording"
+  },
+  "MetaEvidenceInterpretationV1": {
+    "schemaVersion": "meta-evidence-interpretation.v1",
+    "id": "interpret-a",
+    "hypothesisId": "hyp-B-teams",
+    "evidenceSummaryId": "summary-a",
+    "assessment": "insufficient_evidence",
+    "explanation": "Typechecking alone does not test whether an authorization boundary helps with future changes",
+    "counterEvidence": [],
+    "uncertainties": [
+      "No paired downstream run"
+    ],
+    "nextQuestion": "Run an equally budgeted A/B team-role change with independent grading",
+    "authority": "model_interpretation_only",
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
   }
 }

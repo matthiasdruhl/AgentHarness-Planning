@@ -31,3 +31,13 @@ The schema catalog now defines required/optional fields, strict nested object sh
 
 ## Artifact relationships (frozen)
 `intent.v1` → confirmed `scenario.v1` → `architecture-candidate.v1` + `graph.v1` → `decision.v1` → `pair-manifest.v1` → `experiment-run.v1` → protected `evaluator-receipt.v1` + `verification.v1` → `certificate.v1`. `meta-comparison-manifest.v1` describes the **separate** Meta-vs-template question. Relationships are versioned IDs and checked hashes, not schema nesting alone.
+
+## Meta Scientist ownership (additive)
+- `src/server/meta/hypotheses.ts` → `MetaHypothesisV1`, directional prediction plus falsification criteria, **no execution**.
+- `src/server/meta/challenger.ts` → `MetaChallengeV1` from confirmed visible context, always proposed and not heldout.
+- `src/server/artifacts/scientist-summary.ts` → protected, sanitized `ScientistEvidenceSummaryV1` derived from verified allowlisted local records; no client-supplied path as authority.
+- `src/server/meta/interpret.ts` → `MetaEvidenceInterpretationV1` advisory interpretation, not evaluator verdict.
+- `src/app/api/foresight/{hypothesize,challenge,interpret-evidence}` → strict consented, bounded model API only; NEVER hosted agent/CLI execution.
+- Existing `src/lib/decision/` pure regret calculator and `scripts/evaluator/` trusted independent grader **do not change owners or accept Meta override**.
+
+See [Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md) and [all exact v1 field schemas](../contracts/schemas/forecode-v1.schema.json).

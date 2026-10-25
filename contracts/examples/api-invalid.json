@@ -78,6 +78,60 @@
       "type": "InterpretResponse",
       "mutation": "provider.provider",
       "value": "meta"
+    },
+    {
+      "id": "scientist-no-consent",
+      "type": "ScientistHypothesizeRequest",
+      "mutation": "consent",
+      "value": false
+    },
+    {
+      "id": "challenger-no-consent",
+      "type": "ScientistChallengeRequest",
+      "mutation": "consent",
+      "value": false
+    },
+    {
+      "id": "interpret-no-consent",
+      "type": "ScientistInterpretRequest",
+      "mutation": "consent",
+      "value": false
+    },
+    {
+      "id": "interpret-no-evidence-id",
+      "type": "ScientistInterpretRequest",
+      "mutation": "evidenceSummaryId",
+      "value": ""
+    },
+    {
+      "id": "challenger-secret-mode",
+      "type": "ScientistChallengeResponse",
+      "mutation": "challenges.0.visibility",
+      "value": "evaluator_heldout"
+    },
+    {
+      "id": "interpret-false-certification",
+      "type": "ScientistInterpretResponse",
+      "mutation": "interpretation.authority",
+      "value": "trusted_evaluator"
+    },
+    {
+      "id": "scientist-hidden-scenario-hypothesize",
+      "type": "ScientistHypothesizeRequest",
+      "mutation": "visibleScenarios.0.origin",
+      "value": "evaluator_heldout"
+    },
+    {
+      "id": "scientist-hidden-scenario-challenge",
+      "type": "ScientistChallengeRequest",
+      "mutation": "visibleScenarios.0.origin",
+      "value": "evaluator_heldout"
+    },
+    {
+      "id": "scientist-invalid-hypothesis-id",
+      "type": "ScientistInterpretRequest",
+      "mutation": "hypothesisId",
+      "value": ""
     }
   ]
 }

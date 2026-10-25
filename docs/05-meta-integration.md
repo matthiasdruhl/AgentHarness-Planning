@@ -1,21 +1,30 @@
-# 05 — Meta Muse integration
+# 05 — Meta Architecture Scientist: server-only model integration
 
-## Purpose
-Meta AI is **necessary to test** the research hypothesis only if it improves semantic intent extraction, generates distinct architectural hypotheses and meaningful challenge scenarios compared with templates. It never verifies correctness or determines actual engineering cost.
+**P0 differentiation:** Meta is the *research intelligence engine* rather than a superficial architecture suggestion API. It must form **falsifiable hypotheses**, propose **counterexamples that could disprove them**, and interpret **sanitized independent evidence** when such evidence exists. These are bounded, schema-validated text/data operations, never tool authority or grading.
 
-## Calls
-1. `interpret_intent`: bounded user-approved text → structured draft intentions and uncertainty.
-2. `propose_architectures`: anonymized graph summary + confirmed intents → baseline plus one targeted boundary candidate, assumptions and counterarguments.
-3. `generate_stress_scenarios`: candidate-neutral future feature requirements with explicit plausibility rationale and acceptance *outline*; no executable tests from model.
+Read the authoritative [Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md), [machine schema](../contracts/schemas/forecode-v1.schema.json), [endpoint registry](../contracts/api-registry.json) and [Contract Freeze v1](CONTRACT-FREEZE-v1.md) before implementing. The three new endpoint families are **additive** v1 records; existing `interpret_intent` and `propose_architectures` remain supported.
 
-## Provider
-Use documented Meta Model API through server-only transport, environment-configured `META_MODEL_API_KEY`, `META_MODEL` and `META_API_BASE_URL`; defaults require checking participant access before implementation. Previously planned `muse-spark-1.3` is a candidate, not proof this account has the endpoint/model enabled. Try Muse Wonder only if available/authorized and within spend budget. Keep one provider adapter with a mock for CI.
+## Calls and responsibilities
 
-## Output validation
-JSON/schema constraints **plus** Zod semantic validation; reject path traversal, speculative evidence refs, strings masquerading as commands, unsupported candidate actions, unknown enums, excessive output, duplicate IDs and prohibited dependencies. Prompt injection from user text/code/comments is data. Never execute model-generated instructions.
+| Call | Permitted input | Output | Priority |
+|---|---|---|---|
+| `interpret_intent` | opt-in text | unconfirmed intent draft | P0 |
+| `propose_architectures` | confirmed intents, visible scoped graph | A status quo and targeted B proposal | P0 |
+| `hypothesize` | confirmed intents, proposed A/B, graph, explicitly visible non-heldout scenarios | `MetaHypothesisV1` with observable claim and falsification | **P0** |
+| `challenge` | confirmed intents, graph, candidate/hypothesis, visible non-heldout scenarios | `MetaChallengeV1` counterexample **proposal**, never heldout | **P0** |
+| `interpret_evidence` | two server-allowlisted IDs: hypothesis + sanitized trusted summary | `MetaEvidenceInterpretationV1`, no verdict authority | P0 **only if real receipts exist** |
+| `choose_next_experiment` | visible human-approved bounded pool | advisory suggestion only | P1; no public endpoint in v1 |
 
-## Credible experiment
-Compare Meta-proposed architecture/scenarios to deterministic templated variants under equal verification and budget. Capture model ID, prompt version, token usage if provided, retries and structured failure cases. No 'Meta caused improvement' claim without ablation. Recorded fallback labeled recorded, never live.
+## Model transport and controls
 
-## Evidence and competitive value gates
-A **live Meta integration** claim requires an actually observed eligible Meta API request, real model ID, schema-valid result and safe provider provenance—not mock-only or prerecorded data. Participant access, quotas, official model names and spend limits are to be checked on Oct 26, not inferred from marketing. For **measured Meta value**, compare to a strong equally informed roadmap-aware or templated architecture proposal under the same downstream coding agent, Verify, task and budget. Record model inference/setup costs and negative cases; absent that comparator, say only Meta generated the hypothesis. [Critical path](HACKATHON-CRITICAL-PATH.md).
+Server-only configurable eligible Meta model via actual supported participant account; validate real model ID and structured response *before* any live claim. Provider configuration (`META_MODEL_API_KEY`, `META_MODEL`, `META_API_BASE_URL`) is illustrative until access is confirmed. CI uses templates/mocks without paid inference. Keep every model call consented, bounded, timed out, spending capped, sanitized and versioned with provider provenance. Never expose raw hidden grader, system credentials, repo secrets, private user content or unreviewed source to Meta. A model cannot create an approved executable scenario or certify an outcome.
+
+## Engineering / cost balance
+
+Reuse existing M6 ticket IDs (see [milestone](../milestones/m6.md)). The hypothesis and challenge should add **two high-value, independently visible Meta contributions** rather than a multi-agent swarm. Evidence interpretation is a conditional third call after a protected run. Real agent remains Codex in Docker Sandbox; no model switching is required to make Meta central. If Meta API is unavailable, show a **labeled template/recorded fallback** and do not claim live Meta use.
+
+## Defensible claims
+
+B benefits architecture: requires matched A/B using protected oracle. Meta **caused an incremental benefit**: needs equally informed strong non-Meta roadmap-aware control under same downstream agent/task/budget/Verify and counts Meta inference overhead. Good prompt responses alone are not measured benefit. Store losing/neutral cases; show counterarguments and clear limits.
+
+See [full protocol](META-ARCHITECTURE-SCIENTIST.md) and [evaluation](09-evaluation-plan.md).
