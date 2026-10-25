@@ -20,6 +20,9 @@ export function checkBundle(b) {
  if(d.candidateIds.length!==cs.length||d.scenarioIds.length!==ss.length)throw Error("incomplete decision IDs");
  for(const x of d.candidateIds)if(!cmap.has(x))throw Error("decision candidate reference");
  for(const x of d.scenarioIds)if(!smap.has(x))throw Error("decision scenario reference");
+ if(d.perScenario.length===0){
+  if(d.recommendationId!==null||d.limitations.length===0)throw Error("abstention requires null recommendation and limitations");
+ } else {
  const cells=[];
  for(const x of d.perScenario){
   const c=cmap.get(x.candidateId);if(!c||!smap.has(x.scenarioId))throw Error("score reference");
@@ -35,6 +38,8 @@ export function checkBundle(b) {
  for(const s of ss){const scores=d.perScenario.filter(x=>x.scenarioId===s.id);if(scores.length!==cs.length)throw Error("missing scenario scores");const min=Math.min(...scores.map(x=>x.totalCost));for(const x of scores){eq(x.regret,x.totalCost-min,"regret");worst.set(x.candidateId,Math.max(worst.get(x.candidateId),x.regret))}}
  const chosen=[...cs].sort((a,b)=>worst.get(a.id)-worst.get(b.id)||a.estimatedUpfrontCost-b.estimatedUpfrontCost||a.id.localeCompare(b.id))[0].id;
  eq(d.recommendationId,chosen,"minimax choice");
+ }
+
  const run=b.run,receipt=b.receipt,vr=b.verification,cert=b.certificate;
  uniq(b.checks.map(x=>x.id),"check IDs");
  for(const x of b.checks){eq(x.runId,run.id,"check run");if(x.status==="pass"&&(x.exitCode!==0||!x.artifactSha256))throw Error("forged pass");if(x.status==="fail"&&(!(x.exitCode>0)||!x.artifactSha256))throw Error("bad fail");if(x.status==="not_run"&&x.exitCode!==null)throw Error("bad no-run")}

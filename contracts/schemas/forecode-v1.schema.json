@@ -642,7 +642,7 @@
           "items": {
             "$ref": "#/$defs/Score"
           },
-          "minItems": 1,
+          "minItems": 0,
           "maxItems": 288
         },
         "recommendationId": {

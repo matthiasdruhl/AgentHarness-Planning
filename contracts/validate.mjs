@@ -66,6 +66,16 @@ for(const item of apiInvalid.cases){
 const bundle=read("examples/valid-bundle.json");
 const {checkBundle}=await import("./semantics.mjs");
 checkBundle(bundle);
+const abstained=read("examples/abstain-bundle.json");
+if(!get("DecisionV1")(abstained.decision))throw Error("Invalid abstained decision schema");
+checkBundle(abstained);
+const incomplete=JSON.parse(JSON.stringify(abstained));incomplete.decision.perScenario=[bundle.decision.perScenario[0]];
+let partialRejected=false;try{checkBundle(incomplete)}catch{partialRejected=true}
+if(!partialRejected)throw Error("Partially filled matrix must fail");
+const falseRecommendation=JSON.parse(JSON.stringify(abstained));falseRecommendation.decision.recommendationId="A";
+let recommendationRejected=false;try{checkBundle(falseRecommendation)}catch{recommendationRejected=true}
+if(!recommendationRejected)throw Error("Unscored decision must abstain");
+checked+=3;
 for(const item of read("examples/semantic-negative-cases.json").cases){
  const copy=JSON.parse(JSON.stringify(bundle)),parts=item.path.split(".");
  let cursor=copy;for(const key of parts.slice(0,-1))cursor=cursor[key];
