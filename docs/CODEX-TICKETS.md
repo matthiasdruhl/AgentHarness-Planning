@@ -88,3 +88,12 @@ The 68 IDs above stay **canonical**. Use [critical path](HACKATHON-CRITICAL-PATH
 
 ## Contract Freeze v1 implementation cross-cut
 Do **not** alter original 68 tickets' IDs. For each relevant ticket, review [full field schema](../contracts/schemas/forecode-v1.schema.json), [frozen API registry](../contracts/api-registry.json), [normative semantics](CONTRACT-FREEZE-v1.md) and [conformance fixtures](../contracts/README.md). M1.3 enforces equivalent Zod; M3 protected receipts and state machine; M4 consent/revision; M5 additive scoring; M6 versioned Meta responses; M7 pair and Meta comparison; M8 certificates/provenance. Report an actual command/exit and test evidence; no checkbox green from prose alone.
+
+## Meta Scientist implementation overlay — original ticket IDs preserved
+- **M6.1.1** (candidate proposal) + **M6.4.1** (validation): attach `MetaHypothesisV1` with observable prediction, explicit disconfirmation, confirmed-intent/candidate/graph references; `src/server/meta/hypotheses.ts`. Only a documented literal new API path, no arbitrary tools.
+- **M6.2.1/M6.3.1** (scenario/challenger): one **proposed** adversarial counterexample, `reviewStatus=proposed`, `visibility=model_generated_not_heldout`; no evaluator-heldout/task mutation, `src/server/meta/challenger.ts`.
+- **M6.6.1** with **M3/M7/M8**: optional post-run Meta interpretation only with real receipt-backed sanitized summary from allowlisted `src/server/artifacts/`; never claim source authority from the user's ID.
+- **M6.7.1/M7.1.1**: strong **equally informed** non-Meta comparator with pinned task and budget before measured Meta benefit claim.
+- P1: adaptive selection from reviewed visible pool, debate/swarms, automatic architecture updates and external SCBench. Do not add new ticket IDs or block booking P0 on these.
+
+Read [exact P0 protocol](META-ARCHITECTURE-SCIENTIST.md), [contract catalog](../contracts/README.md) and [API registry](../contracts/api-registry.json). Codex must return tests/commands/evidence, not claims that a plan proves experimental benefit.

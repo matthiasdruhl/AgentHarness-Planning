@@ -23,3 +23,6 @@ These are documentation additions only; no recorded experiments or final organiz
 3. [Executable structural/semantic contract fixtures](../contracts/README.md).
 4. [Artifact descriptions](03-data-contracts.md), [API behavior](04-api-contracts.md), [module ownership](CONTRACT-REGISTRY.md).
 5. M1.3 / M3 / M5 / M6 / M7 ticket acceptance. If a legacy milestone statement disagrees, the freeze takes precedence **and** the conflicting prose should be corrected before a Codex ticket runs.
+
+## Meta Scientist kickoff reading order
+[Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md) → [frozen additive schemas](../contracts/schemas/forecode-v1.schema.json) + [API registry](../contracts/api-registry.json) → [Meta model transport](05-meta-integration.md) → [M6](../milestones/m6.md) + [demo acceptance](DEMO-ACCEPTANCE.md) → [A/B and Meta comparator](09-evaluation-plan.md). The first two Meta goals are **P0 and required for the differentiated demo**; evidence interpretation is only allowed after trustworthy measured receipts. Adaptive selection is P1. Existing M0/M2/M3 safety critical path is unaffected.

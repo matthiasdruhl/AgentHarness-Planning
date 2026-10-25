@@ -31,3 +31,6 @@ Immutable literal `schemaVersion` for every top-level artifact; breaking shape/s
 ## Additional conditional schema tests
 
 Draft 2020-12 `if/then` rules require live provider/candidate metadata, prevent forged passing check status/exit pairs, block authoritative untrusted previews, and allow explicit unscored abstention only with a limitation. This is structural assurance; production **trusted provenance still requires actual protected artifacts**, not truth claims based on JSON fields alone.
+
+## Additive Meta Scientist contracts (Oct 25)
+The frozen catalog now also includes `MetaHypothesisV1`, `MetaChallengeV1`, `ScientistEvidenceSummaryV1`, `MetaEvidenceInterpretationV1` and their strict consented HTTP request/response contracts for **/api/foresight/hypothesize**, **/api/foresight/challenge** and **/api/foresight/interpret-evidence**. `examples/scientist-bundle.json` exercises plausible references; `examples/scientist-semantic-negative.json` tests wrong candidate, unconfirmed intent, hidden scenario mislabeling, spoofed provider, mismatched evidence and false evaluator authority. Synthetic fixture values and labels do **not** prove real Meta access, actual grading or trusted artifact custody. Run `npm test` after any change to catalog, fixtures or semantics. See [Meta Scientist P0 protocol](../docs/META-ARCHITECTURE-SCIENTIST.md).
