@@ -1,18 +1,17 @@
 # Forecode — Foresight + Verify | Meta Hackathon Planning
 
-**Status:** Planning-only documentation, no tested app or completed benchmarks. **Hackathon:** October 26–November 4, 2026. **Repo:** AgentHarness-Planning; separate implementation `forecode` repo provisional pending organizer terms.
+**Status:** Planning-only; no working implementation or benchmark measurements claimed. **Event:** October 26–November 4, 2026.
 
-**Pitch:** Build fast. Keep the code. Prove the architecture. Forecode accepts developer-confirmed future intentions, uses Meta for bounded architecture hypotheses, measures architecture evolution in isolated experiments, and independently checks results.
+**Pitch:** Build fast. Keep the code. Prove the architecture.
 
-## Where to start
-- [AGENTS.md](AGENTS.md) safety and Codex rules; [canonical execution index](docs/21-execution-index.md).
-- [Implementation master plan](docs/IMPLEMENTATION-MASTER-PLAN.md) M0–M10 and [68 Codex tickets](docs/CODEX-TICKETS.md).
-- [Milestone specs](milestones/README.md) and [contract ownership](docs/CONTRACT-REGISTRY.md).
-- **[Benchmark plan](benchmarks/README.md)** — public SlopCodeBench JS feasibility pilot; optional SWE-Milestone and SWE-bench Pro V2; SWE-CI deferred due to resource costs.
-- **[Custom booking-v1 benchmark/demo spec](benchmarks/booking-v1/README.md)** — detailed domain behavior, architecture A/B, test oracle, progressive requirements, control experiment and Codex build tickets.
-- [Evaluation authority](docs/09-evaluation-plan.md), [security](docs/10-security-and-privacy.md), [fallback and validation](docs/MILESTONE-VALIDATION.md).
+## Main entry points
+- [AGENTS.md](AGENTS.md), [execution index](docs/21-execution-index.md).
+- [Master implementation plan](docs/IMPLEMENTATION-MASTER-PLAN.md), [milestone specs](milestones/README.md), [68 Codex tickets](docs/CODEX-TICKETS.md), [contracts](docs/CONTRACT-REGISTRY.md).
+- [Benchmark index](benchmarks/README.md), [booking-v1 spec](benchmarks/booking-v1/README.md), [evaluation rules](docs/09-evaluation-plan.md).
+- **[Local M4 Pro sandbox setup](docs/LOCAL-MAC-SANDBOX.md)** — 48 GB RAM, ~294 GB free; recommended Docker sizing and isolation verification.
+- **[SCBench Apple Silicon compatibility review](benchmarks/SCBENCH-MAC-COMPATIBILITY.md)** — Python 3.12+, Docker network differences, uncertain ARM64 images, **upstream Codex sandbox bypass and authentication mount risk**.
 
-## Key distinctions
-Public benchmarks provide a better independent evidence source, conditional on safe runtime integration. The custom booking app provides coherent product demonstration and a controlled but non-independent comparison. All proposed 'held-out' requirements must be stored privately and frozen before optimization; mentioning detailed requirements in public planning **does not make them hidden**.
+## Hard safety and evaluation contract
+Hosted UI never executes arbitrary code. Developer-local vetted coding-agent runs require demonstrated isolation and protected evaluator. Stock SCBench Codex adapter needs credential and sandbox safety review before any untrusted benchmark runs. Architecture A/B compares under identical Verify; measured, recorded and estimated evidence never conflated. Public benchmark pilot is conditional; benchmark compatibility is not assumed.
 
-No improvement, correctness or generalization claim without actual matched independent test outcomes. The web app never executes arbitrary code; local vetted experiments require verified isolation. Rule eligibility and Meta credentials must be checked at kickoff. Feature freeze Nov 2.
+Official rules and API credits must be verified at kickoff. Feature freeze Nov 2. Don't add major features instead of finishing one reproducible experiment.
