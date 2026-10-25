@@ -1,9 +1,11 @@
-# 23 — Baselines and scoring
+# 23 — Baselines and scoring (aligned with benchmark program)
 
-**Primary fair experiment:** architecture A (status quo) vs B (proposed boundary), same coding agent and identical independent Verify gates, feedback, tests, budget, allowed tools, fixture seed and task. Evaluate *task success* first; then regressions, total measured effort including B upfront work, tokens/cost/wall clock where available.
+**Product demo paired trial:** booking-v1 Architecture A (good direct checks) vs Architecture B (Forecode-proposed boundary), same agent model/config, tools, task prompt, budget, evaluator and Verify gates. Include B's preparation/refactor costs. Optional arm C: A with strong roadmap-aware AGENTS.md instructions.
 
-**Secondary studies (P1):** same architecture with and without Verify feedback; Meta proposal vs simple requirements-aware template/AGENTS.md. Do not mix these comparisons or attribute combined improvement to one component.
+**Independent external pilot:** SlopCodeBench JS subset by fixed selection criteria, upstream checkpoint sequence and grader; same agent and Verify in baseline vs Forecode. Continuation must be sequential and later checkpoint spec unavailable before its turn. Report deviations from upstream official harness.
 
-Static cost units: ordinal risk points only; report scoring formula/weights, sensitivity and unknowns; do not relabel as hours/dollars. Regret per scenario = modeled candidate total - best modeled candidate total in same units, not universal optimum.
+**Verify-only optional:** SWE-bench Pro V2 selected public tasks for check quality; task solve rate does not prove future maintainability. SWE-Milestone optional, SWE-CI deferred.
 
-Report N, distributions if repeated, raw failures, uncertainty and all comparison scenarios. Acceptance oracle never rewritten to favor B. Smaller file-touch count doesn't automatically mean better code.
+**Heuristic scoring:** ordinal estimate for static scenario regret, never relabel as actual minutes/dollars/tokens. `regret(A,s) = modeled_total_cost(A,s) - min_candidate_modeled_total_cost(s)` in a single consistent unit. Model decision may remain INSUFFICIENT_EVIDENCE when missing data. Real experiment verdict and static hypothesis remain separate.
+
+**Outcome statistics:** primary held-out task success and no regression; report N, run IDs, per-checkpoint passed tests, upfront development effort, downstream agent iterations, elapsed time, tokens where observable, actual cost if available. Never claim smaller touched-file count = better software.
