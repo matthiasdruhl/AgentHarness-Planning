@@ -2669,7 +2669,8 @@
         "graph",
         "candidates",
         "goal",
-        "consent"
+        "consent",
+        "visibleScenarios"
       ],
       "properties": {
         "intents": {
@@ -2698,6 +2699,14 @@
         },
         "consent": {
           "const": true
+        },
+        "visibleScenarios": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 12,
+          "items": {
+            "$ref": "#/$defs/VisibleScenarioV1"
+          }
         }
       }
     },
@@ -2734,7 +2743,8 @@
         "graph",
         "candidates",
         "hypotheses",
-        "consent"
+        "consent",
+        "visibleScenarios"
       ],
       "properties": {
         "intents": {
@@ -2766,6 +2776,14 @@
         },
         "consent": {
           "const": true
+        },
+        "visibleScenarios": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 12,
+          "items": {
+            "$ref": "#/$defs/VisibleScenarioV1"
+          }
         }
       }
     },
@@ -2798,20 +2816,21 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "hypothesis",
+        "hypothesisId",
         "evidenceSummaryId",
         "consent"
       ],
       "properties": {
-        "hypothesis": {
-          "$ref": "#/$defs/MetaHypothesisV1"
-        },
         "evidenceSummaryId": {
           "type": "string",
           "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
         },
         "consent": {
           "const": true
+        },
+        "hypothesisId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
         }
       }
     },
@@ -2834,6 +2853,25 @@
           "$ref": "#/$defs/ProviderInfo"
         }
       }
+    },
+    "VisibleScenarioV1": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ScenarioV1"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "enum": [
+                "developer_confirmed",
+                "developer_tentative",
+                "meta_generated"
+              ]
+            }
+          }
+        }
+      ]
     }
   }
 }
