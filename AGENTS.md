@@ -1,6 +1,6 @@
 # Codex instructions — Forecode hackathon
 
-Read README.md and docs/21-execution-index.md first. Build the unified **Foresight + Verify** experiment, not legacy synthetic trace-audit replay. Planning repository contains documentation only. Implementation code belongs in a separate repository after organizer rule clearance.
+Read README.md, docs/21-execution-index.md, docs/HACKATHON-CRITICAL-PATH.md and docs/IMPLEMENTATION-HANDOFF.md first. Build the unified **Foresight + Verify** experiment, not legacy synthetic trace-audit replay. Planning repository contains documentation only. Implementation code belongs in a separate repository after organizer rule clearance.
 
 ## Non-negotiables
 - P0 TypeScript strict, Next.js web UI and a **separate developer-local controlled experiment CLI**. Hosted web processes never execute untrusted source code, commands, arbitrary agent traces or model-generated scripts.
@@ -22,3 +22,11 @@ docs/03-data-contracts.md owns schemas; docs/04-api-contracts.md owns endpoints;
 
 ## Prohibited product claims
 'Zero human audit', '100% correctness', 'predicts the future', 'mathematically optimal design', 'guaranteed maintainability', or 'Monte Carlo-calibrated probabilities' unless independently substantiated in a clearly bounded form.
+
+## Audit-driven submission safeguards
+- Pin an immutable planning SHA in the separate app repo, and make the selected specs accessible to Codex. Do not assume another repo's docs are in working directory.
+- Prioritize the evidence-first [critical path](docs/HACKATHON-CRITICAL-PATH.md); the 68 tickets remain canonical detailed backlog, with explicit cuts and security prerequisites.
+- Use [canonical contract clarifications](docs/CANONICAL-IMPLEMENTATION-CONTRACT.md): fixture in fixtures/booking-v1, pure reports in src/lib/report, trusted artifacts in src/server/artifacts; only fresh protected evaluator receipts support VERIFIED.
+- Do not subtract ordinal ranks. Score modeled effort with documented additive rubric or abstain; don't claim exact rework savings from static import graph.
+- A/B architecture effect is not automatically Meta effect. To claim Meta incremental advantage, compare to an equally informed strong roadmap/template control under matching agent/budget/Verify.
+- Judge flow must satisfy [falsifiable demo acceptance](docs/DEMO-ACCEPTANCE.md); human review of actual diffs and evidence remains required after passing CI.
