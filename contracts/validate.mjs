@@ -49,4 +49,15 @@ if(examples.VerificationV1.runId!==examples.EvaluatorReceiptV1.runId)throw Error
 if(examples.VerificationV1.receiptId!==examples.EvaluatorReceiptV1.id)throw Error("Missing receipt link");
 if(examples.ExperimentRunV1.receiptId!==examples.EvaluatorReceiptV1.id)throw Error("Run receipt mismatch");
 if(examples.CertificateV1.receiptIds[0]!==examples.EvaluatorReceiptV1.id)throw Error("Certificate receipt mismatch");
-console.log("Forecode structural contract fixtures PASS ("+checked+" cases); API references and sample semantics PASS.");
+const bundle=read("examples/valid-bundle.json");
+const {checkBundle}=await import("./semantics.mjs");
+checkBundle(bundle);
+for(const item of read("examples/semantic-negative-cases.json").cases){
+ const copy=JSON.parse(JSON.stringify(bundle)),parts=item.path.split(".");
+ let cursor=copy;for(const key of parts.slice(0,-1))cursor=cursor[key];
+ cursor[parts.at(-1)]=item.value;
+ let failed=false;try{checkBundle(copy)}catch{failed=true}
+ if(!failed)throw Error("Semantic negative unexpectedly passed: "+item.id);
+ checked++;
+}
+console.log("Forecode contract schemas + semantics PASS ("+checked+" cases).");

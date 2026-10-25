@@ -1,0 +1,35 @@
+name: Contract conformance
+on:
+  pull_request:
+    paths:
+      - 'contracts/**'
+      - 'docs/03-data-contracts.md'
+      - 'docs/04-api-contracts.md'
+      - 'docs/CONTRACT-FREEZE-v1.md'
+      - '.github/workflows/contracts.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/**'
+      - 'docs/03-data-contracts.md'
+      - 'docs/04-api-contracts.md'
+      - 'docs/CONTRACT-FREEZE-v1.md'
+      - '.github/workflows/contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install validator
+        run: npm install --ignore-scripts --no-audit --no-fund
+        working-directory: contracts
+      - name: Validate contracts
+        run: npm test
+        working-directory: contracts
