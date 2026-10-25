@@ -16,3 +16,9 @@
 | ADR-012 | Developer intents opt-in, editable and revocable | Avoid speculative requirement becoming mandate |
 
 For changes: record date, decision, alternative, security/evaluation impact, affected docs. Never update an ADR without updating dependent tasks and contracts.
+
+## ADR-013 — existing Docker Sandboxes/Codex, booking-first test (2026-10-25)
+**Decision:** use the owner's **user-reported initialized** Docker Sandboxes Codex environment as first *inspection target*; prove a dedicated sanitized booking-v1 workload with protected separate grader before implementing any external SCBench bridge. Preserve original sandbox and avoid default reinstall/destructive recreation. A cloned/mountless dedicated experiment sandbox is preferred when the existing workspace is direct-mounted or contains sensitive files. Its installation is reported, **not security attested**.
+**Why:** fastest route to fair measured Forecode evidence with minimal new infrastructure; public benchmark integration is higher risk and optional. Docker microVM guest may have sudo, but host isolation, SSH forwarding, host-managed credentials, egress, version/CA patch level and hidden-oracle separation require actual tests.
+**Alternatives:** hardened native Codex adapter or disposable remote Linux only on documented blocker; halt agent trials if no safe option.
+**Impacts:** M0.3, M2.1–2.5, M7 first A/B, optional SCBench; [operator runbook](DOCKER-SANDBOX-BOOKING-FIRST.md), [sandbox adapter](../benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md). No application runtime change.
