@@ -14,4 +14,4 @@ These eleven files define the **only** canonical sub-milestone and Codex ticket 
 - [M9 — Demo and evidence](m9.md): Nov 3, 6 sub-milestones
 - [M10 — Submission](m10.md): Nov 4, 5 sub-milestones
 
-Start with [master plan](../IMPLEMENTATION-MASTER-PLAN.md) and [Codex tickets](../CODEX-TICKETS.md). Planning artifacts are not completed implementation.
+Start with [master plan](../docs/IMPLEMENTATION-MASTER-PLAN.md) and [Codex tickets](../docs/CODEX-TICKETS.md). Planning artifacts are not completed implementation.

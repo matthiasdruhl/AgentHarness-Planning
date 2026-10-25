@@ -82,3 +82,6 @@ M2 trusted oracle is needed before M3 acceptance; M4 and M5 can follow M1 in par
 
 ## No-fake-progress rule
 All tickets start NOT_STARTED in app-repo journal. This planning document records assignments only; no tests or experiments have been run by adding it.
+
+## Hackathon priority overlay (2026-10-25)
+The 68 IDs above stay **canonical**. Use [critical path](HACKATHON-CRITICAL-PATH.md) to select the smallest must-ship tickets and record explicit cuts; see [implementation handoff](IMPLEMENTATION-HANDOFF.md) for an immutable planning SHA and correct cross-repo context. Full milestone checklists must not be marked complete simply because planning docs were edited. Include actual negative, stale-evidence and Meta-attribution checks in the app. Do not blindly merge on CI green alone.

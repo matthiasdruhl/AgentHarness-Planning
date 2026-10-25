@@ -16,3 +16,6 @@ JSON/schema constraints **plus** Zod semantic validation; reject path traversal,
 
 ## Credible experiment
 Compare Meta-proposed architecture/scenarios to deterministic templated variants under equal verification and budget. Capture model ID, prompt version, token usage if provided, retries and structured failure cases. No 'Meta caused improvement' claim without ablation. Recorded fallback labeled recorded, never live.
+
+## Evidence and competitive value gates
+A **live Meta integration** claim requires an actually observed eligible Meta API request, real model ID, schema-valid result and safe provider provenance—not mock-only or prerecorded data. Participant access, quotas, official model names and spend limits are to be checked on Oct 26, not inferred from marketing. For **measured Meta value**, compare to a strong equally informed roadmap-aware or templated architecture proposal under the same downstream coding agent, Verify, task and budget. Record model inference/setup costs and negative cases; absent that comparator, say only Meta generated the hypothesis. [Critical path](HACKATHON-CRITICAL-PATH.md).

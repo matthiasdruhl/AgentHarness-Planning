@@ -9,3 +9,6 @@
 No predetermined A/B winner, fake exact savings, staged 'live' playback, or claims that every future was predicted. If only recorded experiments are available, label prominently. If no valid measured experiments, show honest functional prototype and no 'better architecture' assertion.
 
 Submission checklist: official eligibility/track; source/license/attributions; working judge URL or reproducible local demo; browser mobile/desktop; accessible fallback; provider key protected; evidence artifacts; video constraints; deadline countdown; submit ahead of Nov 4 9 PM ET advertised time. Store actual submission confirmation once available.
+
+## Required evidence and claim gates
+See [judge-facing acceptance](DEMO-ACCEPTANCE.md) for executable criteria. A/B result is only a conditional architecture effect; do not attribute it to Meta without a matched strong equally informed non-Meta control. The official Meta event page as of Oct 25 gives Nov 4 **9 PM ET**, but exact portal/timezone and video rules must be confirmed at kickoff and before upload. Replay recorded work as recorded; show missing values/null instead of fabricated savings.

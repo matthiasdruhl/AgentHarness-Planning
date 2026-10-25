@@ -15,7 +15,7 @@ This maps **owners and dependencies**, not a competing schema definition. [docs/
 | Trusted evaluator | `scripts/evaluator/` | protected independent oracle, checks | Pinned fixtures | share hidden tests with agent |
 | Evaluation/report | `src/lib/evaluation/`, `src/lib/report/` | measured paired metrics, certificate | Experiment, Verify | fabricate token counts |
 | Public UI | `src/app/` | intent, decision, evidence and export | Sanitized API/recordings | spawn shell or run uploads |
-| Fixtures | `fixtures/booking/` | minimal legal reproducible target | Benchmark protocol | contain user private data |
+| Fixtures | `fixtures/booking-v1/` | minimal legal reproducible target | Benchmark protocol | contain user private data |
 
 ## Canonical artifact dependency flow
 `intent.v1 → scenario.v1 + architecture-candidate.v1 → graph.v1 → decision.v1 → experiment-run.v1 → verification.v1 → certificate.v1`. Graph may be derived before intent; named flow denotes provenance relationships, not a mandatory call sequence.
@@ -25,3 +25,6 @@ Modify docs/03 or 04, Zod implementation, fixtures, tests, relevant milestone, a
 
 ## Known alignment limits
 Existing docs/03 expresses several record types as compact object examples rather than full normative field-level JSON schema. M1.3 must pin required/optional fields and unknown-key policy in Zod/tests. Do not infer a production integration from this planning document.
+
+## Canonical clarification
+**src/lib/report/** owns pure certificate validation; **src/server/artifacts/** owns trusted server-only artifact lookup. **fixtures/booking-v1/** is the controlled target. A client check record cannot mint trusted VERIFIED; require evaluator receipt tied to final tree, check policy, test suite and evaluator. See [implementation contract](CANONICAL-IMPLEMENTATION-CONTRACT.md).

@@ -13,3 +13,6 @@ Required checks: typecheck, build, functional acceptance + relevant regressions;
 
 ## Fairness
 Foresight A/B uses identical Verify gating and feedback policy. Separate Verify-off experiment may evaluate benefit of feedback; label study and its effects independently.
+
+## Required staleness rule
+Only an evaluator-controlled protected artifact can authenticate check provenance. Bind every required check to exact **post-agent evaluated source tree**, test suite, evaluator/config and required-policy hashes, and evaluate anew if relevant code/tests/policy changes. A previous pass is stale for modified code; unknown/forged/stale check evidence is INSUFFICIENT_EVIDENCE. Public client checks and model assertions are untrusted previews. See [canonical implementation contract](CANONICAL-IMPLEMENTATION-CONTRACT.md).

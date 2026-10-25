@@ -16,13 +16,13 @@ Origins: developer_confirmed, developer_tentative, meta_generated, evaluator_hel
 
 ## architecture-candidate.v1
 ```json
-{"schemaVersion":"architecture-candidate.v1","id":"B","label":"Authorization boundary","baselineCommit":"PINNED_SHA","description":"Centralize authz checks","changePlan":[{"module":"src/lib/authz","action":"introduce_boundary"}],"constraints":[{"kind":"forbid_import","from":"src/app/**","to":"src/server/db/**"}],"estimatedUpfrontCost":2,"estimatedCostUnit":"ordinal_points","metaProvenance":"live"}
+{"schemaVersion":"architecture-candidate.v1","id":"B","label":"Authorization boundary","baselineCommit":"PINNED_SHA","description":"Centralize authz checks","changePlan":[{"module":"src/lib/authz","action":"introduce_boundary"}],"constraints":[{"kind":"forbid_import","from":"src/app/**","to":"src/server/db/**"}],"estimatedUpfrontCost":2,"estimatedCostUnit":"modeled_effort_points_v1","metaProvenance":"live"}
 ```
 No free-form shell/code instructions; `changePlan` is advisory until human-reviewed or safely mapped to allowlisted structured operations.
 
 ## graph.v1 / decision.v1
 `graph.v1 = {schemaVersion,repoCommit,modules:[{id,path,kind}],edges:[{from,to,kind}],unknowns:string[]}`.
-`decision.v1 = {schemaVersion,scenarioIds,candidateIds,scoringVersion,assumptions,perScenario:[{candidateId,scenarioId,estimatedImpact:number,estimatedUpfront:number,estimatedRegret:number}],recommendationId:null|string,limitations:string[]}`. Scores are **heuristics**, never measured tokens or hours. For regret, compare candidates using the *same* cost units and scenarios.
+`decision.v1 = {schemaVersion,scenarioIds,candidateIds,scoringVersion,assumptions,perScenario:[{candidateId,scenarioId,estimatedImpact:number,estimatedUpfront:number,estimatedRegret:number}],recommendationId:null|string,limitations:string[]}`. Scores use a **versioned, additive, comparable modeled-effort rubric**, never ordinal ranks or measured tokens/hours. Subtraction of ordinal categories is invalid; recommendation must abstain if the cost units are not comparable. For regret, compare candidates using the *same* cost units and scenarios.
 
 ## check-result.v1 / verification.v1
 `check-result.v1 = {id,kind:"typecheck"|"build"|"acceptance"|"regression"|"boundary"|"integration",status:"pass"|"fail"|"not_run"|"invalid",exitCode:number|null,evidencePath:string|null,scope:string}`.
@@ -34,3 +34,7 @@ No free-form shell/code instructions; `changePlan` is advisory until human-revie
 
 ## General invariant
 Reject unexpected operations, refs and path escapes; 64-KiB default JSON request and bounded arrays. Redact secrets. Version changes require contract migrations and tests.
+
+## Required normative implementation clarifications
+The JSON examples are not complete runtime Zod schemas. Define required and optional fields, length limits, ISO UTC/date ordering, unknown-key policy, ID uniqueness, reference checks, rooted paths and no executable fields in Zod and schema tests. For the trusted receipt, define **evaluator-receipt.v1** binding final evaluated tree, suite, evaluator and required policy hashes plus required check IDs; hash canonical receipt without self-including its integrity hash. See [canonical implementation contract](CANONICAL-IMPLEMENTATION-CONTRACT.md).
+Client-supplied check-result JSON and raw hashes alone are **not** trusted origin. Trusted evaluator controls artifact creation/reads and freshness checks. Any evaluated-code, test or policy change stales prior passes. Unknown usage is null, not zero. Report provider and evidence provenance separately.

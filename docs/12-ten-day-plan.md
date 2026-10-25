@@ -1,6 +1,6 @@
 # 12 — Oct 26–Nov 4 execution calendar
 
-The [master plan](IMPLEMENTATION-MASTER-PLAN.md) is authoritative for milestones and dependencies; the [milestone specs](../milestones/README.md) describe concrete sub-milestones. Dates are targets, not permission to skip acceptance gates.
+The [submission-first critical path](HACKATHON-CRITICAL-PATH.md) is authoritative for *hackathon priority and early evidence gates*; the [master plan](IMPLEMENTATION-MASTER-PLAN.md) remains authoritative for full technical dependencies; the [milestone specs](../milestones/README.md) describe concrete sub-milestones. Dates are targets, not permission to skip acceptance gates.
 
 | Date | Milestone | Primary exit gate |
 |---|---|---|
@@ -17,3 +17,6 @@ The [master plan](IMPLEMENTATION-MASTER-PLAN.md) is authoritative for milestones
 | Nov 4 | M10 | smoke/secure/submit; verify official portal cutoff |
 
 If M2 isolation or M7 fair comparison fails, preserve safe read-only fallback and **drop improvement claims** instead of fabricating numbers. Never spend final days on P1 while P0 is unstable.
+
+## Timing interpretation (post-audit)
+The table groups full M0–M10 workstreams and must **not** be read as a requirement to delay the first safe evaluator result until Oct 28 or a paired experiment until Nov 1. Target real evidence earlier when the technical gates permit, with an A/B by Oct 30 and external SCBench a strictly conditional pilot. Nov 2 remains feature freeze. Recheck 9 PM ET Nov 4 portal deadline after Nov 1 daylight-saving change.

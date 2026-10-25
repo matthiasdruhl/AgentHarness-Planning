@@ -42,3 +42,6 @@ isolation_attested: false
 limitations: []
 next_dependency: null
 ```
+
+## Submission-first overlay
+The original 68 tickets retain their IDs and acceptance dependencies but are prioritized by [critical path](HACKATHON-CRITICAL-PATH.md). Code tickets cannot be closed by a written checklist where executable tests are specified. Trust requires a protected, fresh evaluator-origin receipt bound to final tree, suite, policy and evaluator. Meta-impact claims require a matched strong roadmap-aware non-Meta control. Do not bypass sandbox gates for optional SCBench or demo polish.
