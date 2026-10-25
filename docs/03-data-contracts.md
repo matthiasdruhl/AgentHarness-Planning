@@ -33,3 +33,6 @@
 - All relevant fields and primitive constraints, defaults/absence/null behavior, status enums and ID patterns are in the schema; **no second inconsistent versions** of these fields should be written in individual milestone documentation.
 
 Contract edits must modify schema, this document, [API contracts](04-api-contracts.md) if needed, positive/negative fixtures, validation script, Zod and integration tests, ticket acceptance and ADR in one review.
+
+## Meta Scientist additive record types (October 25 extension)
+[Schema catalog](../contracts/schemas/forecode-v1.schema.json) additionally defines `ScientistPredictionV1`, `MetaHypothesisV1`, `MetaChallengeV1`, `ScientistProposedChangeV1`, `ScientistObservedCheckV1`, `ScientistEvidenceSummaryV1`, and `MetaEvidenceInterpretationV1`. Hypotheses must be falsifiable and tied to approved intents and a candidate; model challenges are **proposals, not frozen or secretly held-out tasks**. Evidence summaries are bounded data **created by** a protected server artifact loader from trusted grader records, never accepted as model attestations. Interpretations are advisory only and cannot claim VERIFIED. Semantic checks, custody rules and provenance are normative in the [Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md); old v1 artifact types are unchanged.

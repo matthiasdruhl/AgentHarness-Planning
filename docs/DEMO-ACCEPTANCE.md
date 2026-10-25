@@ -26,3 +26,6 @@ Target **about three minutes**; exact duration, format and requirements must be 
 Meta produced an architectural hypothesis: show true provider call. Meta *improved* outcomes: separately requires matched equally informed strong non-Meta roadmap/template arm and independent evaluation. B beat A: requires valid equal-condition A/B with upfront cost. Generalized superiority: **not established** by single booking pair. A verifier certificate proves only its explicitly scoped checks.
 
 Feature freeze Nov 2; rehearse Nov 3 in clean session; check official portal cutoff Nov 4 and retain confirmation.
+
+## Meta Scientist judging acceptance overlay
+The judge must see a **real or explicitly recorded** Meta-generated, *falsifiable* prediction and a distinct proposed counterexample attempting to undermine it, both tied to approved future intent. If safe measured A/B and protected receipt exists, show Meta's **non-authoritative post-run interpretation** of a sanitized exact-evidence snapshot alongside the immutable certificate. If not, say "awaiting verified evidence"; never manufacture Meta interpretation of fake measurements. Show the strong roadmap/template comparator before claiming Meta *improved* results. Keep total flow ≈3 minutes by omitting extra scenarios, fancy multi-agent debate and live autonomous runs. [Details](META-ARCHITECTURE-SCIENTIST.md).
