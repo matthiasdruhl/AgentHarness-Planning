@@ -38,3 +38,6 @@ Use transparent robust scenario/regret comparison, **not** probabilistic Expecti
 
 ## Canonical ownership and evidence
 Controlled fixture is **fixtures/booking-v1/**, certificate serializer **src/lib/report/**, trusted sanitized read-only evaluator artifact loader **src/server/artifacts/**. The developer-local runner and protected oracle remain separate. Final-tree freshness and modeled-effort unit restrictions live in [implementation contract](CANONICAL-IMPLEMENTATION-CONTRACT.md).
+
+## Contract Freeze v1 — exact trust/dependency chain
+[M1–M7 interface freeze](CONTRACT-FREEZE-v1.md) defines exact identity and hash relationships. Protected experiment artifacts must bind `evaluatedTreeSha256`, `fixtureSha256`, `evaluatorSha256`, `testSuiteSha256`, `requiredPolicySha256` and run/check ID references. `evaluator-receipt.v1` is a protected separate artifact; no web/API client can mint it by supplying JSON. Diagram ordering is logical only; graph can precede intent collection. Heuristic scenario scores use frozen additive modeled points and minimax regret; observable run measurements never mix with those estimates.

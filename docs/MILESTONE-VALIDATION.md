@@ -45,3 +45,6 @@ next_dependency: null
 
 ## Submission-first overlay
 The original 68 tickets retain their IDs and acceptance dependencies but are prioritized by [critical path](HACKATHON-CRITICAL-PATH.md). Code tickets cannot be closed by a written checklist where executable tests are specified. Trust requires a protected, fresh evaluator-origin receipt bound to final tree, suite, policy and evaluator. Meta-impact claims require a matched strong roadmap-aware non-Meta control. Do not bypass sandbox gates for optional SCBench or demo polish.
+
+## Schema and semantic conformance freeze (Oct 25)
+Contract source chain: [machine schema](../contracts/schemas/forecode-v1.schema.json) → [normative cross-record rules](CONTRACT-FREEZE-v1.md) → [API registry](../contracts/api-registry.json) → [structural + semantic fixtures](../contracts/README.md). M1.3 is BLOCKED until the app's strict Zod schema and cross-record validators agree with these cases. M3/M5/M6/M7 cannot implement independent ad hoc definitions. Repo-level contract CI is a specification check, not an application integration, sandbox attestation, authenticated artifact or official benchmark result.

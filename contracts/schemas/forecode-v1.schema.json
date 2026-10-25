@@ -1,0 +1,2216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forecode.example/schemas/forecode-v1.schema.json",
+  "title": "Forecode Freeze v1 Contract Catalog",
+  "description": "Schema definitions are authoritative for shapes. docs/CONTRACT-FREEZE-v1.md defines cross-record rules, host trust and hash serialization.",
+  "$defs": {
+    "Source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "reference"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "user_confirmed",
+            "user_tentative",
+            "meta_suggestion",
+            "manual_entry"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      }
+    },
+    "IntentV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "title",
+        "statement",
+        "status",
+        "priority",
+        "horizon",
+        "source",
+        "dependencies",
+        "revision",
+        "updatedAt"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "intent.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "confirmed",
+            "tentative",
+            "rejected"
+          ]
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "horizon": {
+          "type": "string",
+          "enum": [
+            "near",
+            "later",
+            "unspecified"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        }
+      }
+    },
+    "IntentDraftV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "statement",
+        "priority",
+        "horizon",
+        "uncertainty",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "horizon": {
+          "type": "string",
+          "enum": [
+            "near",
+            "later",
+            "unspecified"
+          ]
+        },
+        "uncertainty": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      }
+    },
+    "ScenarioV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "origin",
+        "intentIds",
+        "request",
+        "assumptions",
+        "acceptanceIds",
+        "frozen",
+        "baselineCommit"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "scenario.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "origin": {
+          "type": "string",
+          "enum": [
+            "developer_confirmed",
+            "developer_tentative",
+            "meta_generated",
+            "evaluator_heldout"
+          ]
+        },
+        "intentIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "request": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 320
+          },
+          "minItems": 0,
+          "maxItems": 24
+        },
+        "acceptanceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "frozen": {
+          "type": "boolean"
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
+      }
+    },
+    "ChangePlanItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "action",
+        "rationale"
+      ],
+      "properties": {
+        "module": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./*-]+$"
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "introduce_boundary",
+            "extract_module",
+            "move_module",
+            "add_interface",
+            "leave_unchanged"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      }
+    },
+    "BoundaryConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "from",
+        "to"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "forbid_import",
+            "require_import",
+            "layer_constraint"
+          ]
+        },
+        "from": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./*-]+$"
+        },
+        "to": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./*-]+$"
+        }
+      }
+    },
+    "ArchitectureCandidateV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "label",
+        "baselineCommit",
+        "description",
+        "changePlan",
+        "constraints",
+        "estimatedUpfrontCost",
+        "estimatedCostUnit",
+        "metaProvenance",
+        "modelId",
+        "promptVersion",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "architecture-candidate.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "changePlan": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ChangePlanItem"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BoundaryConstraint"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "estimatedUpfrontCost": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "estimatedCostUnit": {
+          "const": "modeled_effort_points_v1"
+        },
+        "metaProvenance": {
+          "type": "string",
+          "enum": [
+            "live",
+            "recorded",
+            "template"
+          ]
+        },
+        "modelId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "promptVersion": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 24
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "metaProvenance": {
+                "const": "live"
+              }
+            },
+            "required": [
+              "metaProvenance"
+            ]
+          },
+          "then": {
+            "properties": {
+              "modelId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 150
+              },
+              "promptVersion": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "kind"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./*-]+$"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "source",
+            "route",
+            "test",
+            "config",
+            "external",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "GraphEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "to",
+        "kind"
+      ],
+      "properties": {
+        "from": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "to": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "static_import",
+            "dynamic_import",
+            "export",
+            "route",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "GraphV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "repoCommit",
+        "modules",
+        "edges",
+        "unknowns"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "graph.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "repoCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "modules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Module"
+          },
+          "minItems": 0,
+          "maxItems": 2000
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GraphEdge"
+          },
+          "minItems": 0,
+          "maxItems": 6000
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 1000
+        }
+      }
+    },
+    "Score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateId",
+        "scenarioId",
+        "costUnit",
+        "upfrontCost",
+        "downstreamCost",
+        "totalCost",
+        "regret",
+        "rationale",
+        "basis"
+      ],
+      "properties": {
+        "candidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "scenarioId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "costUnit": {
+          "const": "modeled_effort_points_v1"
+        },
+        "upfrontCost": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "downstreamCost": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "totalCost": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200000
+        },
+        "regret": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200000
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "basis": {
+          "$ref": "#/$defs/ScoreBasis"
+        }
+      }
+    },
+    "DecisionV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "graphId",
+        "baselineCommit",
+        "scenarioIds",
+        "candidateIds",
+        "scoringVersion",
+        "assumptions",
+        "perScenario",
+        "recommendationId",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "decision.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "graphId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "scenarioIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "candidateIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 2,
+          "maxItems": 12
+        },
+        "scoringVersion": {
+          "const": "modeled_effort_points_v1"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "perScenario": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Score"
+          },
+          "minItems": 0,
+          "maxItems": 288
+        },
+        "recommendationId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "perScenario": {
+                "maxItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "perScenario"
+            ]
+          },
+          "then": {
+            "properties": {
+              "recommendationId": {
+                "type": "null"
+              },
+              "limitations": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CheckResultV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "runId",
+        "kind",
+        "status",
+        "exitCode",
+        "evidencePath",
+        "scope",
+        "artifactSha256"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "check-result.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "typecheck",
+            "build",
+            "acceptance",
+            "regression",
+            "boundary",
+            "integration"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run",
+            "invalid"
+          ]
+        },
+        "exitCode": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidencePath": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./*-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 250
+        },
+        "artifactSha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "pass"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "exitCode": {
+                "const": 0
+              },
+              "evidencePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifactSha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "fail"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "exitCode": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 255
+              },
+              "evidencePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifactSha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "not_run"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "exitCode": {
+                "type": "null"
+              },
+              "evidencePath": {
+                "type": "null"
+              },
+              "artifactSha256": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ReceiptIntegrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "manifestSha256"
+      ],
+      "properties": {
+        "kind": {
+          "const": "trusted-local-artifact"
+        },
+        "manifestSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "EvaluatorReceiptV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "runId",
+        "evaluatedTreeSha256",
+        "fixtureSha256",
+        "evaluatorSha256",
+        "testSuiteSha256",
+        "requiredPolicySha256",
+        "requiredCheckIds",
+        "checkArtifactSha256",
+        "startedAt",
+        "finishedAt",
+        "issuer",
+        "integrity"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "evaluator-receipt.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "evaluatedTreeSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "fixtureSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evaluatorSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "testSuiteSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "requiredPolicySha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "requiredCheckIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "checkArtifactSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "finishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "issuer": {
+          "const": "trusted-local-evaluator"
+        },
+        "integrity": {
+          "$ref": "#/$defs/ReceiptIntegrity"
+        }
+      }
+    },
+    "VerificationV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "runId",
+        "verdict",
+        "requiredCheckIds",
+        "checks",
+        "receiptId",
+        "origin",
+        "scope",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "verification.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "REJECTED",
+            "INSUFFICIENT_EVIDENCE"
+          ]
+        },
+        "requiredCheckIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CheckResultV1"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "receiptId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin": {
+          "type": "string",
+          "enum": [
+            "trusted_evaluator",
+            "untrusted_preview"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 40
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "untrusted_preview"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "properties": {
+              "verdict": {
+                "const": "INSUFFICIENT_EVIDENCE"
+              },
+              "receiptId": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "elapsedMs",
+        "tokens",
+        "costUsd",
+        "iterations",
+        "filesTouched"
+      ],
+      "properties": {
+        "elapsedMs": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "costUsd": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "iterations": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "filesTouched": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "ExperimentRunV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "variant",
+        "status",
+        "repoCommit",
+        "evaluatedTreeSha256",
+        "fixtureSha256",
+        "agentConfigSha256",
+        "evaluatorSha256",
+        "requiredPolicySha256",
+        "isolationAttestationId",
+        "seed",
+        "startedAt",
+        "endedAt",
+        "verificationId",
+        "receiptId",
+        "metrics",
+        "evidenceOrigin",
+        "presentationMode",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "experiment-run.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "completed",
+            "failed",
+            "cancelled",
+            "timed_out",
+            "blocked"
+          ]
+        },
+        "repoCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "evaluatedTreeSha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fixtureSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "agentConfigSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evaluatorSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "requiredPolicySha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "isolationAttestationId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "endedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "verificationId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "receiptId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "metrics": {
+          "$ref": "#/$defs/Metrics"
+        },
+        "evidenceOrigin": {
+          "type": "string",
+          "enum": [
+            "measured",
+            "none"
+          ]
+        },
+        "presentationMode": {
+          "type": "string",
+          "enum": [
+            "recorded",
+            "live"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      }
+    },
+    "IntentRevision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intentId",
+        "revision"
+      ],
+      "properties": {
+        "intentId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      }
+    },
+    "CertificateV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "baselineCommit",
+        "intentRevisions",
+        "scenarioIds",
+        "decisionId",
+        "experimentRunIds",
+        "verificationIds",
+        "receiptIds",
+        "conclusion",
+        "limitations",
+        "generatedAt",
+        "evidenceOrigin",
+        "presentationMode",
+        "artifactSha256"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "certificate.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "intentRevisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntentRevision"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "scenarioIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 0,
+          "maxItems": 24
+        },
+        "decisionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "experimentRunIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "verificationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "receiptIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "conclusion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1500
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 40
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "evidenceOrigin": {
+          "type": "string",
+          "enum": [
+            "measured",
+            "none"
+          ]
+        },
+        "presentationMode": {
+          "type": "string",
+          "enum": [
+            "recorded",
+            "live"
+          ]
+        },
+        "artifactSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "Budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxSeconds",
+        "maxIterations",
+        "tokenLimit",
+        "spendUsd"
+      ],
+      "properties": {
+        "maxSeconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        },
+        "maxIterations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "tokenLimit": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "spendUsd": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "PairArm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "variant",
+        "initialCommit",
+        "initialTreeSha256",
+        "runId",
+        "upfrontMetrics"
+      ],
+      "properties": {
+        "variant": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "initialCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "initialTreeSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "runId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "upfrontMetrics": {
+          "$ref": "#/$defs/Metrics"
+        }
+      }
+    },
+    "PairManifestV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "taskId",
+        "scenarioId",
+        "fixtureSha256",
+        "agentConfigSha256",
+        "evaluatorSha256",
+        "requiredPolicySha256",
+        "toolAllowlistSha256",
+        "budget",
+        "arms",
+        "frozenAt",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "pair-manifest.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "taskId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "scenarioId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "fixtureSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "agentConfigSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evaluatorSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "requiredPolicySha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "toolAllowlistSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "budget": {
+          "$ref": "#/$defs/Budget"
+        },
+        "arms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PairArm"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "frozenAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      }
+    },
+    "ProviderInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "model",
+        "mode",
+        "promptVersion",
+        "sourceEvidenceId"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": [
+            "meta",
+            "template",
+            "recording"
+          ]
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "live",
+            "recorded",
+            "template"
+          ]
+        },
+        "promptVersion": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourceEvidenceId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "live"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "const": "meta"
+              },
+              "model": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "promptVersion": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "sourceEvidenceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "template"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "const": "template"
+              },
+              "model": {
+                "type": "null"
+              },
+              "sourceEvidenceId": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "InterpretRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "consent"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "consent": {
+          "const": true
+        }
+      }
+    },
+    "InterpretResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "suggestions",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "intent-suggestions.v1"
+        },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntentDraftV1"
+          },
+          "minItems": 0,
+          "maxItems": 12
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
+    },
+    "ProposeRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intents",
+        "graph",
+        "goal",
+        "consent"
+      ],
+      "properties": {
+        "intents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntentV1"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "graph": {
+          "$ref": "#/$defs/GraphV1"
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "consent": {
+          "const": true
+        }
+      }
+    },
+    "ProposeResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "candidates",
+        "scenarios",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "foresight-proposals.v1"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArchitectureCandidateV1"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ScenarioV1"
+          },
+          "minItems": 1,
+          "maxItems": 12
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
+    },
+    "EvaluateRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "graph",
+        "candidates",
+        "scenarios",
+        "scoringVersion"
+      ],
+      "properties": {
+        "graph": {
+          "$ref": "#/$defs/GraphV1"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArchitectureCandidateV1"
+          },
+          "minItems": 2,
+          "maxItems": 12
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ScenarioV1"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "scoringVersion": {
+          "const": "modeled_effort_points_v1"
+        }
+      }
+    },
+    "DemoResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "runs",
+        "certificates",
+        "mode"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "demo.v1"
+        },
+        "runs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExperimentRunV1"
+          },
+          "minItems": 0,
+          "maxItems": 40
+        },
+        "certificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CertificateV1"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "mode": {
+          "const": "recorded"
+        }
+      }
+    },
+    "ApiError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "error"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "api-error.v1"
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "message",
+            "requestId",
+            "retryable"
+          ],
+          "properties": {
+            "code": {
+              "type": "string",
+              "enum": [
+                "INVALID_REQUEST",
+                "PAYLOAD_TOO_LARGE",
+                "INVALID_REFERENCE",
+                "UNSUPPORTED_OPERATION",
+                "RATE_LIMITED",
+                "PROVIDER_UNAVAILABLE",
+                "UNTRUSTED_EVIDENCE",
+                "INTERNAL_ERROR"
+              ]
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "requestId": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            "retryable": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "VerifyPreviewRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "checks",
+        "mode"
+      ],
+      "properties": {
+        "runId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CheckResultV1"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "mode": {
+          "const": "untrusted_preview"
+        }
+      }
+    },
+    "VerifyPreviewResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "verification",
+        "authoritative"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "verify-preview.v1"
+        },
+        "verification": {
+          "$ref": "#/$defs/VerificationV1"
+        },
+        "authoritative": {
+          "const": false
+        }
+      }
+    },
+    "ScoreBasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectedChangedModules",
+        "projectedRouteChanges",
+        "unresolvedRelevantDependencies",
+        "source"
+      ],
+      "properties": {
+        "projectedChangedModules": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./*-]+$"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        },
+        "projectedRouteChanges": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "unresolvedRelevantDependencies": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "reviewed_estimate",
+            "static_graph"
+          ]
+        }
+      }
+    },
+    "MetaComparisonManifestV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "contextSha256",
+        "scenarioId",
+        "metaCandidateId",
+        "templateCandidateId",
+        "metaProviderModel",
+        "metaPromptVersion",
+        "fixtureSha256",
+        "agentConfigSha256",
+        "evaluatorSha256",
+        "requiredPolicySha256",
+        "toolAllowlistSha256",
+        "budget",
+        "metaRunId",
+        "templateRunId",
+        "frozenAt",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "meta-comparison-manifest.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "contextSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scenarioId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "metaCandidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "templateCandidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "metaProviderModel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "metaPromptVersion": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "fixtureSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "agentConfigSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evaluatorSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "requiredPolicySha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "toolAllowlistSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "budget": {
+          "$ref": "#/$defs/Budget"
+        },
+        "metaRunId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "templateRunId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "frozenAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      }
+    }
+  }
+}

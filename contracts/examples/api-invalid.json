@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "api-negative-fixtures.v1",
+  "cases": [
+    {
+      "id": "interpret-missing-consent",
+      "type": "InterpretRequest",
+      "mutation": "consent",
+      "value": false
+    },
+    {
+      "id": "propose-missing-consent",
+      "type": "ProposeRequest",
+      "mutation": "consent",
+      "value": false
+    },
+    {
+      "id": "propose-unknown-field",
+      "type": "ProposeRequest",
+      "mutation": "shell",
+      "value": "rm -rf ."
+    },
+    {
+      "id": "interpret-bad-text",
+      "type": "InterpretRequest",
+      "mutation": "text",
+      "value": ""
+    },
+    {
+      "id": "propose-unknown-status",
+      "type": "ProposeRequest",
+      "mutation": "intents.0.status",
+      "value": "autoconfirmed"
+    },
+    {
+      "id": "provider-invalid-mode",
+      "type": "InterpretResponse",
+      "mutation": "provider.mode",
+      "value": "pretend-live"
+    },
+    {
+      "id": "response-unknown-enum",
+      "type": "ProposeResponse",
+      "mutation": "candidates.1.changePlan.0.action",
+      "value": "exec"
+    },
+    {
+      "id": "decision-wrong-unit",
+      "type": "EvaluateRequest",
+      "mutation": "scoringVersion",
+      "value": "ordinal_points"
+    },
+    {
+      "id": "demo-live-label",
+      "type": "DemoResponse",
+      "mutation": "mode",
+      "value": "live"
+    },
+    {
+      "id": "preview-false-authority",
+      "type": "VerifyPreviewResponse",
+      "mutation": "authoritative",
+      "value": true
+    },
+    {
+      "id": "error-unknown-code",
+      "type": "ApiError",
+      "mutation": "error.code",
+      "value": "SILENT_FAILURE"
+    },
+    {
+      "id": "provider-live-no-model",
+      "type": "InterpretResponse",
+      "mutation": "provider.mode",
+      "value": "live"
+    },
+    {
+      "id": "provider-recorded-as-template",
+      "type": "InterpretResponse",
+      "mutation": "provider.provider",
+      "value": "meta"
+    }
+  ]
+}

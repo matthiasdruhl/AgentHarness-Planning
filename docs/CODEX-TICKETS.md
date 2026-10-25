@@ -85,3 +85,6 @@ All tickets start NOT_STARTED in app-repo journal. This planning document record
 
 ## Hackathon priority overlay (2026-10-25)
 The 68 IDs above stay **canonical**. Use [critical path](HACKATHON-CRITICAL-PATH.md) to select the smallest must-ship tickets and record explicit cuts; see [implementation handoff](IMPLEMENTATION-HANDOFF.md) for an immutable planning SHA and correct cross-repo context. Full milestone checklists must not be marked complete simply because planning docs were edited. Include actual negative, stale-evidence and Meta-attribution checks in the app. Do not blindly merge on CI green alone.
+
+## Contract Freeze v1 implementation cross-cut
+Do **not** alter original 68 tickets' IDs. For each relevant ticket, review [full field schema](../contracts/schemas/forecode-v1.schema.json), [frozen API registry](../contracts/api-registry.json), [normative semantics](CONTRACT-FREEZE-v1.md) and [conformance fixtures](../contracts/README.md). M1.3 enforces equivalent Zod; M3 protected receipts and state machine; M4 consent/revision; M5 additive scoring; M6 versioned Meta responses; M7 pair and Meta comparison; M8 certificates/provenance. Report an actual command/exit and test evidence; no checkbox green from prose alone.

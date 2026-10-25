@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "api-registry.v1",
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/intents/interpret",
+      "request": "InterpretRequest",
+      "response": "InterpretResponse",
+      "consentRequired": true,
+      "trust": "model_untrusted"
+    },
+    {
+      "method": "POST",
+      "path": "/api/foresight/propose",
+      "request": "ProposeRequest",
+      "response": "ProposeResponse",
+      "consentRequired": true,
+      "trust": "model_untrusted"
+    },
+    {
+      "method": "POST",
+      "path": "/api/foresight/evaluate",
+      "request": "EvaluateRequest",
+      "response": "DecisionV1",
+      "consentRequired": false,
+      "trust": "pure_estimate"
+    },
+    {
+      "method": "GET",
+      "path": "/api/demo",
+      "request": null,
+      "response": "DemoResponse",
+      "consentRequired": false,
+      "trust": "read_only_recorded"
+    },
+    {
+      "method": "POST",
+      "path": "/api/verify/assess",
+      "request": "VerifyPreviewRequest",
+      "response": "VerifyPreviewResponse",
+      "consentRequired": false,
+      "trust": "untrusted_optional_preview"
+    }
+  ],
+  "errors": "ApiError",
+  "maxRequestBytes": 65536,
+  "defaultHeaders": {
+    "Cache-Control": "no-store",
+    "Content-Type": "application/json; charset=utf-8"
+  }
+}

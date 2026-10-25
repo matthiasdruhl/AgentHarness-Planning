@@ -16,3 +16,6 @@ Foresight A/B uses identical Verify gating and feedback policy. Separate Verify-
 
 ## Required staleness rule
 Only an evaluator-controlled protected artifact can authenticate check provenance. Bind every required check to exact **post-agent evaluated source tree**, test suite, evaluator/config and required-policy hashes, and evaluate anew if relevant code/tests/policy changes. A previous pass is stale for modified code; unknown/forged/stale check evidence is INSUFFICIENT_EVIDENCE. Public client checks and model assertions are untrusted previews. See [canonical implementation contract](CANONICAL-IMPLEMENTATION-CONTRACT.md).
+
+## Frozen receipt/verification names
+Use versioned schema definitions [CheckResultV1](../contracts/schemas/forecode-v1.schema.json), `EvaluatorReceiptV1`, `VerificationV1` and [semantic state machine](CONTRACT-FREEZE-v1.md). Every required check binds to protected receipt custody, final source tree, evaluator and policy. Missing/stale check is INSUFFICIENT_EVIDENCE; a trusted required fail is REJECTED. Public preview is never authoritative. Canonicalization follows RFC 8785 JCS with explicit leaf exclusions for self-hash fields.

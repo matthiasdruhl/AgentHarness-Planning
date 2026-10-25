@@ -1,0 +1,449 @@
+{
+  "InterpretRequest": {
+    "text": "Please support team accounts in a future release",
+    "consent": true
+  },
+  "InterpretResponse": {
+    "schemaVersion": "intent-suggestions.v1",
+    "suggestions": [
+      {
+        "id": "draft-team",
+        "title": "Team accounts",
+        "statement": "Support organization members",
+        "priority": "high",
+        "horizon": "later",
+        "uncertainty": "Exact roles unspecified",
+        "source": {
+          "kind": "meta_suggestion",
+          "reference": "prompt-v1"
+        }
+      }
+    ],
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
+  },
+  "ProposeRequest": {
+    "intents": [
+      {
+        "schemaVersion": "intent.v1",
+        "id": "intent-team",
+        "title": "Team accounts",
+        "statement": "Support organizations and member roles",
+        "status": "confirmed",
+        "priority": "high",
+        "horizon": "later",
+        "source": {
+          "kind": "user_confirmed",
+          "reference": "manual-entry"
+        },
+        "dependencies": [
+          "auth"
+        ],
+        "revision": 1,
+        "updatedAt": "2026-10-30T12:00:00Z"
+      }
+    ],
+    "graph": {
+      "schemaVersion": "graph.v1",
+      "id": "graph-one",
+      "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "modules": [
+        {
+          "id": "mod-book",
+          "path": "src/lib/booking.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-routes",
+          "path": "src/lib/routes.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-auth",
+          "path": "src/lib/auth.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-res",
+          "path": "src/lib/resources.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-authz",
+          "path": "src/lib/authz.ts",
+          "kind": "source"
+        }
+      ],
+      "edges": [],
+      "unknowns": []
+    },
+    "goal": "Compare policy isolation vs direct checks",
+    "consent": true
+  },
+  "ProposeResponse": {
+    "schemaVersion": "foresight-proposals.v1",
+    "candidates": [
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "A",
+        "label": "Status quo",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Current architecture retained",
+        "changePlan": [],
+        "constraints": [],
+        "estimatedUpfrontCost": 0,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      },
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "B",
+        "label": "Authorization boundary",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Centralize authorization policy",
+        "changePlan": [
+          {
+            "module": "src/lib/authz",
+            "action": "introduce_boundary",
+            "rationale": "Scoped policy logic"
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "forbid_import",
+            "from": "src/app/**",
+            "to": "src/server/db/**"
+          }
+        ],
+        "estimatedUpfrontCost": 3,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      }
+    ],
+    "scenarios": [
+      {
+        "schemaVersion": "scenario.v1",
+        "id": "teams",
+        "origin": "developer_confirmed",
+        "intentIds": [
+          "intent-team"
+        ],
+        "request": "Add scoped member permissions",
+        "assumptions": [
+          "one tenant at baseline"
+        ],
+        "acceptanceIds": [
+          "team_roles"
+        ],
+        "frozen": true,
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "provider": {
+      "provider": "template",
+      "model": null,
+      "mode": "template",
+      "promptVersion": null,
+      "sourceEvidenceId": null
+    }
+  },
+  "EvaluateRequest": {
+    "graph": {
+      "schemaVersion": "graph.v1",
+      "id": "graph-one",
+      "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "modules": [
+        {
+          "id": "mod-book",
+          "path": "src/lib/booking.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-routes",
+          "path": "src/lib/routes.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-auth",
+          "path": "src/lib/auth.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-res",
+          "path": "src/lib/resources.ts",
+          "kind": "source"
+        },
+        {
+          "id": "mod-authz",
+          "path": "src/lib/authz.ts",
+          "kind": "source"
+        }
+      ],
+      "edges": [],
+      "unknowns": []
+    },
+    "candidates": [
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "A",
+        "label": "Status quo",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Current architecture retained",
+        "changePlan": [],
+        "constraints": [],
+        "estimatedUpfrontCost": 0,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      },
+      {
+        "schemaVersion": "architecture-candidate.v1",
+        "id": "B",
+        "label": "Authorization boundary",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "description": "Centralize authorization policy",
+        "changePlan": [
+          {
+            "module": "src/lib/authz",
+            "action": "introduce_boundary",
+            "rationale": "Scoped policy logic"
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "forbid_import",
+            "from": "src/app/**",
+            "to": "src/server/db/**"
+          }
+        ],
+        "estimatedUpfrontCost": 3,
+        "estimatedCostUnit": "modeled_effort_points_v1",
+        "metaProvenance": "template",
+        "modelId": null,
+        "promptVersion": null,
+        "limitations": []
+      }
+    ],
+    "scenarios": [
+      {
+        "schemaVersion": "scenario.v1",
+        "id": "teams",
+        "origin": "developer_confirmed",
+        "intentIds": [
+          "intent-team"
+        ],
+        "request": "Add scoped member permissions",
+        "assumptions": [
+          "one tenant at baseline"
+        ],
+        "acceptanceIds": [
+          "team_roles"
+        ],
+        "frozen": true,
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "scoringVersion": "modeled_effort_points_v1"
+  },
+  "DecisionV1": {
+    "schemaVersion": "decision.v1",
+    "id": "decision-one",
+    "graphId": "graph-one",
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scenarioIds": [
+      "teams"
+    ],
+    "candidateIds": [
+      "A",
+      "B"
+    ],
+    "scoringVersion": "modeled_effort_points_v1",
+    "assumptions": [
+      "heuristic not measured"
+    ],
+    "perScenario": [
+      {
+        "candidateId": "A",
+        "scenarioId": "teams",
+        "costUnit": "modeled_effort_points_v1",
+        "upfrontCost": 0,
+        "downstreamCost": 8,
+        "totalCost": 8,
+        "regret": 2,
+        "rationale": "Direct checks",
+        "basis": {
+          "projectedChangedModules": [
+            "src/lib/booking.ts",
+            "src/lib/routes.ts",
+            "src/lib/auth.ts",
+            "src/lib/resources.ts"
+          ],
+          "projectedRouteChanges": 0,
+          "unresolvedRelevantDependencies": 0,
+          "source": "reviewed_estimate"
+        }
+      },
+      {
+        "candidateId": "B",
+        "scenarioId": "teams",
+        "costUnit": "modeled_effort_points_v1",
+        "upfrontCost": 3,
+        "downstreamCost": 3,
+        "totalCost": 6,
+        "regret": 0,
+        "rationale": "Boundary",
+        "basis": {
+          "projectedChangedModules": [
+            "src/lib/authz.ts"
+          ],
+          "projectedRouteChanges": 1,
+          "unresolvedRelevantDependencies": 0,
+          "source": "reviewed_estimate"
+        }
+      }
+    ],
+    "recommendationId": "B",
+    "limitations": [
+      "Single scenario"
+    ]
+  },
+  "DemoResponse": {
+    "schemaVersion": "demo.v1",
+    "runs": [
+      {
+        "schemaVersion": "experiment-run.v1",
+        "id": "run-a",
+        "variant": "A",
+        "status": "completed",
+        "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evaluatedTreeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "fixtureSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "agentConfigSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "evaluatorSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "requiredPolicySha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "isolationAttestationId": "isolation-a",
+        "seed": 42,
+        "startedAt": "2026-10-30T12:00:00Z",
+        "endedAt": "2026-10-30T12:00:02Z",
+        "verificationId": "verify-a",
+        "receiptId": "receipt-a",
+        "metrics": {
+          "elapsedMs": 2000,
+          "tokens": null,
+          "costUsd": null,
+          "iterations": 1,
+          "filesTouched": 1
+        },
+        "evidenceOrigin": "measured",
+        "presentationMode": "recorded",
+        "limitations": []
+      }
+    ],
+    "certificates": [
+      {
+        "schemaVersion": "certificate.v1",
+        "id": "cert-a",
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "intentRevisions": [
+          {
+            "intentId": "intent-team",
+            "revision": 1
+          }
+        ],
+        "scenarioIds": [
+          "teams"
+        ],
+        "decisionId": "decision-one",
+        "experimentRunIds": [
+          "run-a"
+        ],
+        "verificationIds": [
+          "verify-a"
+        ],
+        "receiptIds": [
+          "receipt-a"
+        ],
+        "conclusion": "Typecheck passed only; other checks not in scope",
+        "limitations": [
+          "Fixture example, not actual evidence"
+        ],
+        "generatedAt": "2026-10-30T12:00:02Z",
+        "evidenceOrigin": "measured",
+        "presentationMode": "recorded",
+        "artifactSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    ],
+    "mode": "recorded"
+  },
+  "ApiError": {
+    "schemaVersion": "api-error.v1",
+    "error": {
+      "code": "INVALID_REQUEST",
+      "message": "Invalid or incomplete JSON input",
+      "requestId": "request-001",
+      "retryable": false
+    }
+  },
+  "VerifyPreviewRequest": {
+    "runId": "run-a",
+    "checks": [
+      {
+        "schemaVersion": "check-result.v1",
+        "id": "typecheck",
+        "runId": "run-a",
+        "kind": "typecheck",
+        "status": "pass",
+        "exitCode": 0,
+        "evidencePath": "reports/runs/run-a/typecheck.txt",
+        "scope": "TypeScript build",
+        "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "mode": "untrusted_preview"
+  },
+  "VerifyPreviewResponse": {
+    "schemaVersion": "verify-preview.v1",
+    "verification": {
+      "schemaVersion": "verification.v1",
+      "id": "preview-a",
+      "runId": "run-a",
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "requiredCheckIds": [
+        "typecheck"
+      ],
+      "checks": [
+        {
+          "schemaVersion": "check-result.v1",
+          "id": "typecheck",
+          "runId": "run-a",
+          "kind": "typecheck",
+          "status": "pass",
+          "exitCode": 0,
+          "evidencePath": "reports/runs/run-a/typecheck.txt",
+          "scope": "TypeScript build",
+          "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "receiptId": null,
+      "origin": "untrusted_preview",
+      "scope": "TypeScript build only",
+      "limitations": [
+        "Untrusted client-submitted checks"
+      ]
+    },
+    "authoritative": false
+  }
+}

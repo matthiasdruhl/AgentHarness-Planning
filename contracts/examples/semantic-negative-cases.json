@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "semantic-negative-fixtures.v1",
+  "cases": [
+    {
+      "id": "bad-confirm-source",
+      "path": "intents.0.source.kind",
+      "value": "meta_suggestion"
+    },
+    {
+      "id": "dangling-intent",
+      "path": "scenarios.0.intentIds.0",
+      "value": "missing"
+    },
+    {
+      "id": "mismatched-scenario-baseline",
+      "path": "scenarios.0.baselineCommit",
+      "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "id": "dangling-graph-edge",
+      "path": "graph.edges",
+      "value": [
+        {
+          "from": "mod-book",
+          "to": "missing",
+          "kind": "static_import"
+        }
+      ]
+    },
+    {
+      "id": "upfront-plan-cost-mismatch",
+      "path": "candidates.1.estimatedUpfrontCost",
+      "value": 0
+    },
+    {
+      "id": "wrong-regret",
+      "path": "decision.perScenario.0.regret",
+      "value": 0
+    },
+    {
+      "id": "missing-score-cell",
+      "path": "decision.perScenario",
+      "value": [
+        {
+          "candidateId": "A",
+          "scenarioId": "teams",
+          "costUnit": "modeled_effort_points_v1",
+          "upfrontCost": 0,
+          "downstreamCost": 8,
+          "totalCost": 8,
+          "regret": 2,
+          "rationale": "Direct checks",
+          "basis": {
+            "projectedChangedModules": [
+              "src/lib/booking.ts",
+              "src/lib/routes.ts",
+              "src/lib/auth.ts",
+              "src/lib/resources.ts"
+            ],
+            "projectedRouteChanges": 0,
+            "unresolvedRelevantDependencies": 0,
+            "source": "reviewed_estimate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "invented-scoring-module",
+      "path": "decision.perScenario.1.basis.projectedChangedModules.0",
+      "value": "src/missing.ts"
+    },
+    {
+      "id": "not-minimax",
+      "path": "decision.recommendationId",
+      "value": "A"
+    },
+    {
+      "id": "swapped-check-run",
+      "path": "checks.0.runId",
+      "value": "run-x"
+    },
+    {
+      "id": "forged-pass",
+      "path": "checks.0.exitCode",
+      "value": 2
+    },
+    {
+      "id": "wrong-source-receipt",
+      "path": "receipt.evaluatedTreeSha256",
+      "value": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    {
+      "id": "swapped-receipt-run",
+      "path": "receipt.runId",
+      "value": "run-x"
+    },
+    {
+      "id": "untrusted-preview-verified",
+      "path": "verification.origin",
+      "value": "untrusted_preview"
+    },
+    {
+      "id": "missing-certificate-receipt",
+      "path": "certificate.receiptIds.0",
+      "value": "receipt-x"
+    },
+    {
+      "id": "duplicate-pair-arm",
+      "path": "pair.arms.1.variant",
+      "value": "A"
+    },
+    {
+      "id": "meta-control-same-candidate",
+      "path": "metaComparison.templateCandidateId",
+      "value": "B"
+    }
+  ]
+}

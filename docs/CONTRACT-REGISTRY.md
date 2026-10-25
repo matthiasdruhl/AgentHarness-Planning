@@ -1,6 +1,6 @@
 # Forecode — implementation module and interface registry
 
-This maps **owners and dependencies**, not a competing schema definition. [docs/03](03-data-contracts.md) is authoritative for exact data fields; [docs/04](04-api-contracts.md) for actual web routes. Never revise schemas here alone.
+This maps **owners and dependencies**, not a competing schema definition. [machine-readable contracts](../contracts/schemas/forecode-v1.schema.json) are authoritative for exact field shapes, [CONTRACT-FREEZE-v1](CONTRACT-FREEZE-v1.md) for semantic constraints, [docs/03](03-data-contracts.md) for artifact meaning, and [docs/04](04-api-contracts.md) plus [API registry](../contracts/api-registry.json) for routes. Never revise schemas here alone.
 
 | Module | Expected location in app repo | Owned capability | Depends on | Must not do |
 |---|---|---|---|---|
@@ -21,10 +21,13 @@ This maps **owners and dependencies**, not a competing schema definition. [docs/
 `intent.v1 → scenario.v1 + architecture-candidate.v1 → graph.v1 → decision.v1 → experiment-run.v1 → verification.v1 → certificate.v1`. Graph may be derived before intent; named flow denotes provenance relationships, not a mandatory call sequence.
 
 ## Contract updates
-Modify docs/03 or 04, Zod implementation, fixtures, tests, relevant milestone, and ADR together. Preserve strict untrusted-model parsing. Server-controlled run attestations are necessary: the client may render a verdict request but may **not** mint trusted measured results.
+Modify the machine-readable schema, endpoint registry, contract freeze (when affected), docs/03/04, Zod implementation, fixtures/tests, milestone, and ADR together. Preserve strict untrusted-model parsing. Server-controlled run attestations are necessary: the client may render a verdict request but may **not** mint trusted measured results.
 
 ## Known alignment limits
-Existing docs/03 expresses several record types as compact object examples rather than full normative field-level JSON schema. M1.3 must pin required/optional fields and unknown-key policy in Zod/tests. Do not infer a production integration from this planning document.
+The schema catalog now defines required/optional fields, strict nested object shapes, null handling, enums and bounds. M1.3 must implement schema-equivalent Zod **plus** cross-record semantic validation using contract fixtures. This is a specification, not a production integration.
 
 ## Canonical clarification
 **src/lib/report/** owns pure certificate validation; **src/server/artifacts/** owns trusted server-only artifact lookup. **fixtures/booking-v1/** is the controlled target. A client check record cannot mint trusted VERIFIED; require evaluator receipt tied to final tree, check policy, test suite and evaluator. See [implementation contract](CANONICAL-IMPLEMENTATION-CONTRACT.md).
+
+## Artifact relationships (frozen)
+`intent.v1` → confirmed `scenario.v1` → `architecture-candidate.v1` + `graph.v1` → `decision.v1` → `pair-manifest.v1` → `experiment-run.v1` → protected `evaluator-receipt.v1` + `verification.v1` → `certificate.v1`. `meta-comparison-manifest.v1` describes the **separate** Meta-vs-template question. Relationships are versioned IDs and checked hashes, not schema nesting alone.

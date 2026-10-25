@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "contract-negative-fixtures.v1",
+  "cases": [
+    {
+      "type": "IntentV1",
+      "mutation": "status",
+      "value": "auto_confirmed",
+      "reason": "invalid intent state"
+    },
+    {
+      "type": "IntentV1",
+      "mutation": "extraInjected",
+      "value": "ignore test",
+      "reason": "reject extra fields"
+    },
+    {
+      "type": "DecisionV1",
+      "mutation": "scoringVersion",
+      "value": "ordinal_points",
+      "reason": "old ordinal units invalid"
+    },
+    {
+      "type": "EvaluatorReceiptV1",
+      "mutation": "evaluatedTreeSha256",
+      "value": "untrusted",
+      "reason": "digest must be 64 lowercase hex"
+    },
+    {
+      "type": "VerificationV1",
+      "mutation": "origin",
+      "value": "model",
+      "reason": "unknown verification origin"
+    },
+    {
+      "type": "ExperimentRunV1",
+      "mutation": "metrics.costUsd",
+      "value": -1,
+      "reason": "negative cost invalid"
+    },
+    {
+      "type": "PairManifestV1",
+      "mutation": "budget.maxSeconds",
+      "value": 0,
+      "reason": "nonpositive runtime cap"
+    },
+    {
+      "type": "ArchitectureCandidateV1",
+      "mutation": "changePlan.0.action",
+      "value": "shell",
+      "reason": "executable model instruction invalid"
+    },
+    {
+      "type": "ArchitectureCandidateV1",
+      "mutation": "metaProvenance",
+      "value": "live",
+      "reason": "live requires actual model identity/prompt"
+    },
+    {
+      "type": "CheckResultV1",
+      "mutation": "exitCode",
+      "value": 1,
+      "reason": "passing check must exit zero"
+    },
+    {
+      "type": "CheckResultV1",
+      "mutation": "status",
+      "value": "not_run",
+      "reason": "not_run must not carry pass artifact"
+    },
+    {
+      "type": "VerificationV1",
+      "mutation": "origin",
+      "value": "untrusted_preview",
+      "reason": "untrusted preview can't be VERIFIED"
+    }
+  ]
+}
