@@ -30,3 +30,8 @@ Do not create a database, broad agent framework, autonomous code edits, producti
 
 ## AgentHarness Verify source of truth (2026-10-24)
 Read [28 product north star](28-verify-product-north-star.md) for the current name, core promise, scoped verdict, UI order, metric and priority definitions. [29 migration register](29-repositioning-consistency.md) maps prior Audit phrasing, precedence and compatibility. Historical Audit references in prior source names are contextual, not competing product specs. The specific v1 schema of the new tri-state verdict lives in [03](03-data-contracts.md). The optional [27 P1 agent study](27-real-agent-experiment.md) remains an isolated, gated research experiment.
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](30-competition-vision.md), [31 conditional feedback study](31-feedback-study.md), [32 Meta hard case](32-hard-case.md), [33 demo and early release](33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

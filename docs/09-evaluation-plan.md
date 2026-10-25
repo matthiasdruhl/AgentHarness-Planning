@@ -55,3 +55,8 @@ After P0 is complete, T15 may compare identical agent/task conditions with compl
 
 ## Verify primary outcome hierarchy
 **P0 measures deterministic verdict correctness and scripted guard enforcement**, not population-level real-agent success improvements. Add fixture expected tri-state verdict confusion counts, especially F1 `UNVERIFIED`, N1 supported claim `VERIFIED`, N2 honest failure/no completion claim `INSUFFICIENT_EVIDENCE`, and missing exit status `INSUFFICIENT_EVIDENCE`. Report sample size and scope explicitly. Maintain existing rules/Muse/combined *diagnostic* ablation as a separate secondary endpoint. **P1 T15, if actually run:** primary false completion claims per eligible real-agent execution with measured valid-success false blocks, task resolution and overhead. No mixed denominators. See [28](28-verify-product-north-star.md).
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](30-competition-vision.md), [31 conditional feedback study](31-feedback-study.md), [32 Meta hard case](32-hard-case.md), [33 demo and early release](33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

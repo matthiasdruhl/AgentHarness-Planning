@@ -46,3 +46,8 @@ Use the most recent docs at implementation; do not assume all OpenAI SDK paramet
 
 ## Muse's role in AgentHarness Verify
 The model is **not** the completion-verdict authority: it explains ambiguous or distributed evidence, links observed events, and proposes candidate allowlisted assertions or guard policies. Deterministic validators determine observable completion status and scripted policy outcomes. The judge's primary F1 verdict must be available **before** making a Meta request. In benchmark ablations compare against rules-only; if Muse merely restates `exitCode:1`, acknowledge limited added value. Include at least one carefully labeled ambiguous/distributed-evidence analysis case if time permits. Never state that model confidence certifies task success.
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](30-competition-vision.md), [31 conditional feedback study](31-feedback-study.md), [32 Meta hard case](32-hard-case.md), [33 demo and early release](33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

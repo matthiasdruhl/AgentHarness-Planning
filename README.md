@@ -68,3 +68,8 @@ The GitHub repository **matthiasdruhl/AgentHarness-Planning** contains specifica
 ## Optional P1: actual-agent improvement evidence
 
 The P0 product remains the constrained deterministic replay app. Once it is deployed and fully tested, an optional **developer-only isolated experiment** can run paired agent trials (guard off vs on) on a fixed trusted task set. This tests *real false completion claims*, legitimate completions incorrectly blocked, genuine task resolution and overhead. It is not a hosted agent runner or arbitrary trace replay feature, and is skipped if security/credits/time constraints are not met. See [27 experiment architecture](docs/27-real-agent-experiment.md), [ADR-011](docs/17-architecture-decisions.md), and [T15](tasks/06-real-agent-experiment.md). No results have been measured yet.
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](docs/30-competition-vision.md), [31 conditional feedback study](docs/31-feedback-study.md), [32 Meta hard case](docs/32-hard-case.md), [33 demo and early release](docs/33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

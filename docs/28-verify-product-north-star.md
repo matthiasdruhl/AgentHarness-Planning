@@ -50,3 +50,8 @@ Preserve prior schemas and contracts unless versioned; keep ADR-011's P1 separat
 
 ## Launch success
 A judge can tell within 15 seconds **what the product checks, what the result is, and why**; the full P0 workflow works, is clear about simulation vs observed data, and makes no unmeasured performance claim.
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](30-competition-vision.md), [31 conditional feedback study](31-feedback-study.md), [32 Meta hard case](32-hard-case.md), [33 demo and early release](33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

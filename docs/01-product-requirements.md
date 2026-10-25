@@ -66,3 +66,8 @@ The ten P0 stories are unchanged. Conditional T15 compares a pinned coding agent
 - **P1:** T15 optional safely isolated actual-agent paired measurements only if the core demo is complete. Additional ambiguous-evidence fixture is P1 unless safely implemented with existing contract; no new broad integrations.
 - **P2/out:** advanced observability dashboards, animations and generalized framework adapters.
 - **Primary measured outcome only if T15 runs:** false completion claims per eligible real run, with legitimate-success blocking and actual task resolution always reported. P0 reports **fixture policy invariant correctness**, not measured agent improvement. See [28](28-verify-product-north-star.md).
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](30-competition-vision.md), [31 conditional feedback study](31-feedback-study.md), [32 Meta hard case](32-hard-case.md), [33 demo and early release](33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

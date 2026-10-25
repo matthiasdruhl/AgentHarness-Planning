@@ -46,3 +46,8 @@ T15 real-agent comparison is a conditional stretch experiment after P0 works and
 
 ## Verify scope sequencing (supersedes trace-first polish)
 By Day 2 deliver verdict-first F1 `UNVERIFIED` and negative-control tri-state tests in addition to ingestion. By Day 3 integrate Muse as **explanation/candidate-check aid** rather than verdict authority. By Day 5 demonstrate guard-policy results and unchanged failed underlying test. By Day 6 make the first 15 seconds of the UI and video tell the product story. T15 is optional P1 and must not displace the core freeze/deployment/submission dates. See [28](28-verify-product-north-star.md).
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](30-competition-vision.md), [31 conditional feedback study](31-feedback-study.md), [32 Meta hard case](32-hard-case.md), [33 demo and early release](33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

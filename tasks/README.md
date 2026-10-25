@@ -19,3 +19,8 @@ Start at T01 on/after Oct 26 only once competition rules permit. Read [AGENTS.md
 
 ## AgentHarness Verify task ordering
 Read [north star](../docs/28-verify-product-north-star.md) and [migration register](../docs/29-repositioning-consistency.md) first. T04 is now explicitly responsible for shared deterministic completion-verdict.v1 and F1/N1/N2/unknown status tests. T10 implements evidence-first verification UI; detailed timeline, Muse explanation and scripted replay follow the immediate verdict. T15 remains optional and cannot expand deployed execution.
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](../docs/30-competition-vision.md), [31 conditional feedback study](../docs/31-feedback-study.md), [32 Meta hard case](../docs/32-hard-case.md), [33 demo and early release](../docs/33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.

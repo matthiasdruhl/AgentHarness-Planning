@@ -120,3 +120,8 @@ Both arms use the same pinned agent, task, initial workspace and outcome oracle;
 - `UNVERIFIED`: observed condition contradicts claimed success or required test explicitly fails.
 - `INSUFFICIENT_EVIDENCE`: no usable test result, ambiguous statuses, unsupported assertions or missing required events; neither pass nor failure can be established.
 - Every verdict includes machine-readable reason codes, claim scope and IDs. Muse can enrich explanation but cannot override deterministic result. Use [03 contracts](03-data-contracts.md) for the shared Zod shape. No public agent execution or arbitrary replay is added.
+
+
+## Competition-alignment update (2026-10-24)
+
+Current scope, gates and precedence: [30 competition vision](30-competition-vision.md), [31 conditional feedback study](31-feedback-study.md), [32 Meta hard case](32-hard-case.md), [33 demo and early release](33-release-and-demo.md). These supersede earlier *priority, calendar and demo ordering* only; original versioned contracts and security prohibitions remain authoritative. P0 is evidence-first tri-state + live Muse analysis + **scripted** policy comparison; P1 is developer-local, independently scored A/B (optional C one bounded feedback continuation) only after deployed P0, validated isolation, rules and credits. No P1 result may be labeled measured unless actually executed. Target first deployment Oct 30 and hard freeze Nov 2. Never call scripted guard compliance a fixed code bug.
