@@ -23,3 +23,7 @@ Immutable literal `schemaVersion` for every top-level artifact; breaking shape/s
 ## Hashing implementation reference
 
 `hash.mjs` documents canonical JSON + SHA-256 normalization, check artifact digest, receipt manifest digest and certificate self-digest. The test fills **temporary in-memory** synthetic fixture digests before checking; placeholder hashes in tracked valid examples are **never authenticated evidence**. Actual trusted loader must also enforce protected evaluator custody, final-tree freshness, pinned suite/policy and immutable artifact bytes. `npm test` alone cannot prove any host-side evaluator trust boundary.
+
+## API conformance fixtures
+
+`examples/api-valid.json` contains exact valid **synthetic** request/response bodies for all published routes, including optional untrusted Verify preview and the shared error envelope. `examples/api-invalid.json` asserts strict rejection of missing consent, unknown commands, invalid enum values, wrong cost units, mislabeled recorded data, and forged authoritative preview. The validator checks every route in `api-registry.json` has a corresponding sample. These are shape tests, **not** proof that any real provider returned a response or that a hosted endpoint is deployed.

@@ -49,6 +49,20 @@ if(examples.VerificationV1.runId!==examples.EvaluatorReceiptV1.runId)throw Error
 if(examples.VerificationV1.receiptId!==examples.EvaluatorReceiptV1.id)throw Error("Missing receipt link");
 if(examples.ExperimentRunV1.receiptId!==examples.EvaluatorReceiptV1.id)throw Error("Run receipt mismatch");
 if(examples.CertificateV1.receiptIds[0]!==examples.EvaluatorReceiptV1.id)throw Error("Certificate receipt mismatch");
+const apiExamples=read("examples/api-valid.json"),apiInvalid=read("examples/api-invalid.json");
+for(const e of registry.endpoints){
+ if(e.request&&!apiExamples[e.request])throw Error("Missing API request example "+e.request);
+ if(!apiExamples[e.response])throw Error("Missing API response example "+e.response);
+}
+for(const [type,record] of Object.entries(apiExamples)){
+ const fn=get(type);if(!fn(record))throw Error("Invalid API example "+type+": "+JSON.stringify(fn.errors));checked++;
+}
+for(const item of apiInvalid.cases){
+ const record=JSON.parse(JSON.stringify(apiExamples[item.type]));
+ const bits=item.mutation.split(".");let x=record;for(const b of bits.slice(0,-1))x=x[b];x[bits.at(-1)]=item.value;
+ const fn=get(item.type);if(fn(record))throw Error("Invalid API fixture erroneously passes: "+item.id);
+ checked++;
+}
 const bundle=read("examples/valid-bundle.json");
 const {checkBundle}=await import("./semantics.mjs");
 checkBundle(bundle);
