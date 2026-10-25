@@ -9,8 +9,8 @@ Local Codex CLI for primary implementation; Docker Desktop for Apple Silicon wit
 1. **Developer workstation:** editor, Git, Codex CLI, Next.js, local test tooling; do not give benchmark scripts access to this trust zone.
 2. **Untrusted experiment:** reviewed disposable sandbox with writable task workspace only, no host secrets, SSH/keychain, Docker socket or privileged host mounts. Protected grader separate. Network off for test execution; when remote inference is needed, use a separately secured, restricted controller/agent boundary rather than placing broad credentials with test code.
 
-## Primary experiment execution research
-Investigate **Docker Sandboxes + Codex** first. Its host-managed authentication may simplify isolating credentials from task files, but check actual `sbx` availability, noninteractive control, mount/SSH forwarding, egress and security on the installed version. Its internal Codex sandbox setting is not the whole security boundary. Never assume it works with SCBench just because `sbx run codex` starts.
+## Primary experiment execution: existing setup
+**User-reported setup (Oct 25): Docker Sandboxes installed and a Codex sandbox initialized.** Reuse for inspection rather than reinstall. Actual `sbx` version, patched CA image, workspace mode, effective SSH forwarding, controlled test results and noninteractive support are **not verified**. First run the [booking-first sandbox validation plan](DOCKER-SANDBOX-BOOKING-FIRST.md); do not run untrusted trials in a default direct-mounted workspace. If necessary use a separate sanitized clone/mountless experiment sandbox. Never assume that `sbx run codex` proves SCBench readiness.
 
 If the tool cannot support secure unattended execution, investigate a **hardened pinned SCBench Codex adapter** with inner workspace isolation and safe external authentication. Never mount personal Codex `auth.json` into attacker-controlled code. Stop live experiments if the boundary fails.
 
@@ -41,3 +41,6 @@ Individual commands may fail if tools are not installed. Before paid inference, 
 - No live agent run if any hard security gate fails.
 
 No Mac commands or test workloads were executed by the planning update.
+
+## Updated runtime security specifics
+Docker local Sandboxes use isolated **microVMs** with user sudo inside; the security boundary is guest-to-host containment, not an absolute non-root UID. Docker's Codex startup can bypass the **inner** Codex sandbox; that is acceptable only after separately verifying outer VM workspace, host-integration and credential policies. Verify Docker CLI version >=0.42.0 and October 21, 2026 CA image/trust-store mitigation; refreshing CLI does not refresh old images. Docker's SSH forwarding can be enabled by default. Check/disallow it for untrusted trials and account for any host-level setting changes. Preserve the existing initialized environment; **never destroy or recreate it automatically**. [Operator runbook](DOCKER-SANDBOX-BOOKING-FIRST.md).

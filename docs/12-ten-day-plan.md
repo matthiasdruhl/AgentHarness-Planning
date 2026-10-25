@@ -20,3 +20,6 @@ If M2 isolation or M7 fair comparison fails, preserve safe read-only fallback an
 
 ## Timing interpretation (post-audit)
 The table groups full M0–M10 workstreams and must **not** be read as a requirement to delay the first safe evaluator result until Oct 28 or a paired experiment until Nov 1. Target real evidence earlier when the technical gates permit, with an A/B by Oct 30 and external SCBench a strictly conditional pilot. Nov 2 remains feature freeze. Recheck 9 PM ET Nov 4 portal deadline after Nov 1 daylight-saving change.
+
+## Docker Sandboxes setup advancement
+User reports installing and initializing Docker Sandbox + Codex; this avoids a speculative installation task but does not discharge isolation proof. Oct 27: inspect current sandbox and attest sanitized booking target, host secret/SSH forwarding and grader separation; Oct 28: run the minimal bounded booking smoke if verified; Oct 30: only attempt external SCBench if booking A/B evidence has a credible pathway. See [operator runbook](DOCKER-SANDBOX-BOOKING-FIRST.md).

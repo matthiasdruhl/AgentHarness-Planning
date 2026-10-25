@@ -30,10 +30,10 @@ Multi-language/general repository execution, hosted sandboxes, automatic broad r
 | Day | Gate and fallback |
 |---|---|
 | Oct 26 | Approve published rules, pin spec commit in separate app repo, clean build/tests, one real Meta inference |
-| Oct 27 | Booking baseline + independent oracle, sandbox fake-secret/no-host-access preflight |
-| Oct 28 | First actual evaluator artifact and negative tamper/stale/missing-check tests; experiment smoke if safe |
+| Oct 27 | **Inspect existing user-reported Codex sandbox**, verify patched tool/image, safe sanitized booking fixture, protected oracle and synthetic host-access denial probes; no reinstall-by-default |
+| Oct 28 | **First booking Codex sandbox smoke** under fixed limits if isolation passed; record real run and independent evaluator artifact; test tampered/missing/stale evidence |
 | Oct 29 | Meta candidate + status quo and template control, first browser vertical slice |
-| Oct 30 | First valid A/B pair if safe; **SCBench go/no-go**; stop unsafe or incompatible integration |
+| Oct 30 | First valid booking A/B pair if safe; **SCBench go/no-go only after booking success**; stop external integration if unsafe or incompatible |
 | Oct 31 | Strong roadmap-aware baseline comparison if affordable, first video draft |
 | Nov 1 | Honest second/negative or genuinely held-out challenge only if already frozen |
 | Nov 2 | Integrate/read-only deploy/E2E; **feature freeze** |
@@ -43,3 +43,6 @@ Multi-language/general repository execution, hosted sandboxes, automatic broad r
 **Kill switches:** No official permission -> no disallowed development. No tested isolation -> no agent/untrusted test run. No matched pair -> no measured architecture-improvement claim. No strong comparator -> no Meta-superiority claim. No heldout custody -> no blind-generalization claim. Cut extras before dropping safety or measurement integrity.
 
 See [handoff](IMPLEMENTATION-HANDOFF.md), [contracts](CANONICAL-IMPLEMENTATION-CONTRACT.md), [demo](DEMO-ACCEPTANCE.md), and [audit tracker](AUDIT-REMEDIATION.md).
+
+## Setup status and runner order (Oct 25)
+The owner reports Docker Sandboxes installed and a Codex sandbox initialized. **Reported installation is not verified isolation or a measured run.** The preferred next step is [non-destructive inspection + booking-first experiment](DOCKER-SANDBOX-BOOKING-FIRST.md), not another sandbox framework or prematurely integrating SCBench. Existing sandbox should be preserved; use a separately sanitized experiment workspace/clone or mountless instance if the existing one has broad host mounts or secrets. A safe booking fixture and independent grader are P0; SCBench is P1. Never automatically delete/replace user sandbox to refresh a patched image.

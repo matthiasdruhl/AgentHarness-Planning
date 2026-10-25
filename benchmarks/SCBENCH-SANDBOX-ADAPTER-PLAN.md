@@ -1,10 +1,10 @@
 # SlopCodeBench safe-agent integration — implementation decision
 
-**Status (2026-10-25): design proposed, not implemented, not safety-audited, not executed.** Applies to M0/M2 feasibility and the conditional SlopCodeBench JavaScript pilot. The independent upstream tests and checkpoint semantics must remain intact.
+**Status (2026-10-25): user reports Docker Sandboxes + Codex sandbox initialized; actual host version, security properties, unattended execution and SCBench adapter remain NOT_VERIFIED/NOT_RUN.** Applies to M0/M2 feasibility and the conditional SlopCodeBench JavaScript pilot. The independent upstream tests and checkpoint semantics must remain intact.
 
 ## Decision order
 
-**Path 1 (preferred pilot): Docker Sandboxes + Codex with protected credential handling.** Evaluate Docker's `sbx` sandbox feature, its supported Codex agent, authentication modes, workspace mounts, and noninteractive invocation *on the actual installed versions*. Published getting-started examples include:
+**Path 1 (first smoke target): reuse installed Docker Sandboxes + Codex for inspection and a dedicated, sanitized booking-v1 experiment.** Do **not** begin with SCBench or repeat general installation. Validate actual version, image patch level, auth proxy, SSH forwarding, workspace mounts, network policy, protected oracle, cancellation and one real Codex run *before* wiring any external benchmark. Published startup examples include:
 
 ```sh
 sbx secret set openai --oauth
@@ -13,9 +13,9 @@ sbx run codex ./benchmark-workspace
 
 These demonstrate an interactive/sandbox setup only. **They are not a proven unattended SCBench adapter, security certification, or a supported exact benchmark command.** Docker Sandboxes might disable Codex's *inner* sandbox because the outer isolation is meant to provide protection: test the outer boundary, mounts, network paths and SSH-agent forwarding instead of treating bypass as safe by assumption.
 
-**Path 2 (fallback): hardened upstream Codex adapter.** Fork/pin upstream agent integration; inspect current source and remove unjustified `--dangerously-bypass-approvals-and-sandbox`; attempt `codex exec --sandbox workspace-write --json ...` only after verifying that nested Linux restrictions permit it. **Removing the flag does not fix credentials**: never mount personal `~/.codex/auth.json` into an untrusted task workspace. Use a separately isolated inference/controller boundary and restricted authentication, with budget limits; if no safe mode works, block execution.
+**Path 2 (only after documented booking/SCBench feasibility blocker): hardened upstream Codex adapter.** Fork/pin upstream agent integration; inspect current source and remove unjustified `--dangerously-bypass-approvals-and-sandbox`; attempt `codex exec --sandbox workspace-write --json ...` only after verifying that nested Linux restrictions permit it. **Removing the flag does not fix credentials**: never mount personal `~/.codex/auth.json` into an untrusted task workspace. Use a separately isolated inference/controller boundary and restricted authentication, with budget limits; if no safe mode works, block execution.
 
-**Path 3:** remote disposable Linux machine/runner only if selected task images or isolation unsupported on M4 Pro, with same no-secret-in-task principle. Do not convert this into a cloud-first development plan. **Path 4:** if no safe runner by Oct 30, keep the custom booking-v1 controlled experiment and report SCBench as not run.
+**Path 3:** remote disposable Linux only with observed platform/isolation blocker, never by default. **Path 4:** if no SCBench-safe runner by Oct 30, drop the external pilot and keep the successfully validated booking-v1 experiment; if booking isolation itself fails, do not execute an agent and publish no result.
 
 ## System boundaries
 
@@ -88,3 +88,10 @@ Do not prefill unmeasured usage; unknown fields null/missing. Implement against 
 - Codex CLI noninteractive: https://developers.openai.com/codex/non-interactive/
 - SCBench Docker runtime: https://github.com/SprocketLab/slop-code-bench/blob/main/docs/execution/docker.md
 - SCBench Codex adapter: https://github.com/SprocketLab/slop-code-bench/blob/main/docs/agents/agents/codex.md
+
+## 2026-10-25 decision revision — booking first
+The owner **already installed** `sbx` and initialized a Codex sandbox (reported, not independently inspected). Therefore **SA01 begins at checking the existing named sandbox**, not installing a fresh tool stack. The new [operator smoke protocol](../docs/DOCKER-SANDBOX-BOOKING-FIRST.md) owns ordered validation and safe use of a new dedicated sanitized experiment sandbox if needed. Do not automatically remove the existing sandbox, whose in-guest filesystem may contain uncommitted work.
+
+**Security patch gate:** verify sbx version >=0.42.0 and Docker's Oct 21 eMudhra CA security image refresh. Audit **default SSH-agent forwarding** and workspace direct mount vs clone/mountless before untrusted work. VM guest sudo and the Codex inner `--dangerously-bypass-approvals-and-sandbox` flag are not by themselves disqualifying; host access, proxy credentials, forwarding, egress and protected grader separation **must be tested**. An external adapter only follows successful booking-v1 trusted execution and a proven noninteractive, cancelable bridge.
+
+**SA02/SA03 are promoted to P0 booking-v1 checks. SA04/SA05 remain P1 SCBench-specific conditional work.** Neither new roadmap nor second sandbox implementation is mandated for this docs update; original M0/M2/M7 IDs stay canonical.

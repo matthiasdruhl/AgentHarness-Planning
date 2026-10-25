@@ -5,7 +5,7 @@
 Forecode helps developers choose architectures using user-confirmed future intentions, Meta-generated candidate hypotheses, a transparent scenario regret model, matched agent evolution experiments, and independent verification certificates.
 
 ## Start here
-- **[Hackathon submission-first plan](docs/HACKATHON-CRITICAL-PATH.md)** · [app/Codex handoff](docs/IMPLEMENTATION-HANDOFF.md) · [demo acceptance](docs/DEMO-ACCEPTANCE.md) · [audit tracker](docs/AUDIT-REMEDIATION.md)
+- **[Hackathon submission-first plan](docs/HACKATHON-CRITICAL-PATH.md)** · [Existing Codex Docker Sandbox booking-first runbook](docs/DOCKER-SANDBOX-BOOKING-FIRST.md) · [app/Codex handoff](docs/IMPLEMENTATION-HANDOFF.md) · [demo acceptance](docs/DEMO-ACCEPTANCE.md) · [audit tracker](docs/AUDIT-REMEDIATION.md)
 - [AGENTS.md](AGENTS.md) and [execution index](docs/21-execution-index.md)
 - [Master implementation plan](docs/IMPLEMENTATION-MASTER-PLAN.md), [milestones](milestones/README.md), [68 Codex tickets](docs/CODEX-TICKETS.md)
 - [Benchmark registry](benchmarks/README.md) and [booking-v1 demo specification](benchmarks/booking-v1/README.md)

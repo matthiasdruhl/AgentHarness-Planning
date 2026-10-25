@@ -16,3 +16,6 @@ Changing Markdown is **not** proof of runnable software. Keep proposed repairs s
 | External SCBench unsafe/untested | Retain safe sandbox feasibility gate with Oct 30 stop | Do not claim pilot result |
 
 Review completed branch content, link integrity, and exact commit before merge. No code, Meta calls, sandbox attestation, application tests or benchmark results have been produced by a documentation commit.
+
+## New operator input (Oct 25)
+Docker Sandboxes is reportedly installed and a Codex sandbox initialized. Decision is now **existing-sandbox, booking-first** rather than installing a runner or adapting SCBench before testing the product. [Runbook](DOCKER-SANDBOX-BOOKING-FIRST.md) tracks actual security/evidence gates, all **NOT_RUN** as of this planning update. The original sandbox remains untouched; its mode, patched version/image and host integrations must be inspected by the operator before untrusted execution.
