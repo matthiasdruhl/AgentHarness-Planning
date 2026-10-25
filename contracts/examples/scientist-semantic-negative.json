@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "scientist-semantic-negative.v1",
+  "cases": [
+    {
+      "id": "unknown-candidate",
+      "path": "hypotheses.0.candidateId",
+      "value": "not-a-candidate"
+    },
+    {
+      "id": "mismatched-baseline",
+      "path": "hypotheses.0.baselineCommit",
+      "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "id": "unknown-intent",
+      "path": "hypotheses.0.intentIds.0",
+      "value": "nobody"
+    },
+    {
+      "id": "unconfirmed-intent",
+      "path": "intents.0.status",
+      "value": "tentative"
+    },
+    {
+      "id": "unknown-visible-scenario",
+      "path": "hypotheses.0.visibleScenarioIds.0",
+      "value": "hidden-task"
+    },
+    {
+      "id": "hidden-scenario-present",
+      "path": "visibleScenarios.0.origin",
+      "value": "evaluator_heldout"
+    },
+    {
+      "id": "challenge-other-hypothesis",
+      "path": "challenges.0.hypothesisId",
+      "value": "somebody-else"
+    },
+    {
+      "id": "challenge-other-candidate",
+      "path": "challenges.0.targetCandidateId",
+      "value": "A"
+    },
+    {
+      "id": "challenge-candidate-baseline",
+      "path": "challenges.0.baselineCommit",
+      "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "id": "challenge-secret",
+      "path": "challenges.0.visibility",
+      "value": "evaluator_heldout"
+    },
+    {
+      "id": "challenge-approves-itself",
+      "path": "challenges.0.reviewStatus",
+      "value": "approved"
+    },
+    {
+      "id": "challenge-dangling-intent",
+      "path": "challenges.0.change.intentIds.0",
+      "value": "missing"
+    },
+    {
+      "id": "untrusted-provider-spoof",
+      "path": "challenges.0.provider.provider",
+      "value": "meta"
+    },
+    {
+      "id": "summary-mismatched-hypothesis",
+      "path": "evidenceSummaries.0.hypothesisId",
+      "value": "wrong"
+    },
+    {
+      "id": "summary-unknown-run",
+      "path": "evidenceSummaries.0.observedChecks.0.runId",
+      "value": "run-not-listed"
+    },
+    {
+      "id": "summary-scope-bad-baseline",
+      "path": "evidenceSummaries.0.baselineCommit",
+      "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "id": "interpret-other-summary",
+      "path": "interpretations.0.evidenceSummaryId",
+      "value": "unknown"
+    },
+    {
+      "id": "interpret-other-hypothesis",
+      "path": "interpretations.0.hypothesisId",
+      "value": "unknown"
+    },
+    {
+      "id": "interpret-pretends-verify",
+      "path": "interpretations.0.authority",
+      "value": "trusted_evaluator"
+    }
+  ]
+}

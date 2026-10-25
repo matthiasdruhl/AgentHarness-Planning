@@ -100,4 +100,16 @@ const wrong=JSON.parse(JSON.stringify(c));wrong.receipt.evaluatedTreeSha256="f".
 if(wrong.receipt.integrity.manifestSha256===receiptDigest(wrong.receipt))throw Error("Tampered receipt was not detected");
 wrong.certificate.conclusion="tampered";
 if(wrong.certificate.artifactSha256===certificateDigest(wrong.certificate))throw Error("Tampered certificate was not detected");
-console.log("Forecode contract schemas + semantics + canonical hashes PASS ("+checked+" fixtures).");
+const scientist=read("examples/scientist-bundle.json");
+const {checkScientistBundle}=await import("./scientist-semantics.mjs");
+checkScientistBundle(scientist);
+for(const badCase of read("examples/scientist-semantic-negative.json").cases){
+ const candidate=structuredClone(scientist);
+ const parts=badCase.path.split(".");
+ let obj=candidate;for(const part of parts.slice(0,-1))obj=obj[part];
+ obj[parts.at(-1)]=badCase.value;
+ let rejected=false;try{checkScientistBundle(candidate)}catch{rejected=true}
+ if(!rejected)throw Error("Invalid Meta Scientist semantic fixture passed: "+badCase.id);
+ checked++;
+}
+console.log("Forecode including Meta Scientist contracts + semantics + canonical hashes PASS ("+checked+" fixtures).");
