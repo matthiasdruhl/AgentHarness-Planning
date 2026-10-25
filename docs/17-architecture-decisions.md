@@ -22,3 +22,8 @@ For changes: record date, decision, alternative, security/evaluation impact, aff
 **Why:** fastest route to fair measured Forecode evidence with minimal new infrastructure; public benchmark integration is higher risk and optional. Docker microVM guest may have sudo, but host isolation, SSH forwarding, host-managed credentials, egress, version/CA patch level and hidden-oracle separation require actual tests.
 **Alternatives:** hardened native Codex adapter or disposable remote Linux only on documented blocker; halt agent trials if no safe option.
 **Impacts:** M0.3, M2.1–2.5, M7 first A/B, optional SCBench; [operator runbook](DOCKER-SANDBOX-BOOKING-FIRST.md), [sandbox adapter](../benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md). No application runtime change.
+
+## ADR-014 — machine-readable contract freeze v1 (2026-10-25)
+**Decision:** JSON Schema 2020-12 [catalog](../contracts/schemas/forecode-v1.schema.json) + [API registry](../contracts/api-registry.json) freeze structural fields; [normative cross-record spec](CONTRACT-FREEZE-v1.md) governs graph identity, consent/revisions, deterministic modeled point weights and minimax regret, A/B vs Meta comparison, protected JCS-digested evaluator receipts, and verdict precedence. Do not independently invent a schema in each implementation module.
+**Alternatives:** compact prose examples only (ambiguous for Codex); mixing ordinal ranks and numeric regret (invalid); untrusted HTTP verification (unsafe). Reject alternatives.
+**Consequences:** require schema and semantic positive/negative fixtures in CI and strict Zod parity in the separate app repo. Breaking changes after kickoff are versioned and migrated. The planning examples remain synthetic, not measured evidence.

@@ -16,3 +16,10 @@ Never run upstream Codex integration with personal auth mount or bypass flag wit
 - [Demo acceptance](DEMO-ACCEPTANCE.md): judge UX, attribution and E2E gates.
 - [Remediation tracker](AUDIT-REMEDIATION.md): issues and unverified code-level follow-up.
 These are documentation additions only; no recorded experiments or final organizer approvals.
+
+## Contract freeze reading order (mandatory before M1.3)
+1. [Frozen semantic contract](CONTRACT-FREEZE-v1.md).
+2. [Machine-readable JSON Schema catalog](../contracts/schemas/forecode-v1.schema.json) and [HTTP endpoint registry](../contracts/api-registry.json).
+3. [Executable structural/semantic contract fixtures](../contracts/README.md).
+4. [Artifact descriptions](03-data-contracts.md), [API behavior](04-api-contracts.md), [module ownership](CONTRACT-REGISTRY.md).
+5. M1.3 / M3 / M5 / M6 / M7 ticket acceptance. If a legacy milestone statement disagrees, the freeze takes precedence **and** the conflicting prose should be corrected before a Codex ticket runs.

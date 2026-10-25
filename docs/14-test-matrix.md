@@ -16,3 +16,6 @@
 | Demo | recorded label and offline fallback | no fabricated simulated savings shown as measured | E2E review |
 
 CI must not run expensive paid inference or unsafe agent sessions by default. Exact results are only recorded after implementation.
+
+## Frozen contract conformance gate
+Run [schema/semantic contract fixtures](../contracts/README.md) first and require app Zod/API parity. Explicitly include cost formula, complete candidate × scenario matrix, minimax tie/abstain, consent true, revision updates, receipt/certificate JCS digests, exact run/fixture/suite/policy hash links, trusted failure precedence, and untrusted preview insufficiency. A passing JSON Schema example with synthetic SHA placeholders does **not** demonstrate a trusted real evaluator run.
