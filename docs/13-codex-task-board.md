@@ -1,22 +1,18 @@
-# 13 — Canonical Codex task board
+# 13 — Canonical Codex workstreams (parent tickets)
 
-Tickets are sequential where blocked; each complete ticket requires files, test command, observed result and notes. See tasks/README.md for execution prompts.
+The earlier F01–F14 are **workstream IDs**, not complete execution tickets. [CODEX-TICKETS.md](CODEX-TICKETS.md) is the canonical detailed queue containing 68 executable `M*.x.1` tickets. [Milestone specifications](../milestones/README.md) own each ticket's scope and acceptance.
 
-| ID | Priority | Depends | Deliverable | Acceptance |
-|---|---|---|---|---|
-| F01 | P0 | rules | Boot Next TS strict, scripts, CI | lint/type/test/build pass |
-| F02 | P0 | F01 | Vetted booking fixture and immutable external acceptance oracle | intentional hidden-test tamper rejected |
-| F03 | P0 | F02 | Isolated local agent run with budgets, allowlist, captured evidence | no-isolation fails closed; baseline repeat |
-| F04 | P0 | F03 | Verify deterministic verdict engine and scoped checks | pass/fail/not-run tests |
-| F05 | P0 | F01 | Intent Registry schema, confirmation UI | edit/reject invalidates analyses |
-| F06 | P0 | F05 | Live/recorded Meta adapter with strict validation | injected model output rejected |
-| F07 | P0 | F02 | TS/Next dependency graph with limitations | fixture aliases/routes handled |
-| F08 | P0 | F06,F07 | Two-candidate scenario regret engine | deterministic same-input outcome |
-| F09 | P0 | F03,F04,F08 | Matched A/B experiment, held-out case | same checks/budgets; real artifacts |
-| F10 | P0 | F09 | Evidence ledger + certificate | links hashes and source of measurements |
-| F11 | P0 | F05,F08,F10 | Demo UX, accessible comparison | truthful recorded/live indicator |
-| F12 | P0 | F11 | Deploy, security review, video, submit | complete checklist |
-| F13 | P1 | F09 | Verify-off study / Meta ablation | correctly separated attribution |
-| F14 | P1 | F09 | Additional repetitions and adverse-case control | no cherry-picked results |
+| Parent | Primary milestones | Implementation ownership |
+|---|---|---|
+| F01 | M0–M1 | rules, app setup, contracts, CI |
+| F02–F03 | M2 | vetted fixture, oracle, isolated runner |
+| F04 | M3 | independent Verify checks, evidence verdict |
+| F05–F06 | M4, M6 | intent registry, Meta adapter, candidates/scenarios |
+| F07–F08 | M5–M6 | graph, regret, Foresight orchestration |
+| F09 | M7 | matched A/B held-out experiment |
+| F10 | M7–M8 | evidence, certificate |
+| F11 | M8–M9 | UX and demo |
+| F12 | M8–M10 | deploy, submit |
+| F13–F14 | P1 only | ablations and repeated runs after P0 |
 
-Fallback: if F03 isolation fails, stop executable runner and present offline recorded case study with no causal improvement claims.
+**Critical path:** protected evaluator / sandbox / Verify → fair experiment → read-only evidence/certificate → submission. The exact date and fallback gates live in [master plan](IMPLEMENTATION-MASTER-PLAN.md) and [validation](MILESTONE-VALIDATION.md). No substantive code, model call or run is implied by marking these tickets planned.

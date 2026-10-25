@@ -1,26 +1,22 @@
 # Forecode — Foresight + Verify | Meta Hackathon Planning
 
-**Status:** Planning only; no application or benchmark execution has been completed. **Window:** October 26–November 4, 2026. **Repository:** AgentHarness-Planning remains the source of planning truth; proposed implementation repo name `forecode` is provisional pending name clearance and organizer rules.
+**Status:** Planning only; no application code, real benchmark evidence or working Meta integration is implied. **Window:** October 26–November 4, 2026. **Repo:** AgentHarness-Planning, with proposed separate application repository `forecode` subject to event rules and naming clearance.
 
-**Pitch:** Build fast. Keep the code. Prove the architecture. Forecode helps coding agents choose software boundaries informed by confirmed future product intentions, probes those choices against counterfactual requirement changes, and independently checks implementation evidence.
+**Pitch:** Build fast. Keep the code. Prove the architecture. Forecode uses developer-confirmed future requirements and Meta-generated architecture hypotheses to compare architectural changes and independently verify their implementation outcomes.
 
-## Product contract
-- **Foresight:** ingest explicit developer intents; propose 2 bounded architecture candidates using Meta Muse; estimate deterministic dependency impact and scenario regret with transparent assumptions.
-- **Experiment:** run matched, vetted TypeScript/Next.js feature-change tasks on isolated baseline and candidate repositories; collect independently checked outcomes. No claim of better maintainability without held-out evidence.
-- **Verify:** trusted tests and type/build/boundary checks yield scoped VERIFIED, REJECTED, or INSUFFICIENT_EVIDENCE with evidence paths. No guarantee of full correctness, no '100% implemented' promise.
-- **Certificate:** export decision alternatives, intent provenance, assumptions, static estimates, agent-run evidence, costs, caveats and held-out outcome.
+## Start here
+1. [AGENTS.md](AGENTS.md) — Codex safety and implementation constraints.
+2. [Execution index](docs/21-execution-index.md) — canonical source-of-truth priority.
+3. [Implementation master plan](docs/IMPLEMENTATION-MASTER-PLAN.md) — M0–M10, dates, prerequisites and exit gates.
+4. [Milestone directory](milestones/README.md) — detailed sub-milestones and acceptance criteria.
+5. [Codex ticket queue](docs/CODEX-TICKETS.md) — 68 ready-to-assign tickets.
+6. [Module/contract registry](docs/CONTRACT-REGISTRY.md) — ownership/interfaces; exact fields in [data contracts](docs/03-data-contracts.md) and [API contracts](docs/04-api-contracts.md).
+7. [Benchmark protocol](docs/BENCHMARK-PROTOCOL.md) and [validation gates](docs/MILESTONE-VALIDATION.md).
 
-## Build sequence
-1. Review official rules and credits; do not presume prebuilt implementation eligibility.
-2. Prepare a small vetted booking-app experiment and protected acceptance oracle **first**.
-3. Build trusted verifier and controlled experiment runner.
-4. Add intent registry, Meta structured proposals, static graph/regret scorer.
-5. Wire one end-to-end counterfactual comparison, evidence ledger and demo.
+## P0 proof
+Create a vetted booking fixture and protected independent tests, run a safe matched A/B architecture experiment under **identical Verify**, test a frozen future feature, and report real outcomes with provenance. Meta helps interpret confirmed developer intent and propose bounded architecture/scenario hypotheses; deterministic graph scoring is labeled an estimate. Honest held-out comparisons matter more than animation and synthetic scores.
 
-## P0 definition of done
-Two comparable architectures satisfy initial acceptance tests; one frozen future-change task is run against both under equal agent/Verify conditions; results include tests, time, tokens/cost where available, and evidence artifacts. Meta is called live for structured intent/scenario or architectural hypothesis with validation and clear provenance. A simple web UI walks through the decision and result; hosted app never executes arbitrary uploaded code. If real experiments cannot run safely, publish a **recorded, labeled case study** without improvement claims.
+## Execution rules
+Review official participant rules before implementing potentially disallowed code. Hosted app cannot execute arbitrary code or agent actions. Developer-local experiments must fail closed without provable isolated execution. Never invent results or imply every code defect is caught. November 2 is feature freeze; submit ahead of November 4 cutoff after rechecking portal details.
 
-## Read order
-[AGENTS.md](AGENTS.md) → [execution index](docs/21-execution-index.md) → [requirements](docs/01-product-requirements.md) → [architecture](docs/02-system-architecture.md) → [contracts](docs/03-data-contracts.md) → [API](docs/04-api-contracts.md) → [security](docs/10-security-and-privacy.md) → [evaluation](docs/09-evaluation-plan.md) → [tasks](docs/13-codex-task-board.md).
-
-**Document rule:** these Forecode documents supersede the earlier Verify-only planning. The earlier open PR #1 is **not** the active product specification. All metrics and demos are targets until a run produces evidence.
+These documents supersede legacy Verify-only audit/replay plans. Older task files are references only; the single actionable queue is docs/CODEX-TICKETS.md.
