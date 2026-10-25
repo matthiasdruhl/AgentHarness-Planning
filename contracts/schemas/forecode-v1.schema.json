@@ -699,7 +699,8 @@
           "if": {
             "properties": {
               "perScenario": {
-                "maxItems": 0
+                "maxItems": 0,
+                "type": "array"
               }
             },
             "required": [
