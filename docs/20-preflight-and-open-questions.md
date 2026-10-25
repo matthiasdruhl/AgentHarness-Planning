@@ -1,16 +1,14 @@
-# 20 — Preflight and external blockers
+# 20 — Feasibility and launch checklist
 
-Owner environment (reported): MacBook Pro M4 Pro, 48 GB RAM, ~294 GB free of 494 GB. Local Codex preferred. Read [Local Mac sandbox plan](LOCAL-MAC-SANDBOX.md).
+- [ ] Confirm organizer prebuilt-code eligibility and official Meta model credits.
+- [ ] Inspect owner M4 Pro host: arm64, Docker Desktop engine, Codex, Node, Python 3.12+, uv, disk.
+- [ ] Confirm `sbx` installed and supported; test Docker Sandboxes Codex authentication without exposing real secrets to untrusted code.
+- [ ] Confirm Docker Sandboxes supports safe programmatic invocation, artifacts and timeouts needed for pinned SCBench checkpoint.
+- [ ] Run fake-secret denial tests; review SSH-agent forwarding, network, home mounts, keychain and Docker socket exposure.
+- [ ] Check selected JS task Docker manifest/native build and bridge/localhost behavior.
+- [ ] Test unmodified original grader in separate evaluator isolation.
+- [ ] Pin task and runner SHA; freeze matched A/B budgets and checkpoint-visible information.
+- [ ] If Docker Sandboxes fails, try hardened upstream agent wrapper; if still unsafe/incompatible, defer public benchmark rather than break core demo.
+- [ ] Complete controlled booking-v1 baseline, stable verifier and honest demo evidence before feature freeze Nov 2.
 
-- [ ] Official event rules/prebuilt-code permission rechecked and recorded.
-- [ ] Meta model API, actual model/credits/spend cap verified.
-- [ ] Node, Python **3.12+**, uv, Docker daemon, Codex CLI checked on owner's Mac.
-- [ ] Docker Desktop ARM64 image smoke and reasonable limits set (start VM RAM 16 GB, 6 CPUs, disk cap 80 GB).
-- [ ] Vetted developer-local sandbox isolation evidenced (non-root, no host secrets/docker socket, bounded execution).
-- [ ] Controller inference networking separated from untrusted test code; local auth never mounted into untrusted task workspace.
-- [ ] **SCBench Codex adapter bypass/credential mount reviewed, hardened or rejected**, not used stock blindly.
-- [ ] Public benchmark JS task selection and upstream dataset availability verified; smoke run graded.
-- [ ] Hidden booking oracle is truly out of agent-readable scope, frozen and hashed privately.
-- [ ] A/B settings identical, Verify same, provenance/report format recorded.
-
-Hard stop: absent sandbox or credential-safe agent control means no live benchmark agent execution. Safe fallback is local deterministic testing/recorded demonstration without measured advantage claims.
+**Source of truth:** [SCBench sandbox adapter plan](../benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md), [Mac compatibility](../benchmarks/SCBENCH-MAC-COMPATIBILITY.md), [host setup](LOCAL-MAC-SANDBOX.md).

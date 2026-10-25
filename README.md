@@ -1,17 +1,15 @@
 # Forecode — Foresight + Verify | Meta Hackathon Planning
 
-**Status:** Planning-only; no working implementation or benchmark measurements claimed. **Event:** October 26–November 4, 2026.
+**Status:** planning specifications; no benchmark execution or performance results. **Event:** October 26–November 4, 2026. **Project:** AgentHarness-Planning.
 
-**Pitch:** Build fast. Keep the code. Prove the architecture.
+Forecode helps developers choose architectures using user-confirmed future intentions, Meta-generated candidate hypotheses, a transparent scenario regret model, matched agent evolution experiments, and independent verification certificates.
 
-## Main entry points
-- [AGENTS.md](AGENTS.md), [execution index](docs/21-execution-index.md).
-- [Master implementation plan](docs/IMPLEMENTATION-MASTER-PLAN.md), [milestone specs](milestones/README.md), [68 Codex tickets](docs/CODEX-TICKETS.md), [contracts](docs/CONTRACT-REGISTRY.md).
-- [Benchmark index](benchmarks/README.md), [booking-v1 spec](benchmarks/booking-v1/README.md), [evaluation rules](docs/09-evaluation-plan.md).
-- **[Local M4 Pro sandbox setup](docs/LOCAL-MAC-SANDBOX.md)** — 48 GB RAM, ~294 GB free; recommended Docker sizing and isolation verification.
-- **[SCBench Apple Silicon compatibility review](benchmarks/SCBENCH-MAC-COMPATIBILITY.md)** — Python 3.12+, Docker network differences, uncertain ARM64 images, **upstream Codex sandbox bypass and authentication mount risk**.
+## Start here
+- [AGENTS.md](AGENTS.md) and [execution index](docs/21-execution-index.md)
+- [Master implementation plan](docs/IMPLEMENTATION-MASTER-PLAN.md), [milestones](milestones/README.md), [68 Codex tickets](docs/CODEX-TICKETS.md)
+- [Benchmark registry](benchmarks/README.md) and [booking-v1 demo specification](benchmarks/booking-v1/README.md)
+- **[Local M4 Pro sandbox plan](docs/LOCAL-MAC-SANDBOX.md)** and **[Docker Sandbox–first SlopCodeBench integration decision](benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md)**
+- [Evaluation standards](docs/09-evaluation-plan.md), [security gates](docs/10-security-and-privacy.md)
 
-## Hard safety and evaluation contract
-Hosted UI never executes arbitrary code. Developer-local vetted coding-agent runs require demonstrated isolation and protected evaluator. Stock SCBench Codex adapter needs credential and sandbox safety review before any untrusted benchmark runs. Architecture A/B compares under identical Verify; measured, recorded and estimated evidence never conflated. Public benchmark pilot is conditional; benchmark compatibility is not assumed.
-
-Official rules and API credits must be verified at kickoff. Feature freeze Nov 2. Don't add major features instead of finishing one reproducible experiment.
+## Critical constraints
+No app-hosted arbitrary code execution. No untrusted task access to personal Codex auth, host files or hidden tests. SCBench stock Codex adapter is blocked pending reviewed isolation; Docker Sandboxes is first *candidate*, not a verified integration. External public benchmark pilot is conditional, and local booking controlled study is not standalone evidence of generalization. Results must be actually measured and failures reported. Nov 2 feature freeze.
