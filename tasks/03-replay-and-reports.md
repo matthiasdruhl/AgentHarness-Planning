@@ -1,19 +1,2 @@
-# Replay and reports — T07 to T09
-
-## T07 Deterministic scripted replay (after T03, T06; Day 4)
-**Read:** [06 replay](../docs/06-replay-and-fixes.md), [04 API](../docs/04-api-contracts.md), [14 test matrix](../docs/14-test-matrix.md).
-**Goal:** pure TS scenario/policy interpreter, fixed assertion DSL, `POST /api/replay`, strict scenario allowlist.
-**Acceptance:** each bundled baseline same result across 5 repetitions; arbitrary imported trace replay clearly unsupported; security tests establish no shell/filesystem/network execution of trace content.
-
-## T08 Verification / mitigation (after T07; Day 5)
-**Read:** [06](../docs/06-replay-and-fixes.md), [01 product](../docs/01-product-requirements.md).
-**Goal:** `POST /api/verify` compares unchanged baseline to one allowlisted `require_passing_tests` policy flip for hero scenario.
-**Acceptance:** baseline FAIL -> guard/compliance PASS with failing original test still explicitly visible; unsupported scenario/fix combinations rejected. **Forbidden:** claim underlying software bug fixed.
-
-## T09 Evidence-rich export (after T08; Day 5)
-**Read:** [03 data contracts](../docs/03-data-contracts.md), [10 security](../docs/10-security-and-privacy.md).
-**Goal:** sanitized schema-versioned JSON report linking trace hash, exact event IDs, model mode, replay engine, policy delta and limitations.
-**Acceptance:** roundtrip test and no secrets; exported output does not conflate actual live analysis with recorded fixtures.
-
-## Verify-specific guard/report requirement
-All before/after labels must identify **scripted reference policy compliance** separately from observed completion-verdict status. The false-success F1 remains UNVERIFIED with failing test evidence even if the simulated guard prevents the unsupported success statement. Include completion-verdict.v1 and reason IDs in report where an additive schema is adopted; maintain existing API compatibility. See [28](../docs/28-verify-product-north-star.md).
+# Phase 3 — F04, F08, F10: Verify, decision, evidence
+Old scripted trace replay is retired. Implement scope-limited deterministic verifier, robust scenario regret scorer (ordinal assumptions disclosed), certificate exporter with immutable trusted check refs. Acceptance: pass/fail/not-run, overclaim and spoofed-client-check tests; no invented token data.

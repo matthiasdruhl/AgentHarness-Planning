@@ -1,32 +1,12 @@
-# 21 — Operational index and document precedence
+# 21 — Canonical document precedence
 
-**Prepared:** 2026-10-24. **Scope:** Meta Global AI Developer Hackathon, October 26–November 4, 2026. This is a planning repository, not the runtime application.
+1. Current official organizer terms (docs/16) govern eligibility.
+2. README.md and AGENTS.md define current unified Forecode mission and implementation boundaries.
+3. docs/01 PRD defines P0 goals; docs/03 and docs/04 own exact data/API contracts.
+4. docs/02 and docs/10 own architecture and security; docs/09 owns study design, labels and evidence rules.
+5. docs/13 and tasks/README.md own tickets; docs/12 owns calendar; docs/15 owns demo claims.
+6. docs/17 owns explicit ADRs; docs/18 risks; docs/20 readiness.
+7. docs/22–27 are supplemental benchmarks/protocols; docs/28–29 are **legacy transition notices**, not competing specifications.
+8. Historical task file names are retained for stable links; their contents now point at canonical Forecode tickets. Prior open Verify PR #1 is superseded, **not** to be merged without review.
 
-## Precedence, without duplicating contracts
-1. Organizer's current official rules control competition eligibility (see [16](16-rules-and-compliance.md)); unresolved terms are **not** permissions.
-2. [AGENTS.md](../AGENTS.md) sets agent execution and safety rules.
-3. [01 PRD](01-product-requirements.md) sets P0/P1/out-of-scope and acceptance goals.
-4. [03 data contracts](03-data-contracts.md) and [04 API contracts](04-api-contracts.md) own exact interfaces.
-5. [02 architecture](02-system-architecture.md), [06 replay](06-replay-and-fixes.md), and [17 ADRs](17-architecture-decisions.md) own implementation constraints.
-6. [13 task board](13-codex-task-board.md) sets dependency order; [tasks](../tasks/README.md) provide executable individual prompts.
-7. [12 calendar](12-ten-day-plan.md) defines milestone dates; [15 submission](15-demo-and-submission.md) and [16 rules](16-rules-and-compliance.md) define submission checks.
-
-If documents disagree, **stop and log the conflict in an ADR**, amend affected specifications and tasks together, and do not silently select a convenient interpretation. Dates/rules from organizers supersede planning assumptions.
-
-## Operational files
-- [Codex workflow](CODEX_WORKFLOW.md): exact task lifecycle and handoff.
-- [Session handoff](SESSION_HANDOFF.md): blank, truthful current-state template to copy to app repo.
-- [Resource budget](RESOURCE_BUDGET.md): credit caps and telemetry without fictitious dollar amounts.
-- [Demo scenario](DEMO_SCENARIO.md): primary judge narrative and truth-in-advertising controls.
-- [Submission checklist](SUBMISSION_CHECKLIST.md): day-zero and final evidence gates.
-- [Preflight](PREFLIGHT.md): remaining preparations and stop/go decisions.
-- [Task files](../tasks/README.md): prompts linked to existing T01–T14, not another competing roadmap.
-
-## Non-goals
-Do not create a database, broad agent framework, autonomous code edits, production multi-tenant system, or executable untrusted replay. Do not call a guard-policy PASS a fixed code bug.
-
-## Optional architecture extension
-[27 — real-agent experiment](27-real-agent-experiment.md) is the definitive P1-only execution boundary and paired protocol; [task 06](../tasks/06-real-agent-experiment.md) is Codex ticket T15. ADR-011 documents the exception for a developer-local runner; it does not supersede P0 contracts or authorize public app execution.
-
-## AgentHarness Verify source of truth (2026-10-24)
-Read [28 product north star](28-verify-product-north-star.md) for the current name, core promise, scoped verdict, UI order, metric and priority definitions. [29 migration register](29-repositioning-consistency.md) maps prior Audit phrasing, precedence and compatibility. Historical Audit references in prior source names are contextual, not competing product specs. The specific v1 schema of the new tri-state verdict lives in [03](03-data-contracts.md). The optional [27 P1 agent study](27-real-agent-experiment.md) remains an isolated, gated research experiment.
+If incompatible requirements remain, file ADR and resolve before implementation. No duplicate 'source of truth' inside archived text. Planning repository contains **no runtime code**.
