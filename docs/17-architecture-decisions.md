@@ -1,39 +1,18 @@
-# 17 — Architecture decision records (ADR register)
+# 17 — Architecture decision records
 
-Decisions apply **only to the Meta hackathon MVP**. Changes require a new entry with date, alternatives, rationale, risks and a testable revisit condition.
+| ID | Decision | Why / revisit |
+|---|---|---|
+| ADR-001 | Public brand Forecode (provisional); keep planning repo name | Revisit after trademark/domain check |
+| ADR-002 | Unified Foresight + Verify is only active product | Previous Verify-only work remains legacy reference |
+| ADR-003 | Robust scenario regret, not uncalibrated probabilistic Expectiminimax | Revisit only with defensible transition probabilities |
+| ADR-004 | No large Monte Carlo in P0 | Static ranking and few measured futures suffice |
+| ADR-005 | Vetted TS/Next booking fixture only | General agent integrations too risky in 10 days |
+| ADR-006 | Separate trusted evaluator from agent writable workspace | Prevent test tampering and false completion |
+| ADR-007 | Same Verify for both Foresight A/B arms | Disentangle architecture effect from guard effect |
+| ADR-008 | Developer-local isolated real code runs; web read-only | No public arbitrary code execution |
+| ADR-009 | Meta proposes intent/scenarios/candidates, never certifies tests | Keeps reasoning separate from evidence |
+| ADR-010 | Measured/estimated/recorded provenance compulsory | Prevent result inflation |
+| ADR-011 | Archive historical docs only as marked legacy redirects | Avoid duplicate active requirements |
+| ADR-012 | Developer intents opt-in, editable and revocable | Avoid speculative requirement becoming mandate |
 
-## ADR-001 — Coding-agent trace auditing over general agent platform
-**Decision:** narrow to coding agents and contradiction/guard verification. Alternatives: general-purpose observability dashboard, AI security scanning suite. **Why:** concrete test outputs and tool calls make grounded evidence and a judge-friendly demo feasible in 10 days. **Tradeoff:** narrower compatibility. Revisit only if primary hero loop complete before freeze.
-
-## ADR-002 — One Next.js TypeScript deployable
-**Decision:** Next App Router/Node route handlers + pure TS engine, Vercel. Alternatives: FastAPI + Next frontend, microservices. **Why:** one schema/test/runtime/deployment path. **Tradeoff:** fewer specialized Python tools. Revisit if a required test integration cannot reasonably be implemented in TS and scope/effort permit.
-
-## ADR-003 — Stateless sessions, fixture-backed scenario runner
-**Decision:** browser memory and bundled synthetic fixtures; no database. Alternatives: Postgres, Redis, user accounts. **Why:** low setup/cost/privacy burden. **Tradeoff:** data disappears on refresh; no run history. Revisit only if submission explicitly requires saved collaborative reports.
-
-## ADR-004 — Model analysis + deterministic judgment
-**Decision:** Meta Muse Spark structured analysis recommends evidence references, DSL checks and safe policies; deterministic validators assign verified outcomes. Alternatives: LLM-as-only-judge, rule-only auditor. **Why:** exploits Meta reasoning while keeping reproducibility and error calibration. **Tradeoff:** model may generate unsupported suggestions. Revisit after measured evaluation, not aesthetics.
-
-## ADR-005 — No arbitrary external agent replay
-**Decision:** only bundled synthetic reference scenarios replayed. Arbitrary imported traces analyzed read-only. Alternatives: executing model-generated code or installing unknown agent runners. **Why:** safe, implementable and genuinely reproducible within deadline. **Tradeoff:** cannot reproduce real third-party runtimes. Revisit only after event and new safety review (explicitly out of scope now).
-
-## ADR-006 — Allowlisted policy fix, not automatic code editing
-**Decision:** policies `require_passing_tests`, `require_evidence`, `block_prohibited_tools` toggle guarded simulated behaviors; no patch command. Alternatives: agent-written PR/patch. **Why:** a measurable safety improvement without sandbox complexity; avoids misleading auto-fix. **Tradeoff:** demonstrates guard mitigation, not source bug repair. Revisit only if safe executable sandbox and scope approval materialize; not a hackathon goal.
-
-## ADR-007 — Muse Spark 1.3 primary provider
-**Decision:** single Meta provider adapter, strict JSON schema, server-only SDK and key. Alternative: multi-model inference orchestrator, Muse Wonder mandatory. **Why:** best fit to required technology with bounded cost and API compatibility. **Tradeoff:** model dependence and API variability. Revisit only on provider outage or verified superior model with equivalent schema/cost evidence.
-
-## ADR-008 — No live inference on every page load
-**Decision:** deterministic fixture/rules render instantly; Meta called only on explicit click. Alternative: background auto-analysis. **Why:** credit protection, user consent for uploaded data, demo reliability. **Tradeoff:** extra interaction. Revisit if recorded user tests show meaningful usability loss.
-
-## ADR-009 — Evidence-first, no invented confidence metrics
-**Decision:** every model claim references actual event IDs and is labeled candidate; report preserves measured verification separately. Alternative: single opaque reliability percentage. **Why:** trust and falsifiability. **Tradeoff:** more nuanced UX. Never relax without replacing with equally rigorous proof.
-
-## ADR-010 — Planning and implementation separate
-**Decision:** this repository holds docs; app begins separately after official rules check. Alternative: mixing architecture and source now. **Why:** clean compliance boundary and low agent context. **Tradeoff:** extra cross-repo links. Revisit only if organizer specifically requires unified repo or owner requests.
-
-## ADR-011 — Gated real-agent measurement without hosted execution (2026-10-24)
-**Decision:** optional P1 local, manually invoked and isolated agent experiment comparing a pinned coding agent on the same approved tasks with guard off versus on; sanitized results may be displayed read-only. **Rationale:** scripted replay proves guard logic, not real agent improvement. **Alternatives rejected:** make agent execution a P0 public feature or accept arbitrary imported trace replay. **Tradeoffs:** added controlled research time and resource costs, with limited sample generalizability. **Conditions:** P0 green, independently verified task oracles, genuine isolation, matched arms, credit reserve, finish before Nov 2. **Boundaries:** ADR-002 still specifies one *deployed* Next.js app, ADR-005 still forbids replaying imported third-party agent trajectories, and ADR-006 still rejects automatic production code repair. Fail closed to original deterministic-only demo if constraints cannot be met. Full contract: [27](27-real-agent-experiment.md).
-
-## ADR-012 — Verification-first positioning and tri-state verdict (2026-10-24)
-**Decision:** Brand the Meta submission **AgentHarness Verify** and center its P0 value on deterministic, evidence-linked completion claims, with `VERIFIED`, `UNVERIFIED` and `INSUFFICIENT_EVIDENCE` statuses and scoped reasons. Muse provides supporting hypotheses and candidate DSL checks, not ground truth. The first-screen verdict precedes the model call. **Why:** an understandable and falsifiable product promise rather than a broad trace-debugging dashboard. **Alternatives:** keep an observability-first UI or classify every trace anomaly as a product outcome; rejected due to diluted purpose and weak judge comprehension. **Tradeoffs:** narrower value proposition and conservative abstention where evidence is incomplete. **Revisit only if:** controlled tests show a narrow-scope failure or updated organizer rules require a change. **Compatibility:** keep existing trace/model/replay v1, scripted replay restriction, and ADR-011 optional isolated real-agent P1 gate; no public execution endpoint. See [28](28-verify-product-north-star.md).
+For changes: record date, decision, alternative, security/evaluation impact, affected docs. Never update an ADR without updating dependent tasks and contracts.
