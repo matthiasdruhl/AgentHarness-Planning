@@ -1,15 +1,16 @@
-# 20 — Preflight: unblocked vs external dependencies
+# 20 — Preflight and external blockers
 
-Before Oct 26: docs and benchmark design permitted only if organizer rules allow; prepare fixture acceptance list, budget and instructions. Do not assume prebuilt code permitted.
-Day 0 blockers:
-- [ ] official participant rules checked and noted, prebuilt-code eligibility decided
-- [ ] Meta credentials/model/credits/spend guard verified
-- [ ] isolated developer-local runner available or safe fallback activated
-- [ ] booking fixture licenses/source and protected oracle design approved
-- [ ] public brand/domain not falsely asserted available
-- [ ] held-out task creation/freeze owner and access boundary identified
-- [ ] same-model A/B budget, config, seeds and required tests frozen
+Owner environment (reported): MacBook Pro M4 Pro, 48 GB RAM, ~294 GB free of 494 GB. Local Codex preferred. Read [Local Mac sandbox plan](LOCAL-MAC-SANDBOX.md).
 
-Open research questions (not blockers to demo): can model proposals outperform templates? how predictive are graph heuristics? how costly is enabling boundary? where do candidate designs lose? None may be silently assumed favorable.
+- [ ] Official event rules/prebuilt-code permission rechecked and recorded.
+- [ ] Meta model API, actual model/credits/spend cap verified.
+- [ ] Node, Python **3.12+**, uv, Docker daemon, Codex CLI checked on owner's Mac.
+- [ ] Docker Desktop ARM64 image smoke and reasonable limits set (start VM RAM 16 GB, 6 CPUs, disk cap 80 GB).
+- [ ] Vetted developer-local sandbox isolation evidenced (non-root, no host secrets/docker socket, bounded execution).
+- [ ] Controller inference networking separated from untrusted test code; local auth never mounted into untrusted task workspace.
+- [ ] **SCBench Codex adapter bypass/credential mount reviewed, hardened or rejected**, not used stock blindly.
+- [ ] Public benchmark JS task selection and upstream dataset availability verified; smoke run graded.
+- [ ] Hidden booking oracle is truly out of agent-readable scope, frozen and hashed privately.
+- [ ] A/B settings identical, Verify same, provenance/report format recorded.
 
-Stop/go: if no credible executable experiment by Nov 1, present an honest non-causal prototype. Submission readiness gate in docs/SUBMISSION_CHECKLIST.md.
+Hard stop: absent sandbox or credential-safe agent control means no live benchmark agent execution. Safe fallback is local deterministic testing/recorded demonstration without measured advantage claims.
