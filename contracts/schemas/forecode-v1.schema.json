@@ -529,7 +529,8 @@
         "downstreamCost",
         "totalCost",
         "regret",
-        "rationale"
+        "rationale",
+        "basis"
       ],
       "properties": {
         "candidateId": {
@@ -567,6 +568,9 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 1000
+        },
+        "basis": {
+          "$ref": "#/$defs/ScoreBasis"
         }
       }
     },
@@ -1606,7 +1610,8 @@
       "required": [
         "intents",
         "graph",
-        "goal"
+        "goal",
+        "consent"
       ],
       "properties": {
         "intents": {
@@ -1624,6 +1629,9 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 500
+        },
+        "consent": {
+          "const": true
         }
       }
     },
@@ -1822,6 +1830,164 @@
         },
         "authoritative": {
           "const": false
+        }
+      }
+    },
+    "ScoreBasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectedChangedModules",
+        "projectedRouteChanges",
+        "unresolvedRelevantDependencies",
+        "source"
+      ],
+      "properties": {
+        "projectedChangedModules": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./*-]+$"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        },
+        "projectedRouteChanges": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "unresolvedRelevantDependencies": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "reviewed_estimate",
+            "static_graph"
+          ]
+        }
+      }
+    },
+    "MetaComparisonManifestV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "contextSha256",
+        "scenarioId",
+        "metaCandidateId",
+        "templateCandidateId",
+        "metaProviderModel",
+        "metaPromptVersion",
+        "fixtureSha256",
+        "agentConfigSha256",
+        "evaluatorSha256",
+        "requiredPolicySha256",
+        "toolAllowlistSha256",
+        "budget",
+        "metaRunId",
+        "templateRunId",
+        "frozenAt",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "meta-comparison-manifest.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "contextSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scenarioId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "metaCandidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "templateCandidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "metaProviderModel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "metaPromptVersion": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "fixtureSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "agentConfigSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evaluatorSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "requiredPolicySha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "toolAllowlistSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "budget": {
+          "$ref": "#/$defs/Budget"
+        },
+        "metaRunId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "templateRunId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "frozenAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 32
         }
       }
     }

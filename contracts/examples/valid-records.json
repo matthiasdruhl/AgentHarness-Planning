@@ -67,8 +67,28 @@
     "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     "modules": [
       {
-        "id": "mod-a",
+        "id": "mod-book",
         "path": "src/lib/booking.ts",
+        "kind": "source"
+      },
+      {
+        "id": "mod-routes",
+        "path": "src/lib/routes.ts",
+        "kind": "source"
+      },
+      {
+        "id": "mod-auth",
+        "path": "src/lib/auth.ts",
+        "kind": "source"
+      },
+      {
+        "id": "mod-res",
+        "path": "src/lib/resources.ts",
+        "kind": "source"
+      },
+      {
+        "id": "mod-authz",
+        "path": "src/lib/authz.ts",
         "kind": "source"
       }
     ],
@@ -100,7 +120,18 @@
         "downstreamCost": 8,
         "totalCost": 8,
         "regret": 2,
-        "rationale": "Direct checks"
+        "rationale": "Direct checks",
+        "basis": {
+          "projectedChangedModules": [
+            "src/lib/booking.ts",
+            "src/lib/routes.ts",
+            "src/lib/auth.ts",
+            "src/lib/resources.ts"
+          ],
+          "projectedRouteChanges": 0,
+          "unresolvedRelevantDependencies": 0,
+          "source": "reviewed_estimate"
+        }
       },
       {
         "candidateId": "B",
@@ -110,7 +141,15 @@
         "downstreamCost": 3,
         "totalCost": 6,
         "regret": 0,
-        "rationale": "Boundary"
+        "rationale": "Boundary",
+        "basis": {
+          "projectedChangedModules": [
+            "src/lib/authz.ts"
+          ],
+          "projectedRouteChanges": 1,
+          "unresolvedRelevantDependencies": 0,
+          "source": "reviewed_estimate"
+        }
       }
     ],
     "recommendationId": "B",
@@ -284,5 +323,32 @@
     ],
     "frozenAt": "2026-10-30T12:00:00Z",
     "limitations": []
+  },
+  "MetaComparisonManifestV1": {
+    "schemaVersion": "meta-comparison-manifest.v1",
+    "id": "study-m",
+    "contextSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scenarioId": "teams",
+    "metaCandidateId": "B",
+    "templateCandidateId": "A",
+    "metaProviderModel": "recorded-model-placeholder",
+    "metaPromptVersion": "prompt-v1",
+    "fixtureSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "agentConfigSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "evaluatorSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "requiredPolicySha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "toolAllowlistSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "budget": {
+      "maxSeconds": 180,
+      "maxIterations": 3,
+      "tokenLimit": null,
+      "spendUsd": null
+    },
+    "metaRunId": null,
+    "templateRunId": null,
+    "frozenAt": "2026-10-30T12:00:00Z",
+    "limitations": [
+      "synthetic fixture, not actual Meta evidence"
+    ]
   }
 }

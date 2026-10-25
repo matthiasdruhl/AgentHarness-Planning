@@ -1,40 +1,35 @@
-# 03 — Versioned data contracts (authoritative)
+# 03 — Forecode versioned data contracts (authoritative)
 
-All boundaries use Zod, strict parsing, stable ids, ISO UTC, size limits and `schemaVersion`. No arbitrary executable fields.
+**Frozen shape catalog:** [contracts/schemas/forecode-v1.schema.json](../contracts/schemas/forecode-v1.schema.json). **Semantic reference:** [CONTRACT-FREEZE-v1.md](CONTRACT-FREEZE-v1.md). **Valid/invalid examples:** [contracts](../contracts/README.md). This file documents artifact meanings; do not implement historical abbreviated object sketches.
 
-## intent.v1
-```json
-{"schemaVersion":"intent.v1","id":"intent-team","title":"Team accounts","statement":"Support organizations and member roles","status":"confirmed","priority":"high","horizon":"later","source":{"kind":"user_confirmed","reference":"manual-entry"},"dependencies":["auth"],"revision":1}
-```
-Status confirmed/tentative/rejected. Source must not falsely claim extracted chats; only authorized content. Only user may confirm.
+## Required record catalog
 
-## scenario.v1
-```json
-{"schemaVersion":"scenario.v1","id":"teams","origin":"developer_confirmed","intentIds":["intent-team"],"request":"Add organization-scoped permissions","assumptions":["single tenant now"],"acceptanceIds":["team_roles"],"frozen":true}
-```
-Origins: developer_confirmed, developer_tentative, meta_generated, evaluator_heldout. Model never reads hidden evaluator-heldout requests during architecture selection.
+| Name | JSON Schema definition | Identity, purpose and authority |
+|---|---|---|
+| `intent.v1` | `IntentV1` | User-affirmed future feature with status, revision, priority, source, dependencies and updatedAt. Only confirmed user action enables a recommendation. |
+| Draft | `IntentDraftV1` | Model-suggested tentative content with explicit uncertainty; never autonomously confirmed. |
+| `scenario.v1` | `ScenarioV1` | Future task, source, intent references, assumptions, frozen baseline and acceptance references. Heldout stays outside planner/agent. |
+| `architecture-candidate.v1` | `ArchitectureCandidateV1` | Baseline SHA, structured allowlisted change plan, guard constraints, explicitly modeled upfront cost, provenance and limitations. Not executable instructions. |
+| `graph.v1` | `GraphV1` | Explicit id and baseline, bounded path-normalized modules/edges/unknowns; cycles permitted, unknown runtime behavior remains unknown. |
+| `decision.v1` | `DecisionV1` + `Score` + `ScoreBasis` | Complete scenario×candidate matrix, documented additive point costs, minimax regret, nullable recommendation and limitations. |
+| `check-result.v1` | `CheckResultV1` | Run-bound check kind/status/exit code/evidence digest, *not* evidence authority on its own. |
+| `evaluator-receipt.v1` | `EvaluatorReceiptV1` | Trusted-store-validated final source/fixture/suite/evaluator/policy/check digest identity. |
+| `verification.v1` | `VerificationV1` | Evidence origin, receipt linkage, named scope, required checks and scoped verdict. Preview never authoritative. |
+| `experiment-run.v1` | `ExperimentRunV1` + `Metrics` | Run state, variant, identity hashes, isolation, wall-clock time and measured usage; presentation and evidence origin distinct. |
+| `pair-manifest.v1` | `PairManifestV1` | A/B frozen initial trees, budgets, common agent/config/fixture/oracle and upfront cost. |
+| `meta-comparison-manifest.v1` | `MetaComparisonManifestV1` | Separate equally informed Meta-vs-template experimental attribution. |
+| `certificate.v1` | `CertificateV1` | Report with explicit intent revisions, experiment, verified receipts, decision and self-digest. |
+| API helpers | `ProviderInfo`, `ApiError`, `DemoResponse`, request/response definitions | Stable web protocol without mutable evaluator authority. |
 
-## architecture-candidate.v1
-```json
-{"schemaVersion":"architecture-candidate.v1","id":"B","label":"Authorization boundary","baselineCommit":"PINNED_SHA","description":"Centralize authz checks","changePlan":[{"module":"src/lib/authz","action":"introduce_boundary"}],"constraints":[{"kind":"forbid_import","from":"src/app/**","to":"src/server/db/**"}],"estimatedUpfrontCost":2,"estimatedCostUnit":"modeled_effort_points_v1","metaProvenance":"live"}
-```
-No free-form shell/code instructions; `changePlan` is advisory until human-reviewed or safely mapped to allowlisted structured operations.
+**Parsing requirements:** JSON Schema Draft 2020-12, strict nested objects, bounded strings/arrays, 64 KiB request max, no arbitrary model commands or path escapes. The app must implement equivalent strict Zod schemas and *semantic cross-record checks*; JSON Schema alone cannot guarantee trust, validity of references, arithmetic or provenance.
 
-## graph.v1 / decision.v1
-`graph.v1 = {schemaVersion,repoCommit,modules:[{id,path,kind}],edges:[{from,to,kind}],unknowns:string[]}`.
-`decision.v1 = {schemaVersion,scenarioIds,candidateIds,scoringVersion,assumptions,perScenario:[{candidateId,scenarioId,estimatedImpact:number,estimatedUpfront:number,estimatedRegret:number}],recommendationId:null|string,limitations:string[]}`. Scores use a **versioned, additive, comparable modeled-effort rubric**, never ordinal ranks or measured tokens/hours. Subtraction of ordinal categories is invalid; recommendation must abstain if the cost units are not comparable. For regret, compare candidates using the *same* cost units and scenarios.
+## Critical invariants
 
-## check-result.v1 / verification.v1
-`check-result.v1 = {id,kind:"typecheck"|"build"|"acceptance"|"regression"|"boundary"|"integration",status:"pass"|"fail"|"not_run"|"invalid",exitCode:number|null,evidencePath:string|null,scope:string}`.
-`verification.v1 = {schemaVersion,runId,verdict:"VERIFIED"|"REJECTED"|"INSUFFICIENT_EVIDENCE",requiredCheckIds:string[],checks:CheckResult[],limitations:string[]}`. VERIFIED only means required specified controls passed; failed required check REJECTED; absent/invalid check INSUFFICIENT_EVIDENCE.
+- Only a human-confirmed intent with tracked revision may affect scenario analysis. Revocation/edits invalidate derived decisions, not immutable historical run evidence.
+- `candidate.baselineCommit = graph.repoCommit = scenario.baselineCommit`; all scenario, module, receipt and check references resolve to the same pinned context.
+- `Score.basis` defines reviewed projected module/routes/unknowns. `upfrontCost` is computed from allowlisted action weights; downstream and regret follow exact versioned formulas in [freeze](CONTRACT-FREEZE-v1.md). Units are `modeled_effort_points_v1`, never ordinal subtraction, measured development time or probability.
+- Check verdicts originate from a protected evaluator and fresh receipt, not client check JSON or Meta opinion. A partial stale pass cannot become VERIFIED. Receipt JCS hash and certificate self-hash exclude their own digest leaf as specified.
+- Separate model source `live|recorded|template`, measured origin `measured|none`, and presentation mode `live|recorded`. Synthetic examples are *not* actual measured artifacts.
+- All relevant fields and primitive constraints, defaults/absence/null behavior, status enums and ID patterns are in the schema; **no second inconsistent versions** of these fields should be written in individual milestone documentation.
 
-## experiment-run.v1 / certificate.v1
-`experiment-run.v1 = {schemaVersion,id,variant:"A"|"B",repoCommit,fixtureHash,agentConfigHash,evaluatorHash,isolationAttestation,seed,startedAt,endedAt,verification,metrics:{elapsedMs,tokens:null|number,costUsd:null|number,iterations:null|number,filesTouched:null|number},provenance:"measured"|"recorded"}`.
-`certificate.v1 = {schemaVersion,id,intents,scenarioIds,decision,runIds,conclusion,limitations,generatedAt,provenance}`. Report never confuses estimated, recorded or measured values. Hash canonical JSON and immutable output files. Hidden test payloads stay in trusted evaluator; public report includes only test IDs/statuses.
-
-## General invariant
-Reject unexpected operations, refs and path escapes; 64-KiB default JSON request and bounded arrays. Redact secrets. Version changes require contract migrations and tests.
-
-## Required normative implementation clarifications
-The JSON examples are not complete runtime Zod schemas. Define required and optional fields, length limits, ISO UTC/date ordering, unknown-key policy, ID uniqueness, reference checks, rooted paths and no executable fields in Zod and schema tests. For the trusted receipt, define **evaluator-receipt.v1** binding final evaluated tree, suite, evaluator and required policy hashes plus required check IDs; hash canonical receipt without self-including its integrity hash. See [canonical implementation contract](CANONICAL-IMPLEMENTATION-CONTRACT.md).
-Client-supplied check-result JSON and raw hashes alone are **not** trusted origin. Trusted evaluator controls artifact creation/reads and freshness checks. Any evaluated-code, test or policy change stales prior passes. Unknown usage is null, not zero. Report provider and evidence provenance separately.
+Contract edits must modify schema, this document, [API contracts](04-api-contracts.md) if needed, positive/negative fixtures, validation script, Zod and integration tests, ticket acceptance and ADR in one review.
