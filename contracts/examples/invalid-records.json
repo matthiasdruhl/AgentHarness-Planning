@@ -72,6 +72,42 @@
       "mutation": "origin",
       "value": "untrusted_preview",
       "reason": "untrusted preview can't be VERIFIED"
+    },
+    {
+      "type": "MetaHypothesisV1",
+      "mutation": "candidateId",
+      "value": "",
+      "reason": "Invalid candidate ID"
+    },
+    {
+      "type": "MetaHypothesisV1",
+      "mutation": "prediction.metric",
+      "value": "guaranteed_correct",
+      "reason": "No fabricated claims"
+    },
+    {
+      "type": "MetaChallengeV1",
+      "mutation": "reviewStatus",
+      "value": "approved",
+      "reason": "Model output must stay proposed"
+    },
+    {
+      "type": "MetaChallengeV1",
+      "mutation": "visibility",
+      "value": "evaluator_heldout",
+      "reason": "Generated challenges are not hidden holdouts"
+    },
+    {
+      "type": "MetaEvidenceInterpretationV1",
+      "mutation": "authority",
+      "value": "trusted_evaluator",
+      "reason": "Interpretation cannot certify checks"
+    },
+    {
+      "type": "ScientistEvidenceSummaryV1",
+      "mutation": "source",
+      "value": "model_created",
+      "reason": "Evidence summary must be trusted-derived"
     }
   ]
 }

@@ -2211,6 +2211,629 @@
           "maxItems": 32
         }
       }
+    },
+    "ScientistPredictionV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metric",
+        "direction",
+        "comparison",
+        "expectedEffect",
+        "falsifiedWhen"
+      ],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "enum": [
+            "required_check_success",
+            "regressions",
+            "iterations",
+            "elapsed_ms",
+            "boundary_violations"
+          ]
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "lower",
+            "higher",
+            "no_regression"
+          ]
+        },
+        "comparison": {
+          "type": "string",
+          "enum": [
+            "candidate_vs_status_quo",
+            "candidate_vs_template"
+          ]
+        },
+        "expectedEffect": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "falsifiedWhen": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      }
+    },
+    "MetaHypothesisV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "baselineCommit",
+        "candidateId",
+        "intentIds",
+        "visibleScenarioIds",
+        "statement",
+        "mechanism",
+        "prediction",
+        "assumptions",
+        "counterArguments",
+        "limitations",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "meta-hypothesis.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "candidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "intentIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "visibleScenarioIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 0,
+          "maxItems": 24
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 700
+        },
+        "mechanism": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "prediction": {
+          "$ref": "#/$defs/ScientistPredictionV1"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 320
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "counterArguments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
+    },
+    "ScientistProposedChangeV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "request",
+        "rationale",
+        "acceptanceOutline",
+        "intentIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "request": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1400
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 800
+        },
+        "acceptanceOutline": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400
+          },
+          "minItems": 1,
+          "maxItems": 12
+        },
+        "intentIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        }
+      }
+    },
+    "MetaChallengeV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "hypothesisId",
+        "targetCandidateId",
+        "baselineCommit",
+        "change",
+        "failureMechanism",
+        "potentialDisconfirmation",
+        "reviewStatus",
+        "visibility",
+        "limitations",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "meta-challenge.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "hypothesisId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "targetCandidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "change": {
+          "$ref": "#/$defs/ScientistProposedChangeV1"
+        },
+        "failureMechanism": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 900
+        },
+        "potentialDisconfirmation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 700
+        },
+        "reviewStatus": {
+          "const": "proposed"
+        },
+        "visibility": {
+          "const": "model_generated_not_heldout"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
+    },
+    "ScientistObservedCheckV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "checkId",
+        "status",
+        "scope"
+      ],
+      "properties": {
+        "runId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "checkId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run",
+            "invalid"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        }
+      }
+    },
+    "ScientistEvidenceSummaryV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "hypothesisId",
+        "baselineCommit",
+        "runIds",
+        "receiptIds",
+        "observedChecks",
+        "limitations",
+        "source"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "scientist-evidence-summary.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "hypothesisId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "runIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "receiptIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "observedChecks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ScientistObservedCheckV1"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "maxItems": 24
+        },
+        "source": {
+          "const": "trusted_sanitized_recording"
+        }
+      }
+    },
+    "MetaEvidenceInterpretationV1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "hypothesisId",
+        "evidenceSummaryId",
+        "assessment",
+        "explanation",
+        "counterEvidence",
+        "uncertainties",
+        "nextQuestion",
+        "authority",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "meta-evidence-interpretation.v1"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "hypothesisId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "evidenceSummaryId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "assessment": {
+          "type": "string",
+          "enum": [
+            "consistent",
+            "inconsistent",
+            "mixed",
+            "insufficient_evidence"
+          ]
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1600
+        },
+        "counterEvidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 450
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 450
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "nextQuestion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 700
+        },
+        "authority": {
+          "const": "model_interpretation_only"
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
+    },
+    "ScientistHypothesizeRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intents",
+        "graph",
+        "candidates",
+        "goal",
+        "consent"
+      ],
+      "properties": {
+        "intents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntentV1"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "graph": {
+          "$ref": "#/$defs/GraphV1"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArchitectureCandidateV1"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "consent": {
+          "const": true
+        }
+      }
+    },
+    "ScientistHypothesizeResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "hypotheses",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "scientist-hypotheses.v1"
+        },
+        "hypotheses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MetaHypothesisV1"
+          },
+          "minItems": 1,
+          "maxItems": 4
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
+    },
+    "ScientistChallengeRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intents",
+        "graph",
+        "candidates",
+        "hypotheses",
+        "consent"
+      ],
+      "properties": {
+        "intents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntentV1"
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "graph": {
+          "$ref": "#/$defs/GraphV1"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArchitectureCandidateV1"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "hypotheses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MetaHypothesisV1"
+          },
+          "minItems": 1,
+          "maxItems": 4
+        },
+        "consent": {
+          "const": true
+        }
+      }
+    },
+    "ScientistChallengeResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "challenges",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "scientist-challenges.v1"
+        },
+        "challenges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MetaChallengeV1"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
+    },
+    "ScientistInterpretRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hypothesis",
+        "evidenceSummaryId",
+        "consent"
+      ],
+      "properties": {
+        "hypothesis": {
+          "$ref": "#/$defs/MetaHypothesisV1"
+        },
+        "evidenceSummaryId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "consent": {
+          "const": true
+        }
+      }
+    },
+    "ScientistInterpretResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "interpretation",
+        "provider"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "scientist-interpretations.v1"
+        },
+        "interpretation": {
+          "$ref": "#/$defs/MetaEvidenceInterpretationV1"
+        },
+        "provider": {
+          "$ref": "#/$defs/ProviderInfo"
+        }
+      }
     }
   }
 }
