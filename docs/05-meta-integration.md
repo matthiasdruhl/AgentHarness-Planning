@@ -10,9 +10,9 @@ Read the authoritative [Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md)
 |---|---|---|---|
 | `interpret_intent` | opt-in text | unconfirmed intent draft | P0 |
 | `propose_architectures` | confirmed intents, visible scoped graph | A status quo and targeted B proposal | P0 |
-| `hypothesize` | confirmed intents, proposed A/B, graph | `MetaHypothesisV1` with observable claim and falsification | **P0** |
-| `challenge` | confirmed intents, graph, candidate/hypothesis | `MetaChallengeV1` counterexample **proposal**, never heldout | **P0** |
-| `interpret_evidence` | server-allowlisted sanitized trusted summary ID + hypothesis | `MetaEvidenceInterpretationV1`, no verdict authority | P0 **only if real receipts exist** |
+| `hypothesize` | confirmed intents, proposed A/B, graph, explicitly visible non-heldout scenarios | `MetaHypothesisV1` with observable claim and falsification | **P0** |
+| `challenge` | confirmed intents, graph, candidate/hypothesis, visible non-heldout scenarios | `MetaChallengeV1` counterexample **proposal**, never heldout | **P0** |
+| `interpret_evidence` | two server-allowlisted IDs: hypothesis + sanitized trusted summary | `MetaEvidenceInterpretationV1`, no verdict authority | P0 **only if real receipts exist** |
 | `choose_next_experiment` | visible human-approved bounded pool | advisory suggestion only | P1; no public endpoint in v1 |
 
 ## Model transport and controls

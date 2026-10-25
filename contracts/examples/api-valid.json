@@ -546,7 +546,26 @@
       }
     ],
     "goal": "Support future team permissions without premature abstraction",
-    "consent": true
+    "consent": true,
+    "visibleScenarios": [
+      {
+        "schemaVersion": "scenario.v1",
+        "id": "teams",
+        "origin": "developer_confirmed",
+        "intentIds": [
+          "intent-team"
+        ],
+        "request": "Add scoped member permissions",
+        "assumptions": [
+          "one tenant at baseline"
+        ],
+        "acceptanceIds": [
+          "team_roles"
+        ],
+        "frozen": true,
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
   },
   "ScientistHypothesizeResponse": {
     "schemaVersion": "scientist-hypotheses.v1",
@@ -735,7 +754,26 @@
         }
       }
     ],
-    "consent": true
+    "consent": true,
+    "visibleScenarios": [
+      {
+        "schemaVersion": "scenario.v1",
+        "id": "teams",
+        "origin": "developer_confirmed",
+        "intentIds": [
+          "intent-team"
+        ],
+        "request": "Add scoped member permissions",
+        "assumptions": [
+          "one tenant at baseline"
+        ],
+        "acceptanceIds": [
+          "team_roles"
+        ],
+        "frozen": true,
+        "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
   },
   "ScientistChallengeResponse": {
     "schemaVersion": "scientist-challenges.v1",
@@ -783,45 +821,9 @@
     }
   },
   "ScientistInterpretRequest": {
-    "hypothesis": {
-      "schemaVersion": "meta-hypothesis.v1",
-      "id": "hyp-B-teams",
-      "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "candidateId": "B",
-      "intentIds": [
-        "intent-team"
-      ],
-      "visibleScenarioIds": [
-        "teams"
-      ],
-      "statement": "Scoped authorization might reduce future team-role edits",
-      "mechanism": "Separate policy entry points from booking business rules",
-      "prediction": {
-        "metric": "regressions",
-        "direction": "lower",
-        "comparison": "candidate_vs_status_quo",
-        "expectedEffect": "Fewer regressions under team-role addition",
-        "falsifiedWhen": "B fails more required tests or cannot implement the feature within equal downstream limits"
-      },
-      "assumptions": [
-        "Current booking direct checks are valid"
-      ],
-      "counterArguments": [
-        "Boundary introduces unnecessary complexity for reminders"
-      ],
-      "limitations": [
-        "Unmeasured; synthetic example"
-      ],
-      "provider": {
-        "provider": "template",
-        "model": null,
-        "mode": "template",
-        "promptVersion": null,
-        "sourceEvidenceId": null
-      }
-    },
     "evidenceSummaryId": "summary-a",
-    "consent": true
+    "consent": true,
+    "hypothesisId": "hyp-B-teams"
   },
   "ScientistInterpretResponse": {
     "schemaVersion": "scientist-interpretations.v1",
