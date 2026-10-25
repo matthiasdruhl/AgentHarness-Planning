@@ -1,0 +1,288 @@
+{
+  "IntentV1": {
+    "schemaVersion": "intent.v1",
+    "id": "intent-team",
+    "title": "Team accounts",
+    "statement": "Support organizations and member roles",
+    "status": "confirmed",
+    "priority": "high",
+    "horizon": "later",
+    "source": {
+      "kind": "user_confirmed",
+      "reference": "manual-entry"
+    },
+    "dependencies": [
+      "auth"
+    ],
+    "revision": 1,
+    "updatedAt": "2026-10-30T12:00:00Z"
+  },
+  "ScenarioV1": {
+    "schemaVersion": "scenario.v1",
+    "id": "teams",
+    "origin": "developer_confirmed",
+    "intentIds": [
+      "intent-team"
+    ],
+    "request": "Add scoped member permissions",
+    "assumptions": [
+      "one tenant at baseline"
+    ],
+    "acceptanceIds": [
+      "team_roles"
+    ],
+    "frozen": true,
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "ArchitectureCandidateV1": {
+    "schemaVersion": "architecture-candidate.v1",
+    "id": "B",
+    "label": "Authorization boundary",
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "description": "Centralize authorization policy",
+    "changePlan": [
+      {
+        "module": "src/lib/authz",
+        "action": "introduce_boundary",
+        "rationale": "Scoped policy logic"
+      }
+    ],
+    "constraints": [
+      {
+        "kind": "forbid_import",
+        "from": "src/app/**",
+        "to": "src/server/db/**"
+      }
+    ],
+    "estimatedUpfrontCost": 3,
+    "estimatedCostUnit": "modeled_effort_points_v1",
+    "metaProvenance": "template",
+    "modelId": null,
+    "promptVersion": null,
+    "limitations": []
+  },
+  "GraphV1": {
+    "schemaVersion": "graph.v1",
+    "id": "graph-one",
+    "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "modules": [
+      {
+        "id": "mod-a",
+        "path": "src/lib/booking.ts",
+        "kind": "source"
+      }
+    ],
+    "edges": [],
+    "unknowns": []
+  },
+  "DecisionV1": {
+    "schemaVersion": "decision.v1",
+    "id": "decision-one",
+    "graphId": "graph-one",
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scenarioIds": [
+      "teams"
+    ],
+    "candidateIds": [
+      "A",
+      "B"
+    ],
+    "scoringVersion": "modeled_effort_points_v1",
+    "assumptions": [
+      "heuristic not measured"
+    ],
+    "perScenario": [
+      {
+        "candidateId": "A",
+        "scenarioId": "teams",
+        "costUnit": "modeled_effort_points_v1",
+        "upfrontCost": 0,
+        "downstreamCost": 8,
+        "totalCost": 8,
+        "regret": 2,
+        "rationale": "Direct checks"
+      },
+      {
+        "candidateId": "B",
+        "scenarioId": "teams",
+        "costUnit": "modeled_effort_points_v1",
+        "upfrontCost": 3,
+        "downstreamCost": 3,
+        "totalCost": 6,
+        "regret": 0,
+        "rationale": "Boundary"
+      }
+    ],
+    "recommendationId": "B",
+    "limitations": [
+      "Single scenario"
+    ]
+  },
+  "CheckResultV1": {
+    "schemaVersion": "check-result.v1",
+    "id": "typecheck",
+    "runId": "run-a",
+    "kind": "typecheck",
+    "status": "pass",
+    "exitCode": 0,
+    "evidencePath": "reports/runs/run-a/typecheck.txt",
+    "scope": "TypeScript build",
+    "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "EvaluatorReceiptV1": {
+    "schemaVersion": "evaluator-receipt.v1",
+    "id": "receipt-a",
+    "runId": "run-a",
+    "evaluatedTreeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "fixtureSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "evaluatorSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "testSuiteSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "requiredPolicySha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "requiredCheckIds": [
+      "typecheck"
+    ],
+    "checkArtifactSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "startedAt": "2026-10-30T12:00:00Z",
+    "finishedAt": "2026-10-30T12:00:02Z",
+    "issuer": "trusted-local-evaluator",
+    "integrity": {
+      "kind": "trusted-local-artifact",
+      "manifestSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    }
+  },
+  "VerificationV1": {
+    "schemaVersion": "verification.v1",
+    "id": "verify-a",
+    "runId": "run-a",
+    "verdict": "VERIFIED",
+    "requiredCheckIds": [
+      "typecheck"
+    ],
+    "checks": [
+      {
+        "schemaVersion": "check-result.v1",
+        "id": "typecheck",
+        "runId": "run-a",
+        "kind": "typecheck",
+        "status": "pass",
+        "exitCode": 0,
+        "evidencePath": "reports/runs/run-a/typecheck.txt",
+        "scope": "TypeScript build",
+        "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "receiptId": "receipt-a",
+    "origin": "trusted_evaluator",
+    "scope": "TypeScript build only",
+    "limitations": [
+      "Not an all-purpose correctness proof"
+    ]
+  },
+  "ExperimentRunV1": {
+    "schemaVersion": "experiment-run.v1",
+    "id": "run-a",
+    "variant": "A",
+    "status": "completed",
+    "repoCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "evaluatedTreeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "fixtureSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "agentConfigSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "evaluatorSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "requiredPolicySha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "isolationAttestationId": "isolation-a",
+    "seed": 42,
+    "startedAt": "2026-10-30T12:00:00Z",
+    "endedAt": "2026-10-30T12:00:02Z",
+    "verificationId": "verify-a",
+    "receiptId": "receipt-a",
+    "metrics": {
+      "elapsedMs": 2000,
+      "tokens": null,
+      "costUsd": null,
+      "iterations": 1,
+      "filesTouched": 1
+    },
+    "evidenceOrigin": "measured",
+    "presentationMode": "recorded",
+    "limitations": []
+  },
+  "CertificateV1": {
+    "schemaVersion": "certificate.v1",
+    "id": "cert-a",
+    "baselineCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "intentRevisions": [
+      {
+        "intentId": "intent-team",
+        "revision": 1
+      }
+    ],
+    "scenarioIds": [
+      "teams"
+    ],
+    "decisionId": "decision-one",
+    "experimentRunIds": [
+      "run-a"
+    ],
+    "verificationIds": [
+      "verify-a"
+    ],
+    "receiptIds": [
+      "receipt-a"
+    ],
+    "conclusion": "Typecheck passed only; other checks not in scope",
+    "limitations": [
+      "Fixture example, not actual evidence"
+    ],
+    "generatedAt": "2026-10-30T12:00:02Z",
+    "evidenceOrigin": "measured",
+    "presentationMode": "recorded",
+    "artifactSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "PairManifestV1": {
+    "schemaVersion": "pair-manifest.v1",
+    "id": "pair-one",
+    "taskId": "task-teams",
+    "scenarioId": "teams",
+    "fixtureSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "agentConfigSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "evaluatorSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "requiredPolicySha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "toolAllowlistSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "budget": {
+      "maxSeconds": 180,
+      "maxIterations": 3,
+      "tokenLimit": null,
+      "spendUsd": null
+    },
+    "arms": [
+      {
+        "variant": "A",
+        "initialCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "initialTreeSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runId": "run-a",
+        "upfrontMetrics": {
+          "elapsedMs": 0,
+          "tokens": 0,
+          "costUsd": 0,
+          "iterations": 0,
+          "filesTouched": 0
+        }
+      },
+      {
+        "variant": "B",
+        "initialCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "initialTreeSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "runId": null,
+        "upfrontMetrics": {
+          "elapsedMs": null,
+          "tokens": null,
+          "costUsd": null,
+          "iterations": null,
+          "filesTouched": null
+        }
+      }
+    ],
+    "frozenAt": "2026-10-30T12:00:00Z",
+    "limitations": []
+  }
+}
