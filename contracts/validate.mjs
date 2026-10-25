@@ -60,4 +60,20 @@ for(const item of read("examples/semantic-negative-cases.json").cases){
  if(!failed)throw Error("Semantic negative unexpectedly passed: "+item.id);
  checked++;
 }
-console.log("Forecode contract schemas + semantics PASS ("+checked+" cases).");
+const {canonicalize,sha256Text,sha256Jcs,checksDigest,receiptDigest,certificateDigest}=await import("./hash.mjs");
+const equal=(a,b,msg)=>{if(a!==b)throw Error("Hash/JCS mismatch: "+msg)};
+equal(sha256Text("abc"),"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad","SHA-256 test vector");
+equal(canonicalize({b:2,a:1}),canonicalize({a:1,b:2}),"object key order");
+equal(sha256Jcs({b:2,a:1}),sha256Jcs({a:1,b:2}),"stable JCS hash");
+let rejectsLone=false;try{canonicalize("\\uD800")}catch{rejectsLone=true}if(!rejectsLone)throw Error("JCS must reject lone surrogate");
+const c=JSON.parse(JSON.stringify(bundle));
+c.receipt.checkArtifactSha256=checksDigest(c.checks);
+c.receipt.integrity.manifestSha256=receiptDigest(c.receipt);
+c.certificate.artifactSha256=certificateDigest(c.certificate);
+equal(c.receipt.integrity.manifestSha256,receiptDigest(c.receipt),"receipt self-digest");
+equal(c.certificate.artifactSha256,certificateDigest(c.certificate),"certificate self-digest");
+const wrong=JSON.parse(JSON.stringify(c));wrong.receipt.evaluatedTreeSha256="f".repeat(64);
+if(wrong.receipt.integrity.manifestSha256===receiptDigest(wrong.receipt))throw Error("Tampered receipt was not detected");
+wrong.certificate.conclusion="tampered";
+if(wrong.certificate.artifactSha256===certificateDigest(wrong.certificate))throw Error("Tampered certificate was not detected");
+console.log("Forecode contract schemas + semantics + canonical hashes PASS ("+checked+" fixtures).");
