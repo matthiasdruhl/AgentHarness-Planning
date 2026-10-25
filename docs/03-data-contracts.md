@@ -11,7 +11,7 @@
 | `scenario.v1` | `ScenarioV1` | Future task, source, intent references, assumptions, frozen baseline and acceptance references. Heldout stays outside planner/agent. |
 | `architecture-candidate.v1` | `ArchitectureCandidateV1` | Baseline SHA, structured allowlisted change plan, guard constraints, explicitly modeled upfront cost, provenance and limitations. Not executable instructions. |
 | `graph.v1` | `GraphV1` | Explicit id and baseline, bounded path-normalized modules/edges/unknowns; cycles permitted, unknown runtime behavior remains unknown. |
-| `decision.v1` | `DecisionV1` + `Score` + `ScoreBasis` | Complete scenario×candidate matrix, documented additive point costs, minimax regret, nullable recommendation and limitations. |
+| `decision.v1` | `DecisionV1` + `Score` + `ScoreBasis` | Complete scenario×candidate matrix when comparable, or **empty** perScenario with null recommendation and explicit limitations when abstaining; documented additive point costs and minimax regret. |
 | `check-result.v1` | `CheckResultV1` | Run-bound check kind/status/exit code/evidence digest, *not* evidence authority on its own. |
 | `evaluator-receipt.v1` | `EvaluatorReceiptV1` | Trusted-store-validated final source/fixture/suite/evaluator/policy/check digest identity. |
 | `verification.v1` | `VerificationV1` | Evidence origin, receipt linkage, named scope, required checks and scoped verdict. Preview never authoritative. |

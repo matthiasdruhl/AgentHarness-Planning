@@ -27,3 +27,7 @@ Immutable literal `schemaVersion` for every top-level artifact; breaking shape/s
 ## API conformance fixtures
 
 `examples/api-valid.json` contains exact valid **synthetic** request/response bodies for all published routes, including optional untrusted Verify preview and the shared error envelope. `examples/api-invalid.json` asserts strict rejection of missing consent, unknown commands, invalid enum values, wrong cost units, mislabeled recorded data, and forged authoritative preview. The validator checks every route in `api-registry.json` has a corresponding sample. These are shape tests, **not** proof that any real provider returned a response or that a hosted endpoint is deployed.
+
+## Additional conditional schema tests
+
+Draft 2020-12 `if/then` rules require live provider/candidate metadata, prevent forged passing check status/exit pairs, block authoritative untrusted previews, and allow explicit unscored abstention only with a limitation. This is structural assurance; production **trusted provenance still requires actual protected artifacts**, not truth claims based on JSON fields alone.

@@ -404,7 +404,34 @@
           "minItems": 0,
           "maxItems": 24
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "metaProvenance": {
+                "const": "live"
+              }
+            },
+            "required": [
+              "metaProvenance"
+            ]
+          },
+          "then": {
+            "properties": {
+              "modelId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 150
+              },
+              "promptVersion": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+              }
+            }
+          }
+        }
+      ]
     },
     "Module": {
       "type": "object",
@@ -666,7 +693,32 @@
           "minItems": 0,
           "maxItems": 32
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "perScenario": {
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "perScenario"
+            ]
+          },
+          "then": {
+            "properties": {
+              "recommendationId": {
+                "type": "null"
+              },
+              "limitations": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
     },
     "CheckResultV1": {
       "type": "object",
@@ -755,7 +807,90 @@
             }
           ]
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "pass"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "exitCode": {
+                "const": 0
+              },
+              "evidencePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifactSha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "fail"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "exitCode": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 255
+              },
+              "evidencePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifactSha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "not_run"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "exitCode": {
+                "type": "null"
+              },
+              "evidencePath": {
+                "type": "null"
+              },
+              "artifactSha256": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
     },
     "ReceiptIntegrity": {
       "type": "object",
@@ -941,7 +1076,31 @@
           "minItems": 0,
           "maxItems": 40
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "untrusted_preview"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "properties": {
+              "verdict": {
+                "const": "INSUFFICIENT_EVIDENCE"
+              },
+              "receiptId": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
     },
     "Metrics": {
       "type": "object",
@@ -1559,7 +1718,68 @@
             }
           ]
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "live"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "const": "meta"
+              },
+              "model": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "promptVersion": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "sourceEvidenceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "template"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "const": "template"
+              },
+              "model": {
+                "type": "null"
+              },
+              "sourceEvidenceId": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
     },
     "InterpretRequest": {
       "type": "object",

@@ -48,6 +48,30 @@
       "mutation": "changePlan.0.action",
       "value": "shell",
       "reason": "executable model instruction invalid"
+    },
+    {
+      "type": "ArchitectureCandidateV1",
+      "mutation": "metaProvenance",
+      "value": "live",
+      "reason": "live requires actual model identity/prompt"
+    },
+    {
+      "type": "CheckResultV1",
+      "mutation": "exitCode",
+      "value": 1,
+      "reason": "passing check must exit zero"
+    },
+    {
+      "type": "CheckResultV1",
+      "mutation": "status",
+      "value": "not_run",
+      "reason": "not_run must not carry pass artifact"
+    },
+    {
+      "type": "VerificationV1",
+      "mutation": "origin",
+      "value": "untrusted_preview",
+      "reason": "untrusted preview can't be VERIFIED"
     }
   ]
 }

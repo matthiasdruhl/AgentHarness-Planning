@@ -66,6 +66,18 @@
       "type": "ApiError",
       "mutation": "error.code",
       "value": "SILENT_FAILURE"
+    },
+    {
+      "id": "provider-live-no-model",
+      "type": "InterpretResponse",
+      "mutation": "provider.mode",
+      "value": "live"
+    },
+    {
+      "id": "provider-recorded-as-template",
+      "type": "InterpretResponse",
+      "mutation": "provider.provider",
+      "value": "meta"
     }
   ]
 }

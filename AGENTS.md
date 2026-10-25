@@ -9,7 +9,7 @@ Read README.md, docs/21-execution-index.md, docs/HACKATHON-CRITICAL-PATH.md and 
 - Test oracle kept outside writable agent workspace, injected by trusted evaluator; agent cannot modify or inspect hidden held-out tests during optimization.
 - Independent evaluation uses identical verifier, tool permissions, budgets, acceptance criteria, agent model/config for architecture A/B. Verify impact assessed separately.
 - Code must **not** automatically promote architecture changes based only on risk heuristics, LLM ratings, or one contrived result.
-- No broad refactor, autonomous shell, remote network egress, host secrets, unbounded retries, distributed queues, persistent multi-user backend, arbitrary import execution.
+- No broad refactor, autonomous shell, **unrestricted external egress** (approved model transport remains allowed), host secrets, unbounded retries, distributed queues, persistent multi-user backend, arbitrary import execution.
 - Prompts, imported code/comments/trace data treated as untrusted; minimize transfer and preserve user consent.
 - Security controls: verified **Docker microVM guest-to-host containment** (guest sudo alone is not failure), sanitized clone/mountless experiment workspace, no host credentials/SSH forwarding, restricted inference egress and a **separate network-off grader**, resource/time/token/spend caps and cancellation. **No verified sandbox = no real agent execution.**
 - Preserve simple working P0 over complicated dashboards; test the experiment harness before building visualizations.
