@@ -15,6 +15,14 @@
 - **[Local M4 Pro sandbox plan](docs/LOCAL-MAC-SANDBOX.md)** and **[Docker Sandbox–first SlopCodeBench integration decision](benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md)**
 - [Evaluation standards](docs/09-evaluation-plan.md), [security gates](docs/10-security-and-privacy.md)
 
+
+## Frontend design — finalized v4.4 (Oct 26)
+
+- **[ForeCode v4.4 visual system and UX specification](docs/FORECODE-UI-UX-FINAL-v4.4.md)** — editorial landing + engineering workbench, Architecture Atlas, Meta hypothesis/challenge, A/B traces, independent evidence certificate, colors, typography, responsive and motion rules.
+- **[Codex frontend implementation handoff](docs/FORECODE-UI-IMPLEMENTATION-HANDOFF-v4.4.md)** — scope-ranked P0/P1 plan mapped to existing M8/M9 tickets, trust-state requirements, accessibility and acceptance tests.
+
+These documents are **design-only planning references**. Do not copy prototype HTML/CSS/JS or historical planning artifacts into the hackathon submission; all eligible code must be newly authored after kickoff in the standalone entry. The critical-path and frozen trust/contract specs remain authoritative.
+
 ## Critical constraints
 No app-hosted arbitrary code execution. No untrusted task access to personal Codex auth, host files or hidden tests. SCBench stock Codex adapter is blocked pending reviewed isolation; Docker Sandboxes is first *candidate*, not a verified integration. External public benchmark pilot is conditional, and local booking controlled study is not standalone evidence of generalization. Results must be actually measured and failures reported. Nov 2 feature freeze.
 
