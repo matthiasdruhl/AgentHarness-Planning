@@ -26,3 +26,6 @@ This repository is documentation-only. M0–M10 and 68 tickets remain full specs
 
 ## Optional stretch, only after P0 is stable
 [Meta open-weight inference extension](docs/OPEN-WEIGHT-STRETCH.md) is **P1**: optionally compare Muse Spark Open (for example Baseten's organizer-provided model ID) with the direct Meta Model API for the Architecture Scientist. The extra backend could support provider portability and potentially the open-weight bonus, but **does not replace required P0**, guarantee awards, or justify changing the evaluator or delaying the deadline.
+
+## Conditional Muse Code runner for the demo (Oct 26)
+[Integration and go/no-go protocol](docs/MUSE-CODE-INTEGRATION.md): Muse Code is an **optional preferred developer-local coding-agent backend** for controlled booking experiments, only after the same sandbox/evaluator tests. Codex remains the existing first validation target and fallback. Neither coding tool replaces the **Meta Architecture Scientist** or independent Verify, and using Muse to *write the app* does not alone prove qualifying end-product Meta inference. See [ADR-016](docs/17-architecture-decisions.md).

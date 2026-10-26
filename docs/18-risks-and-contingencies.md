@@ -23,3 +23,13 @@
 | SSH-agent forwarding / host MCP | forwarded SSH socket or host-side MCP can perform privileged operations | Review/disable forwarding for experiment; confirm negative test; refuse untrusted tasks if inaccessible boundary |
 | Misinterpreted no-network rule | agent cannot reach model endpoint because grader's offline policy applied to agent | Restrict agent egress to reviewed destinations, **only offline grade**; log both policies |
 | Existing Codex startup mistaken for SCBench adapter | interactive `sbx run codex` works but unattended receipts/checkpoints/cancellation untested | Run controlled booking smoke first; external benchmark remains conditional |
+
+## Muse Code conditional runner risk overlay
+| Risk | Trigger | Mitigation |
+|---|---|---|
+| Muse host/guest incompatibility | CLI, auth, sandbox or agent access fails in approved isolated guest | Keep original Codex sandbox untouched; return to Codex |
+| Headless approval stalls or unsafe flags | Unexpected permission request or suggestion to use `--yolo` | Stop run; never disable both inner approvals and sandbox |
+| False completion claim | Muse exits 0 with failing independent tests | Grade immutable final snapshot separately and report actual result |
+| Model eligibility confusion | Only Muse helped code the entry or live Meta API call missing | Keep substantive direct Meta hypothesis/challenge model calls |
+| A/B confounding | Two arms use different agents/models/budgets | Invalidate comparison; keep one pinned runner per matched study |
+| Integration time overrun | No safe full receipt-backed smoke by Oct 28 | Kill Muse integration by Oct 29; prioritize P0 demo |
