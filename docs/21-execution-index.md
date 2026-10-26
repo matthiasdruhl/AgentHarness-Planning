@@ -29,3 +29,6 @@ These are documentation additions only; no recorded experiments or final organiz
 
 ## EVENT ELIGIBILITY FIRST — Oct 26 organizer override
 Start with [official participant rules and new standalone public repo requirement](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md), **then** [implementation handoff](IMPLEMENTATION-HANDOFF.md). Read pre-event contracts/design as references only; **do not copy** planning files, exact schema JSON, scripts, history or generated examples into the event entry. Freshly implement equivalent behavior after kickoff. The first commit and BUILD-PROVENANCE log must make authorship period transparent; the 3-minute video explicitly declares what existed before. No earlier milestone ticket can bypass this gate.
+
+## ADR-016 optional Muse runner reading order
+[Official rule override](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md) → [booking-first outer sandbox gate](DOCKER-SANDBOX-BOOKING-FIRST.md) → [security](10-security-and-privacy.md) and [fair evaluation](09-evaluation-plan.md) → [Muse integration](MUSE-CODE-INTEGRATION.md) → [demo](15-demo-and-submission.md). This document is *not* a replacement for Meta Scientist protocol, frozen contracts or current critical path. Muse CLI is conditional developer-local execution, not primary Meta reasoning or evaluator authority.
