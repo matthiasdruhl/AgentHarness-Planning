@@ -1,8 +1,8 @@
 # Forecode — submission-first Meta hackathon plan
 
-**As of October 25, 2026.** This document sets hackathon priorities, while M0–M10 and the 68 numbered tickets remain the full technical backlog. It is not evidence that code or experiments exist.
+**Updated October 26, 2026 after participant rules.** This document sets hackathon priorities, while M0–M10 and the 68 numbered tickets remain the full technical backlog. It is not evidence that code or experiments exist.
 
-Official event: https://dev.meta.ai/events/global-hackathon . Public build window October 26–November 4, 2026; deadline November 4 at 9:00 PM Eastern, subject to organizer changes. Final rules/portal prevail. The event crosses a daylight-saving transition on November 1. Intended entry is **Indie Developer / Push the Frontier**, pending eligibility and final choice. Do not use unverified percentage judging weights.
+Official event: https://dev.meta.ai/events/global-hackathon . **Build begins only after October 26 noon ET kickoff**, through November 4, 2026; deadline November 4 at 9:00 PM Eastern, subject to organizer changes. Final rules/portal prevail. The event crosses a daylight-saving transition on November 1. Intended entry is **Indie Developer / Push the Frontier**, pending eligibility and final choice. Do not use unverified percentage judging weights.
 
 ## The single judge-visible outcome
 
@@ -29,7 +29,7 @@ Multi-language/general repository execution, hosted sandboxes, automatic broad r
 
 | Day | Gate and fallback |
 |---|---|
-| Oct 26 | Approve published rules, pin spec commit in separate app repo, clean build/tests, one real Meta inference |
+| Oct 26, **after noon ET kickoff only** | Create brand-new **public standalone submission repo**; keep pre-event planning/code out; authored BUILD-PROVENANCE + SPEC-LOCK; fresh app skeleton/tests; verify Meta model and credits (actual inference if provisioned) |
 | Oct 27 | **Inspect existing user-reported Codex sandbox**, verify patched tool/image, safe sanitized booking fixture, protected oracle and synthetic host-access denial probes; no reinstall-by-default |
 | Oct 28 | **First booking Codex sandbox smoke** under fixed limits if isolation passed; record real run and independent evaluator artifact; test tampered/missing/stale evidence |
 | Oct 29 | Live/recorded Meta hypothesis + challenge with explicit falsification, status quo and template control; first browser vertical slice |
@@ -49,3 +49,6 @@ The owner reports Docker Sandboxes installed and a Codex sandbox initialized. **
 
 ## Meta as product's essential engine — narrow P0 overlay
 [Meta Scientist plan](META-ARCHITECTURE-SCIENTIST.md): generate candidate → falsifiable hypothesis → counterexample challenge. Evidence interpretation is **conditional** on verified real booking receipts and may not displace any independent-evaluator milestone. Adaptive experiment selection, multi-agent debate and iterative autonomous refactors are **P1**. The demo should make it clear which architectural *questions Meta raised*, what Codex implemented and what the evaluator actually established. Existing 68 ticket IDs and feature freeze remain unchanged.
+
+## Rule correction: standalone event-created work ONLY
+The participant FAQ and organizer clarification are recorded in [official participant rules](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md). **Never submit this planning repository or copy its pre-event contract scripts/synthetic fixtures/JSON schema as submitted code.** Start a new public repo created **after kickoff Oct 26 noon ET**; implement everything shown in video as newly generated event work. Keep pre-event architecture concept external and disclose it in first line of 3-minute video. All human contributors must be approved; no late collaborator invitations. Four judging dimensions are **equal 25%**—impact, Meta tooling, technical execution, demo quality. An excellent 3-minute demo and *actual* substantive Meta API/open-weight inference are top priority, not optional polish. Hard submit Nov 4 9 PM ET. State organizer rules as provided rather than stale "verify tomorrow" instructions.

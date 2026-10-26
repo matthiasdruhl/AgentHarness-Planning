@@ -1,8 +1,11 @@
 # Forecode — Foresight + Verify | Meta Hackathon Planning
 
-**Status:** planning specifications; no benchmark execution or performance results. **Event:** October 26–November 4, 2026. **Project:** AgentHarness-Planning.
+**Status:** pre-event planning reference, **NOT the submitted project**; no benchmark execution or performance results. **Authorized code build:** after **Oct 26, 2026 noon ET kickoff** through Nov 4, 9 PM ET. **Project:** AgentHarness-Planning.
 
 **Forecode is a Meta-powered architecture research tool.** Developers confirm future intentions; **Meta forms falsifiable architecture hypotheses, adversarially challenges them, and interprets verified evidence**. Codex executes only human-approved controlled experiments inside an isolated sandbox; a separate evaluator issues scoped verification certificates. We compare strong status quo/template alternatives and retain losing results.
+
+## Official rule override — begin here
+**Critical:** Organizer requires a **fresh public standalone submission repo with only features/code built after the Oct 26 noon kickoff**. This pre-event repo and its contracts, CI, JSON examples and fixture scripts must **NOT** be copied into the submission; read for conceptual guidance only and implement anew. Only organizer-approved humans may help. The opening line of the **required 3-minute demo** must distinguish pre-event idea/planning from new submitted features. Four judging categories weighted **equally** (impact, Meta tooling, technical execution, demo). [Official participant rules summary](docs/OFFICIAL-PARTICIPANT-RULES-2026-10-26.md).
 
 ## Start here
 - **[Meta Architecture Scientist — P0 protocol](docs/META-ARCHITECTURE-SCIENTIST.md)** · **[Contract Freeze v1](docs/CONTRACT-FREEZE-v1.md)** · [Machine-readable schemas and conformance tests](contracts/README.md) · **[Hackathon submission-first plan](docs/HACKATHON-CRITICAL-PATH.md)** · [Existing Codex Docker Sandbox booking-first runbook](docs/DOCKER-SANDBOX-BOOKING-FIRST.md) · [app/Codex handoff](docs/IMPLEMENTATION-HANDOFF.md) · [demo acceptance](docs/DEMO-ACCEPTANCE.md) · [audit tracker](docs/AUDIT-REMEDIATION.md)

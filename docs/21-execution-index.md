@@ -26,3 +26,6 @@ These are documentation additions only; no recorded experiments or final organiz
 
 ## Meta Scientist kickoff reading order
 [Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md) → [frozen additive schemas](../contracts/schemas/forecode-v1.schema.json) + [API registry](../contracts/api-registry.json) → [Meta model transport](05-meta-integration.md) → [M6](../milestones/m6.md) + [demo acceptance](DEMO-ACCEPTANCE.md) → [A/B and Meta comparator](09-evaluation-plan.md). The first two Meta goals are **P0 and required for the differentiated demo**; evidence interpretation is only allowed after trustworthy measured receipts. Adaptive selection is P1. Existing M0/M2/M3 safety critical path is unaffected.
+
+## EVENT ELIGIBILITY FIRST — Oct 26 organizer override
+Start with [official participant rules and new standalone public repo requirement](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md), **then** [implementation handoff](IMPLEMENTATION-HANDOFF.md). Read pre-event contracts/design as references only; **do not copy** planning files, exact schema JSON, scripts, history or generated examples into the event entry. Freshly implement equivalent behavior after kickoff. The first commit and BUILD-PROVENANCE log must make authorship period transparent; the 3-minute video explicitly declares what existed before. No earlier milestone ticket can bypass this gate.
