@@ -1,6 +1,7 @@
 # 20 — Feasibility and launch checklist
 
-- [ ] Confirm organizer prebuilt-code eligibility and official Meta model credits.
+- [ ] **Organizer clarified new work only after Oct 26 noon ET kickoff**: create **fresh public standalone** submission repo, **do not copy pre-event planning/source/examples/history**, and keep event-created BUILD-PROVENANCE log. [Official rules](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md).
+- [ ] Claim $150 per accepted participant by Nov 4 9 PM ET; verify actual billing credits, required card and hard local cost controls (warnings may not cap overages); validate one live eligible Meta call.
 - [ ] Inspect owner M4 Pro host: arm64, Docker Desktop engine, Codex, Node, Python 3.12+, uv, disk.
 - [ ] **User reported** Docker Sandboxes installed and Codex sandbox initialized; **not verified**: record actual `sbx version`, `sbx ls --format json`, workspace mode, image patch state, safe proxy-authenticated Codex command. Skip reinstall unless missing/outdated.
 - [ ] Confirm Docker Sandboxes supports safe programmatic invocation, artifacts and timeouts needed for pinned SCBench checkpoint.

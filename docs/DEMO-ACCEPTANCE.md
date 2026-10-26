@@ -1,10 +1,10 @@
 # Forecode judge demo — falsifiable acceptance specification
 
-Target **about three minutes**; exact duration, format and requirements must be confirmed against final event rules. This is a demonstration of real measured evidence when available, not a simulation.
+**Organizer-confirmed required exactly 3-minute demo target**, and compulsory opening disclosure of pre-existing concept/work versus newly event-built functionality. Do not exceed 3 minutes. [Rules](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md). This is a demonstration of real measured evidence when available, not a simulation.
 
 ## Script
 
-1. 0:00–0:25 — Working single-user booking app and future team-accounts requirement; current green tests do not prove ease of evolution.
+1. **0:00–0:12 — required organizer provenance disclosure:** pre-existing architecture planning only, and exact new event-developed app/models/tests; no pre-event functionality shown. 0:12–0:25 — Working *newly developed* booking app and future team-accounts requirement.
 2. 0:25–1:00 — Explicit user-confirmed future intent; **observed authorized Meta output** proposes status quo plus targeted alternative; model/version and provenance visible. If recorded, say recorded.
 3. 1:00–1:25 — Show credible A/B architecture boundaries, downsides and *modeled* cost with limits; no exact time savings from hypothetical graph scores.
 4. 1:25–2:35 — Show **actually recorded** A/B development runs, paired agent/task/budget/Verify, independent acceptance/regressions, evaluated tree and grader IDs, B upfront effort and observed failures. Playback is recorded, not falsely "live".
@@ -29,3 +29,9 @@ Feature freeze Nov 2; rehearse Nov 3 in clean session; check official portal cut
 
 ## Meta Scientist judging acceptance overlay
 The judge must see a **real or explicitly recorded** Meta-generated, *falsifiable* prediction and a distinct proposed counterexample attempting to undermine it, both tied to approved future intent. If safe measured A/B and protected receipt exists, show Meta's **non-authoritative post-run interpretation** of a sanitized exact-evidence snapshot alongside the immutable certificate. If not, say "awaiting verified evidence"; never manufacture Meta interpretation of fake measurements. Show the strong roadmap/template comparator before claiming Meta *improved* results. Keep total flow ≈3 minutes by omitting extra scenarios, fancy multi-agent debate and live autonomous runs. [Details](META-ARCHITECTURE-SCIENTIST.md).
+
+## Disqualification and scoring checks (Oct 26 organizer clarification)
+- 3-minute video **opens by identifying pre-event idea/planning** and demonstrates only files/features built after Oct 26 noon kickoff in fresh public standalone submitted repo. Never pass old `AgentHarness-Planning` examples or synthetic traces as newly built demo functionality.
+- Real qualifying Meta API/open-weight calls visible in at least Meta hypothesis and challenger; Muse Code as coding tool alone is not meaningful end-product Meta model use.
+- **Equal 25% weight** impact, use of Meta AI tooling, technical depth/execution and demo quality. Video composition explicitly addresses all four; scope may need reduction to make a clear Meta-specific story.
+- Judge can open public GitHub repo, video and working product with no inaccessible dependencies; list all approved contributors. [Rules](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md).
