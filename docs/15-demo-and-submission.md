@@ -12,3 +12,6 @@ Submission checklist: official eligibility/track; source/license/attributions; w
 
 ## Required evidence and claim gates
 See [judge-facing acceptance](DEMO-ACCEPTANCE.md) for executable criteria. A/B result is only a conditional architecture effect; do not attribute it to Meta without a matched strong equally informed non-Meta control. The official Meta event page as of Oct 25 gives Nov 4 **9 PM ET**, but exact portal/timezone and video rules must be confirmed at kickoff and before upload. Replay recorded work as recorded; show missing values/null instead of fabricated savings.
+
+## Conditional Muse demo script
+Keep the Meta Scientist → fixed reviewed task → independent Verify → scoped certificate storyline. If Muse passes gate, label it as **Meta's third-party coding agent**, not Forecode's proprietary implementation or trusted grader. Show actual model-generated hypothesis/challenge separately from the Muse agent trace and **independently evaluated** pass/fail with receipts. If it fails feasibility, show Codex instead. Never imply Muse development assistance alone equals a qualifying in-app Meta AI feature, and never present a prerecorded trace as live. [Muse integration](MUSE-CODE-INTEGRATION.md).
