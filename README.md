@@ -23,3 +23,6 @@ This repository is documentation-only. M0–M10 and 68 tickets remain full specs
 
 ## What Meta uniquely does
 **Hypothesis:** predicts a specific observable architectural tradeoff and states how to disprove it. **Challenge:** proposes a plausible counterexample that could make its own hypothesis fail (model-generated, **not secretly held out**). **Interpretation:** after a genuine protected evaluator run, contextualizes sanitized results without changing the verdict. An actual live call and strong equally informed non-Meta comparator are required before claiming measurable incremental Meta benefit. See [P0 protocol](docs/META-ARCHITECTURE-SCIENTIST.md). Adaptive experiment selection and multi-agent debate are P1, not kickoff blockers.
+
+## Optional stretch, only after P0 is stable
+[Meta open-weight inference extension](docs/OPEN-WEIGHT-STRETCH.md) is **P1**: optionally compare Muse Spark Open (for example Baseten's organizer-provided model ID) with the direct Meta Model API for the Architecture Scientist. The extra backend could support provider portability and potentially the open-weight bonus, but **does not replace required P0**, guarantee awards, or justify changing the evaluator or delaying the deadline.
