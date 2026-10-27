@@ -11,6 +11,7 @@
 - **[Meta Architecture Scientist — P0 protocol](docs/META-ARCHITECTURE-SCIENTIST.md)** · **[Contract Freeze v1](docs/CONTRACT-FREEZE-v1.md)** · [Machine-readable schemas and conformance tests](contracts/README.md) · **[Hackathon submission-first plan](docs/HACKATHON-CRITICAL-PATH.md)** · [Existing Codex Docker Sandbox booking-first runbook](docs/DOCKER-SANDBOX-BOOKING-FIRST.md) · [app/Codex handoff](docs/IMPLEMENTATION-HANDOFF.md) · [demo acceptance](docs/DEMO-ACCEPTANCE.md) · [audit tracker](docs/AUDIT-REMEDIATION.md)
 - [AGENTS.md](AGENTS.md) and [execution index](docs/21-execution-index.md)
 - [Master implementation plan](docs/IMPLEMENTATION-MASTER-PLAN.md), [milestones](milestones/README.md), [68 Codex tickets](docs/CODEX-TICKETS.md)
+- **[Competitive stretch execution roadmap (Oct 27)](docs/COMPETITIVE-STRETCH-ROADMAP-2026-10-27.md)** — preplanned architecture tournament, Meta Scientist, Time Machine, protected evidence and Codex handoffs. Optional packages never displace P0 or Nov 2 feature freeze.
 - [Benchmark registry](benchmarks/README.md) and [booking-v1 demo specification](benchmarks/booking-v1/README.md)
 - **[Local M4 Pro sandbox plan](docs/LOCAL-MAC-SANDBOX.md)** and **[Docker Sandbox–first SlopCodeBench integration decision](benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md)**
 - [Evaluation standards](docs/09-evaluation-plan.md), [security gates](docs/10-security-and-privacy.md)
