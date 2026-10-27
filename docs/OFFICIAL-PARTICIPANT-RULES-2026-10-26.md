@@ -25,7 +25,7 @@
 - Meaningfully use **Meta Model API and/or Meta open-weight models**, not merely a model logo or generic coding-tool attribution.
 - Organizer-listed: **Muse Spark, Muse Wonder, Muse Image, Muse Voice Transcribe, SAM 3.1** via Meta Model API; **Muse Glimmer and Muse Spark Open** as open weight; **Muse Code** can help code. Access to any particular API model remains unverified until an actual authorized call.
 - Baseten optional inference ID: **`meta-models/muse-spark-open-1026`** (per participant FAQ). If using Baseten/open weight, keep provider/model provenance correct; confirm it qualifies under final track requirements. Using Codex/Muse Code to *write* the app is not a substitute for actual Meta-model-powered functionality in the delivered product.
-- **Four judging criteria weighted equally (25% each): impact, use of Meta AI tooling, technical depth and execution, demo quality.** Top five per selected competition track reach finals. Optimize the *demonstrated* Meta hypothesis/challenge contribution and the 3-minute walkthrough as much as architecture correctness.
+- **Four project-judging dimensions:** impact, use of Meta AI tooling, technical depth/execution and demo quality. **Judging-weight DISCREPANCY (Oct 27):** this participant-notes summary originally recorded **25% each**, while two public writeups of the official waiver describe **30% impact, 25% Meta, 20% technical, 25% demo**. The Meta landing page only confirms **50/50 weighting for application-selection criteria**, which is a different stage. The accepted waiver/portal rubric has not been independently inspected here; **the owner must confirm the project rubric** before describing exact percentages as official. See [verification register](RULES-VERIFICATION-2026-10-27.md). Top five per selected track are reported to reach finals under participant guidance. Optimize all four dimensions regardless.
 
 ## Submission mandatory
 
@@ -51,6 +51,12 @@
 ## Startup versus Indie / prizes
 
 Indie Developer awards (1–5): **$150k / $100k / $75k / $50k / $25k**; Startup awards: **$250k / $150k / $75k / $50k / $25k**. Bonus Most Viral $20k, Best Build on Meta Open Weight Models $10k, Community Vote $10k, Best Agentic Use-Case $5k, Best Creative Build $5k. **Do not choose track solely from prize amounts**; verify eligibility and meaningful execution fit. Community vote Nov 9; social/viral cutoff Nov 8 EOD per FAQ.
+
+## Oct 27 review: open eligibility question and reliable status
+
+The [official Meta event page](https://dev.meta.ai/events/global-hackathon) expressly lists exclusions for government-affiliated individuals (and certain household/family members) but does **not** publicly define this term in enough detail to determine every individual case. If potentially applicable, obtain a dated written organizer interpretation **before** assuming acceptance or disqualification. Keep personal background and written waiver documents private. This summary cannot decide any entrant's eligibility.
+
+The exact scoring weights are **not resolved** by the Oct 26 conversational summary; project judging and application selection are not the same. See the [full source register and signoff actions](RULES-VERIFICATION-2026-10-27.md). This clarification does **not** weaken participant-specific new-work, public repo, or 3-minute video requirements.
 
 ## Source priority / conflict resolution
 
