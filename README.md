@@ -20,6 +20,7 @@
 
 - **[ForeCode v4.4 visual system and UX specification](docs/FORECODE-UI-UX-FINAL-v4.4.md)** — editorial landing + engineering workbench, Architecture Atlas, Meta hypothesis/challenge, A/B traces, independent evidence certificate, colors, typography, responsive and motion rules.
 - **[Codex frontend implementation handoff](docs/FORECODE-UI-IMPLEMENTATION-HANDOFF-v4.4.md)** — scope-ranked P0/P1 plan mapped to existing M8/M9 tickets, trust-state requirements, accessibility and acceptance tests.
+- **[Browse the actual V4.4 interactive design reference](design/forecode-v4.4/README.md)** — self-contained HTML prototype with the original design notes. Open the HTML locally; it is **not** submitted code.
 
 These documents are **design-only planning references**. Do not copy prototype HTML/CSS/JS or historical planning artifacts into the hackathon submission; all eligible code must be newly authored after kickoff in the standalone entry. The critical-path and frozen trust/contract specs remain authoritative.
 
