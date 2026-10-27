@@ -2,6 +2,10 @@
 
 **Purpose:** Pre-decide implementation, scope, verification, and cut conditions for an unusually compelling Meta Global AI Developer Hackathon entry. This is a **planning overlay, not a replacement** for the 68 canonical M0–M10 ticket IDs, the [submission-first critical path](HACKATHON-CRITICAL-PATH.md), [Meta Scientist protocol](META-ARCHITECTURE-SCIENTIST.md), [v4.4 design handoff](FORECODE-UI-IMPLEMENTATION-HANDOFF-v4.4.md), or [Demo acceptance](DEMO-ACCEPTANCE.md). Dates and effort ranges are targets, not claims of progress.
 
+## Implementation readiness — frozen supporting decisions
+
+The five implementation refinements are now written as independent, linked planning guides: **[PR-sized Codex queue](IMPLEMENTATION-QUEUE-2026-10-27.md)** (file ownership and merge evidence), **[experiment protocol](ARCHITECTURE-TOURNAMENT-PROTOCOL.md)** (comparators, fairness and report criteria), **[judge success gates](JUDGE-SUCCESS-GATES.md)** (impact/Meta/technical/demo proof), **[official-rule ambiguity register](RULES-VERIFICATION-2026-10-27.md)** (eligibility and judging-weight conflict), and **[stretch promotion gates](STRETCH-PROMOTION-GATES.md)** (objective GO/HOLD/CUT). These define the execution contract; do not invent a second milestone hierarchy or automatically mark any app feature complete from planning edits.
+
 ## Decision and current observed state
 
 **Decision:** Keep the original future-proofing recommendation product as the core experience. Differentiate it with **one rigorous, independently verified architecture tournament**, a **source-backed architecture time machine**, **Meta's falsifiable/self-challenging scientific reasoning**, and **inspectable research-grade evidence**. Prioritize a single completed, honest three-minute journey over feature count.
