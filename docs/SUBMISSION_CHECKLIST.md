@@ -17,7 +17,9 @@
 - [ ] Public app/API safe: no arbitrary submitted-code execution over HTTP, no real secret exposure, no hidden evaluator code in public demo/source.
 - [ ] App's freshly authored contracts and tests validate, full build/typecheck/unit/E2E run with observed exit status.
 - [ ] Real A/B run conditions matched or clearly report not validated; losses, null metrics and real provenance preserved.
-- [ ] Four **equally weighted** dimensions each addressed: impact, Meta AI tooling, technical depth/execution, demo quality.
+- [ ] All four project-judging dimensions addressed: impact, Meta AI tooling, technical depth/execution and demo quality. **Exact weights unresolved** until accepted waiver/portal confirmation (notes 25/25/25/25 vs public waiver recaps 30/25/20/25); record source/date per [rule verification](RULES-VERIFICATION-2026-10-27.md).
+- [ ] [Judge success gate J1–J5](JUDGE-SUCCESS-GATES.md) reviewed with observed evidence; preregistered A/B and cost accounting follow [experiment protocol](ARCHITECTURE-TOURNAMENT-PROTOCOL.md).
+- [ ] Government-affiliation / household exclusion ambiguity (if potentially applicable) clarified by **written organizer determination**; keep personal details out of public repo. Do not assume eligibility from accepted application alone.
 - [ ] New video ≤3 minutes, clear voice/readable screens, valid accessible URL (no login restrictions for judges).
 - [ ] Public submitted GitHub URL, demo/video URLs work in clean session, all approved team members added to submission.
 - [ ] Submit at https://cerebralvalley.ai/e/meta-ai-developer-hackathon/hackathon/submit **before Nov 4 9 PM ET**; save receipt/screenshots.
