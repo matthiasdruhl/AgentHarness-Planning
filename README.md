@@ -12,6 +12,8 @@
 - [AGENTS.md](AGENTS.md) and [execution index](docs/21-execution-index.md)
 - [Master implementation plan](docs/IMPLEMENTATION-MASTER-PLAN.md), [milestones](milestones/README.md), [68 Codex tickets](docs/CODEX-TICKETS.md)
 - **[Competitive stretch execution roadmap (Oct 27)](docs/COMPETITIVE-STRETCH-ROADMAP-2026-10-27.md)** — preplanned architecture tournament, Meta Scientist, Time Machine, protected evidence and Codex handoffs. Optional packages never displace P0 or Nov 2 feature freeze.
+- **[PR-sized implementation queue](docs/IMPLEMENTATION-QUEUE-2026-10-27.md)** · **[Precommitted tournament experiment](docs/ARCHITECTURE-TOURNAMENT-PROTOCOL.md)** — exact dependencies, Codex branch/testing handoffs, valid A/B vs B/C comparisons.
+- **[Judge success gates](docs/JUDGE-SUCCESS-GATES.md)** · **[Rule and eligibility reconciliation](docs/RULES-VERIFICATION-2026-10-27.md)** · **[Stretch-feature promotion/kill switches](docs/STRETCH-PROMOTION-GATES.md)** — how to select, prove, demonstrate and cut work before Nov 2.
 - [Benchmark registry](benchmarks/README.md) and [booking-v1 demo specification](benchmarks/booking-v1/README.md)
 - **[Local M4 Pro sandbox plan](docs/LOCAL-MAC-SANDBOX.md)** and **[Docker Sandbox–first SlopCodeBench integration decision](benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md)**
 - [Evaluation standards](docs/09-evaluation-plan.md), [security gates](docs/10-security-and-privacy.md)
