@@ -37,6 +37,6 @@ Preserve v4.4's editorial dark surface and compact investigative workspace, limi
 
 ## Acceptance before production implementation is considered complete
 
-Test desktop 1440×900 and mobile 390×844, keyboard and screen-reader navigation, reduced motion, A/B/C and stage toggles, all absent/failed/verified states, source provenance, no unknown-zero substitution, no client forged certificate, secure hosted read-only restrictions, and full 3-minute demo path. The current prototype has undergone static structure checks and JS syntax validation, **not browser screenshot or E2E verification**.
+Test desktop 1440×900 and mobile 390×844, keyboard and screen-reader navigation, reduced motion, A/B/C and stage toggles, all absent/failed/verified states, source provenance, no unknown-zero substitution, no client forged certificate, secure hosted read-only restrictions, and full 3-minute demo path. The v5 design reference now has automated Chromium browser smoke coverage: **6/6 checks passed** at [run 40747082553](https://github.com/matthiasdruhl/AgentHarness-Planning/actions/runs/40747082553), including actual desktop/mobile screenshots, all A/B/C and Time Machine stages, evidence states, keyboard navigation, reduced-motion viewport, console errors and the mobile scrollable graph. This is not complete cross-browser, screen-reader or WCAG conformance, and it proves no live model/agent/grader capability.
 
 This pre-event planning artifact is a conceptual reference only. No prototype HTML/CSS/JS or mock fixtures may be copied into the post-kickoff hackathon submission.
