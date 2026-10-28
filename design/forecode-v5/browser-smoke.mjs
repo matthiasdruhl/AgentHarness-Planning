@@ -128,6 +128,14 @@ await check('mobile portrait layouts + reduced motion', async () => {
   await page.screenshot({ path: out + '/architecture-mobile.png', fullPage: true });
   for (const view of ['experiment', 'time', 'evidence']) {
     await clickWork(page, view);
+    if (view === 'time') {
+      const scroller = page.locator('.v5-graph-scroll');
+      const dimensions = await scroller.evaluate(el => ({ client: el.clientWidth, full: el.scrollWidth }));
+      truthy(dimensions.full > dimensions.client + 100, 'Time Machine map is not horizontally inspectable: ' + JSON.stringify(dimensions));
+      await scroller.evaluate(el => { el.scrollLeft = el.scrollWidth; });
+      truthy((await scroller.evaluate(el => el.scrollLeft)) > 100, 'Time Machine diagram cannot actually be scrolled');
+      await scroller.evaluate(el => { el.scrollLeft = 0; });
+    }
     await page.screenshot({ path: out + '/' + view + '-mobile.png', fullPage: true });
     const bounds = await page.evaluate(() => ({
       width: window.innerWidth,
