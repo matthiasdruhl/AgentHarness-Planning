@@ -1,0 +1,35 @@
+name: ForeCode v5 Browser Smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'design/forecode-v5/**'
+      - '.github/workflows/forecode-v5-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright browser for tests
+        run: |
+          npm install --no-save playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Exercise actual v5 prototype in Chromium
+        run: node design/forecode-v5/browser-smoke.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forecode-v5-browser-screenshots
+          path: design/forecode-v5/browser-artifacts/
+          if-no-files-found: ignore
+          retention-days: 7
