@@ -124,7 +124,7 @@ await check('keyboard command menu and navigation', async () => {
 await check('mobile portrait layouts + reduced motion', async () => {
   const { page, errors } = await open(390, 844, true);
   await page.screenshot({ path: out + '/landing-mobile.png', fullPage: true });
-  await page.locator('#site [data-launch="architecture"]').first().click();
+  await page.locator('#site .nav-action').click();
   await page.screenshot({ path: out + '/architecture-mobile.png', fullPage: true });
   for (const view of ['experiment', 'time', 'evidence']) {
     await clickWork(page, view);
