@@ -311,7 +311,7 @@ body.motion-off *,body.motion-off *:before,body.motion-off *:after{animation:non
  $$('[data-codeview]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.codeview===codeview)));
  }
  let traceArm='a',traceIndex=0;
- function inspectTrace(a,i){traceArm=a;traceIndex=i;$$('.trace-event').forEach(el=>{const sel=el.dataset.arm===a&&Number(el.dataset.event)===i;el.classList.toggle('trace-selected',sel);el.setAttribute('aria-pressed',String(sel))});const sample=results==='sample';const names=sample?({a:['Frozen task','Coding agent','Acceptance check'],b:['Upfront boundary','Coding agent','Acceptance check']}[a]):['Future intent','Isolated runner','Protected receipt'];const title=names[i]||'Event';$('#traceSelectedId').textContent=a.toUpperCase()+'-'+String(i+1).padStart(2,'0');$('#traceSelectedName').textContent=title;$('#traceSelectedSummary').textContent=sample?'Fictional design specimen showing the metadata required for a recorded event. Not a real ForeCode run.':'No observed event has been loaded. A live product will show source-bound and receipt-linked information once available.';const records=[['Origin',sample?'FICTIONAL EXAMPLE':'UNAVAILABLE'],['Evidence',sample?(i===2?'SAMPLE CHECK':'SAMPLE LOG'):'NONE LOADED'],['Run / receipt',sample?'NOT A REAL IDENTIFIER':'UNKNOWN'],['Trusted verdict',sample?'NOT ATTESTED':'INSUFFICIENT EVIDENCE']];$('#traceDetails').replaceChildren(...records.map(([k,v])=>{const d=document.createElement('div');d.className='detail-row';const l=document.createElement('span');l.textContent=k;const s=document.createElement('strong');s.textContent=v;d.append(l,s);return d}));}
+ function inspectTrace(a,i){traceArm=a;traceIndex=i;$$('.trace-event').forEach(el=>{const sel=el.dataset.arm===a&&Number(el.dataset.event)===i;el.classList.toggle('trace-selected',sel);el.setAttribute('aria-pressed',String(sel))});const sample=results==='sample';const names=sample?({a:['Frozen task','Coding agent','Acceptance check'],b:['Upfront boundary','Coding agent','Acceptance check'],c:['Non-Meta preparation','Coding agent','Acceptance check']}[a]):['Future intent','Isolated runner','Protected receipt'];const title=names[i]||'Event';$('#traceSelectedId').textContent=a.toUpperCase()+'-'+String(i+1).padStart(2,'0');$('#traceSelectedName').textContent=title;$('#traceSelectedSummary').textContent=sample?'Fictional design specimen showing the metadata required for a recorded event. Not a real ForeCode run.':'No observed event has been loaded. A live product will show source-bound and receipt-linked information once available.';const records=[['Origin',sample?'FICTIONAL EXAMPLE':'UNAVAILABLE'],['Evidence',sample?(i===2?'SAMPLE CHECK':'SAMPLE LOG'):'NONE LOADED'],['Run / receipt',sample?'NOT A REAL IDENTIFIER':'UNKNOWN'],['Trusted verdict',sample?'NOT ATTESTED':'INSUFFICIENT EVIDENCE']];$('#traceDetails').replaceChildren(...records.map(([k,v])=>{const d=document.createElement('div');d.className='detail-row';const l=document.createElement('span');l.textContent=k;const s=document.createElement('strong');s.textContent=v;d.append(l,s);return d}));}
  function wireTrace(){$$('.trace-event').forEach(el=>{const activate=()=>inspectTrace(el.dataset.arm,Number(el.dataset.event));el.addEventListener('click',activate);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}})})}
  function renderNodes(){const root=$('#mapModules');root.innerHTML=Object.entries(modules).map(([id,m],idx)=>`<g data-module="${id}" class="map-module ${m.proposed?'node-proposed':''}" role="button" tabindex="0" aria-label="Inspect ${m.n}"><circle class="module-halo" cx="${m.x}" cy="${m.y}" r="23"/><circle class="module-mark" cx="${m.x}" cy="${m.y}" r="7"/><text class="module-name" text-anchor="middle" x="${m.x}" y="${m.y-28}">${m.n}</text><text class="module-path" text-anchor="middle" x="${m.x}" y="${m.y+28}">${m.path}</text><text class="module-index" text-anchor="middle" x="${m.x}" y="${m.y+43}">${String(idx+1).padStart(2,'0')}</text></g>`).join('');$$('.map-module').forEach(n=>{n.addEventListener('click',()=>setModule(n.dataset.module));n.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();setModule(n.dataset.module)}})})}
  function setModule(id){if(modules[id].proposed&&candidate==='a')setCandidate('b');module=id;renderGraph()}
@@ -328,7 +328,65 @@ body.motion-off *,body.motion-off *:before,body.motion-off *:after{animation:non
  function openCmd(){previous=document.activeElement;cmd.classList.add('open');cmd.setAttribute('aria-hidden','false');input.value='';filterCmd('');input.focus()}
  function filterCmd(q){$$('[data-command]').forEach(b=>b.style.display=b.textContent.toLowerCase().includes(q.toLowerCase())?'block':'none')}
  input.addEventListener('input',()=>filterCmd(input.value));cmd.addEventListener('click',e=>{if(e.target===cmd)closeCmd()});$$('[data-command]').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.command;t==='home'?showSite():showApp(t);closeCmd()}));$('#commandOpen').addEventListener('click',openCmd);
- document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmd.classList.contains('open')?closeCmd():openCmd();return}if(e.key==='Escape'&&cmd.classList.contains('open')){closeCmd();return}if(!app.classList.contains('active')||cmd.classList.contains('open')||e.target.matches('input,textarea'))return;if(['1','2','3'].includes(e.key)&&!e.metaKey&&!e.ctrlKey)setStage({1:'architecture',2:'experiment',3:'evidence'}[e.key])});$('#motionToggle').addEventListener('click',e=>{const off=document.body.classList.toggle('motion-off');e.currentTarget.textContent=off?'Motion: off':'Motion: on';e.currentTarget.setAttribute('aria-pressed',String(off))});
+ document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmd.classList.contains('open')?closeCmd():openCmd();return}if(e.key==='Escape'&&cmd.classList.contains('open')){closeCmd();return}if(!app.classList.contains('active')||cmd.classList.contains('open')||e.target.matches('input,textarea'))return;if(['1','2','3','4'].includes(e.key)&&!e.metaKey&&!e.ctrlKey)setStage({1:'architecture',2:'experiment',3:'time',4:'evidence'}[e.key])});$('#motionToggle').addEventListener('click',e=>{const off=document.body.classList.toggle('motion-off');e.currentTarget.textContent=off?'Motion: off':'Motion: on';e.currentTarget.setAttribute('aria-pressed',String(off))});
  $$('[data-codeview]').forEach(b=>b.addEventListener('click',()=>{codeview=b.dataset.codeview;renderCode()}));$('#pivotLens').addEventListener('click',()=>setLens(lens==='challenge'?'hypothesis':'challenge'));
- renderNodes();setPhase('hypothesis');setScenario('team');setCandidate('b');setModule('ownership');setStage('architecture');renderTrace();renderEvidence();
+ 
+ // v5: symbolic design state, never actual run data.
+ let activeArm='a',timeArm='a',timePhase='before';
+ const originalSetStage=setStage,originalRenderTrace=renderTrace,originalRenderEvidence=renderEvidence;
+ setStage=function(s){originalSetStage(s);if(s==='time')renderTime()};
+ function v5Status(){
+   const sample=results==='sample';
+   ['a','b','c'].forEach(function(a){
+      $('#v5Card'+a.toUpperCase()).textContent=sample?('FICTIONAL / '+(a==='a'?'REJECTED':'VERIFIED')):'NOT RUN';
+      $('#v5Evidence'+a.toUpperCase()).textContent=a.toUpperCase()+' · '+(sample?'FICTIONAL EXAMPLE':'NO RECEIPT');
+   });
+   $$('[data-arm-focus]').forEach(function(b){const on=b.dataset.armFocus===activeArm;b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))});
+   $('#v5VerdictLabel').textContent=sample?'FICTIONAL EXAMPLE — NOT MEASURED':'NO MEASURED COMPARISON';
+   $('#v5VerdictTitle').textContent=sample?'B and C tie on correctness in this fictional example.':'The experiment has not been run.';
+   $('#v5VerdictBody').textContent=sample?'Fictional A fails a check; B and C pass. There is no demonstrated Meta advantage over C and no actual cost or time measurements.':'A valid result needs real paired coding-agent runs, preparation costs and trusted independent receipts.';
+   $('.v5-verdict-glyph').textContent=sample?'≈':'?';
+ }
+ renderTrace=function(){
+   originalRenderTrace();
+   const sample=results==='sample';
+   $('#armCStatus').textContent=sample?'SAMPLE / VERIFIED':'NOT RUN';
+   $('#armCStatus').className='arm-status '+(sample?'pass':'');
+   const rows=sample?[['Conventional preparation','Fictional setup cost recorded','SAMPLE'],['Agent run','Same downstream task','SAMPLE'],['Independent checks','Fictional checks passed','SAMPLE']]:[['Roadmap freeze','Identical future task for each arm','—'],['Agent trial','No approved trial loaded','—'],['Evaluator receipt','No authenticated receipt','—']];
+   $('#timelineC').replaceChildren(...rows.map(function(r,i){
+      let el=document.createElement('div');el.className='trace-event';el.dataset.arm='c';el.dataset.event=String(i);el.setAttribute('role','button');el.setAttribute('tabindex','0');
+      const rail=document.createElement('div');rail.className='trace-rail',main=document.createElement('div');main.className='trace-main';
+      const title=document.createElement('strong');title.textContent=r[0];const description=document.createElement('small');description.textContent=r[1];main.append(title,description);
+      const state=document.createElement('div');state.className='trace-right';state.textContent=r[2];el.append(rail,main,state);return el;
+   }));
+   wireTrace();v5Status();inspectTrace(activeArm,0);
+ };
+ renderEvidence=function(){originalRenderEvidence();v5Status()};
+ const timeText={
+ a:{before:['Original booking system','All arms begin with the same working booking code.','No preparation','SHARED BASELINE'],prepared:['Preserve good architecture','No speculative extraction for the current design.','No speculative prep','UNCHANGED'],after:['Implement team permissions','The same future requirement must be implemented and independently evaluated.','No prep planned','FINAL TREE UNKNOWN']},
+ b:{before:['Same starting code','Meta receives the same present-day code as every competitor.','Preparation not started','SHARED BASELINE'],prepared:['Meta-informed ownership seam','Prepare a targeted boundary, approved by a human, and count all upfront work.','Cost unknown','PROPOSAL ONLY'],after:['Future requirement on B','The common downstream agent runs against the prepared design.','Prep + downstream unknown','FINAL TREE UNKNOWN']},
+ c:{before:['Same starting code','The strong non-Meta control receives identical roadmap context.','Preparation not started','SHARED BASELINE'],prepared:['Roadmap-aware control','A credible conventional policy seam (or deliberate no-change) with upfront work accounted.','Cost unknown','PROPOSAL ONLY'],after:['Future requirement on C','Optional C receives the same downstream task and test policy.','Prep + downstream unknown','FINAL TREE UNKNOWN']}
+ };
+ function renderTime(){
+   $$('[data-tm-arm]').forEach(function(b){const on=b.dataset.tmArm===timeArm;b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))});
+   $$('[data-tm-phase]').forEach(function(b){const on=b.dataset.tmPhase===timePhase;b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))});
+   const t=timeText[timeArm][timePhase],showNew=timeArm!=='a'&&timePhase!=='before';
+   $('#v5TimeState').textContent=timeArm.toUpperCase()+' / '+timePhase.toUpperCase()+' · DESIGN SAMPLE';
+   $('#v5TimeHeading').textContent=t[0];$('#v5TimeExplain').textContent=t[1];
+   $('#v5Prep').textContent=t[2];$('#v5Tree').textContent=t[3];$('#v5Trust').textContent='INSUFFICIENT EVIDENCE';
+   $('#v5StageLabel').textContent=timePhase.toUpperCase();
+   $('.v5-graph-svg').classList.toggle('show-prepared',showNew);
+   $('#v5PreparedName').textContent=timeArm==='b'?'Ownership':'Policy seam';
+   $('#v5PreparedSub').textContent=timeArm==='b'?'Meta proposal':'Non-Meta control';
+   $('#v5GraphNote').textContent=showNew?'Schematic proposed node. No verified source map or final-tree diff.':'Shared illustrative baseline; real source topology not loaded.';
+   $('#v5DeltaHeading').textContent=timePhase==='before'?'A common starting point':timePhase==='prepared'?'Preparation has a cost':'Identical future work';
+   $('#v5DeltaExplain').textContent='This visualization needs actual immutable source identities and safe inspected diff artifacts before production.';
+   const rows=timePhase==='before'?['= SAME ORIGINAL CODE TREE','= PRESENT-DAY ORACLE / NOT LOADED']:timePhase==='prepared'?(timeArm==='a'?['= NO SPECULATIVE REFACTOR','= SETUP EFFORT / NONE PLANNED']:timeArm==='b'?['+ Proposed membership responsibility','+ Proposed ownership boundary','! Preparation cost / UNKNOWN']:['+ Conventional roadmap-aware policy','! Meta not used to propose C','! Preparation cost / UNKNOWN']):['+ Delegated permission feature task','+ Preserve booking behavior / isolation','! Final source tree / UNKNOWN','! Protected receipt / ABSENT'];
+   $('#v5Diff').replaceChildren(...rows.map(function(r){const e=document.createElement('div');e.textContent=r;e.className=r.startsWith('+')?'addition':r.startsWith('!')?'caution':'';return e}));
+ }
+ $$('[data-tm-arm]').forEach(function(b){b.addEventListener('click',function(){timeArm=b.dataset.tmArm;renderTime()})});
+ $$('[data-tm-phase]').forEach(function(b){b.addEventListener('click',function(){timePhase=b.dataset.tmPhase;renderTime()})});
+ $$('[data-arm-focus]').forEach(function(b){b.addEventListener('click',function(){activeArm=b.dataset.armFocus;v5Status();inspectTrace(activeArm,0);$('.v44-trace-detail').scrollIntoView({block:'nearest',behavior:'auto'})})});
+
+ renderNodes();setPhase('hypothesis');setScenario('team');setCandidate('b');setModule('ownership');setStage('architecture');renderTrace();renderEvidence();renderTime();
 })();</script></body></html>
