@@ -9,6 +9,10 @@ For developer-local experiments: allow reviewed pinned tasks only, isolated writ
 See [full adapter decision and safety acceptance gates](../benchmarks/SCBENCH-SANDBOX-ADAPTER-PLAN.md), [local Mac configuration](LOCAL-MAC-SANDBOX.md).
 
 ## Sandbox runtime clarification
+## Bounded authorization for real coding-agent experiments
+
+Before admitting an agent to a task, require a **trusted operator-controlled, immutable pre-run commitment** to the pinned task, permitted workspace/capabilities, agent identity, approved provider egress, hard limits and protected evaluator identity. Enforce restrictions using the approved *outer* sandbox/controller, not agent instructions or a model-generated plan. A digest/signature only helps when independently held and actually verified; it is not a substitute for access controls. If the shell can bypass per-tool allowlists, do not claim all tool calls are mediated. Deny stale/revoked/mismatched authorization before launch; record stopped/failed/canceled attempts without granting them success. Existing M2 negative controls and private evidence custody remain authoritative. See [the narrow execution overlay](EXPERIMENT-EXECUTION-AUTHORIZATION.md). No general-purpose agent security runtime is a hackathon prerequisite.
+
 As of Oct 25, the operator reports an initialized Docker Sandboxes Codex environment. Do not treat it as containment proof. Inspect current direct/clone/mountless workspace semantics; do not expose `.env` even via read-only cloned host repo. Default SSH-agent forwarding may allow guest signing requests despite private keys remaining on host; disable/verify it for untrusted tasks. Check installed sbx version >=0.42.0 and Oct 21 CA trust-store/image refresh advisory. Distinguish agent-phase restricted inference network from **offline independent grader**. Codex inner bypass mode may be normal inside Docker's microVM; test outer host-resource boundary. Do not remove or reset an existing user sandbox without explicit operator review and backup. See [dedicated booking-first runbook](DOCKER-SANDBOX-BOOKING-FIRST.md).
 
 ## Contract Freeze v1 trust granularity

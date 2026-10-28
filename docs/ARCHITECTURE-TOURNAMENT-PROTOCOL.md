@@ -31,6 +31,10 @@
 For each arm fix in manifest: `initialTree`, `preparedTree`, `finalTree`, task ID and hash, variant prep instructions/human changes, agent identity, vendor/model/version, prompt template hash, tool allowlist, sandbox image/runtime hash, network/credential policy, timeout/token/spend/step caps, independent evaluator and policy digests, whether runs sequential/concurrent, seed if supported, timestamps, status and observed spend. No arm may access another's final tree, model outputs or feedback before lock. If one runner differs, classify **not comparable**.
 
 ## Metrics and verdicts (do not fabricate thresholds)
+## Preauthorized downstream run boundary
+
+Before any real arm launches, the operator must approve and freeze a private, independently held execution envelope linked to study/arm/task/source IDs and the already-required fairness manifest. It identifies the actual enforced workspace/tool/credential/phase-egress/time/step/spend restrictions and protected evaluator identity. Agent-authored instructions or mutable sandbox-local manifest files cannot authorize new capabilities; a digest alone is not authentication. Keep permission-specific preparation records for B/C separate from the *identical downstream agent budget* and common task. Record denied, revoked, canceled and mismatched runs as attempts. In the final evidence chain, bind **authorized source and scope → actual modified final tree → protected evaluator checks/receipt**. If the runtime only enforces a coarse sandbox boundary, report that scope honestly rather than asserting per-tool-call policy enforcement. See [authorization and provenance overlay](EXPERIMENT-EXECUTION-AUTHORIZATION.md); it adds no frozen contract fields or new milestone.
+
 
 **Primary endpoint:** **independent downstream future-task correctness** across the **same required checks** on actual post-agent code: valid protected `VERIFIED` or `REJECTED` or `INSUFFICIENT_EVIDENCE`. A `completed` process is not a verified task. A missing/stale/forged receipt is **insufficient**, never a win. A cannot lose for having fewer architectural layers if it passes.
 
