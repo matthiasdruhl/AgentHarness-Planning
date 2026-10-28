@@ -19,13 +19,17 @@
 - [Evaluation standards](docs/09-evaluation-plan.md), [security gates](docs/10-security-and-privacy.md)
 
 
-## Frontend design — finalized v4.4 (Oct 26)
+## Frontend design — v5 tournament edition (Oct 28)
 
-- **[ForeCode v4.4 visual system and UX specification](docs/FORECODE-UI-UX-FINAL-v4.4.md)** — editorial landing + engineering workbench, Architecture Atlas, Meta hypothesis/challenge, A/B traces, independent evidence certificate, colors, typography, responsive and motion rules.
+- **[Open the current interactive frontend prototype (v5)](design/forecode-v5/README.md)** — tournament-centered landing, four connected workbench views, optional three-arm A/B/C comparison, Architecture Time Machine and independent Evidence Laboratory. All examples remain clearly fictional; no claim of measured execution.
+- **[v5 visual and interaction specification](design/forecode-v5/design-spec.md)** — full feature vision, P0/stretch scope, research fairness and implementation guardrails.
+- **[Original v4.4 visual system and UX specification](docs/FORECODE-UI-UX-FINAL-v4.4.md)** — editorial landing + engineering workbench, Architecture Atlas, Meta hypothesis/challenge, A/B traces, independent evidence certificate, colors, typography, responsive and motion rules.
 - **[Codex frontend implementation handoff](docs/FORECODE-UI-IMPLEMENTATION-HANDOFF-v4.4.md)** — scope-ranked P0/P1 plan mapped to existing M8/M9 tickets, trust-state requirements, accessibility and acceptance tests.
 - **[Browse the actual V4.4 interactive design reference](design/forecode-v4.4/README.md)** — self-contained HTML prototype with the original design notes. Open the HTML locally; it is **not** submitted code.
 
 These documents are **design-only planning references**. Do not copy prototype HTML/CSS/JS or historical planning artifacts into the hackathon submission; all eligible code must be newly authored after kickoff in the standalone entry. The critical-path and frozen trust/contract specs remain authoritative.
+
+The v4.4 reference remains preserved and its security/contract requirements are not superseded by the v5 concept design. The new prototype is a **pre-event planning reference**, never eligible submission source.
 
 ## Critical constraints
 No app-hosted arbitrary code execution. No untrusted task access to personal Codex auth, host files or hidden tests. SCBench stock Codex adapter is blocked pending reviewed isolation; Docker Sandboxes is first *candidate*, not a verified integration. External public benchmark pilot is conditional, and local booking controlled study is not standalone evidence of generalization. Results must be actually measured and failures reported. Nov 2 feature freeze.
