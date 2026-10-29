@@ -6,6 +6,11 @@ This folder contains a **fictional interactive design prototype**, not an app, M
 
 - [Interactive HTML prototype](prototype.html): from GitHub select **Raw**, save the file as HTML, then open it locally in a browser.
 - [Prior v4.4 design](../forecode-v4.4/README.md): preserved as an earlier design reference.
+- [Impact-first design spec (v5.1 presentation overlay)](impact-first-design-spec.md): product hierarchy, signature Decision Report, booking impact story, responsive behavior and trust states.
+- [Impact-first desktop and mobile wireframes](impact-first-wireframes.md): composition for landing, case, lab, tournament, Time Machine, Evidence and Decision Report.
+- [Codex-ready frontend handoff](../../docs/FORECODE-UI-IMPLEMENTATION-HANDOFF-impact-v5.md): priority-ordered eligible implementation slices and acceptance.
+
+**Important:** The existing v5 interactive HTML prototype has **not** been updated to implement these October 29 impact-first refinements. The new design spec and wireframes are proposed presentation guidance, not an interactive implementation or a measured product.
 
 The prototype has a landing page plus four connected workbench views: **Architecture Lab**, **Architecture Tournament** (A/B and optional C), **Architecture Time Machine** (before/prepared/after), and **Evidence Laboratory**. Its default tournament state says NOT RUN. The optional sample states are unmistakably fictional.
 
