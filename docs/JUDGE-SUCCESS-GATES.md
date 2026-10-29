@@ -18,6 +18,10 @@
 - **J4 — Evidence accountability:** at least one actual authenticated private-grader acceptance result is shown with scope and check IDs, and one actual denied/rejected/insufficient result if available. Strictly distinguish offline fixed-scenario no-inference acceptance from **real coding-agent** runs; cannot claim the former proves the latter. Unknowns explicit.
 - **J5 — Presentation readiness:** hosted read-only app and 3-minute video accessible in clean judge browser, accessible keyboard/mobile, no credentials, correct URLs and no shell execution endpoint, tested production build and exact recorded result path. Owner confirms portal submission before **Nov 4 9 PM ET**.
 
+## Impact-first communication overlay (Oct 29)
+
+The existing booking/team-permissions experiment is the concrete product story; do not switch to e-commerce. Show the **working booking action today**, the **specific future delegated-permissions need**, the **possible security/rework consequence as a hypothesis**, and, when measured, the actual independent outcome. Close with an **evidence-backed refactor / keep / inconclusive Decision Report**, not solely a verification certificate. A safe user-facing permission example is optional only if tied to the actual recorded evaluated tree/check; otherwise a truthful diagram is sufficient. Negative and tied outcomes are valuable rather than embarrassing. See [detailed impact specification](IMPACT-AND-DEMONSTRABILITY-REFINEMENT-2026-10-29.md) for exact content, gates, honest fallback and acceptance checks.
+
 ## Three-minute storyboard and plan B
 
 | Time | Primary | Allowed honest fallback |
