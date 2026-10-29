@@ -10,6 +10,10 @@
 4. 1:25–2:35 — Show **actually recorded** A/B development runs, paired agent/task/budget/Verify, independent acceptance/regressions, evaluated tree and grader IDs, B upfront effort and observed failures. Playback is recorded, not falsely "live".
 5. 2:35–3:00 — Export scoped evidence certificate, inspect verification receipt/unknown metrics and strong roadmap-aware baseline when available. Discuss the limits of one scenario.
 
+## Impact and demonstrability acceptance overlay (October 29)
+
+**Keep existing timing and required opening disclosure.** At 0:12–0:25 show the actual booking action first, then the concrete future team-permissions consequence; explain a *potential* security regression or rework, not an observed failure. During verified A/B playback, optionally show a safe booking actor/action outcome tied to the **same final-tree, run and protected check**. Never invent a failure or derive a UI symptom solely from a generic rejected check. If none exists, use an honest passing permission example or a conceptual diagram visibly marked unmeasured. At 2:35–3:00 headline the **refactor / keep / inconclusive Decision Report** (not an unconditional winner) and offer inspectable evidence certificate. Include prep-inclusive cost, uncertainty and one-case limitation. A “keep what works” decision or correctness tie is an acceptable and potentially powerful ending. Full design and implementation/cut criteria: [Impact and demonstrability refinement](IMPACT-AND-DEMONSTRABILITY-REFINEMENT-2026-10-29.md).
+
 ## Minimum automated/manual tests
 
 - Clean judge browser uses read-only hosted demo without credentials and follows links; accessible labels, keyboard and readable video.
