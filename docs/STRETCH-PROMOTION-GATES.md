@@ -8,6 +8,10 @@
 
 Before *any* stretch ticket, owner records: source SHA, actual P0 gates passing, no unresolved higher-priority defects, safe execution/credits if needed, remaining event calendar time, expected judge-visible payoff **inside 3 minutes**, and rollback branch. Only one stretch promotion at a time.
 
+## Oct 29 impact communication overlay
+
+The [impact and demonstrability refinement](IMPACT-AND-DEMONSTRABILITY-REFINEMENT-2026-10-29.md) **does not add a new optional package or extend deadlines**. A meaningful hook using existing booking behavior and a short **refactor / keep / inconclusive** conclusion are P0 *presentation/copy* of available authentic evidence (or honest insufficient state). A user-facing permission consequence replay is conditional P1 and must be cut if not immediately source/receipt-backed; a second no-refactor study is optional and cannot displace the first matched run. No new e-commerce fixture, fabricated failure, automatic PR feature or new evaluation authority. Reuse all S1–S8 go/no-go rules below.
+
 ## Feature-by-feature explicit go/no-go
 
 | Feature | Start only if all promotion conditions true | Latest responsible decision | Fast cut/rollback if |
