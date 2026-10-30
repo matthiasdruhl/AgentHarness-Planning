@@ -122,6 +122,8 @@ Primary interaction: select A/B/(C) and a synchronized Before → Prepared → A
 
 Graph and changed-file list share selection. The default judge view is a short source-backed change list; the large graph is a secondary tool. Stable positions and plain-language labels are preferred to animation; the full graph is optional stretch. Example impacts are never presented as parsed source.
 
+**Optional read-only priority what-if (S2, after P0):** For verified matched arms with comparable measured data, a clearly labeled *exploratory preference view* may show observed prep-inclusive differences under an alternate stated metric. It **must not alter** the original correctness tie, predeclared outcome criteria, receipts or Decision Report; never forecast untested workloads. Missing measurements yield “No supported what-if conclusion”; a new scenario requires a separately preregistered, owner-authorized experiment outside the browser. See [competitor-informed coverage and acceptance](../../docs/COMPETITOR-INSPIRED-FEATURE-COVERAGE-2026-10-30.md).
+
 ### 06 / Evidence Laboratory — proof is separate from inference
 
 Top: **per-arm independent status**, not a single undifferentiated all-green verdict. States VERIFIED, REJECTED, INSUFFICIENT_EVIDENCE refer only to exact checks and evaluated code. Use read-only trust-checked records, no browser-supplied evidence authority.
