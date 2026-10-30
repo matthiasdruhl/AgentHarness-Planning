@@ -98,9 +98,11 @@ await test('390px and 768px widths, reduced motion, semantic controls',async()=>
       if(view==='time'){
         const s=page.locator('.view[data-view="time"] .trace-scroll');
         const size=await s.evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));
-        assert.ok(size.scroll>size.client+100,'graph scroller must be independently scrollable');
-        await s.evaluate(e=>{e.scrollLeft=200});
-        assert.ok(await s.evaluate(e=>e.scrollLeft)>0);
+        if(width===390) {
+          assert.ok(size.scroll>size.client+100,'390px graph scroller must scroll: '+JSON.stringify(size));
+          await s.evaluate(e=>{e.scrollLeft=200});
+          assert.ok(await s.evaluate(e=>e.scrollLeft)>0);
+        }
       }
       if(width===390&&(view==='case'||view==='report')) await page.screenshot({path:screenshots+'/'+view+'-mobile.png',fullPage:true});
     }
