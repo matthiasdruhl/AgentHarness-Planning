@@ -25,6 +25,10 @@ The [impact and demonstrability refinement](IMPACT-AND-DEMONSTRABILITY-REFINEMEN
 | **S7 — External SCBench JS checkpoint** | Protected booking paired experiment and demo draft stable; isolated external rights/task environment reviewed, no agent/evaluator leakage; reproducible pilot feasible | **Oct 30** yes/no; **Nov 1** end | Any upstream incompatibility, network/security ambiguity, replay/non-eligibility, or target exceeds timebox |
 | **S8 — Extra motion/animations** | Core v4.4 information architecture, contrast, mobile/keyboard, source truth and 3-min demo complete | **Nov 1** at latest | Worse accessibility/performance or pushes out video/testing |
 
+## S9 — Evidence-driven Architecture Learning Loop (new planning only)
+
+See [learning-loop specification](ARCHITECTURE-LEARNING-LOOP.md) and [Codex handoff](LEARNING-LOOP-IMPLEMENTATION-PLAN.md). S9 does **not** replace S5, the 68 canonical tickets, frozen schemas or any P0 safety/Meta/tournament evidence gate. **L0 retrieval** may be promoted only if the main P0 demonstration is already stable, authenticated real experimental records exist, consent/rights and redaction are reviewed, the work is bounded, and it can be shown truthfully without impeding freeze. **L1 contextual-bandit** is HOLD/post-event unless diverse independent training groups, true reward lineage, a frozen independent evaluation, calibrated abstention and explicit owner approval already exist; a single booking experiment or many seeds is not enough. **L2 sequential RL** is strictly post-event research. A fake learning curve, synthetic record or Meta self-score cannot trigger promotion. At Nov 2, cut incomplete learning work, not the submission. If evidence is insufficient, retain fixed recommendations and label the learning system NOT_TRAINED / INSUFFICIENT_DATA.
+
 **Automatic no-go:** if real Meta transport is still mocked, if the first usable public demo is broken, if primary experiment is unverified, if protected data would be exposed, or if any optional effort would extend past Nov 2. One optional feature does not make another mandatory.
 
 ## Hard calendar decisions

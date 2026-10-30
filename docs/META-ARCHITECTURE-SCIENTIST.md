@@ -8,6 +8,10 @@ Forecode is a **controlled architecture research tool**. Meta is its scientific 
 
 **Product pitch:** "Forecode uses Meta to hypothesize, challenge and interpret future-proofing decisions—then tests them with coding agents and independent verification."
 
+## Later evidence-driven learning (not P0)
+
+The [Architecture Learning Loop](ARCHITECTURE-LEARNING-LOOP.md) proposes an optional operator-local sidecar that could retain authenticated tournament outcomes, retrieve admissible cross-case evidence (L0), and eventually learn a constrained advisory policy from independently verified reward (L1). Meta's job remains creating falsifiable hypotheses and scoped challenges, optionally considering **consented sanitized evidence cards**; neither Meta's self-reflections nor policy confidence can issue receipts or change protected evaluation. The first learning target is architecture *strategy selection*, distinct from the existing P1 visible-scenario adaptive selector. Not implemented or trained by this document. See [implementation gate plan](LEARNING-LOOP-IMPLEMENTATION-PLAN.md); P0 scope, consent, original provider calls and the Nov 2 feature freeze are unchanged.
+
 ## P0 high-signal loop
 
 1. **Confirm intent and graph.** User explicitly confirms future requirement and allows a sanitized, bounded repository-graph summary. Holdout and hidden oracle remain evaluator-only.
