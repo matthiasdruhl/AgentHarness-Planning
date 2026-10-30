@@ -22,6 +22,11 @@
 - [Evaluation standards](docs/09-evaluation-plan.md), [security gates](docs/10-security-and-privacy.md)
 
 
+## Frontend design — v6 Change Trace (Oct 30)
+
+- **[NEW: ForeCode v6 interactive six-chapter reference](design/forecode-v6/README.md)** — a signature future-requirement trace across Case, Architecture Lab, Tournament, Time Machine, Evidence and a fully considered Decision Report. Includes independent A/B focus, all Time Machine stages, fictional outcome-copy states and desktop/mobile browser checks; no fabricated observed run.
+- **[Locked visual/interaction specification](design/forecode-v6/design-system-and-experience.md)** · **[No-improvisation Codex implementation handoff](docs/FORECODE-UI-IMPLEMENTATION-HANDOFF-v6.md)** — colors, typography, navigation, movement, source/evidence boundaries, accessibility, negative outcome states, PR slices and Nov 2 cut order. The actual ForeCode frontend has **not** been changed by this planning design reference.
+
 ## Frontend design — v5 tournament edition (Oct 28)
 
 - **[Open the current interactive frontend prototype (v5)](design/forecode-v5/README.md)** — tournament-centered landing, four connected workbench views, optional three-arm A/B/C comparison, Architecture Time Machine and independent Evidence Laboratory. All examples remain clearly fictional; no claim of measured execution.

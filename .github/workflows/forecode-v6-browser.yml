@@ -1,0 +1,40 @@
+name: ForeCode v6 Change Trace Browser Smoke
+
+on:
+  pull_request:
+    paths:
+      - 'design/forecode-v6/**'
+      - '.github/workflows/forecode-v6-browser.yml'
+  push:
+    branches: [main, 'design/forecode-change-trace-v6']
+    paths:
+      - 'design/forecode-v6/**'
+      - '.github/workflows/forecode-v6-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Validate v6 prototype journeys
+        run: node design/forecode-v6/browser-smoke.mjs
+      - name: Capture design screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forecode-v6-screenshots
+          path: design/forecode-v6/browser-artifacts/
+          if-no-files-found: ignore
+          retention-days: 7
