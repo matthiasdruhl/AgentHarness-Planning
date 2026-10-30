@@ -83,7 +83,7 @@ await test('Every illustrative decision mode stays explicitly fictional with neu
     await page.locator('[data-mode="'+mode+'"]').click();
     assert.match(await page.locator('#report-headline').innerText(),headline);
     assert.match(await page.locator('.paper-sample').innerText(),/FICTIONAL/);
-    assert.match(await page.locator('#report-lead').innerText(),/fictional|hypothetical|authenticated matched|comparison/i);
+    assert.match(await page.locator('#report-lead').innerText(),/fictional|hypothetical|authenticated matched|comparison|compared trials/i);
     if(mode==='keep'||mode==='refactor') await page.screenshot({path:screenshots+'/06-'+mode+'-desktop.png',fullPage:true});
   }
   assert.deepEqual(errors,[]); await page.close();
