@@ -2,7 +2,7 @@
 
 **Planning date:** October 29, 2026. **Status:** proposed P1/P2 architecture, not an implemented feature, measured gain, trained policy, or permission to run experiments. **Product framing:** ForeCode is an architecture scientist that can retain trustworthy experimental lessons and improve its *future advisory recommendations*. Its protected tournament and evaluator remain the sources of evidence; the learner never becomes an evaluator.
 
-**Priority:** retain the event's [P0 critical path](HACKATHON-CRITICAL-PATH.md), the Nov 2 feature freeze, and the Nov 4 submission deadline. An authentic supervised coding-agent experiment and excellent demonstration are more important than adding a learning badge. This document expands the existing S5 adaptive-selector concept; it neither makes S5 mandatory nor changes any of the [49 frozen v1 definitions](CONTRACT-FREEZE-v1.md). The separate [implementation and verification plan](LEARNING-LOOP-IMPLEMENTATION-PLAN.md) contains PR-size tasks, gates, tests and rollback instructions.
+**Parallel research overlay (Oct 30):** [Meta-conditioned RL + Muse Glimmer QLoRA research plan](META-QLORA-RL-EXPERIMENT-PLAN.md) is an optional, isolated Track B alongside P0. It is a staged proposal, not new runtime authority or evidence of training/learning. **Priority:** retain the event's [P0 critical path](HACKATHON-CRITICAL-PATH.md), the Nov 2 feature freeze, and the Nov 4 submission deadline. An authentic supervised coding-agent experiment and excellent demonstration are more important than adding a learning badge. This document expands the existing S5 adaptive-selector concept; it neither makes S5 mandatory nor changes any of the [49 frozen v1 definitions](CONTRACT-FREEZE-v1.md). The separate [implementation and verification plan](LEARNING-LOOP-IMPLEMENTATION-PLAN.md) contains PR-size tasks, gates, tests and rollback instructions.
 
 ## 1. Thesis and hypotheses
 
@@ -209,7 +209,7 @@ Recommended three-step inference separation:
 
 **Meta causal attribution:** compare the same learning architecture with/without eligible Meta-produced features/hypotheses against a strong non-Meta roadmap-aware feature control, on the *same held-out scenario selection and matched run conditions*. Keep effects separate: tournament architecture effect, learning-policy effect, Meta-specific incremental effect and evaluator/Verify effect. An improvement after adding memory alone is not proof Meta caused it.
 
-No unsolicited model retraining, automatic open-weight fine-tuning, user repository upload or paid provider calls; require explicit consent and independent budget authorization for each applicable workflow. Fine-tuning is a later optional experimental arm, not a hackathon requirement.
+No unsolicited model retraining, automatic open-weight fine-tuning, user repository upload or paid provider calls; require explicit consent and independent budget authorization for each applicable workflow. **Optional parallel QLoRA SFT research** may start in an isolated worktree, with independently approved model/data access, GPU budgets and a reversible integration boundary; it cannot hold up P0. A domain-tuned Glimmer adapter is **not RL**. A reward-trained contextual bandit is genuine small-policy RL only with actual eligible reward updates. Full model-weight GRPO is a distinct, substantially more expensive post-event experiment. See the [detailed QLoRA + RL plan](META-QLORA-RL-EXPERIMENT-PLAN.md).
 
 ## 8. Training data collection and split integrity
 
@@ -279,11 +279,24 @@ A more polished visual could reveal a “before memory / after memory” archite
 
 **Post-event L2:** Repeated multi-step experiment planning and adaptation under an approved risk budget, with separate rigorously validated environments and independent outcome measurement.
 
-**Not goals:** unlimited autonomous refactors; automatic “better architecture” commits; public training endpoint; self-awarded certificates; training an LLM as a hackathon vanity exercise; claiming general learning from synthetic demonstration; replacing Meta Scientist; changing M0–M10 or frozen v1 contract definitions; sacrificing isolation, cost bounds or the submission deadline.
+**Not goals:** unlimited autonomous refactors; automatic “better architecture” commits; public training endpoint; self-awarded certificates; an unvalidated LLM fine-tune added purely for a badge; claiming general learning from synthetic demonstration; replacing Meta Scientist; changing M0–M10 or frozen v1 contract definitions; sacrificing isolation, cost bounds or the submission deadline.
 
-## 13. References and handoffs
+## 13. Optional Meta-model specialization and factorial RL evaluation (Oct 30 overlay)
 
-- [Implementation slices, verification and kill gates](LEARNING-LOOP-IMPLEMENTATION-PLAN.md) — execute only after current P0 acceptance.
+**Research thesis:** Combine two separately trainable parts: (Q) *supervised* QLoRA specialization of Meta's open-weight **Muse Glimmer 30B** to produce bounded, falsifiable architectural recommendations and (R) a constrained contextual-bandit policy that learns which human-eligible strategy to select from independent verified tournament rewards. Add a consented, non-authoritative Meta reflection over approved evidence *after* grading. **Q + R is not itself GRPO or reinforcement fine-tuning of Glimmer's model weights.**
+
+**Shared scientific control:** Keep candidate sets and pre-decision source/task information fixed. Run a 2×2 ablation on the same Glimmer base: untuned + fixed selector, QLoRA + fixed selector, untuned + R, QLoRA + R. Frozen model revision/adapter, training/holdout task groups, decoding parameters, agent tools, budgets and independent evaluator are required. A distinct equally informed **non-Meta** control is additionally required to claim *Meta's incremental causal benefit*. A Muse Spark API-vs-Glimmer model-family comparison is **not** a QLoRA-only ablation.
+
+**Hard prerequisites:** Independent task-family splits, no oracle/answer leakage, lawful right to use every training example, protected authentic reward lineage, actual policy-weight updates, separate baseline/adapter evaluations, full preparation-inclusive accounting and read-only serving provenance. Syntax compliance or lower validation loss is **not evidence of superior architecture**; one booking benchmark is **not evidence of generalization**. Missing metrics remain missing and any invalid case remains excluded from rewards with an explicit reason. KEEP and ABSTAIN remain first-class.
+
+**Operational and deadline boundaries:** Meta's documented Glimmer 30B QLoRA recipe has been verified on a single H100, whereas its published TitanRL/GRPO example uses eight H100 95GB GPUs; neither example proves ForeCode's training fits that hardware, runtime or spend. Require a source-pinned preflight, model/license/usage-policy review, dataset/credential redaction, explicit cloud budget and checkpoint reload. Nov 1 is the integration decision, Nov 2 remains feature freeze; otherwise research stays isolated and visibly NOT_TRAINED / EXPERIMENTAL. A trained adapter or an in-sample curve alone does not justify any fixed Meta-usage judging score.
+
+**Implementation owner:** [Detailed Meta QLoRA + RL experiment and parallel-workstream plan](META-QLORA-RL-EXPERIMENT-PLAN.md), [LL staged implementation plan](LEARNING-LOOP-IMPLEMENTATION-PLAN.md). No change to frozen v1 contracts or the protected grader.
+
+## 14. References and handoffs
+
+- [Implementation slices, verification and kill gates](LEARNING-LOOP-IMPLEMENTATION-PLAN.md) — build isolated research slices without promoting them before current P0 acceptance.
+- [Meta-conditioned RL + Muse Glimmer QLoRA](META-QLORA-RL-EXPERIMENT-PLAN.md) — separate Q/R training paths, 2×2 attribution, hardware/data/rights constraints and hard cut gates.
 - [Architecture Tournament Protocol](ARCHITECTURE-TOURNAMENT-PROTOCOL.md) — fairness, freeze, status quo A, B and optional C, protected receipts.
 - [Meta Architecture Scientist](META-ARCHITECTURE-SCIENTIST.md) — falsifiable hypotheses, bounded challenges, sanitized non-authoritative interpretation.
 - [Evaluation plan](09-evaluation-plan.md), [Judge success gates](JUDGE-SUCCESS-GATES.md) — measured vs estimated and proper causal attribution.
