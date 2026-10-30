@@ -197,6 +197,7 @@ main{min-height:calc(100vh - 160px)}.view{display:none;padding:62px clamp(24px,5
  function drawAll(){document.querySelectorAll("svg[data-trace]").forEach(function(svg){draw(svg,svg.dataset.trace)})}
  function setMode(m){mode=m;var x=preview[m];document.querySelectorAll("[data-mode]").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.mode===m))});["report-headline","report-lead","reason-1","reason-2","reason-3","result-a","result-b","report-next"].forEach(function(id,i){document.getElementById(id).textContent=x[i]})}
  document.addEventListener("click",function(e){var b=e.target.closest("[data-go],[data-arm],[data-stage],[data-mode]");if(!b)return;if(b.dataset.go){e.preventDefault();go(b.dataset.go)}else if(b.dataset.arm)setArm(b.dataset.arm);else if(b.dataset.stage)setStage(b.dataset.stage);else if(b.dataset.mode)setMode(b.dataset.mode)});
+ window.addEventListener('hashchange',function(){var next=location.hash.slice(1);if(views.indexOf(next)>-1&&next!==active)go(next)});
  drawAll();updatePhase();var initial=location.hash.slice(1);if(views.indexOf(initial)>-1)go(initial);
 })();
 </script>
