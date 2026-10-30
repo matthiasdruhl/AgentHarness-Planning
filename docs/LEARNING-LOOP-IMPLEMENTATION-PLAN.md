@@ -2,7 +2,7 @@
 
 **Prepared:** October 29, 2026. **Status:** future implementation plan only; no learning system exists because this document is committed. **Normative conceptual source:** [Evidence-Driven Architecture Learning Loop](ARCHITECTURE-LEARNING-LOOP.md). **Precedence:** organizer rules, [hackathon critical path](HACKATHON-CRITICAL-PATH.md), [frozen contracts](CONTRACT-FREEZE-v1.md), [independent tournament protocol](ARCHITECTURE-TOURNAMENT-PROTOCOL.md), [Meta Scientist](META-ARCHITECTURE-SCIENTIST.md), [security](10-security-and-privacy.md), and [stretch promotion gates](STRETCH-PROMOTION-GATES.md) prevail over any learning experiment.
 
-**Release decision:** A complete, evidence-backed Architecture Tournament and demonstrable Meta role are prerequisites. **No automatic RL development before P0**. Nov 2 remains feature freeze; Nov 4 at 9 PM ET remains submission cutoff. No changes to the M0–M10 milestone hierarchy, canonical 68-ticket board or any of the 49 frozen v1 contracts.
+**Release decision:** A complete, evidence-backed Architecture Tournament and demonstrable Meta role are prerequisites to **integration or improvement claims**. A newly documented [parallel QLoRA + Meta-conditioned RL research track](META-QLORA-RL-EXPERIMENT-PLAN.md) may develop **offline in a separate worktree** before P0 completes, without protected runs, inference spend or public integration authority. **No automatic RL execution, training-data ingestion or merge before the respective approval gates**. Nov 2 remains feature freeze; Nov 4 at 9 PM ET remains submission cutoff. No changes to the M0–M10 milestone hierarchy, canonical 68-ticket board or any of the 49 frozen v1 contracts.
 
 ## A. Implementation boundaries / ownership
 
@@ -131,6 +131,36 @@ Only after L1 shows repeatable value and the owner approves separate research go
 
 **Exit:** no claimed general self-improvement without credible data and controlled evaluation. **Not a 2026 hackathon dependency.**
 
+### ML-Q0 — Optional parallel Meta/ML feasibility (no P0 changes)
+
+- **Branch/worktree:** `codex/ml-glimmer-feasibility` (or an equally isolated branch); core work stays on its own branch and remains deployable if ML is discarded.
+- Audit the current ForeCode Meta Scientist and trusted tournament intake; agree only on an **additive, versioned, sanitized observation interface**. Neither path edits the frozen 49 schemas, baseline fixture, private oracle or production agent runner to suit ML.
+- Freeze model/data rights, selection action set (KEEP/BOUNDARY/ADAPTER), exact feature/reward protocol, candidate availability, independent repo/task-family splits and evaluation comparison. QLoRA data may contain licensed, human-reviewed demonstrations; it **cannot** contain protected hidden grader answers, private source or unjustified synthetic "verified" successes.
+- Deliver unit-tested dataset validation, no-data/ABSTAIN states, deterministic policy updates on **explicitly synthetic** samples and a pinned QLoRA environment feasibility report. Require separate owner approval before provider spend, GPU allocation or real training.
+- **Exit:** isolated reproducible checks and an agreed read-only handoff; no claim of learned improvement, no public app changes. If P0 slips, stop after this work package.
+
+### ML-Q1 — Muse Glimmer 30B QLoRA SFT experiment (optional)
+
+- Pin `meta-models/Muse-Glimmer-30B` model revision/tokenizer/chat template, Meta usage policy, original demonstration data rights, Axolotl/PyTorch/CUDA image, prompt/output schema, adapter hyperparameters and hardware budget. Meta documents a **single-H100** QLoRA reference; actual batch/sequence length/optimizer/checkpoint overhead still require testing. Laptop quantized inference does not prove 30B training feasibility.
+- Follow Meta's official pinned Axolotl QLoRA recipe: preprocess + processor preflight, two optimizer steps, checkpoint, **adapter reload**, then a bounded training run with immutable train/validation/holdout group manifests. Start text-only; keep vision path frozen unless independent evidence warrants changing it.
+- Evaluate **the same untuned Glimmer base vs its QLoRA adapter** on held-out rights-cleared prompts for schema validity, proposal eligibility, prediction/falsifier quality, unsafe-refactor tendency, abstention, latency/token costs and regressions. Report hard architectural correctness **only** when independently checked by the main tournament.
+- Keep adapter/checkpoint and raw data out of the submission repo unless license/security/disclosure review authorizes them. Do not claim the Muse Spark API can host a Glimmer adapter.
+- **Exit:** reproducible training and reload, actually observed baseline/tuned comparison, complete cost/evidence and rollback; otherwise TRAINING_ONLY / NOT_INTEGRATED.
+
+### ML-Q2 — Meta+policy 2×2 controlled study (conditionally after real tournament)
+
+- Train a small constrained contextual bandit **only from authenticated, admissible real tournament reward**; fixed-seed synthetic update tests are *not* real RL outcomes. Include correctness gates, full preparation-inclusive resource usage when known, policy versions and SHADOW/ABSTAIN.
+- Preregister four arms on **the same Glimmer checkpoint and independent tasks**: untuned/fixed (U/F), QLoRA/fixed (Q/F), untuned/learned (U/R), QLoRA/learned (Q/R). Enforce matched task information, eligible actions, implementation agent, evaluator/oracle, inference and coding budgets and all attempts. A separate equally-informed non-Meta proposal baseline is required to claim Meta's incremental benefit; U/F is still Meta.
+- Report independent task-family counts, sample-level results, each arm's failures, cost, selection stability and confidence limits. Demonstrated policy-weight changes ≠ out-of-sample improvement. Many booking seeds remain one correlated family. If data are sparse, keep R in SHADOW and do not claim "self-improving architecture".
+- Integrate a read-only policy/model comparison into the UI **only** if the P0 demo is complete, observed results are authorized for disclosure and rollback is tested by November 1. November 2 is the immutable feature freeze.
+- **Exit:** actual independently evaluated evidence or an honest experimental/insufficient-data state; no auto-merge, no upgraded security authority.
+
+### ML-Q3 — Full Glimmer weight/adaptor RL via GRPO (post-event by default)
+
+Meta's documented TitanRL Muse Glimmer reference uses **8×H100 95GB** and a cheap deterministic data-analyst reward; that is not a validated capacity/expense estimate for ForeCode's multi-agent architecture task. RL fine-tuning is distinct from supervised QLoRA and from the lightweight contextual bandit. Require a new explicit compute, data, sealed reward, independent-custody and ablation review before any GRPO training. **Do not treat ML-Q3 as a Nov 4 dependency.**
+
+**Detailed engineering/eligibility/compute constraints:** [Meta QLoRA + RL experiment plan](META-QLORA-RL-EXPERIMENT-PLAN.md).
+
 ## C. Proposed private learning-sidecar type map
 
 Conceptual TypeScript-like names below describe boundaries only; **do not paste into frozen v1 JSON Schema**:
@@ -168,9 +198,9 @@ No synthetic green suite can establish actual agent isolation, authentic externa
 
 ## E. Data budget and practical feasibility
 
-**At hackathon scale:** A single protected A/B booking result is enough to demonstrate an experimental *learning-data pipeline* but generally not to train a credible cross-project bandit. L0 is the only reasonable potential demo stretch. Even L0 requires authentic experiment receipts to make “evidence memory” a real feature.
+**At hackathon scale:** A single protected A/B booking result is enough to demonstrate an experimental *learning-data pipeline* but generally not to train a credible cross-project bandit. L0 is the only reasonable potential **evidence-based learning** demo stretch. An *isolated QLoRA SFT training/reload prototype* may also be possible, but it is a separate Meta-model specialization claim, **not a measured architecture advantage or RL result**. Even L0 requires authentic experiment receipts to make “evidence memory” a real feature.
 
-**Cost sources to record independently:** Meta Scientist inference, coding-agent input/output and attempts, B/C preparation, verified task execution, independent evaluator resources, offline learner training, retrieval/online inference, human review, and infrastructure. Provider API tariffs or tokens absent from receipts remain UNKNOWN, not imputed.
+**Cost sources to record independently:** Meta Scientist inference, coding-agent input/output and attempts, B/C preparation, verified task execution, independent evaluator resources, offline learner training, retrieval/online inference, human review, and infrastructure. In the QLoRA branch include GPU-hours/quota, checkpoint and dataset disk, download/egress, separate Glimmer hosting, adapter evaluations and all failed or aborted runs. A provider credit is not a hard cap or guaranteed account allowance. Provider API tariffs or tokens absent from receipts remain UNKNOWN, not imputed.
 
 **Sampling limitations:** One booking fixture with twenty different seeds remains one correlated family, not twenty independent environments. Use multiple true task/repository families and include permission-change counterexamples, cases where refactoring is detrimental and tasks where KEEP is optimal. Repeated benchmarks may help estimate variance but don't erase the generalization problem.
 
@@ -186,6 +216,10 @@ No synthetic green suite can establish actual agent isolation, authentic externa
 | L1 LL-4 | Diverse eligible training data, frozen independent holdout, approved evaluation and objective, enough time/resources | One project family only, unknown propensities for off-policy causal claims, grader not independent |
 | ADVISORY promotion | Frozen policy evaluated against strong controls with preregistered correctness/no-regression and practical gain | Only in-sample improvement, fabricated evaluation, uncalibrated confident outputs |
 | L2 LL-6 | Post-event independent research plan, sufficient data and operator-run safety/reward review | Hackathon crunch, unrestricted autonomy, absent external validity |
+| ML-Q0 offline feasibility | Separate worktree, P0 untouched, rights/data/compute review, bounded source-only tests and agreed versioned sidecar | Core branch conflict, private oracle coupling, spent inference, pseudo-real training evidence |
+| ML-Q1 QLoRA SFT | Explicit model/license/dataset/GPU consent, exact checkpoint and trainer pins, successful adapter reload, held-out base/tuned evaluation and rollback | Insufficient rights/data, quota/memory/saving failure, no meaningful comparison, or P0/demo interference |
+| ML-Q2 joint R+Q | All P0 gates, authentic independent reward, precommitted 2×2 evaluation plus strong controls, valid task-family holdout and Nov 1 integration decision | Only booking-family/synthetic rewards, no demonstrated policy update, no independent evaluation, Nov 2 freeze |
+| ML-Q3 GRPO | Separate post-event authority, enough cheap verifiable rewards, GPU cost/rollout budget and independent testing | Any attempt to equate QLoRA or bandit learning with Glimmer-weight RL |
 
 **Always fall back** to fixed roadmap-aware recommendations and/or L0 retrieval, with ABSTAIN when data are insufficient. The current A/B tournament alone remains meaningful; no user-facing feature should depend on learning infrastructure being installed.
 
@@ -195,13 +229,13 @@ No synthetic green suite can establish actual agent isolation, authentic externa
 
 An actual L1 demo requires a held-out fixed-policy comparison that can be explained immediately and does not undermine evidence or Meta footage. A conceptual learning curve or toy simulated graph must be labeled as such and **cannot** stand in for measured improvement.
 
-**After Nov 4:** expand independent corpus; ship L0; test supervised cost/success predictors; research constrained bandits with offline/online evaluation; only then multi-step RL and optional Meta fine-tuning. Have a distinct research track for multi-agent debate or automated experiment prioritization rather than conflating those with recommendation learning.
+**Parallel, optional and outside P0:** ML-Q0 can validate data/compute feasibility while core finishes. ML-Q1 may produce a rights-cleared QLoRA SFT comparison, but training alone does not warrant a learned-improvement demo. ML-Q2 can be shown only with genuine authenticated reward updates and held-out results by the Nov 1 decision gate; otherwise cut integration. **After Nov 4:** expand independent corpus; ship L0; test supervised cost/success predictors; evaluate constrained bandits and 2×2 Glimmer adapter/selector ablations with independent tasks; only then consider full model-weight GRPO or multi-step RL. Have a distinct research track for multi-agent debate or automated experiment prioritization rather than conflating those with recommendation learning.
 
 ## H. Codex handoff template
 
-When LL-0 is explicitly promoted, use this structure to request implementation in the **post-kickoff standalone ForeCode app** (not this planning repository):
+When LL-0 or an isolated ML-Q* feasibility slice is explicitly promoted, use this structure to request implementation in the **post-kickoff standalone ForeCode app** (not this planning repository). Track A and Track B must use separate branches/worktrees and one reviewed, sanitized sidecar integration boundary:
 
-> First audit current app main, AGENTS.md, exact existing modules/tests/receipts and any current branch work; do not reimplement what's already present. Read the planning Learning Loop architecture and implementation plan **read-only** plus tournament, Meta, frozen contract and security owners. Work on a new named branch limited to a single LL-* slice; no schema v1 modifications, protected oracle exposure, external code transplant, new hosted execution route, model call or guest operation without separate explicit owner-approved gates. Implement strict versioned internal learning types and negative tests, retain unknowns, preserve all failures, use authenticated evidence only. Run applicable checks and report commands/exits, commit SHA, changed files, exact measured vs synthetic evidence and blockers. Open a reviewable PR; never auto-merge or claim real learning from passing unit tests.
+> First audit current app main, AGENTS.md, exact existing modules/tests/receipts and any current branch work; do not reimplement what's already present. Read the planning Learning Loop architecture, [Meta QLoRA + RL experiment plan](META-QLORA-RL-EXPERIMENT-PLAN.md) and implementation plan **read-only** plus tournament, Meta, frozen contract and security owners. Work on a new named branch limited to a single LL-* slice; no schema v1 modifications, protected oracle exposure, external code transplant, new hosted execution route, model call or guest operation without separate explicit owner-approved gates. Implement strict versioned internal learning types and negative tests, retain unknowns, preserve all failures, use authenticated evidence only. Run applicable checks and report commands/exits, commit SHA, changed files, exact measured vs synthetic evidence and blockers. Open a reviewable PR; never auto-merge or claim real learning from passing unit tests.
 
 **Owner acceptance checklist:**
 - [ ] I have verified and authorized all prerequisite trusted evidence and safe runtime scope.
@@ -209,4 +243,6 @@ When LL-0 is explicitly promoted, use this structure to request implementation i
 - [ ] No “RL” or “improves over time” claim is made unless actual reward-driven policy updates and held-out comparative measurements exist.
 - [ ] Source/right-to-train consent, sanitization and private evaluator protection are intact.
 - [ ] Every failure/unknown remains an outcome; KEEP/ABSTAIN are first-class.
+- [ ] QLoRA SFT, contextual-bandit RL and genuine Glimmer GRPO are accurately distinguished; model revision, data/rights, GPU/money, and training/evaluation evidence are independently reviewed.
+- [ ] A 2×2 Glimmer Q/R ablation and a distinct non-Meta comparator are required before Meta-specific incremental or synergistic claims; one booking case cannot establish transfer.
 - [ ] The main Meta Scientist, architecture tournament, landing and submission demo are not delayed.
