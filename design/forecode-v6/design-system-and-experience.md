@@ -138,6 +138,17 @@ Feature freeze Nov 2 and submission Nov 4: prioritize P0-A, P0-B and static P0-C
 - Print report legible; no data leakage, invented private oracle details, or client-side verification authority.
 - Verify any real screenshots/demo claims against approved source-bound evidence; planning HTML prototype remains explicitly fictional.
 
+## v6.1 inspection refinement — November 1
+
+The [reviewed design-reference study](reference-study-and-trace-refinement.md) refines but does **not** replace the v6 visual identity. It borrows specific interaction disciplines from Linear's navigation hierarchy, Vercel's inspectable trace stages, GitHub's contextual entity navigation and the Webby Awards' clarity/functionality criteria.
+
+- Remove the specimen's automatic glowing/path-pulse motif. Selection is a hairline focus, not implied execution or importance. No artificial topological propagation.
+- Keep only the existing two lanes and four schematic responsibilities per lane in the hero-scale diagram. When genuinely source-backed file topology is unavailable, show the conceptual labels as conceptual rather than inventing a live dependency graph.
+- Make nodes operable via pointer/keyboard and keep **A/B + selected responsibility** across Lab, Tournament and Time Machine. Source revision or context invalidation clears stale focus in the actual app.
+- Use one small focused explanation under the diagram, not another stack of info cards; the inspector remains subordinate to the core graph and evidence.
+- Report-reason inspection must use exact approved evidence anchors when available. A reason without authenticated evidence must expose that limit rather than link to invented support.
+- The planning specimen now demonstrates these mechanics, but browser, accessibility and production correctness remain separate acceptance tasks.
+
 ## Authority and precedence
 
 Official hackathon provenance/rules and independent evaluator trust > frozen tournament contracts > existing v5.1 impact logic > this **v6 implementation detail lock** > illustrative design prototype. Build submission code independently from the old pre-event planning prototype; do not copy its HTML/CSS/JS.
