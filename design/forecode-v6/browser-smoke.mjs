@@ -139,6 +139,8 @@ await test('Tournament and report reasons inspect actual evidence requirements, 
   assert.match(await page.locator('#evidence-focus-title').innerText(),/COMPARABILITY/);
   assert.match(await page.locator('#evidence-focus-copy').innerText(),/No eligible matched comparison/);
   assert.equal(await page.locator('#evidence-focus').evaluate(e=>document.activeElement===e),true);
+  await page.getByRole('button',{name:'Return to Tournament'}).click();
+  assert.equal(await page.locator('.view[data-view="tournament"]').isVisible(),true);
   await clickView(page,'report');
   for(const [name,expected] of [
     ['Inspect required checks','INDEPENDENT CHECKS'],
@@ -148,7 +150,8 @@ await test('Tournament and report reasons inspect actual evidence requirements, 
     await page.getByRole('button',{name}).click();
     assert.match(await page.locator('#evidence-focus-title').innerText(),new RegExp(expected.replace('+','\\+')));
     assert.match(await page.locator('#evidence-focus-copy').innerText(),/No |not |cannot |remain /i);
-    await clickView(page,'report');
+    await page.getByRole('button',{name:'Return to Decision Report'}).click();
+    assert.equal(await page.locator('.view[data-view="report"]').isVisible(),true);
   }
   await page.locator('[data-mode="keep"]').click();
   await page.getByRole('button',{name:'Inspect required checks'}).click();
