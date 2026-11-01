@@ -59,6 +59,32 @@ The original six-chapter specimen used `history.replaceState` on chapter changes
 
 The smoke test now exercises A/B entry from the landing page, selection persistence through Tournament, browser Back and Forward, comparative-layout clarity at 1440/768/390px, and reduced motion. Native browser semantics take priority over bespoke transition choreography.
 
+## v6.4 — editorial Decision Report and inspectable evidence continuity
+
+This is a design-only refinement in the planning repository. The production report must continue to consume the existing **approved read-only publication/decision-report** boundary and may never let the browser synthesize an authenticated outcome.
+
+### Public reference evidence and selected patterns
+
+| Design source | Documented principle | ForeCode application | Explicitly rejected |
+| --- | --- | --- | --- |
+| [GitHub Primer: Typography](https://primer.style/product/getting-started/foundations/typography/) and [Primer typography usage](https://primer.github.io/design/foundations/typography/) | Clean reading hierarchy, left alignment, restrained color as emphasis, readable line lengths, semantic headings. | Keep the warm report sheet, dominant headline and sparse body type; cap report paragraphs near 63–65 characters on a typical line. Preserve the hierarchy of verdict → supporting study facts → reasons → action. | Colored winner cards, ornamental score badges, type treatments that override semantic reading order. |
+| [GOV.UK Design System: Summary list](https://design-system.service.gov.uk/components/summary-list/) | Compact `<dl>` key/value groups clarify facts at the end of a multi-step journey, without requiring repeated cards. | Replace the vague case-note sentence with a three-part inline brief: **Decision scope**, **What was tested**, **What remains unknown**. | Copying UK-government visual styling or treating a summary as a new evidence authority. |
+| [Vercel Web Interface Guidelines](https://vercel.com/design/guidelines) | Keep focus clear, all states truthful, links/controls predictable, 44px mobile hit areas, explicit empty states and purposeful print composition. | Make report outcome previews explicitly fictional, update study facts on every mode change, offer one reversible evidence navigation link, preserve keyboard hit targets, and hide prototype controls in print. | Loading animations, unverifiable confidence scores, extra "AI insight" labels, or controls that rewrite real adjudication. |
+| [Linear 2026 interface refresh](https://linear.app/now/behind-the-latest-design-refresh) | Supporting interface structure should recede rather than compete with the task. | Tone down the large design-preview warning into one ruled sentence; use thin editorial rules rather than separate colored boxes inside the report. | Loud warning cards inside the memo, decorative colored progress stages, repeating the same status in five panels. |
+
+### Concrete reference changes
+
+1. Replaced the bulky report-introduction annotation with a compact **DESIGN COPY REVIEW** line above the fictional outcome buttons. In production, no outcome selector appears.
+2. Added a small, text-only study state under the report's case overline. **NO AUTHENTIC MATCHED STUDY** is the default; all five alternate study outcomes explicitly begin **FICTIONAL SCENARIO**. The headline never claims those modes are verified.
+3. Replaced the old case-note with one semantic `<dl>` displaying decision scope, what was tested, and what is still unknown. All six reviewed scenario modes update those last two values together with the existing headline and supporting reasons.
+4. Removed some typography competition: main prose stays around 65 characters per line, evidence links gain larger click/focus targets, and responsive facts compress from three to two to one column without generating new cards.
+5. Tightened printing: display only the report document rather than a redundant dark chapter heading or copy-review controls; preserve the specimen disclaimer in the printed report and avoid breaking numbered reasons.
+6. Added one text-level **Return to Tournament / Return to Decision Report** affordance in the existing Evidence Laboratory focus region. It restores a reader's originating chapter and preserves the fictional report mode. Browser Back/Forward remains native.
+
+### Proof and limitations
+
+The browser-smoke specification verifies six copy states, matching facts, the no-authentic-study default, reverse evidence navigation, print-only visibility and responsive layouts. Passing Playwright is not the same as a human pixel-perfect screenshot audit. The prototype is not a published study and reports no real user/agent data, Meta outcome, source-tree evolution or verdict.
+
 ## Layout and interaction contract
 
 - **Signature:** one amber future-change diamond; one trunk; two disciplined A/B lanes. No particle system, stream animation, spontaneous topology growth or automatic winner reveal.
