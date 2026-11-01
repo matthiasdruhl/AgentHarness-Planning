@@ -124,7 +124,7 @@ A graph of observed BEFORE/PREPARED/AFTER module-level edges is **not generally 
 
 **P0-D / Time Machine and polish:** source stage scrubbing with honest unavailable states; graph and evidence links; mobile/reduced-motion/print QA.
 
-Feature freeze Nov 2 and submission Nov 4: prioritize P0-A, P0-B and static P0-C; cut choreography before cutting actual Meta, genuine study, protected checks, trust, or demo clarity. No scope-changing new services, fake login, extra booking fixture, new browser-controlled agent action, or editable grader verdict.
+November 2 evening is the integration checkpoint; the user-directed hard feature freeze is **November 3 around 3 PM ET**, with November 4 submission: prioritize P0-A, P0-B and static P0-C; cut choreography before cutting actual Meta, genuine study, protected checks, trust, or demo clarity. No scope-changing new services, fake login, extra booking fixture, new browser-controlled agent action, or editable grader verdict.
 
 ## Acceptance before implementation PR can be called complete
 
