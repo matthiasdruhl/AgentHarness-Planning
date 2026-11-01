@@ -85,6 +85,16 @@ These are suggested file/component boundaries, **not required new services**. Av
 3. Preserve Evidence Laboratory/proof provenance. Benchmark page visual and keyboard check, cross-viewport screenshots, avoid document-wide overflow.
 4. Run through actual three-minute demo with required first 12-second provenance disclosure.
 
+## November 1 v6.1 refinement: review-backed and deliberately minimal
+
+Read [the v6 reference study](../design/forecode-v6/reference-study-and-trace-refinement.md) alongside the design-system lock before implementation. The updated planning prototype **is not transplantable event-created source code**.
+
+Production implementation should introduce a *presentation-only* typed `ChangeTrace` controlled by one A/B/node/phase focus state, preserving the current real Meta/intent flow and authenticated publication loader. Each node is inspected via click or Enter/Space and focuses an existing **validated** source path where one exists, otherwise a plainly conceptual responsibility note. Persist focus across chapters; invalidate it when the underlying intent/graph/study changes.
+
+Visually, remove decorative glow and auto-pulsing paths, keep four or fewer labeled responsibilities per schematic lane, minimize colors and supporting chrome, and put the only focused-node explanation directly below the trace. No new dashboard cards, success animations, fake observations, or extra scoring engine.
+
+Add E2E for: focus and keyboard activations; chapter selection persistence; real source vs conceptual labels; A/B correctness states; no fake pulse on missing evidence; 390px inner scrolling; and reduced motion. Link specific Decision Report reasons only to existing approved run/source/receipt references. A generic link to a proof page is not evidence of that precise claim.
+
 ## Explicit anti-pattern rejection list
 
 Reject any commit with: fictional report selectors shipped in app; sample metrics rendered as production; unprotected browser grading endpoint; Meta text determining VERIFIED; source trees generated from speculation; auto-winner purely from passing checks; aggregate “architecture score”; generic SaaS cards across every view; floating purple gradients; randomly styled pill badges; all-caps mono paragraphs; permanent glowing traces; fake telemetry; content hidden behind unreadable tiny graph labels; UI claims differing from authenticated records.
