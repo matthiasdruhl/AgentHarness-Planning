@@ -7,6 +7,10 @@
 ## Official rule override — begin here
 **Critical:** Organizer requires a **fresh public standalone submission repo with only features/code built after the Oct 26 noon kickoff**. This pre-event repo and its contracts, CI, JSON examples and fixture scripts must **NOT** be copied into the submission; read for conceptual guidance only and implement anew. Only organizer-approved humans may help. The opening line of the **required 3-minute demo** must distinguish pre-event idea/planning from new submitted features. Four judging categories weighted **equally** (impact, Meta tooling, technical execution, demo). [Official participant rules summary](docs/OFFICIAL-PARTICIPANT-RULES-2026-10-26.md).
 
+## November 1 demo guidance review
+
+[Discord questions-channel findings and ForeCode video outline](docs/DISCORD-DEMO-GUIDANCE-2026-11-01.md) — dated bot-reported guidance on live model-call evidence, editing, runnable setup/replay, runtime-model restrictions, scoring and social promotion. **Newer runtime guidance conflicts with historical Codex fallback language; exact judging weights remain source-qualified.** Read before choosing the final demo run. See ADR-017; this review does not attest implementation or authorize execution.
+
 ## Start here
 - **[Meta Architecture Scientist — P0 protocol](docs/META-ARCHITECTURE-SCIENTIST.md)** · **[Contract Freeze v1](docs/CONTRACT-FREEZE-v1.md)** · [Machine-readable schemas and conformance tests](contracts/README.md) · **[Hackathon submission-first plan](docs/HACKATHON-CRITICAL-PATH.md)** · [Existing Codex Docker Sandbox booking-first runbook](docs/DOCKER-SANDBOX-BOOKING-FIRST.md) · [app/Codex handoff](docs/IMPLEMENTATION-HANDOFF.md) · [demo acceptance](docs/DEMO-ACCEPTANCE.md) · [audit tracker](docs/AUDIT-REMEDIATION.md)
 - [AGENTS.md](AGENTS.md) and [execution index](docs/21-execution-index.md)

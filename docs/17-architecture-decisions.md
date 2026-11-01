@@ -39,3 +39,15 @@ For changes: record date, decision, alternative, security/evaluation impact, aff
 **Rationale:** Meta coding-agent trace may improve demo coherence but must not jeopardize credible fair runs. ADR-015's rejection of a Meta runner *replacing the Scientist* remains intact; this is a separate optional experiment executor.
 **Alternatives:** unconditional Muse migration (rejected), Muse as all of Forecode's innovation (rejected), Codex-only (default fallback).
 **Impacts:** [integration gate](MUSE-CODE-INTEGRATION.md), architecture, security, evaluation, critical path, handoff and demo. **Status: planned, not an implemented/verified runner.**
+
+## ADR-017 — dated Discord demo guidance and unresolved source conflicts (2026-11-01)
+
+**Decision:** preserve the [November 1 questions-channel review](DISCORD-DEMO-GUIDANCE-2026-11-01.md) as source-qualified planning evidence. Use it to prepare a product-focused video at most 3:00, visible real Meta calls, supported accelerated runs and a reproducible live/replay judge path. Do not present server-bot summaries as independently confirmed human organizer rulings.
+
+**Conflicts:** later bot guidance reports all runtime models must be Meta and 30/25/20/25 judging weights. Older equal-weight and Codex-runtime-fallback prose is historical, not eligibility clearance. Treat experiment-agent inference as runtime for demo planning unless higher-authority guidance clarifies otherwise. This records an unresolved rules boundary rather than claiming a runner migration is approved or complete.
+
+**Alternative rejected:** silently replacing accepted rules or all historic architecture/runner documents based on bot answers.
+
+**Security/evaluation impact:** no change to contracts, isolation, hosted command prohibition, consent, matched agent/config/budgets, independent grading or evidence semantics. Provider changes require existing gates; no new execution is authorized. No implementation/milestone completion is claimed.
+
+**Affected documents:** README, DEMO-ACCEPTANCE, RULES-VERIFICATION-2026-10-27 and the linked review now surface the qualification. Older task/runner specifications require explicit reconciliation before any affected implementation, rather than being silently rewritten here.

@@ -1,5 +1,12 @@
 # Forecode judge demo — falsifiable acceptance specification
 
+## November 1 source update — demo and runtime eligibility
+
+Read [questions-channel review and video outline](DISCORD-DEMO-GUIDANCE-2026-11-01.md) and [ADR-017](17-architecture-decisions.md#adr-017--dated-discord-demo-guidance-and-unresolved-source-conflicts-2026-11-01). The verified server bot reports a **3:00 maximum**, visible live Meta calls, editable/sped-up video with traces, optional hosting and a runnable public repo with a labeled recorded fallback. It reports **30/25/20/25** judging weights; this strengthens that interpretation but is not direct inspection of accepted rules. Older equal-weight claims must not be treated as confirmed.
+
+Latest bot guidance says **all runtime models must be Meta**, replacing earlier mixed-model advice. Development with Codex is allowed; invoking a non-Meta coding agent inside ForeCode's experiment appears to be runtime use (our interpretation, not a ForeCode-specific organizer ruling). Historical Codex fallback text is not submission eligibility clearance. Resolve the final run's provider/model against accepted/direct guidance; preserve safe local execution, matched studies, protected grading and honest provenance. No implementation, contract or execution authorization is changed by this source update.
+
+
 **Organizer-confirmed required exactly 3-minute demo target**, and compulsory opening disclosure of pre-existing concept/work versus newly event-built functionality. Do not exceed 3 minutes. [Rules](OFFICIAL-PARTICIPANT-RULES-2026-10-26.md). This is a demonstration of real measured evidence when available, not a simulation.
 
 ## Script
