@@ -93,6 +93,31 @@ await test('Calm Change Trace supports mouse and keyboard inspection across chap
   assert.match(await page.locator('#time-label').innerText(),/SOURCE UNAVAILABLE/);
   assert.deepEqual(errors,[]);await page.close();
 });
+await test('Tournament and report reasons inspect actual evidence requirements, not fictional proofs',async()=>{
+  const {page,errors}=await pageAt(1440,900);
+  await clickView(page,'tournament');
+  await page.getByRole('button',{name:'Inspect comparability requirements'}).click();
+  assert.equal(await page.locator('.view[data-view="evidence"]').isVisible(),true);
+  assert.match(await page.locator('#evidence-focus-title').innerText(),/COMPARABILITY/);
+  assert.match(await page.locator('#evidence-focus-copy').innerText(),/No eligible matched comparison/);
+  assert.equal(await page.locator('#evidence-focus').evaluate(e=>document.activeElement===e),true);
+  await clickView(page,'report');
+  for(const [name,expected] of [
+    ['Inspect required checks','INDEPENDENT CHECKS'],
+    ['Inspect source & effort requirements','SOURCE + PREPARATION'],
+    ['Inspect hypothesis limits','META SCIENTIST']
+  ]){
+    await page.getByRole('button',{name}).click();
+    assert.match(await page.locator('#evidence-focus-title').innerText(),new RegExp(expected.replace('+','\\+')));
+    assert.match(await page.locator('#evidence-focus-copy').innerText(),/No |not |cannot |remain /i);
+    await clickView(page,'report');
+  }
+  await page.locator('[data-mode="keep"]').click();
+  await page.getByRole('button',{name:'Inspect required checks'}).click();
+  assert.match(await page.locator('#evidence-focus-copy').innerText(),/fictional report variants cannot become verified outcomes/i);
+  assert.match(await page.locator('.notice').innerText(),/DESIGN SPECIMEN/);
+  assert.deepEqual(errors,[]);await page.close();
+});
 await test('Every illustrative decision mode stays explicitly fictional with neutral editorial layout',async()=>{
   const {page,errors}=await pageAt(1440,900);
   await clickView(page,'report');
