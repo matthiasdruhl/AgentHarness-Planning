@@ -176,6 +176,36 @@ await test('Every illustrative decision mode stays explicitly fictional with neu
   }
   assert.deepEqual(errors,[]); await page.close();
 });
+await test('Decision memo facts are truthful per fictional scenario and print cleanly',async()=>{
+  const {page,errors}=await pageAt(1440,900);
+  await clickView(page,'report');
+  const expected={
+    unknown:['NO AUTHENTIC MATCHED STUDY',/No matched A\/B future-task study/,/Source and run identities/],
+    keep:['FICTIONAL SCENARIO · A-ONLY PASS',/Illustrative outcomes would show A passing/,/Actual run and receipt identities/],
+    refactor:['FICTIONAL SCENARIO · B-ONLY PASS',/Illustrative outcomes would show B passing/,/B preparation-inclusive measurements/],
+    tie:['FICTIONAL SCENARIO · CORRECTNESS TIE',/Illustrative outcomes would show both arms passing/,/authenticated effort criterion/],
+    fail:['FICTIONAL SCENARIO · BOTH FAIL',/Illustrative outcomes would show both architectures failing/,/Actual failure receipts/],
+    invalid:['FICTIONAL SCENARIO · UNMATCHED',/illustrative comparison fails/,/valid matched study/]
+  };
+  for(const [mode,[label,tested,unknown]] of Object.entries(expected)){
+    await page.locator('[data-mode="'+mode+'"]').click();
+    assert.equal(await page.locator('#report-study-status').innerText(),label);
+    assert.match(await page.locator('#report-tested').innerText(),tested);
+    assert.match(await page.locator('#report-unknown').innerText(),unknown);
+    assert.match(await page.locator('.paper-sample').innerText(),/FICTIONAL/);
+  }
+  await page.locator('[data-mode="unknown"]').click();
+  await page.screenshot({path:screenshots+'/06-report-revised-desktop.png',fullPage:true});
+  await page.emulateMedia({media:'print'});
+  assert.equal(await page.locator('.view[data-view="report"] .paper').isVisible(),true);
+  assert.equal(await page.locator('.view[data-view="report"] > .chaphead').isVisible(),false);
+  assert.equal(await page.locator('.view[data-view="report"] > .report-demo-notice').isVisible(),false);
+  assert.equal(await page.locator('.paper-inspect').first().isVisible(),false);
+  assert.match(await page.locator('#report-tested').innerText(),/No matched/);
+  await page.emulateMedia({media:'screen'});
+  assert.equal(await page.locator('.report-demo-notice').isVisible(),true);
+  assert.deepEqual(errors,[]);await page.close();
+});
 await test('390px and 768px widths, reduced motion, semantic controls',async()=>{
   for(const width of [390,768]){
     const {page,errors}=await pageAt(width,844,true);
