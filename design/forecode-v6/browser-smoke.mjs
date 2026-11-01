@@ -197,6 +197,21 @@ await test('390px and 768px widths, reduced motion, semantic controls',async()=>
     assert.deepEqual(errors,[]);await page.close();
   }
 });
+await test('Chapter history supports browser Back and Forward with restored visual context',async()=>{
+  const {page,errors}=await pageAt(1440,900);
+  await page.locator('.view[data-view="case"] [data-open-arm="B"]').click();
+  assert.equal(await page.locator('.view[data-view="lab"]').isVisible(),true);
+  await clickView(page,'tournament');
+  assert.match(await page.locator('#trace-context').innerText(),/B \/ Routes/);
+  await page.goBack();
+  assert.equal(await page.locator('.view[data-view="lab"]').isVisible(),true);
+  assert.equal(await page.locator('.chapters [data-go="lab"]').getAttribute('aria-current'),'step');
+  assert.match(await page.locator('#trace-context').innerText(),/B \/ Routes/);
+  await page.goForward();
+  assert.equal(await page.locator('.view[data-view="tournament"]').isVisible(),true);
+  assert.match(await page.locator('#trace-context').innerText(),/B \/ Routes/);
+  assert.deepEqual(errors,[]);await page.close();
+});
 await test('Deep links land at requested view and keyboard chapter control works',async()=>{
   const {page,errors}=await pageAt(1440,900);
   await page.goto(pathToFileURL(input).href+'#report');
