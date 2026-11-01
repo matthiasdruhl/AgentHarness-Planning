@@ -154,7 +154,8 @@ await test('Tournament and report reasons inspect actual evidence requirements, 
     assert.equal(await page.locator('.view[data-view="report"]').isVisible(),true);
   }
   await page.locator('[data-mode="keep"]').click();
-  await page.getByRole('button',{name:'Inspect required checks'}).click();
+  assert.equal(await page.locator('#reason-link-1').getAttribute('data-inspect-evidence'),'checks');
+  await page.locator('#reason-link-1').click();
   assert.match(await page.locator('#evidence-focus-copy').innerText(),/fictional report variants cannot become verified outcomes/i);
   assert.match(await page.locator('.notice').innerText(),/DESIGN SPECIMEN/);
   assert.deepEqual(errors,[]);await page.close();
