@@ -83,6 +83,9 @@ await test('Calm Change Trace supports mouse and keyboard inspection across chap
   assert.match(await page.locator('.view[data-view="tournament"] [data-trace-focus]').innerText(),/B · Policy/);
   await page.locator('.view[data-view="tournament"] [data-trace-node="A:1"]').click();
   assert.match(await page.locator('#trace-context').innerText(),/A \/ Service/);
+  await page.locator('.view[data-view="tournament"] [data-arm="B"]').click();
+  assert.match(await page.locator('#trace-context').innerText(),/B \/ Routes/,'Arm switching must not remap Service to Ownership');
+  await page.locator('.view[data-view="tournament"] [data-trace-node="A:1"]').click();
   await clickView(page,'time');
   await page.locator('[data-stage="after"]').click();
   assert.match(await page.locator('#trace-context').innerText(),/After/);
