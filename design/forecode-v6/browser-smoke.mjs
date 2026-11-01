@@ -254,6 +254,69 @@ await test('Deep links land at requested view and keyboard chapter control works
   assert.equal(await page.locator('.view[data-view="lab"]').isVisible(),true);
   assert.deepEqual(errors,[]);await page.close();
 });
+
+await test('Tournament signature trace is above fairness rows in the first desktop viewport',async()=>{
+  const {page,errors}=await pageAt(1440,900);
+  await clickView(page,'tournament');
+  const pos=await page.evaluate(()=>{
+    const trace=document.querySelector('.view[data-view="tournament"] .canvas');
+    const conditions=document.querySelector('.view[data-view="tournament"] .tournament-conditions');
+    return {traceTop:trace.getBoundingClientRect().top,conditionsTop:conditions.getBoundingClientRect().top,height:innerHeight};
+  });
+  assert.ok(pos.traceTop<pos.conditionsTop,'Trace must precede prerequisites: '+JSON.stringify(pos));
+  assert.ok(pos.traceTop<pos.height-100,'The signature visualization must enter the first viewport: '+JSON.stringify(pos));
+  await noDocumentOverflow(page,'desktop tournament first fold');
+  assert.deepEqual(errors,[]);await page.close();
+});
+await test('Each fictional report reason navigates to matching evidence and restores its exact trigger',async()=>{
+  const {page,errors}=await pageAt(1440,900);
+  await clickView(page,'report');
+  const modes={
+    unknown:['checks','source','hypothesis'],
+    keep:['checks','source','hypothesis'],
+    refactor:['checks','source','hypothesis'],
+    tie:['checks','source','source'],
+    fail:['checks','checks','checks'],
+    invalid:['fairness','fairness','fairness']
+  };
+  for(const [mode,targetKinds] of Object.entries(modes)){
+    await page.locator('[data-mode="'+mode+'"]').click();
+    const kinds=await page.locator('.view[data-view="report"] .reason .paper-inspect').evaluateAll(nodes=>nodes.map(n=>n.dataset.inspectEvidence));
+    assert.deepEqual(kinds,targetKinds,'Reason targets for '+mode);
+    await page.locator('#reason-link-1').click();
+    assert.equal(await page.locator('.view[data-view="evidence"]').isVisible(),true);
+    assert.match(await page.locator('#evidence-focus-title').innerText(),targetKinds[0]==='fairness'?/COMPARABILITY/:/INDEPENDENT CHECKS/);
+    await page.locator('[data-return-evidence]').click();
+    assert.equal(await page.locator('.view[data-view="report"]').isVisible(),true);
+    assert.equal(await page.evaluate(()=>document.activeElement?.id),'reason-link-1','Exact focus restoration for '+mode);
+    assert.equal(await page.locator('[data-mode="'+mode+'"]').getAttribute('aria-pressed'),'true');
+  }
+  assert.deepEqual(errors,[]);await page.close();
+});
+await test('Scrollable graphs and mobile wayfinding retain readable labels and report metadata',async()=>{
+  for(const width of [1440,390]){
+    const {page,errors}=await pageAt(width,900,true);
+    await clickView(page,'lab');
+    const trace=page.locator('.view[data-view="lab"] .trace-scroll');
+    assert.equal(await trace.getAttribute('tabindex'),'0');
+    const label=await trace.locator('.micro').first().evaluate(e=>parseFloat(getComputedStyle(e).fontSize));
+    assert.ok(label>=14,'Trace caption too small: '+label);
+    await trace.focus();
+    assert.equal(await trace.evaluate(e=>document.activeElement===e),true);
+    if(width===390){
+      assert.equal(await page.locator('.mobile-chapter-hint').isVisible(),true);
+      const nav=await page.locator('.chapters').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));
+      assert.ok(nav.scroll>nav.client,'Mobile chapters should be scrollable');
+      await clickView(page,'report');
+      assert.equal(await page.locator('.paper-top .document-id').evaluate(e=>getComputedStyle(e).display),'block');
+      await noDocumentOverflow(page,'mobile report header');
+    } else {
+      assert.equal(await page.locator('.mobile-chapter-hint').isVisible(),false);
+    }
+    assert.deepEqual(errors,[]);await page.close();
+  }
+});
+
 await browser.close();
 console.log('Browser checks failed:',failures);
 if(failures)process.exitCode=1;
