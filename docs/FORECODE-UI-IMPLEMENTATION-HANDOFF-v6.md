@@ -101,6 +101,14 @@ The planning prototype additionally demonstrates one small contextual Evidence L
 
 Implement only with server-validated, approved per-study references when present. Never invent report-to-check links, treat synthetic mode switches as evidence, or change the original verdict when a user focuses an explanation. If no approved evidence is available, the inline inspected question must state exactly what is missing. Use focused text and thin separators, not a panel stack. Test keyboard focus after navigation, mode isolation, deep links and print report layout.
 
+## November 1 v6.3 extension — deliberate landing and fair-comparison hierarchy
+
+The planning specimen now includes one minimal **A / Keep vs B / Prepare** decision line directly after the illustrative future booking requirement. An A or B button opens the Lab with the corresponding conceptual focus, without claiming any actual prep/source change. Preserve the original confirmed-intent workflow, keyboard accessibility and no-fake-evidence boundaries in any independently authored production implementation. The landing controls should not dispatch provider requests or execute experiments.
+
+For the Tournament, favor the study-reading order specified in v6.3: no-run/available status; same task, starting tree and downstream agent/budget/oracle prerequisites; balanced A/B definitions; restrained Change Trace; actual measurements if available. If authenticated publication is missing, use explicit NOT RUN and Unknown, never invented success/latency. Refine visual hierarchy by removing duplicate chrome rather than adding cards.
+
+Copy, spacings, media breakpoints and explicit text states are specified in [the v6.3 reference study](../design/forecode-v6/reference-study-and-trace-refinement.md). **Do not transplant the planning HTML/CSS/JS into the event implementation.** Cross-browser E2E should verify that the two landing alternatives open the correct selected context, a cancelled/revised intent clears stale focus, desktop and 390px pages have no document overflow, and the Tournament remains coherent for no-run, tied, rejected and incomparable authenticated states.
+
 ## Explicit anti-pattern rejection list
 
 Reject any commit with: fictional report selectors shipped in app; sample metrics rendered as production; unprotected browser grading endpoint; Meta text determining VERIFIED; source trees generated from speculation; auto-winner purely from passing checks; aggregate “architecture score”; generic SaaS cards across every view; floating purple gradients; randomly styled pill badges; all-caps mono paragraphs; permanent glowing traces; fake telemetry; content hidden behind unreadable tiny graph labels; UI claims differing from authenticated records.
