@@ -149,6 +149,12 @@ The [reviewed design-reference study](reference-study-and-trace-refinement.md) r
 - Report-reason inspection must use exact approved evidence anchors when available. A reason without authenticated evidence must expose that limit rather than link to invented support.
 - The planning specimen now demonstrates these mechanics, but browser, accessibility and production correctness remain separate acceptance tasks.
 
+## v6.2 evidence navigation refinement — November 1
+
+The planning specimen now makes Tournament comparability and Decision Report reasons **questions that can be inspected**, not isolated prose or one generic "see evidence" link. A single quiet Evidence Laboratory focus region reports precisely what is unknown about fairness, required checks/receipts, prepared/final source and effort, or Meta hypothesis status. It does not create additional cards, a new verifier, auto-play evidence, or invented check identifiers.
+
+Production implementation: preserve the existing read-only protected loader; each reason link should resolve only to a matching authenticated check/receipt/source path in an approved public DTO. If unavailable, focus the truthful missing-evidence explanation. The deterministic report and correctness verdict never change because the visitor selects a reason; fictional prototype outcome controls are not shipped. Evidence focus navigation should be keyboard accessible and printed reports omit interactive controls.
+
 ## Authority and precedence
 
 Official hackathon provenance/rules and independent evaluator trust > frozen tournament contracts > existing v5.1 impact logic > this **v6 implementation detail lock** > illustrative design prototype. Build submission code independently from the old pre-event planning prototype; do not copy its HTML/CSS/JS.
