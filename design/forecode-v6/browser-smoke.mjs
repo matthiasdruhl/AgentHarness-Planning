@@ -39,7 +39,8 @@ await test('All six chapters connected and no run truth preserved',async()=>{
     await clickView(page,view);
     await noDocumentOverflow(page,view);
     if(view==='tournament') {
-      assert.match(await page.locator('.view[data-view="tournament"]').innerText(),/NOT RUN/);
+      assert.match(await page.locator('.view[data-view="tournament"] .tournament-study-status').innerText(),/NO AUTHENTIC PAIRED RESULTS/);
+      assert.match(await page.locator('.view[data-view="tournament"] .ledger').innerText(),/Not run/);
       await page.screenshot({path:screenshots+'/03-tournament-desktop.png',fullPage:true});
     }
     if(view==='report') {
