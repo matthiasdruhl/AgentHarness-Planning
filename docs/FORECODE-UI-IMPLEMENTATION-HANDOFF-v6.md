@@ -126,6 +126,6 @@ Reject any commit with: fictional report selectors shipped in app; sample metric
 
 ## Priority / cuts
 
-Nov 2 feature freeze: **Decision Report + story first**, then static Change Trace/Tournament; animate only if stable. Nov 4 submission: working credible study and proof outrank visual complexity. Never replace a missing real experiment with attractive fictional results.
+Nov 2 evening soft integration checkpoint; Nov 3 about 3 PM Eastern hard feature freeze (user revision November 1): **Decision Report + story first**, then static Change Trace/Tournament; animate only if stable. Nov 4 submission: working credible study and proof outrank visual complexity. Never replace a missing real experiment with attractive fictional results.
 
 Use exact design choices from design-system-and-experience.md. Do not hand off typography, spacing, interactions, labels, colors, outcome-state decisions or what to cut as creative freedom for Codex.
