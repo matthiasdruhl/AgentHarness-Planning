@@ -163,6 +163,14 @@ Tournament reading order is now: **not-run status → three fairness prerequisit
 
 The first two A/B descriptions remain balanced: A is a credible original architecture, B costs effort before the future task. Design claims no measured result or Meta uplift. On mobile, both alternatives remain large keyboard-operable touch targets and the entire document remains free of horizontal overflow. See [v6.3 source-based design decisions](reference-study-and-trace-refinement.md).
 
+## v6.4 — Decision Report editorial hierarchy
+
+Keep the existing warm paper-toned memo as the visual destination of the six chapters. Its reading order is now: publication/case identity; scoped study state (no real study vs explicitly fictional mode); one large verdict; a concise explanation; three semantic study facts (**scope**, **what was tested**, **what remains unknown**); numbered evidence reasons; A/B limits; next action; exact traceability identities when authentically available. Do not assign optimistic or pessimistic colors based on the decision outcome.
+
+The design prototype's six outcome selectors remain **fictional copy-review controls only**. All report state labels are explicitly fictional except the no-run state. The actual application's Decision Report must be derived exclusively from approved server-side publication/receipt data and report analysis. The report must never call a model, evaluator, verifier, live execution or a client-side grading function to choose a winner.
+
+Specific evidence questions now have an unobtrusive Return to Decision Report/Tournament link within the existing Evidence Laboratory focus readout. Navigation must preserve chapter context and browser history while remaining keyboard operable. Print hides all chapter headings and copy-review controls, retains the report's fiction disclaimer in the prototype, and keeps numbered evidence reasons together when practical. See [v6.4 primary references](reference-study-and-trace-refinement.md).
+
 ## Authority and precedence
 
 Official hackathon provenance/rules and independent evaluator trust > frozen tournament contracts > existing v5.1 impact logic > this **v6 implementation detail lock** > illustrative design prototype. Build submission code independently from the old pre-event planning prototype; do not copy its HTML/CSS/JS.
