@@ -123,3 +123,48 @@ Reject implementation if it introduces any of: animated execution pulses when no
 ## Prototype tests and scope limits
 
 `design/forecode-v6/browser-smoke.mjs` now includes pointer/keyboard node inspection, cross-chapter selection persistence, absent-source labels and a guard against pseudo-execution pulses, in addition to the existing six-chapter, no-run, responsive and fictional-report tests. This is **test source added**, not a claim that the remote browser workflow has already passed. The reference is illustrative; the eligible ForeCode application must be tested separately after independent implementation.
+
+## v6.4 final audit closure — trace-first Tournament, evidence binding, responsive focus
+
+This is the last targeted reference refinement, not a new v7 design or a source of experimental truth. It closes the issues found in the v6.4 audit without copying the planning prototype into the hackathon implementation.
+
+### Tournament: show the question before explaining the methodology
+
+- At 1440 × 900, the actual Change Trace canvas begins within the initial viewport and precedes the three fairness prerequisites, rather than being buried below them. The no-authentic-paired-results statement remains above the trace.
+- Fairness is **not** optional or downplayed: the three equal-condition prerequisites, the inspection link, the A/B definitions, and the source/effort evidence table follow directly below the trace in the same chapter.
+- No drawn lane expresses a win, live run, verified source edit or causal Meta advantage. The proposed boundaries remain dashed and A/B focus is purely inspection.
+- Do not restore large status-card stacks or move the trace below boilerplate when adapting this into ForeCode. Show task, hypothesis, alternative paths and evidence status in one glance.
+
+### Production Change Trace data contract — presentation only
+
+An independently authored production component should accept a source-typed, read-only view model; this is a design contract, **not** an additional evaluator:
+
+| Trace view state | Necessary approved inputs | Allowed output | Forbidden output |
+| --- | --- | --- | --- |
+| `CONCEPTUAL` | Human-confirmed intended future task and explicitly labeled conceptual module responsibilities | Requirement diamond, dashed proposed boundaries, selected conceptual explanation | Specific edits, measured costs, claimed baseline authorization defects |
+| `BOUNDED_SOURCE` | Reviewed source-graph identity and path/revision association at the approved disclosure level | Known source node/path inspection and *separately labeled* proposed edits | Changed files or measured propagation presented as observed |
+| `OBSERVED_COMPARISON` | Fresh approved publication plus admitted per-arm run/tree/receipt bindings, validated source comparisons and disclosed stage data | Source-backed changed-file list, exact available hashes, linked checks, *actual* metrics | Fabricated graph edges, omitted preparation, client-asserted verdict, inferred Before/Prepared/After snapshot |
+| `UNAVAILABLE` | Missing/stale/invalid/unmatched inputs or unavailable stage | Specific missing-data explanation, honest Insufficient Evidence path | Zero-filled metrics, blank-but-green VERIFIED state |
+
+Observed changes are **not** proof that full module-level dependency topology is available. If only `sourceComparison` contains pinned changed files, show that file list (and available hashes) with no inferred dependency edges. A selected phase without an approved snapshot stays unavailable even if a speculative diagram could be rendered. The component never calls Meta, agents, a grading service or publication endpoint itself.
+
+A/B/phase/node focus remains UI-only state, and is invalidated when case, confirmed intent revision, task identity, approved publication or graph revision changes. Reporting uses the existing protected server-side publication and decision composer, not browser-calculated success or comparisons. Study M remains separate from Study F and requires a real C control.
+
+### Report: scenario-specific reason → evidence correspondence
+
+The prototype's six *fictional* modes now assign an evidence question to **each displayed reason**. An invalid comparison routes to comparability, a correctness tie routes to checks/actual effort, and single-arm outcomes route to verified-check/source/scope questions. An inspection action stores the originating control identity and returns keyboard focus to that precise report reason (or Tournament fairness link). Evidence never changes the decision.
+
+In production, resolve each reason to its *own* exact approved study/check/source/run/receipt target. If a referenced result is absent, the explanation identifies the missing data rather than linking vaguely to a general evidence screen. Model output cannot authenticate a receipt, and a conditionally supported recommendation does not replace the independent per-arm verdict.
+
+### Mobile and interaction acceptance
+
+- The document metadata in the paper report must be independently wrapped at 390px rather than colliding with the ForeCode mark; report headlines wrap without horizontal overflow.
+- The chapter navigation exposes a discoverable horizontal-scroll cue on small screens. The architectural graph scrolls **within its own labeled, keyboard-focusable region**, never the entire document.
+- Technical labels are kept legible by an 840px minimum diagram canvas and larger SVG text, with deliberate internal scrolling when narrower.
+- Inspecting evidence and returning restores the originating keyboard target, the report mode, and the selected chapter context.
+- Chromium smoke now checks the Tournament graphic's first-fold position, all six mode-specific reason targets, return focus, report metadata wrapping, mobile chapter scrolling, graph focus, no document overflow and the existing reduced-motion/print/phase/no-run scenarios.
+- These checks do **not** replace independent human review, screen-reader evaluation, Safari/WebKit, or production source-bound integration E2E.
+
+### Final implementation priority
+
+Keep the existing implementation sequence: story/shell, authentic read-only Decision Report, source-typed static Change Trace plus Tournament, Time Machine as approved stages permit. Cut decorative transitions before cutting an independently verifiable study. Preserve the Nov 2 integration checkpoint, Nov 3 approximately 3 PM Eastern hard feature freeze and Nov 4 submission, as stated in the revised handoff.
