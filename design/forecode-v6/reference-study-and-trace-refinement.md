@@ -53,6 +53,12 @@ Sources are *primary design references*, not evidence of endorsement or ratings 
 
 **Trust:** the schematic's own top label is now **ONE FUTURE REQUIREMENT / SCHEMATIC** rather than presenting a planning-only example as a frozen study. Production replaces the labels and statuses only from independently authenticated publication data.
 
+## v6.3 continuity correction — chapter history
+
+The original six-chapter specimen used `history.replaceState` on chapter changes. That made browser Back/Forward fail to restore previously visited chapters even though the URL fragment appeared to identify a chapter. The refined specimen uses `pushState` for explicit chapter navigation and restores the active chapter from browser history without creating a second navigation entry. The selected conceptual A/B/module/phase context remains consistent across chapter returns. Direct `#report`/other chapter URLs still work. This is a **navigation behavior** improvement, not an additional visual animation.
+
+The smoke test now exercises A/B entry from the landing page, selection persistence through Tournament, browser Back and Forward, comparative-layout clarity at 1440/768/390px, and reduced motion. Native browser semantics take priority over bespoke transition choreography.
+
 ## Layout and interaction contract
 
 - **Signature:** one amber future-change diamond; one trunk; two disciplined A/B lanes. No particle system, stream animation, spontaneous topology growth or automatic winner reveal.
