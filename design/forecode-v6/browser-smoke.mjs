@@ -49,6 +49,43 @@ await test('All six chapters connected and no run truth preserved',async()=>{
   }
   assert.deepEqual(errors,[]); await page.close();
 });
+await test('Landing alternatives open the same architecture context with no invented result',async()=>{
+  const {page,errors}=await pageAt(1440,900);
+  const caseView=page.locator('.view[data-view="case"]');
+  const alternatives=caseView.locator('.choice-preview-options');
+  assert.equal(await alternatives.locator('button').count(),2);
+  await alternatives.locator('[data-open-arm="B"]').click();
+  assert.equal(await page.locator('.view[data-view="lab"]').isVisible(),true);
+  assert.match(await page.locator('#lab-choice').innerText(),/B \/ Proposed boundary/);
+  assert.match(await page.locator('.view[data-view="lab"] [data-trace-focus]').innerText(),/B · Routes/);
+  assert.match(await page.locator('#trace-context').innerText(),/No verified study/);
+  await clickView(page,'case');
+  await alternatives.locator('[data-open-arm="A"]').focus();
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.view[data-view="lab"]').isVisible(),true);
+  assert.match(await page.locator('#lab-choice').innerText(),/A \/ Status quo/);
+  await clickView(page,'tournament');
+  assert.equal(await page.locator('.tournament-conditions>div').count(),3);
+  assert.match(await page.locator('.tournament-study-status').innerText(),/NO AUTHENTIC PAIRED RESULTS/);
+  assert.match(await page.locator('.tournament-approaches').innerText(),/A \/ RETAIN/);
+  assert.match(await page.locator('.tournament-approaches').innerText(),/B \/ PREPARE/);
+  assert.match(await page.locator('svg[data-trace="tournament"]').getAttribute('aria-label'),/neither has a result/);
+  assert.deepEqual(errors,[]); await page.close();
+});
+await test('Landing decision hinge and Tournament remain usable at 390px and 768px',async()=>{
+  for(const width of [390,768]){
+    const {page,errors}=await pageAt(width,844,true);
+    await noDocumentOverflow(page,width+' landing choice');
+    await page.locator('.view[data-view="case"] [data-open-arm="B"]').click();
+    await noDocumentOverflow(page,width+' focused lab');
+    await clickView(page,'tournament');
+    await noDocumentOverflow(page,width+' study conditions');
+    await page.getByRole('button',{name:'Inspect comparability requirements'}).click();
+    await noDocumentOverflow(page,width+' evidence focus');
+    assert.match(await page.locator('#evidence-focus-title').innerText(),/COMPARABILITY/);
+    assert.deepEqual(errors,[]); await page.close();
+  }
+});
 await test('Architecture focus and source phases are available without invented snapshots',async()=>{
   const {page,errors}=await pageAt(1440,900);
   await clickView(page,'lab');
