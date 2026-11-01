@@ -32,6 +32,27 @@ This is the "observability inspector" pattern applied *carefully*: navigation le
 
 Review benchmark: after clicking reason 01, the visitor should be able to say exactly which required checks and original receipts are missing; after reason 02, exactly which source and prep-inclusive measures are missing; after reason 03, why an LLM proposal is not independent proof. Navigation is accessible and returns to the report through the chapter rail; print hides these prototype-only navigation controls.
 
+## v6.3 — reference study: first impression and study hierarchy
+
+Sources are *primary design references*, not evidence of endorsement or ratings for ForeCode.
+
+| Existing design | Evidence of the design decision | Applied to v6.3 | Rejected imitation |
+| --- | --- | --- | --- |
+| [Linear: March 2026 calm-interface refresh](https://linear.app/now/behind-the-latest-design-refresh) | The Linear team explicitly reduced competing sidebar/border emphasis and aligned navigation across workspaces. | Let the architecture choice sit below the future requirement as **one ruled two-option line**, not two glowing feature cards. Reduce duplicated Tournament status copy. | Linear's product UI, exact component layouts and visual assets. |
+| [Vercel: Web Interface Guidelines](https://vercel.com/design/guidelines) | They call for deliberate alignment, visible keyboard focus, ≥44px mobile hit targets, inline help, responsive coverage, all important states, and no dead ends. | Both landing alternatives are focusable native buttons with ample targets; selection opens the existing Lab with the matching A/B context. Fairness has one labeled inspection action. | Cloning Vercel UI, Geist typography or branding. |
+| [Raycast: A fresh look and feel](https://www.raycast.com/blog/a-fresh-look-and-feel) | Their published design principles are fast, simple and delightful, preserving familiar workflows while refining interactions. | One purposeful click from the visitor's future requirement to an architecture to inspect. No onboarding wizard, new mode, simulated processing animation or needless transition. | Raycast launcher UI and command-palette motifs. |
+| [Vercel: introducing Geist Serif, October 30, 2026](https://vercel.com/blog/introducing-geist-serif) | Editorial display serif is used as a distinct, deliberately limited headline voice alongside the functional interface type family. | Preserve v6's **existing** selective Instrument Serif moment (hero/report) and Plex hierarchy. Do not add serif to every data surface. | Changing fonts to Geist or importing any brand font assets. |
+
+### Actual changes
+
+**Landing:** keep the authentic conceptual NOW → NEXT progression, and make the first architectural choice visible as a very small A / Keep versus B / Prepare decision hinge under the requirement. The two native buttons set the same conceptual A/B focus used by the Lab and Tournament. Neither predicts a winner or asserts a real B preparation.
+
+**Tournament:** move the evidence-integrity caveat to one compact status line; present three equal-condition prerequisites (**same future task**, **same starting point**, **same downstream conditions**) with exact truthful missing/unchecked statuses; then a short ruled A/B approach definition; only then show the restrained Change Trace and measurement table. This establishes research fairness as the reader's first question, not a decorative status chip or a field of unknown numbers.
+
+**Responsive:** landing alternatives stack at 390px. The Tournament prerequisites move 3→2→1 columns by viewport, and the brief A/B description stacks when necessary. No new full-page horizontal overflow and no smaller tap targets.
+
+**Trust:** the schematic's own top label is now **ONE FUTURE REQUIREMENT / SCHEMATIC** rather than presenting a planning-only example as a frozen study. Production replaces the labels and statuses only from independently authenticated publication data.
+
 ## Layout and interaction contract
 
 - **Signature:** one amber future-change diamond; one trunk; two disciplined A/B lanes. No particle system, stream animation, spontaneous topology growth or automatic winner reveal.
