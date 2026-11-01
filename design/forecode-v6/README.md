@@ -20,6 +20,14 @@ The Change Trace gives ForeCode a single visual signature across the landing, Ar
 
 **Permanent trust disclosure:** No fictional mode, path pulse, graph node, sample hypothesis or status in this HTML represents an authenticated run, actual Meta output, a real source tree, verified permission failure, or an independent grader result. NEVER copy these preview mode controls or pre-event planning prototype code into a production or hackathon submission. Implement the design concepts afresh in the eligible ForeCode app after reviewing the current sources.
 
+## v6.1 focused interaction refinement (November 1)
+
+The existing six-screen reference has a restrained, inspectable Change Trace: clickable/keyboard-activatable conceptual nodes, persistent A/B selection across chapters, one focused explanation, and no pseudo-execution pulse or SVG glow. **It remains a fictional design specimen**, not the submitted ForeCode frontend or a measured study.
+
+- [External product reference study and exact refinement rules](reference-study-and-trace-refinement.md)
+- The browser smoke includes conceptual-node focus, cross-chapter state and no-pulse checks.
+- Do not copy the planning HTML/CSS/JS into the hackathon submission; implement new components from the specification.
+
 ## Browser checks
 
 The new [Chromium smoke script](browser-smoke.mjs) checks the six-screen journey, default NOT RUN claims, A/B controls, 2×3 Time Machine combinations, six Decision Report copy modes, deep links, 390/768px document overflow, independent graph scrolling, keyboard basics, and page exceptions.
