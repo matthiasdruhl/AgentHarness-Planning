@@ -109,6 +109,14 @@ For the Tournament, favor the study-reading order specified in v6.3: no-run/avai
 
 Copy, spacings, media breakpoints and explicit text states are specified in [the v6.3 reference study](../design/forecode-v6/reference-study-and-trace-refinement.md). **Do not transplant the planning HTML/CSS/JS into the event implementation.** Cross-browser E2E should verify that the two landing alternatives open the correct selected context, a cancelled/revised intent clears stale focus, desktop and 390px pages have no document overflow, and the Tournament remains coherent for no-run, tied, rejected and incomparable authenticated states.
 
+## November 1 v6.4 extension — Decision Report editorial pass
+
+The planning prototype now demonstrates a clearer evidence memo using a three-fact semantic summary (scope, tested basis, unknowns), small study-state metadata, larger evidence-link hit areas, and intentional print-only report composition. The mock controls update the facts for all six fictional outcome variants and can return from specific evidence questions without losing their location in the visitor story.
+
+For independently authored event implementation, **do not copy the prototype code**. Instead bind those headings/fields to the existing read-only approved Decision Report catalog and its supported fields: no data means unavailable; missing required-check receipts, source identity, or preparation-inclusive metrics remain unknown. Preserve separate per-arm correctness and overall recommendation. Derive report links only from matching approved study/check/source/run/receipt IDs; never let a user-visible report mode select or override the outcome.
+
+Build real responsive/print tests: no-run and invalid; A-only, B-only, both-pass and both-fail states from authorized test fixtures; explicit provenance status; semantic summary fields; evidence-link return focus; report print with 2–3 indivisible reasons; 390px no document overflow; keyboard controls; `prefers-reduced-motion`. In particular, the production report must not imply a Meta-vs-control advantage from Study F alone.
+
 ## Explicit anti-pattern rejection list
 
 Reject any commit with: fictional report selectors shipped in app; sample metrics rendered as production; unprotected browser grading endpoint; Meta text determining VERIFIED; source trees generated from speculation; auto-winner purely from passing checks; aggregate “architecture score”; generic SaaS cards across every view; floating purple gradients; randomly styled pill badges; all-caps mono paragraphs; permanent glowing traces; fake telemetry; content hidden behind unreadable tiny graph labels; UI claims differing from authenticated records.
