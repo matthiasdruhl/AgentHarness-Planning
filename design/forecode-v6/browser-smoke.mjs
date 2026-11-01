@@ -68,6 +68,28 @@ await test('Architecture focus and source phases are available without invented 
   await page.screenshot({path:screenshots+'/04-time-desktop.png',fullPage:true});
   assert.deepEqual(errors,[]); await page.close();
 });
+await test('Calm Change Trace supports mouse and keyboard inspection across chapters',async()=>{
+  const {page,errors}=await pageAt(1440,900);
+  await clickView(page,'lab');
+  const graph=page.locator('.view[data-view="lab"] svg[data-trace="lab"]');
+  assert.equal(await graph.locator('[data-trace-node]').count(),8);
+  assert.equal(await graph.locator('.pulse').count(),0,'No animated pseudo-execution pulse');
+  await graph.locator('[data-trace-node="B:2"]').focus();
+  await page.keyboard.press('Enter');
+  assert.match(await page.locator('.view[data-view="lab"] [data-trace-focus]').innerText(),/B · Policy/);
+  assert.match(await page.locator('#trace-context').innerText(),/B \/ Policy/);
+  assert.equal(await graph.locator('[data-trace-node="B:2"]').getAttribute('aria-pressed'),'true');
+  await clickView(page,'tournament');
+  assert.match(await page.locator('.view[data-view="tournament"] [data-trace-focus]').innerText(),/B · Policy/);
+  await page.locator('.view[data-view="tournament"] [data-trace-node="A:1"]').click();
+  assert.match(await page.locator('#trace-context').innerText(),/A \/ Service/);
+  await clickView(page,'time');
+  await page.locator('[data-stage="after"]').click();
+  assert.match(await page.locator('#trace-context').innerText(),/After/);
+  assert.match(await page.locator('.view[data-view="time"] [data-trace-focus]').innerText(),/No edit is observed/);
+  assert.match(await page.locator('#time-label').innerText(),/SOURCE UNAVAILABLE/);
+  assert.deepEqual(errors,[]);await page.close();
+});
 await test('Every illustrative decision mode stays explicitly fictional with neutral editorial layout',async()=>{
   const {page,errors}=await pageAt(1440,900);
   await clickView(page,'report');
