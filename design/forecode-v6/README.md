@@ -20,6 +20,14 @@ The Change Trace gives ForeCode a single visual signature across the landing, Ar
 
 **Permanent trust disclosure:** No fictional mode, path pulse, graph node, sample hypothesis or status in this HTML represents an authenticated run, actual Meta output, a real source tree, verified permission failure, or an independent grader result. NEVER copy these preview mode controls or pre-event planning prototype code into a production or hackathon submission. Implement the design concepts afresh in the eligible ForeCode app after reviewing the current sources.
 
+## v6.1 focused interaction refinement (November 1)
+
+The existing six-screen reference has a restrained, inspectable Change Trace: clickable/keyboard-activatable conceptual nodes, persistent A/B selection across chapters, one focused explanation, and no pseudo-execution pulse or SVG glow. **It remains a fictional design specimen**, not the submitted ForeCode frontend or a measured study.
+
+- [External product reference study and exact refinement rules](reference-study-and-trace-refinement.md)
+- The browser smoke includes conceptual-node focus, cross-chapter state and no-pulse checks.
+- Do not copy the planning HTML/CSS/JS into the hackathon submission; implement new components from the specification.
+
 ## Browser checks
 
 The new [Chromium smoke script](browser-smoke.mjs) checks the six-screen journey, default NOT RUN claims, A/B controls, 2×3 Time Machine combinations, six Decision Report copy modes, deep links, 390/768px document overflow, independent graph scrolling, keyboard basics, and page exceptions.
@@ -28,6 +36,12 @@ The new [Chromium smoke script](browser-smoke.mjs) checks the six-screen journey
 
 ## Relationship to previous plans
 
-This **extends** v5.1 impact-first direction. It does not override the v5.1 plan's four existing research workbenches, independently guarded experiment protocol, frozen task and receipt binding, valid optional control C, Nov 2 feature freeze, or Nov 4 event submission. The prior [v5.1 specification](../forecode-v5/impact-first-design-spec.md) remains authoritative for product scope; v6 locks the visual and interaction expression.
+This **extends** v5.1 impact-first direction. It does not override the v5.1 plan's four existing research workbenches, independently guarded experiment protocol, frozen task and receipt binding, valid optional control C, or Nov 4 event submission. The earlier Nov 2 freeze reference is superseded for this design handoff by the owner's Nov 1 decision to use **Nov 3 at about 3 PM Eastern** as the hard feature freeze, with Nov 2 evening as an integration checkpoint. The prior [v5.1 specification](../forecode-v5/impact-first-design-spec.md) remains authoritative for product scope; v6 locks the visual and interaction expression.
 
 **Implementation status:** The actual ForeCode main branch currently uses a light sidebar-first UI. The new dark Change Trace layout has **not** been integrated into that application by this planning PR.
+
+## Final v6.4 audit refinement
+
+The current PR now emphasizes the Change Trace **within the first desktop Tournament viewport**, without moving the experiment's fairness conditions out of the chapter. Report proof links follow the actual fictional reason being previewed (including invalid-comparison and both-pass states), and inspecting then returning preserves keyboard focus. Graph diagrams have larger labels and explicitly scrollable inner regions, mobile chapter scrolling is discoverable, and report metadata wraps correctly.
+
+The production translation rules—conceptual vs reviewed source vs independently observed comparison vs unavailable—are documented in [v6.4 final audit closure](reference-study-and-trace-refinement.md). The new browser tests validate these reference behaviors, but **do not** assert authenticated live experiments, production accessibility, or source-backed full topology. This planning branch must not be copied directly into the eligible ForeCode app.

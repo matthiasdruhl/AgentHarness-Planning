@@ -124,7 +124,7 @@ A graph of observed BEFORE/PREPARED/AFTER module-level edges is **not generally 
 
 **P0-D / Time Machine and polish:** source stage scrubbing with honest unavailable states; graph and evidence links; mobile/reduced-motion/print QA.
 
-Feature freeze Nov 2 and submission Nov 4: prioritize P0-A, P0-B and static P0-C; cut choreography before cutting actual Meta, genuine study, protected checks, trust, or demo clarity. No scope-changing new services, fake login, extra booking fixture, new browser-controlled agent action, or editable grader verdict.
+November 2 evening is the integration checkpoint; the user-directed hard feature freeze is **November 3 around 3 PM ET**, with November 4 submission: prioritize P0-A, P0-B and static P0-C; cut choreography before cutting actual Meta, genuine study, protected checks, trust, or demo clarity. No scope-changing new services, fake login, extra booking fixture, new browser-controlled agent action, or editable grader verdict.
 
 ## Acceptance before implementation PR can be called complete
 
@@ -137,6 +137,39 @@ Feature freeze Nov 2 and submission Nov 4: prioritize P0-A, P0-B and static P0-C
 - Keyboard navigation, visible focus, text alternatives, named active states, reduced motion, 1440×900/768px/390×844, independently scrollable graph, no document x-overflow.
 - Print report legible; no data leakage, invented private oracle details, or client-side verification authority.
 - Verify any real screenshots/demo claims against approved source-bound evidence; planning HTML prototype remains explicitly fictional.
+
+## v6.1 inspection refinement — November 1
+
+The [reviewed design-reference study](reference-study-and-trace-refinement.md) refines but does **not** replace the v6 visual identity. It borrows specific interaction disciplines from Linear's navigation hierarchy, Vercel's inspectable trace stages, GitHub's contextual entity navigation and the Webby Awards' clarity/functionality criteria.
+
+- Remove the specimen's automatic glowing/path-pulse motif. Selection is a hairline focus, not implied execution or importance. No artificial topological propagation.
+- Keep only the existing two lanes and four schematic responsibilities per lane in the hero-scale diagram. When genuinely source-backed file topology is unavailable, show the conceptual labels as conceptual rather than inventing a live dependency graph.
+- Make nodes operable via pointer/keyboard and keep **A/B + selected responsibility** across Lab, Tournament and Time Machine. Source revision or context invalidation clears stale focus in the actual app.
+- Use one small focused explanation under the diagram, not another stack of info cards; the inspector remains subordinate to the core graph and evidence.
+- Report-reason inspection must use exact approved evidence anchors when available. A reason without authenticated evidence must expose that limit rather than link to invented support.
+- The planning specimen now demonstrates these mechanics, but browser, accessibility and production correctness remain separate acceptance tasks.
+
+## v6.2 evidence navigation refinement — November 1
+
+The planning specimen now makes Tournament comparability and Decision Report reasons **questions that can be inspected**, not isolated prose or one generic "see evidence" link. A single quiet Evidence Laboratory focus region reports precisely what is unknown about fairness, required checks/receipts, prepared/final source and effort, or Meta hypothesis status. It does not create additional cards, a new verifier, auto-play evidence, or invented check identifiers.
+
+Production implementation: preserve the existing read-only protected loader; each reason link should resolve only to a matching authenticated check/receipt/source path in an approved public DTO. If unavailable, focus the truthful missing-evidence explanation. The deterministic report and correctness verdict never change because the visitor selects a reason; fictional prototype outcome controls are not shipped. Evidence focus navigation should be keyboard accessible and printed reports omit interactive controls.
+
+## v6.3 — landing decision hinge and experimental hierarchy (November 1)
+
+Keep v6's visual identity, hero language, restrained Change Trace, and editorial report intact. The updated prototype makes one deliberate informational change: the landing right-hand column proceeds **Today → Future requirement → A/B decision** with two plain-text ruled buttons, **A / Keep what works** and **B / Prepare the boundary**. Their selection carries directly into the existing Lab's A/B conceptual focus. This is not proof that B exists as prepared source.
+
+Final v6.4 Tournament reading order: **not-run status → immediately visible Change Trace → three fairness prerequisites → concise A/B definitions → measured dimensions → evidence/report**. Fairness requirements remain inspectable directly below the trace; the graphic does not itself assert that those requirements are met. Each fairness prerequisite says whether the specimen establishes it, not whether a future run is fair. Avoid an additional set of score cards, progress rings, leaderboard medals, colored winners or another ornamental graph.
+
+The first two A/B descriptions remain balanced: A is a credible original architecture, B costs effort before the future task. Design claims no measured result or Meta uplift. On mobile, both alternatives remain large keyboard-operable touch targets and the entire document remains free of horizontal overflow. See [v6.3 source-based design decisions](reference-study-and-trace-refinement.md).
+
+## v6.4 — Decision Report editorial hierarchy
+
+Keep the existing warm paper-toned memo as the visual destination of the six chapters. Its reading order is now: publication/case identity; scoped study state (no real study vs explicitly fictional mode); one large verdict; a concise explanation; three semantic study facts (**scope**, **what was tested**, **what remains unknown**); numbered evidence reasons; A/B limits; next action; exact traceability identities when authentically available. Do not assign optimistic or pessimistic colors based on the decision outcome.
+
+The design prototype's six outcome selectors remain **fictional copy-review controls only**. All report state labels are explicitly fictional except the no-run state. The actual application's Decision Report must be derived exclusively from approved server-side publication/receipt data and report analysis. The report must never call a model, evaluator, verifier, live execution or a client-side grading function to choose a winner.
+
+Specific evidence questions now have an unobtrusive Return to Decision Report/Tournament link within the existing Evidence Laboratory focus readout. Navigation must preserve chapter context and browser history while remaining keyboard operable. Print hides all chapter headings and copy-review controls, retains the report's fiction disclaimer in the prototype, and keeps numbered evidence reasons together when practical. See [v6.4 primary references](reference-study-and-trace-refinement.md).
 
 ## Authority and precedence
 
