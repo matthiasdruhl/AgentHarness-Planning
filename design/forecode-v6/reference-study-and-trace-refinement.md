@@ -24,6 +24,14 @@ These are design principles, not endorsements of ForeCode by any referenced prod
 4. **Provenance remains explicit.** Focused nodes are conceptual. This specimen does not claim file-level source truth, prepared B modules, verified changes, real timestamps or authenticated experiment outcomes.
 5. **Decision Report remains the payoff.** Keep its neutral paper surface and fictional copy modes for design review only. A production report must deep-link to exact approved source/run/receipt IDs, not send three generic reasons to the same invented proof.
 
+## v6.2 — traceable report reasons, not a decorative playback
+
+This follow-up adds a **single quiet evidence-question affordance** at the Tournament fairness rail and beside each Decision Report reason. Each navigates to a shared, compact Evidence Laboratory explanation: (1) comparability, (2) independently checked receipts, (3) source/preparation history, or (4) hypothesis limits. No additional graph, card stack, timeline animation, fabricated receipt or synthetic timestamp appears.
+
+This is the "observability inspector" pattern applied *carefully*: navigation leads to a specific inspectable question, not a generic feature page. The current prototype has **no authenticated matched study** and says so in every focused explanation. Fictional alternate Decision Report copy modes remain fictional even when the visitor follows a basis link. A future production implementation must resolve a reason to an approved study-specific check/receipt/source identity, or explicitly show the missing-evidence explanation. Do not make every report reason link to an unrelated proof page.
+
+Review benchmark: after clicking reason 01, the visitor should be able to say exactly which required checks and original receipts are missing; after reason 02, exactly which source and prep-inclusive measures are missing; after reason 03, why an LLM proposal is not independent proof. Navigation is accessible and returns to the report through the chapter rail; print hides these prototype-only navigation controls.
+
 ## Layout and interaction contract
 
 - **Signature:** one amber future-change diamond; one trunk; two disciplined A/B lanes. No particle system, stream animation, spontaneous topology growth or automatic winner reveal.
