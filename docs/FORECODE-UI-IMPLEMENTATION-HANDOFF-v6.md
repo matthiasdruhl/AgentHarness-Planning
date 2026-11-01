@@ -95,6 +95,12 @@ Visually, remove decorative glow and auto-pulsing paths, keep four or fewer labe
 
 Add E2E for: focus and keyboard activations; chapter selection persistence; real source vs conceptual labels; A/B correctness states; no fake pulse on missing evidence; 390px inner scrolling; and reduced motion. Link specific Decision Report reasons only to existing approved run/source/receipt references. A generic link to a proof page is not evidence of that precise claim.
 
+## v6.2 Tournament and report evidence inspection
+
+The planning prototype additionally demonstrates one small contextual Evidence Laboratory readout. From Tournament the user inspects **fairness prerequisites**; from Decision Report, each numbered reason has one targeted inspection route for (a) required-check/receipt evidence, (b) source and preparation accounting, or (c) model hypothesis limits. These routes are design scaffolding: the prototype has no real published study.
+
+Implement only with server-validated, approved per-study references when present. Never invent report-to-check links, treat synthetic mode switches as evidence, or change the original verdict when a user focuses an explanation. If no approved evidence is available, the inline inspected question must state exactly what is missing. Use focused text and thin separators, not a panel stack. Test keyboard focus after navigation, mode isolation, deep links and print report layout.
+
 ## Explicit anti-pattern rejection list
 
 Reject any commit with: fictional report selectors shipped in app; sample metrics rendered as production; unprotected browser grading endpoint; Meta text determining VERIFIED; source trees generated from speculation; auto-winner purely from passing checks; aggregate “architecture score”; generic SaaS cards across every view; floating purple gradients; randomly styled pill badges; all-caps mono paragraphs; permanent glowing traces; fake telemetry; content hidden behind unreadable tiny graph labels; UI claims differing from authenticated records.
