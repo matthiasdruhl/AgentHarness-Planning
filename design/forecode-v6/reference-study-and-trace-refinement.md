@@ -47,7 +47,7 @@ Sources are *primary design references*, not evidence of endorsement or ratings 
 
 **Landing:** keep the authentic conceptual NOW → NEXT progression, and make the first architectural choice visible as a very small A / Keep versus B / Prepare decision hinge under the requirement. The two native buttons set the same conceptual A/B focus used by the Lab and Tournament. Neither predicts a winner or asserts a real B preparation.
 
-**Tournament:** move the evidence-integrity caveat to one compact status line; present three equal-condition prerequisites (**same future task**, **same starting point**, **same downstream conditions**) with exact truthful missing/unchecked statuses; then a short ruled A/B approach definition; only then show the restrained Change Trace and measurement table. This establishes research fairness as the reader's first question, not a decorative status chip or a field of unknown numbers.
+**Tournament (historical v6.3 order; superseded by the final v6.4 audit closure below):** move the evidence-integrity caveat to one compact status line; present three equal-condition prerequisites (**same future task**, **same starting point**, **same downstream conditions**) with exact truthful missing/unchecked statuses; then a short ruled A/B approach definition; only then show the restrained Change Trace and measurement table. This establishes research fairness as the reader's first question, not a decorative status chip or a field of unknown numbers.
 
 **Responsive:** landing alternatives stack at 390px. The Tournament prerequisites move 3→2→1 columns by viewport, and the brief A/B description stacks when necessary. No new full-page horizontal overflow and no smaller tap targets.
 
