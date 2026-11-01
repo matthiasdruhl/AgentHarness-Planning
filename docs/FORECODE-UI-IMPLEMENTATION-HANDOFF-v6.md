@@ -137,3 +137,18 @@ Reject any commit with: fictional report selectors shipped in app; sample metric
 Nov 2 evening soft integration checkpoint; Nov 3 about 3 PM Eastern hard feature freeze (user revision November 1): **Decision Report + story first**, then static Change Trace/Tournament; animate only if stable. Nov 4 submission: working credible study and proof outrank visual complexity. Never replace a missing real experiment with attractive fictional results.
 
 Use exact design choices from design-system-and-experience.md. Do not hand off typography, spacing, interactions, labels, colors, outcome-state decisions or what to cut as creative freedom for Codex.
+
+## November 1 final v6.4 audit closure — do not improvise the evidence UI
+
+The final reference pass in `design/forecode-v6/` keeps the existing product identity and six chapters. It moves the Tournament's Change Trace **above** prerequisite rows, keeps the honest no-run status visible, maps fictional report reasons to their matching evidence categories, restores the exact originating keyboard focus on return, and improves responsive graph captions, mobile chapter discovery and memo metadata.
+
+Implement the **behavior**, not the old prototype code:
+
+1. Compose `ChangeTrace` from a typed read-only *presentational* view model with clearly separated `CONCEPTUAL`, `BOUNDED_SOURCE`, `OBSERVED_COMPARISON` and `UNAVAILABLE` treatment. No client-side API calls for experiment execution or outcome calculation. Source-backed display requires existing approved server-side publication and exact arm/run/tree/receipt lineage; a list of changed files is not a dependency graph.
+2. Keep the trace immediately visible after the Tournament title/no-run status, followed by equality prerequisites and the measurement rail. At 1440×900, at least its opening must be visible without scrolling. If the study is unavailable, visibly say so; do not invent a result.
+3. Bind every report reason to the appropriate approved **specific** check/source/receipt/comparability target. If the target is absent, show its scoped unavailability; no dead generic links. Preserve `INCONCLUSIVE` and distinct per-arm verifier statuses. The production report has no fictional outcome controls.
+4. When evidence inspection opens, remember the initiating control (not just the origin chapter), and restore focus and study context upon return. Source/intent revision invalidates stale selection.
+5. At 390px, use internal focusable graph scrolling and an obvious scroll affordance for chapter navigation; prevent the paper report's document metadata from colliding with the logo. Make labels legible, preserve visible focus and reduced-motion behavior.
+6. Add production tests for first-viewport Tournament hierarchy; report reason → exact evidence target across no-run, invalid, A-only, B-only, both-pass, both-fail; source-backed versus proposed labeling; stale/forged receipts; keyboard return focus, 390/768/1440px layout, actual data-bound reports and print.
+
+The full state table and limitations are in `design/forecode-v6/reference-study-and-trace-refinement.md` under **v6.4 final audit closure**. The [planning prototype smoke workflow](../.github/workflows/forecode-v6-browser.yml) is a design safety check, not evidence that the real ForeCode app has implemented the same behavior.
