@@ -155,6 +155,14 @@ The planning specimen now makes Tournament comparability and Decision Report rea
 
 Production implementation: preserve the existing read-only protected loader; each reason link should resolve only to a matching authenticated check/receipt/source path in an approved public DTO. If unavailable, focus the truthful missing-evidence explanation. The deterministic report and correctness verdict never change because the visitor selects a reason; fictional prototype outcome controls are not shipped. Evidence focus navigation should be keyboard accessible and printed reports omit interactive controls.
 
+## v6.3 — landing decision hinge and experimental hierarchy (November 1)
+
+Keep v6's visual identity, hero language, restrained Change Trace, and editorial report intact. The updated prototype makes one deliberate informational change: the landing right-hand column proceeds **Today → Future requirement → A/B decision** with two plain-text ruled buttons, **A / Keep what works** and **B / Prepare the boundary**. Their selection carries directly into the existing Lab's A/B conceptual focus. This is not proof that B exists as prepared source.
+
+Tournament reading order is now: **not-run status → three fairness prerequisites → concise A/B definitions → Change Trace → measured dimensions → evidence/report**. Each fairness prerequisite says whether the specimen establishes it, not whether a future run is fair. Avoid an additional set of score cards, progress rings, leaderboard medals, colored winners or another ornamental graph.
+
+The first two A/B descriptions remain balanced: A is a credible original architecture, B costs effort before the future task. Design claims no measured result or Meta uplift. On mobile, both alternatives remain large keyboard-operable touch targets and the entire document remains free of horizontal overflow. See [v6.3 source-based design decisions](reference-study-and-trace-refinement.md).
+
 ## Authority and precedence
 
 Official hackathon provenance/rules and independent evaluator trust > frozen tournament contracts > existing v5.1 impact logic > this **v6 implementation detail lock** > illustrative design prototype. Build submission code independently from the old pre-event planning prototype; do not copy its HTML/CSS/JS.
